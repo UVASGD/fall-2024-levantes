@@ -1618,15 +1618,6 @@ one_shot = true
 [node name="TestEnemy_2" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.953738, 0, 0.300639, 0, 1, 0, -0.300639, 0, -0.953738, 24.5121, 1.115, -20.6053)
 
-[node name="Righthand2" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="2"]
-transform = Transform3D(0.135631, -0.0115109, -0.0346326, -0.00204345, -0.135472, 0.0370248, -0.0364381, -0.0352491, -0.130987, 0.716013, -0.354967, 0.953408)
-
-[node name="RightForearm_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="3"]
-transform = Transform3D(0.089043, -0.100375, -0.0415209, -0.107458, -0.0892423, -0.0147091, -0.0158697, 0.0410915, -0.133369, 0.690388, 0.188106, 0.224649)
-
-[node name="Righthand_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="4"]
-transform = Transform3D(0.0890428, -0.100375, -0.0415208, -0.106744, -0.0709115, -0.0574893, 0.0201217, 0.068001, -0.121238, 0.730006, 0.51637, 0.156809)
-
 [node name="TestEnemy_3" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.799097, 0, -0.601201, 0, 1, 0, 0.601201, 0, -0.799097, 20.9709, 1.115, -20.5016)
 
@@ -1641,15 +1632,6 @@ transform = Transform3D(0.987762, 0, 0.155969, 0, 1, 0, -0.155969, 0, 0.987762, 
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("14_nygor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74695, 0, 3.73409)
-
-[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
-transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
-
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
-transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
-
-[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
-transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
 
 [connection signal="glass_broken" from="ARENA/enemy_room/lights/ALIEN_LAMP3" to="." method="_on_glass_broken"]
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="ARENA/enemy_room/lights/ALIEN_LAMP3" method="_on_weapons_manager_hit"]

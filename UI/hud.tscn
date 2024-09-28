@@ -152,6 +152,138 @@ theme_override_font_sizes/font_size = 20
 text = "000"
 horizontal_alignment = 2
 
+[node name="player_info" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.5
+offset_right = 141.5
+offset_bottom = 74.0
+grow_horizontal = 2
+color = Color(0.156863, 0.556863, 0.6, 1)
+
+[node name="shield" type="Control" parent="player_info"]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = -1.0
+offset_right = 247.0
+offset_bottom = 39.0
+
+[node name="Wep1_Indicator" type="ColorRect" parent="player_info/shield"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 36.0
+color = Color(0.615686, 0.945098, 0.909804, 0.67451)
+
+[node name="w_text" type="Label" parent="player_info/shield"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "Weapon1:
+"
+horizontal_alignment = 1
+
+[node name="Mag" type="Label" parent="player_info/shield"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 6.0
+offset_right = 151.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "000"
+horizontal_alignment = 2
+
+[node name="Div" type="Label" parent="player_info/shield"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 6.0
+offset_right = 190.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "/
+"
+
+[node name="Reserve" type="Label" parent="player_info/shield"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 6.0
+offset_right = 204.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "000"
+horizontal_alignment = 2
+
+[node name="health" type="Control" parent="player_info"]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = -1.0
+offset_right = 72.0
+offset_bottom = 39.0
+
+[node name="Wep2_Indicator" type="ColorRect" parent="player_info/health"]
+visible = false
+layout_mode = 0
+offset_left = -27.0
+offset_top = 36.0
+offset_right = 105.0
+offset_bottom = 67.0
+color = Color(0.615686, 0.945098, 0.909804, 0.67451)
+
+[node name="w_2_text" type="Label" parent="player_info/health"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 36.0
+offset_right = 105.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "Weapon2:
+"
+horizontal_alignment = 1
+
+[node name="Mag2" type="Label" parent="player_info/health"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 37.0
+offset_right = 151.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "000"
+horizontal_alignment = 2
+
+[node name="Div2" type="Label" parent="player_info/health"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 37.0
+offset_right = 190.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "/
+"
+
+[node name="Reserve2" type="Label" parent="player_info/health"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 37.0
+offset_right = 204.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_xg4as")
+theme_override_font_sizes/font_size = 20
+text = "000"
+horizontal_alignment = 2
+
 [node name="Reticle" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
