@@ -162,7 +162,7 @@ offset_right = 141.5
 offset_bottom = 74.0
 grow_horizontal = 2
 scale = Vector2(0.75, 0.75)
-color = Color(0.156863, 0.556863, 0.6, 1)
+color = Color(0, 0.592157, 0.8, 1)
 
 [node name="shield" type="Control" parent="player_info"]
 anchors_preset = 0
@@ -178,7 +178,7 @@ offset_top = 5.0
 offset_right = 105.0
 offset_bottom = 36.0
 scale = Vector2(2.08, 1)
-color = Color(0.615686, 0.945098, 0.909804, 0.67451)
+color = Color(0.572549, 0.941176, 0.996078, 0.67451)
 
 [node name="s_text" type="Label" parent="player_info/shield"]
 layout_mode = 0
@@ -194,7 +194,7 @@ text = "Shield:
 "
 horizontal_alignment = 1
 
-[node name="Mag" type="Label" parent="player_info/shield"]
+[node name="shield_amount" type="Label" parent="player_info/shield"]
 layout_mode = 0
 offset_left = 116.0
 offset_top = 6.0
@@ -229,11 +229,11 @@ offset_right = 105.0
 offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "Weapon2:
+text = "Health:
 "
 horizontal_alignment = 1
 
-[node name="Mag2" type="Label" parent="player_info/health"]
+[node name="health_amount" type="Label" parent="player_info/health"]
 layout_mode = 0
 offset_left = 116.0
 offset_top = 37.0

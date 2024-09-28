@@ -3,6 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var shield_hp: float = 100
+@export var health_hp: float = 50
 @export var look_sens: float = 0.006
 @export var jump_velocity := 6.0
 @export var bhop_on := true
@@ -23,6 +24,7 @@ var headbob_time = 0.0
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
 
+@onready var hud = $Head/Camera3D/HUD
 var wish_dir := Vector3.ZERO
 
 
@@ -33,6 +35,9 @@ func _ready():
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
 		child.set_layer_mask_value(1, false)
 		child.set_layer_mask_value(2, true)
+	
+	hud.hud_initialize_player(shield_hp, health_hp)
+	SignalBus.player_hit.connect(_on_player_hit)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -91,3 +96,14 @@ func _physics_process(delta):
 		_handle_air_physics(delta)
 	
 	move_and_slide()
+	
+func _on_player_hit():
+	
+	if float(hud.player_info.shield.shield_amount.text) == 0:
+		var new_health_amount = float(hud.player_info.health.health_amount.text) - 1
+		hud.update_shield_and_health(0, new_health_amount)
+	else:
+		var new_shield_amount = float(hud.player_info.shield.shield_amount.text) - 1
+		var existing_health_amount = float(hud.player_info.health.health_amount.text)
+		hud.update_shield_and_health(new_shield_amount, existing_health_amount)
+	pass

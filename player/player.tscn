@@ -1713,6 +1713,7 @@ shape = SubResource("BoxShape3D_v3v36")
 [connection signal="body_entered" from="pickup_detection" to="Head/Camera3D/Weapons_Manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="pickup_detection" to="Head/Camera3D/Weapons_Manager" method="_on_pickup_detection_body_exited"]
 
+[editable path="Head/Camera3D/HUD"]
 [editable path="Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
 [editable path="Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
 [editable path="Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

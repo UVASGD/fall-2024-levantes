@@ -29,10 +29,17 @@ func hud_initialize(weapons: Array, weapon_list: Dictionary):
 		else:
 			cur_weapon.get_child(4).text = ""
 			
+func hud_initialize_player(shield, health):
+	var shield_string = str(shield)
+	var health_string = str(health)
+	$player_info/shield/shield_amount.text = shield_string
+	$player_info/health/health_amount.text = health_string
+			
 func update_ammo(mag: int, reserve: int, weapon_indicator: int):
 	var cur_weapon = $weapons_info.get_child(weapon_indicator)
 	cur_weapon.get_child(2).text = str(mag)
 	cur_weapon.get_child(4).text = str(reserve)
+	
 		
 func update_weapon_indicator(weapon_indicator: int):
 	var cur_weapon = $weapons_info.get_child(weapon_indicator)
@@ -44,4 +51,13 @@ func update_weapon_indicator(weapon_indicator: int):
 func update_pickup_weapon_name(weapon_name: String, weapon_indicator: int):
 	var cur_weapon = $weapons_info.get_child(weapon_indicator)
 	cur_weapon.get_child(1).text = weapon_name
+	
+	
+func update_shield_and_health(new_shield_amount: float, new_health_amount: float):
+	var n_s_amount = str(new_shield_amount)
+	var n_h_amount = str(new_health_amount)
+	$player_info/shield/shield_amount.text = n_s_amount
+	$player_info/health/health_amount.text = n_h_amount
+	
+	
 	

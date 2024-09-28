@@ -23,7 +23,8 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		emit_signal("ya_got_hit")
+		SignalBus.player_hit.emit()
+		print("you got hit!!!!")
 		#print("ya_got_hit")
 	elif body is StaticBody3D:
 		$".".queue_free()
