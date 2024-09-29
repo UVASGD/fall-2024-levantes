@@ -122,6 +122,15 @@ shape = SubResource("BoxShape3D_4y614")
 [node name="TestEnemy" parent="." instance=ExtResource("5_pr0kc")]
 transform = Transform3D(-0.768496, 0, -0.639855, 0, 1, 0, 0.639855, 0, -0.768496, 1.46144, 5.02184, 29.0055)
 
+[node name="Righthand2" parent="TestEnemy/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="2"]
+transform = Transform3D(0.135631, -0.0115109, -0.0346326, -0.00204345, -0.135472, 0.0370248, -0.0364381, -0.0352491, -0.130987, 0.716013, -0.354967, 0.953408)
+
+[node name="RightForearm_002" parent="TestEnemy/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="3"]
+transform = Transform3D(0.089043, -0.100375, -0.0415209, -0.107458, -0.0892423, -0.0147091, -0.0158697, 0.0410915, -0.133369, 0.690388, 0.188106, 0.224649)
+
+[node name="Righthand_002" parent="TestEnemy/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="4"]
+transform = Transform3D(0.0890428, -0.100375, -0.0415208, -0.106744, -0.0709115, -0.0574893, 0.0201217, 0.068001, -0.121238, 0.730006, 0.51637, 0.156809)
+
 [node name="pickup_test" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.10643)
 

@@ -113,18 +113,19 @@ func _physics_process(delta):
 	
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
-	var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
-	var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
-	
-	var new_shield_amount = max(shield_amount - damage_amount, 0)  
-	var damage_to_health = max(damage_amount - shield_amount, 0)   
-	var new_health_amount = max(health_amount - damage_to_health, 0)  
-	
-	hud.update_shield_and_health(new_shield_amount, new_health_amount)
-	
-	if new_health_amount == 0:
-		print("you died")
-		game_over()
+	if not is_dashing:
+		var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
+		var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
+		
+		var new_shield_amount = max(shield_amount - damage_amount, 0)  
+		var damage_to_health = max(damage_amount - shield_amount, 0)   
+		var new_health_amount = max(health_amount - damage_to_health, 0)  
+		
+		hud.update_shield_and_health(new_shield_amount, new_health_amount)
+		
+		if new_health_amount == 0:
+			print("you died")
+			game_over()
 	
 func game_over():
 	get_tree().reload_current_scene()

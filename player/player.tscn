@@ -1711,7 +1711,6 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
 
-
 [node name="shield_regen_timer" type="Timer" parent="."]
 wait_time = 3.0
 
@@ -1726,7 +1725,6 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Timers"]
 one_shot = true
-
 
 [connection signal="animation_finished" from="Head/Camera3D/Weapons_Manager/WeaponRig/AnimationPlayer" to="Head/Camera3D/Weapons_Manager" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="pickup_detection" to="Head/Camera3D/Weapons_Manager" method="_on_pickup_detection_body_entered"]
