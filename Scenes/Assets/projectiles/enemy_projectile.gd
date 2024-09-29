@@ -2,6 +2,7 @@ extends Area3D
 
 signal ya_got_hit
 
+var damage_amount = 0
 @export var time_to_despawn_in_seconds = 2
 @onready var timer = $Timer
 
@@ -23,8 +24,8 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		SignalBus.player_hit.emit()
-		print("you got hit!!!!")
+		SignalBus.emit_signal("player_hit", damage_amount)
+		#print("you got hit!!!!")
 		#print("ya_got_hit")
 	elif body is StaticBody3D:
 		$".".queue_free()

@@ -851,6 +851,7 @@ _data = {
 [node name="Smt" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_n7xwg")
 SPEED = 10.0
+damage = 10
 projectile_speed = 50
 firing_speed_in_seconds = 1
 

@@ -37,7 +37,7 @@ func _ready():
 		child.set_layer_mask_value(2, true)
 	
 	hud.hud_initialize_player(shield_hp, health_hp)
-	SignalBus.player_hit.connect(_on_player_hit)
+	SignalBus.connect("player_hit", _on_player_hit)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -97,13 +97,28 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-func _on_player_hit():
+func _on_player_hit(damage_amount):
+	print("Damage Amount: " + str(damage_amount))
+	var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
+	var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
+	var new_shield_amount = shield_amount - damage_amount
+	var new_health_amount = health_amount - damage_amount
+	if shield_amount == 0 and new_health_amount > 0:
+		hud.update_shield_and_health(shield_amount, new_health_amount)
+	elif shield_amount > 0:
+		hud.update_shield_and_health(new_shield_amount, health_amount)
+	elif new_health_amount == 0:
+		hud.update_shield_and_health(0,0)
+		print("you died")
 	
-	if float(hud.player_info.shield.shield_amount.text) == 0:
-		var new_health_amount = float(hud.player_info.health.health_amount.text) - 1
-		hud.update_shield_and_health(0, new_health_amount)
-	else:
-		var new_shield_amount = float(hud.player_info.shield.shield_amount.text) - 1
-		var existing_health_amount = float(hud.player_info.health.health_amount.text)
-		hud.update_shield_and_health(new_shield_amount, existing_health_amount)
-	pass
+		
+		
+		
+	#if float(hud.player_info.shield.shield_amount.text) == 0:
+		#var new_health_amount = float(hud.player_info.health.health_amount.text) - 1
+		#hud.update_shield_and_health(0, new_health_amount)
+	#else:
+		#var new_shield_amount = float(hud.player_info.shield.shield_amount.text) - 1
+		#var existing_health_amount = float(hud.player_info.health.health_amount.text)
+		#hud.update_shield_and_health(new_shield_amount, existing_health_amount)
+	#pass
