@@ -36,5 +36,5 @@ func _on_body_entered(body):
 
 func _on_timer_timeout():
 	$".".queue_free()
-	print("freed!!!!" + str(timer.wait_time))
+	#print("freed!!!!" + str(timer.wait_time))
 	pass # Replace with function body.

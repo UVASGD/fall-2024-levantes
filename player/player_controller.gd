@@ -98,7 +98,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_player_hit(damage_amount):
-	print("Damage Amount: " + str(damage_amount))
+	#print("Damage Amount: " + str(damage_amount))
 	var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
 	var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
 	var new_shield_amount = shield_amount - damage_amount
@@ -110,15 +110,7 @@ func _on_player_hit(damage_amount):
 	elif new_health_amount == 0:
 		hud.update_shield_and_health(0,0)
 		print("you died")
+		game_over()
 	
-		
-		
-		
-	#if float(hud.player_info.shield.shield_amount.text) == 0:
-		#var new_health_amount = float(hud.player_info.health.health_amount.text) - 1
-		#hud.update_shield_and_health(0, new_health_amount)
-	#else:
-		#var new_shield_amount = float(hud.player_info.shield.shield_amount.text) - 1
-		#var existing_health_amount = float(hud.player_info.health.health_amount.text)
-		#hud.update_shield_and_health(new_shield_amount, existing_health_amount)
-	#pass
+func game_over():
+	get_tree().reload_current_scene()

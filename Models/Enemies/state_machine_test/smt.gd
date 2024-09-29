@@ -150,7 +150,7 @@ func _on_chase_body_exited(body):
 
 func _on_weapons_manager_hit(tar):
 	if tar == hitbox:
-			print("HITTTTT")
+			#print("HITTTTT")
 			$AudioStreamPlayer3D.play()
 			f_t_y_shield.show()
 			f_t_x_shield.show()

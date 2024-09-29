@@ -852,7 +852,7 @@ _data = {
 script = ExtResource("1_n7xwg")
 SPEED = 10.0
 damage = 10
-projectile_speed = 50
+projectile_speed = 25
 firing_speed_in_seconds = 1
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
