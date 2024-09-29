@@ -101,14 +101,14 @@ func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
 	var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
 	var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
-	var new_shield_amount = shield_amount - damage_amount
-	var new_health_amount = health_amount - damage_amount
-	if shield_amount == 0 and new_health_amount > 0:
-		hud.update_shield_and_health(shield_amount, new_health_amount)
-	elif shield_amount > 0:
-		hud.update_shield_and_health(new_shield_amount, health_amount)
-	elif new_health_amount == 0:
-		hud.update_shield_and_health(0,0)
+	
+	var new_shield_amount = max(shield_amount - damage_amount, 0)  # Ensure no negative shield
+	var damage_to_health = max(damage_amount - shield_amount, 0)   # Calculate excess damage to health
+	var new_health_amount = max(health_amount - damage_to_health, 0)  # Ensure no negative health
+	
+	hud.update_shield_and_health(new_shield_amount, new_health_amount)
+	
+	if new_health_amount == 0:
 		print("you died")
 		game_over()
 	
