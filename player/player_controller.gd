@@ -17,16 +17,27 @@ var headbob_time = 0.0
 @export var air_accel := 880.0
 @export var air_move_speed := 500.0
 
+@export var dash_speed := 20.0  
+
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
 
 #@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
+@onready var dash_length_timer := $Timers/DashLength
+@onready var dash_cooldown_timer := $Timers/DashCooldown
 
 @onready var hud = $Head/Camera3D/HUD
+
+# The direction which the player "wishes" to move (according to WASD keys)
+
 var wish_dir := Vector3.ZERO
 
+var can_dash : bool = true
+var is_dashing : bool = false
+var dash_tween: Tween
+var dash_velocity := Vector3.ZERO
 
 func get_move_speed() -> float:
 	return walk_speed
@@ -51,16 +62,16 @@ func _unhandled_input(event):
 			%Camera3D.rotate_x(-event.relative.y * look_sens)
 			%Camera3D.rotation.x = clamp(%Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
-# func _headbob_effect(delta):
-# 	if self.velocity.length() > 0:
-# 		headbob_time += delta * self.velocity.length()
-# 		var sway_x = cos(headbob_time * HEADBOB_FREQ * 0.5) * HEADBOB_SWAY_AMOUNT
-# 		var sway_y = sin(headbob_time * HEADBOB_FREQ) * HEADBOB_SWAY_AMOUNT
+func _headbob_effect(delta):
+	if self.velocity.length() > 0:
+		headbob_time += delta * self.velocity.length()
+	var sway_x = cos(headbob_time * HEADBOB_FREQ * 0.5) * HEADBOB_SWAY_AMOUNT
+	var sway_y = sin(headbob_time * HEADBOB_FREQ) * HEADBOB_SWAY_AMOUNT
 		
-# 		%Camera3D.position += Vector3(sway_x, sway_y, 0)
+	%Camera3D.position += Vector3(sway_x, sway_y, 0)
 
-# 		#var gun_bob_offset = Vector3(0, sin(headbob_time * gun_bobbing_frequency) * gun_bobbing_amplitude, 0)
-# 		#gun.position += gun_bob_offset
+ 		#var gun_bob_offset = Vector3(0, sin(headbob_time * gun_bobbing_frequency) * gun_bobbing_amplitude, 0)
+ 		#gun.position += gun_bob_offset
 	
 func _process(delta):
 	gunCam.global_transform = mainCam.global_transform
@@ -94,8 +105,11 @@ func _physics_process(delta):
 		_handle_ground_physics(delta)
 	else:
 		_handle_air_physics(delta)
+		
+	_handle_dash_logic()
 	
 	move_and_slide()
+
 	
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
@@ -117,3 +131,42 @@ func game_over():
 
 func regen_shield():
 	pass
+
+
+func _handle_dash_logic():
+	if Input.is_action_just_pressed("Dash") and can_dash:
+		_start_dash()
+	if is_dashing:
+		_apply_dash()
+
+func _start_dash():
+	can_dash = false
+	is_dashing = true
+	dash_cooldown_timer.start()
+	dash_length_timer.start()
+	
+	var dash_direction = wish_dir
+	dash_direction = dash_direction.normalized()
+	if dash_tween:
+		dash_tween.kill()  # Stop any existing tween
+	dash_tween = create_tween()
+	dash_tween.set_ease(Tween.EASE_IN)
+	dash_tween.set_trans(Tween.TRANS_BOUNCE)
+	
+	# Tween the dash velocity
+	dash_velocity = dash_direction * dash_speed
+	dash_tween.tween_property(self, "dash_velocity", dash_direction * (dash_speed * 0.1), dash_length_timer.wait_time)
+
+func _apply_dash():
+	var dash_direction := wish_dir
+	if dash_direction.length() == 0: # if the player is not pressing any movement key (WASD), dash forward
+		dash_direction = -global_transform.basis.z  
+	
+	self.velocity = dash_direction.normalized() * dash_speed
+
+func _on_dash_length_timeout():
+	is_dashing = false
+
+func _on_dash_cooldown_timeout():
+	can_dash = true
+

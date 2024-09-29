@@ -119,7 +119,9 @@ func shoot(tm):
 		$AudioStreamPlayer3D2.play()
 		
 		var projectile_instance = projectile.instantiate()
+
 		projectile_instance.damage_amount = damage
+
 		
 		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
 		var spawn_pos = projectile_origin_spot.global_transform.origin
