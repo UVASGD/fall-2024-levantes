@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var SPEED = 5.0
 @export var health = 10
+@export var damage = 1
 @export var projectile_speed = 5
 @export var firing_speed_in_seconds = 2
 
@@ -118,6 +119,9 @@ func shoot(tm):
 		$AudioStreamPlayer3D2.play()
 		
 		var projectile_instance = projectile.instantiate()
+
+		projectile_instance.damage_amount = damage
+
 		
 		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
 		var spawn_pos = projectile_origin_spot.global_transform.origin
@@ -148,7 +152,7 @@ func _on_chase_body_exited(body):
 
 func _on_weapons_manager_hit(tar):
 	if tar == hitbox:
-			print("HITTTTT")
+			#print("HITTTTT")
 			$AudioStreamPlayer3D.play()
 			f_t_y_shield.show()
 			f_t_x_shield.show()

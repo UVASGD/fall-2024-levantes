@@ -133,6 +133,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.03
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt7" method="_on_weapons_manager_hit"]
 
 [editable path="CharacterBody3D"]
+[editable path="CharacterBody3D/Head/Camera3D/HUD"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

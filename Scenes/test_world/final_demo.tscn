@@ -1647,6 +1647,7 @@ transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, 
 
 [editable path="Enemies/TestEnemy_2"]
 [editable path="CharacterBody3D"]
+[editable path="CharacterBody3D/Head/Camera3D/HUD"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
 [editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

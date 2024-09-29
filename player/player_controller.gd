@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Player
 
+@export var shield_hp: float = 100
+@export var health_hp: float = 50
 @export var look_sens: float = 0.006
 @export var jump_velocity := 6.0
 @export var bhop_on := true
@@ -26,7 +28,10 @@ var headbob_time = 0.0
 @onready var dash_length_timer := $Timers/DashLength
 @onready var dash_cooldown_timer := $Timers/DashCooldown
 
+@onready var hud = $Head/Camera3D/HUD
+
 # The direction which the player "wishes" to move (according to WASD keys)
+
 var wish_dir := Vector3.ZERO
 
 var can_dash : bool = true
@@ -41,6 +46,9 @@ func _ready():
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
 		child.set_layer_mask_value(1, false)
 		child.set_layer_mask_value(2, true)
+	
+	hud.hud_initialize_player(shield_hp, health_hp)
+	SignalBus.connect("player_hit", _on_player_hit)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -102,6 +110,29 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+	
+func _on_player_hit(damage_amount):
+	#print("Damage Amount: " + str(damage_amount))
+	var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
+	var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
+	
+	var new_shield_amount = max(shield_amount - damage_amount, 0)  
+	var damage_to_health = max(damage_amount - shield_amount, 0)   
+	var new_health_amount = max(health_amount - damage_to_health, 0)  
+	
+	hud.update_shield_and_health(new_shield_amount, new_health_amount)
+	
+	if new_health_amount == 0:
+		print("you died")
+		game_over()
+	
+func game_over():
+	get_tree().reload_current_scene()
+
+func regen_shield():
+	pass
+
+
 func _handle_dash_logic():
 	if Input.is_action_just_pressed("Dash") and can_dash:
 		_start_dash()
@@ -138,3 +169,4 @@ func _on_dash_length_timeout():
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
+

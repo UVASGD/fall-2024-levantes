@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Pawn="*res://Autoload/pawn.gd"
 PlayerManager="*res://Autoload/player_manager.gd"
+SignalBus="*res://Autoload/SignalBus.gd"
 
 [display]
 
