@@ -1618,12 +1618,6 @@ one_shot = true
 [node name="TestEnemy_2" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.953738, 0, 0.300639, 0, 1, 0, -0.300639, 0, -0.953738, 24.5121, 1.115, -20.6053)
 
-[node name="Righthand2" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="2"]
-transform = Transform3D(0.135631, -0.0115109, -0.0346326, -0.00204345, -0.135472, 0.0370248, -0.0364381, -0.0352491, -0.130987, 0.716013, -0.354967, 0.953408)
-
-[node name="RightForearm_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="3"]
-transform = Transform3D(0.089043, -0.100375, -0.0415209, -0.107458, -0.0892423, -0.0147091, -0.0158697, 0.0410915, -0.133369, 0.690388, 0.188106, 0.224649)
-
 [node name="TestEnemy_3" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.799097, 0, -0.601201, 0, 1, 0, 0.601201, 0, -0.799097, 20.9709, 1.115, -20.5016)
 

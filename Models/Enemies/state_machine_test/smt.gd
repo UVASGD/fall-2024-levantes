@@ -117,17 +117,17 @@ func shoot(tm):
 		Animation_Player.queue("smt_shoot")
 		$AudioStreamPlayer3D2.play()
 		
-		var projectile_instace = projectile.instantiate()
+		var projectile_instance = projectile.instantiate()
 		
-		projectile_instace.global_transform.origin = projectile_origin_spot.global_transform.origin
+		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
 		var spawn_pos = projectile_origin_spot.global_transform.origin
 		spawn_pos.y += -1
 
 		var direction = (target_pos - spawn_pos).normalized()  
-		projectile_instace.velocity = direction * projectile_speed  
+		projectile_instance.velocity = direction * projectile_speed  
 
 
-		get_parent().add_child(projectile_instace)
+		get_parent().add_child(projectile_instance)
 		
 
 	
