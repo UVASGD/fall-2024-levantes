@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
-[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Scenes/smg_refactor.tscn" id="3_p3c42"]
+[ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="3_2wbv3"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -65,8 +65,8 @@ scale = Vector2(1.00143, 1)
 mouse_filter = 1
 mouse_force_pass_scroll_events = false
 
-[node name="SMG" parent="Head/Camera3D" instance=ExtResource("3_p3c42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68004, -0.365149, -1.06207)
+[node name="weapon manager" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("3_2wbv3")
 
 [node name="pickup_detection" type="Area3D" parent="."]
 collision_layer = 0
@@ -75,3 +75,6 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true

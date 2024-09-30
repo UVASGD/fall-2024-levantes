@@ -36,16 +36,16 @@ signal hit(target)
 var animation_player
 var model
 var audio_player
+var hidden = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var model = get_child(1)
+	var model = get_child(0)
 	audio_player = AudioStreamPlayer.new()
 	audio_player.max_polyphony = 3
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)
 	
-	animation_player = get_child(0)
-	
+	animation_player = %AnimationPlayer
 	pass 
 
 
@@ -54,6 +54,8 @@ func _process(delta):
 	pass
 	
 func _input(event):
+	if(hidden):
+		return
 	if event.is_action_pressed("Shoot"):
 		shoot()
 		#print("Weapon: " + Current_Weapon.Wep_Name + "\n" + "Weapon_Indicator: " + str(Weapon_Indicator))
@@ -115,8 +117,20 @@ func reload():
 			#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
 	pass
 
+func dequip():
+	animation_player.play(Dequip_Ani)
+	hidden = true
+	await animation_player.animation_finished
+	hide()
+	
+func equip():
+	show()
+	animation_player.play(Equip_Ani)
+	await animation_player.animation_finished
+	hidden = false
+
 func _raycast():
-	var camera = get_parent()
+	var camera = get_parent().get_parent()
 	var space_state = camera.get_world_3d().direct_space_state
 	
 	var screen_center = get_viewport().size / 2

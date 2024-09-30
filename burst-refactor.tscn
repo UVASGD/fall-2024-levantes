@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://6rmh7rw6txhs"]
+
+[ext_resource type="Script" path="res://burst.gd" id="1_ppite"]
+[ext_resource type="PackedScene" uid="uid://b6twmcaboouo2" path="res://Models/Weapons/burst_rifle/burst_rifle.glb" id="2_xuxdb"]
+
+[node name="BURST" type="Node3D"]
+script = ExtResource("1_ppite")
+model_path = "res://Models/Weapons/burst_rifle/burst_rifle.glb"
+Name = "burstburst"
+Display_Name = "burst"
+Equip_Ani = "burst_equip"
+Fire_Ani = "burst_fire"
+Reload_Ani = "burst_reload"
+Dequip_Ani = "burst_dequip"
+Fire_Sound = "res://audio/gunshot_final_single_pitch_lower.mp3"
+Curr_Mag_Ammo = 30
+Reserve_Ammo = 30
+Max_Mag_Capacity = 60
+Max_Ammo = 60
+Burst_Count = 3
+Type = 1
+dmg = 10
+
+[node name="burstModel" parent="." instance=ExtResource("2_xuxdb")]
