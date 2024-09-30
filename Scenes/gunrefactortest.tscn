@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2vtbuwblnbio"]
+
+[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_h08vh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0m8ln"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfb6x"]
+size = Vector3(15.4096, 1, 19.094)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp8ea"]
+
+[node name="gunrefactortest" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_0m8ln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2352, 0, 1.42053)
+shape = SubResource("BoxShape3D_mfb6x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(15.4029, 0, 0, 0, 1, 0, 0, 0, 21.8751, -1.22144, -0.0462027, -0.0338392)
+mesh = SubResource("BoxMesh_jp8ea")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.800606, 0.599191, 0, -0.599191, 0.800606, 0, 10.1278, 6.03404)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_h08vh")]
+
+[editable path="CharacterBody3D"]

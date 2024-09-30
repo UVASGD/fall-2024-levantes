@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://b1o8045la0x6s"]
+[gd_scene load_steps=116 format=3 uid="uid://b1o8045la0x6s"]
 
 [ext_resource type="Script" path="res://Scenes/test_world/final_demo.gd" id="1_n2tlg"]
 [ext_resource type="Texture2D" uid="uid://cxxcdukvgnoqo" path="res://world_objects/ARENA_arenawall.png" id="1_y5xmo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bde7prl2atj4m" path="res://world_objects/ALIEN_LAMP_arenaground2.png" id="9_i8c5h"]
 [ext_resource type="AudioStream" uid="uid://cxgx1w44rw14p" path="res://audio/glass_break.mp3" id="9_lqjul"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="14_nygor"]
+[ext_resource type="AnimationLibrary" uid="uid://bc0yi0j7cwirs" path="res://animations/animations.res" id="15_00f1n"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="18_xep3x"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="19_h6wki"]
 [ext_resource type="PackedScene" uid="uid://dfaprawobuuvd" path="res://Models/Enemies/test_enemy/test_enemy.tscn" id="22_loyvs"]
@@ -1641,6 +1642,15 @@ transform = Transform3D(0.987762, 0, 0.155969, 0, 1, 0, -0.155969, 0, 0.987762, 
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("14_nygor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74695, 0, 3.73409)
+
+[node name="smgModel" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="0"]
+transform = Transform3D(0.0405144, -0.00664052, 0.0285392, -0.0127892, 0.039808, 0.0274182, -0.0263632, -0.0295165, 0.0305574, -0.0412931, -0.860729, -0.72865)
+visible = false
+
+[node name="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="1"]
+libraries = {
+"everything": ExtResource("15_00f1n")
+}
 
 [connection signal="glass_broken" from="ARENA/enemy_room/lights/ALIEN_LAMP3" to="." method="_on_glass_broken"]
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="ARENA/enemy_room/lights/ALIEN_LAMP3" method="_on_weapons_manager_hit"]
