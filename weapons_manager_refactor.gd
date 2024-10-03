@@ -1,6 +1,10 @@
 extends Node3D
 
-const smg = preload("res://smg.gd")
+const smg = preload("res://smg_refactor.tscn")
+const burst_refactor = preload("res://burst-refactor.tscn")
+const husk_smg = preload("res://husk_smg.tscn")
+const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
+
 var weapons = [null, null]
 var current_weapon = null
 var other_weapon = null
@@ -15,8 +19,8 @@ func _ready():
 			weapons[i] = get_child(i)
 	current_weapon = weapons[0]
 	other_weapon = weapons[1]
-	hide_weapon(other_weapon)
-	show_weapon(current_weapon)
+	await hide_weapon(other_weapon)
+	await show_weapon(current_weapon)
 	if other_weapon:
 		can_switch = true
 	pass # Replace with function body.
@@ -34,8 +38,15 @@ func _input(event):
 			switch()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		pickup()
+	if event.is_action_pressed("Shoot"):
+		current_weapon.shoot()
+		#print("Weapon: " + Current_Weapon.Wep_Name + "\n" + "Weapon_Indicator: " + str(Weapon_Indicator))
+	if event.is_action_pressed("Reload"):
+		current_weapon.reload()
+	pass
 
 func pickup():
+	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the newbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
 	if other_weapon == null:
 			match nearby_weapon.weapon_name:
 				"SMG":
@@ -52,12 +63,30 @@ func pickup():
 			"SMG":
 				var smg = smg.new()
 				smg.hide()
-				weapons[0] = smg
+				drop_weapon()
+				if weapons[0] == null:
+					weapons[0] = smg
+				else:
+					weapons[1] = smg
 				current_weapon = smg
-				other_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
-				other_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
-				nearby_weapon.queue_free()
-			#insert cases for other gun types
+				add_child(smg)
+				smg.equip()
+			"BURST":
+				var burst = burst_refactor.instantiate()
+				burst.hide()
+				await drop_weapon()
+				if weapons[0] == null:
+					weapons[0] = burst
+				else:
+					weapons[1] = burst
+				current_weapon = burst
+				add_child(burst)
+				burst.equip()
+		#insert cases for other gun types
+		current_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
+		current_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
+		nearby_weapon_save.queue_free()
+
 
 func hide_weapon(weapon):
 	if weapon:
@@ -65,6 +94,7 @@ func hide_weapon(weapon):
 			await weapon.dequip()
 		else:
 			weapon.hidden = true
+			print("hiding " + weapon.Name)
 			weapon.hide()
 
 func show_weapon(weapon):
@@ -81,52 +111,14 @@ func switch():
 		current_weapon = temp
 		can_switch = true
 
-func _raycast() -> void:
-	var camera = %Camera3D
-	var space_state = camera.get_world_3d().direct_space_state
-	
-	var screen_center = get_viewport().size / 2
-	var origin = camera.project_ray_origin(screen_center)
-	#var endpoint = origin + camera.project_ray_normal(screen_center) * Current_Weapon.Projectile_Range
-	var endpoint = origin + camera.project_ray_normal(screen_center) * current_weapon.Projectile_Range
-	var query = PhysicsRayQueryParameters3D.create(origin, endpoint)
-	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
-	query.collide_with_bodies = true
-	query.collide_with_areas = false
-	#var result = space_state.intersect_ray(query)
-	#if result:
-		##print(screen_center)
-		#make_spark(result.get("position"), origin-endpoint)
-	if not intersection.is_empty():
-		emit_signal("hit", intersection.get("collider"))
-		print(intersection.get("collider"))
-		
-	else:
-		print("nothing")
 
-func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
-	emit_signal("hit", %Ray.get_collider())
-	print(%Ray.get_collider())
-	var instance = Raycast_test.new()
-	instance.directionval = raycast_angle
-	instance.impactpoint = impact_position
-	get_tree().root.add_child(instance)
-	instance.global_position = impact_position
-	await get_tree().create_timer(1).timeout
-	instance.queue_free()
 	
-func spawn_drop_weapon(w_name: String):
-	#if wep_ref != -1:
-		#Weapon_Stack.pop_at(wep_ref)
-		#emit_signal("Update_Weapon_Stack", Weapon_Stack)
-		#
-		#var Weapon_Dropped = Weapon_List[w_name].Weapon_Drop.instantiate()
-		#Weapon_Dropped.current_ammo = Weapon_List[w_name].Curr_Mag_Ammo
-		#Weapon_Dropped.reserve_ammo = Weapon_List[w_name].Reserve_Ammo
-		#
-		#Weapon_Dropped.set_global_transform($WeaponRig/tracer_spawn_point.get_global_transform())
-		#var World = get_tree().get_root().get_child(0)
-		#World.add_child(Weapon_Dropped)
+func drop_weapon():
+	var husk = current_weapon.get_husk()
+	await current_weapon.dequip()
+	get_tree().root.add_child(husk)
+	current_weapon.queue_free()
+	current_weapon = null
 	pass
 	
 func _on_pickup_detection_body_entered(body):
@@ -139,8 +131,3 @@ func _on_pickup_detection_body_exited(body):
 	nearby_weapon = null
 	can_pickup= false
 
-
-func _on_husk_weapon_collided(body):
-	nearby_weapon = body
-	can_pickup = true
-	pass # Replace with function body.

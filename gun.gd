@@ -1,8 +1,10 @@
 class_name Gun extends Node3D
-
+const husk_smg = preload("res://husk_smg.tscn")
+const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
 @export var model_path: String
 @export var Name: String
 @export var Display_Name: String
+@export var animation_library_path: String
 @export var Equip_Ani: String
 @export var Fire_Ani: String
 @export var Reload_Ani: String
@@ -44,24 +46,25 @@ func _ready():
 	audio_player.max_polyphony = 3
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)
-	
-	animation_player = %AnimationPlayer
-	pass 
+	var root = get_tree().root
+	animation_player = AnimationPlayer.new()
+	var library = load(animation_library_path)
+	print(library.get_animation_list())
+	animation_player.add_animation_library(Name, library)
+	Equip_Ani = Name + "/" + Equip_Ani
+	if animation_player.has_animation(Equip_Ani):
+		print("has")
+	Fire_Ani = Name + "/" + Fire_Ani
+	Reload_Ani = Name + "/" + Reload_Ani
+	Dequip_Ani = Name + "/" + Dequip_Ani
+	Wait_Ani = Name + "/" + Wait_Ani
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
-func _input(event):
-	if(hidden):
-		return
-	if event.is_action_pressed("Shoot"):
-		shoot()
-		#print("Weapon: " + Current_Weapon.Wep_Name + "\n" + "Weapon_Indicator: " + str(Weapon_Indicator))
-	if event.is_action_pressed("Reload"):
-		reload()
-	pass
 	
 func shoot():
 	if Curr_Mag_Ammo != 0:
@@ -120,14 +123,21 @@ func reload():
 func dequip():
 	animation_player.play(Dequip_Ani)
 	hidden = true
+	print("hiding " + Name)
 	await animation_player.animation_finished
 	hide()
 	
 func equip():
 	show()
+	if animation_player.has_animation(Equip_Ani):
+		print("has animation")
+	print("play " + Equip_Ani)
+	
 	animation_player.play(Equip_Ani)
-	await animation_player.animation_finished
+	await("animation_finished")
+	print("played")
 	hidden = false
+	print("unhiding " + Name)
 
 func _raycast():
 	var camera = get_parent().get_parent()
@@ -152,7 +162,18 @@ func _raycast():
 	else:
 		print("nothing")
 		
-
+func get_husk():
+	var husk
+	match Name:
+		"smg":
+			husk = husk_smg.instantiate()
+		"BURST":
+			husk = sp_burst_rifle.instantiate()
+	husk.current_ammo = Curr_Mag_Ammo
+	husk.reserve_ammo = Reserve_Ammo
+	husk.name = Name
+	return husk
+	
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	#emit_signal("hit", %Ray.get_collider())
 	#print(%Ray.get_collider())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2vtbuwblnbio"]
+[gd_scene load_steps=13 format=3 uid="uid://d2vtbuwblnbio"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_s1fl0"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_ckbki"]
@@ -20,164 +20,6 @@ size = Vector3(15.4096, 1, 19.094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
 size = Vector3(2.92481, 2.45361, 3.20447)
-
-[sub_resource type="Animation" id="Animation_xcxnh"]
-resource_name = "smg_fire"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/weapon manager/SMG:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.158581, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_qxlet"]
-resource_name = "smg_dequip"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/weapon manager/SMG:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.68004, -0.365149, -1.06207), Vector3(0.68004, -1.09013, -0.147685)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/weapon manager/SMG:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.177902, -0.500126, 0.18411)]
-}
-
-[sub_resource type="Animation" id="Animation_llofn"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_70ba4"]
-resource_name = "smg_equip"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/weapon manager/SMG:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.52309, -1.07232, -1), Vector3(0.6, -0.3, -1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/weapon manager/SMG:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.133422, 1.42939, 0.942132), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_e6wj0"]
-resource_name = "burst_equip"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera3D/weapon manager/BURST:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.313101, -0.67389, -0.0971974), Vector3(0.636279, -0.233924, -0.397808)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%Camera3D/weapon manager/BURST:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.568495, -2.49202, -0.616615), Vector3(0, -2.92734, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xld3r"]
-resource_name = "burst_dequip"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera3D/weapon manager/BURST:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.6, -0.2, -0.3), Vector3(0.129654, -0.505379, 0.0526551)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%Camera3D/weapon manager/BURST:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -2.79253, 0), Vector3(-0.746951, -1.90349, -1.1003)]
-}
-
-[sub_resource type="Animation" id="Animation_yijey"]
-resource_name = "burst_fire"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera3D/weapon manager/BURST:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -2.79253, 0), Vector3(-0.148108, -2.7885, -0.0543314)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2mnu0"]
-_data = {
-"RESET": SubResource("Animation_llofn"),
-"burst_dequip": SubResource("Animation_xld3r"),
-"burst_equip": SubResource("Animation_e6wj0"),
-"burst_fire": SubResource("Animation_yijey"),
-"smg_dequip": SubResource("Animation_qxlet"),
-"smg_equip": SubResource("Animation_70ba4"),
-"smg_fire": SubResource("Animation_xcxnh")
-}
 
 [node name="gunrefactortest" type="Node3D"]
 
@@ -254,7 +96,7 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("3_lg8hq")
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
-transform = Transform3D(-0.0144086, -4.17232e-09, -0.0138705, -0.0130807, 0.00665277, 0.0135881, 0.00461388, 0.0188611, -0.00479286, 0.129654, -0.505379, 0.0526551)
+transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.679926, -0.277019, -0.195789)
 
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("3_cpec6")]
 transform = Transform3D(0.713113, 0, 0, 0, 0.858773, 0, 0, 0, 0.759818, 0.6, -0.3, -1)
@@ -267,15 +109,9 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_2mnu0")
-}
-
 [node name="husk_weapon" parent="." instance=ExtResource("6_o1d8p")]
 transform = Transform3D(-0.0359285, -0.999354, 0, 0.999354, -0.0359285, 0, 0, 0, 1, 0, 1.13339, -4.21238)
+collision_layer = 9
 
 [connection signal="body_entered" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_exited"]
-[connection signal="collided" from="husk_weapon" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_husk_weapon_collided"]
