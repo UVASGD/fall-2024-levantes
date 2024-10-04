@@ -4,6 +4,8 @@ class_name Player
 
 @export var shield_hp: float = 100
 @export var health_hp: float = 50
+@export var shield_regen_rate: float = 10
+@export var health_regen_rate: float = 5
 @export var look_sens: float = 0.006
 @export var jump_velocity := 6.0
 @export var bhop_on := true
@@ -25,6 +27,8 @@ var headbob_time = 0.0
 #@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
+@onready var shield_regen_timer = $shield_regen_timer
+@onready var health_regen_timer = $health_regen_timer
 @onready var dash_length_timer := $Timers/DashLength
 @onready var dash_cooldown_timer := $Timers/DashCooldown
 
@@ -38,6 +42,9 @@ var can_dash : bool = true
 var is_dashing : bool = false
 var dash_tween: Tween
 var dash_velocity := Vector3.ZERO
+var can_regen_health : bool = false
+var can_regen_shield : bool = false
+
 
 func get_move_speed() -> float:
 	return walk_speed
@@ -121,6 +128,11 @@ func _on_player_hit(damage_amount):
 		var damage_to_health = max(damage_amount - shield_amount, 0)   
 		var new_health_amount = max(health_amount - damage_to_health, 0)  
 		
+		
+		shield_regen_timer.start()
+		if shield_hp <= 0:
+			health_regen_timer.start()
+			pass
 		hud.update_shield_and_health(new_shield_amount, new_health_amount)
 		
 		if new_health_amount == 0:
@@ -171,3 +183,31 @@ func _on_dash_length_timeout():
 func _on_dash_cooldown_timeout():
 	can_dash = true
 
+func _regen_health():
+	if can_regen_health:
+		pass
+	pass
+
+func _regen_shield():
+	if can_regen_shield:
+		while can_regen_shield:
+			if shield_hp == 100:
+				can_regen_shield = false
+				print(shield_hp)
+				break
+			else:
+				shield_hp += shield_regen_rate
+			
+			
+		pass
+	pass
+
+func _on_shield_regen_timer_timeout():
+	can_regen_shield = true
+	_regen_shield()
+	pass # Replace with function body.
+
+
+func _on_health_regen_timer_timeout():
+	can_regen_health = true
+	pass # Replace with function body.

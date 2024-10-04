@@ -1729,6 +1729,8 @@ one_shot = true
 [connection signal="animation_finished" from="Head/Camera3D/Weapons_Manager/WeaponRig/AnimationPlayer" to="Head/Camera3D/Weapons_Manager" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="pickup_detection" to="Head/Camera3D/Weapons_Manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="pickup_detection" to="Head/Camera3D/Weapons_Manager" method="_on_pickup_detection_body_exited"]
+[connection signal="timeout" from="shield_regen_timer" to="." method="_on_shield_regen_timer_timeout"]
+[connection signal="timeout" from="health_regen_timer" to="." method="_on_health_regen_timer_timeout"]
 [connection signal="timeout" from="Timers/DashLength" to="." method="_on_dash_length_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 
