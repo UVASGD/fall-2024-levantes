@@ -1,10 +1,11 @@
-[gd_scene load_steps=80 format=3 uid="uid://d2ipjyem2oaxa"]
+[gd_scene load_steps=81 format=3 uid="uid://d2ipjyem2oaxa"]
 
 [ext_resource type="Script" path="res://Models/Enemies/state_machine_test/smt.gd" id="1_n7xwg"]
 [ext_resource type="Script" path="res://Models/Enemies/test_enemy/f_t.gd" id="2_p12mc"]
 [ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="2_pdsiy"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_7vm3h"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_2rr2n"]
+[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="6_dfki5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999
@@ -1075,6 +1076,10 @@ wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_2rr2n")
+
+[node name="Vision" type="Area3D" parent="."]
+
+[node name="cone" parent="Vision" instance=ExtResource("6_dfki5")]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]

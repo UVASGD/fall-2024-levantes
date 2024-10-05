@@ -5,6 +5,8 @@ extends CharacterBody3D
 @export var damage = 1
 @export var projectile_speed = 5
 @export var firing_speed_in_seconds = 2
+@export var visibility_range = 1000000
+
 
 @onready var face_target_y = $f_t_y
 @onready var face_target_x = $f_t_y/f_t_x
@@ -75,6 +77,7 @@ func idle():
 
 func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
+	
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
 	face_target_x.face_point(target_pos, delta)
@@ -83,7 +86,8 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	shoot(timer)
+	if can_see_player(target):
+		shoot(timer)
 	
 
 
@@ -176,3 +180,34 @@ func _on_weapons_manager_hit(tar):
 func _on_timer_timeout():
 	is_firing = false
 	pass # Replace with function body.
+
+func is_player_visible(plr) -> bool:
+	var cone_angle = deg_to_rad(45)  # 45 degree cone angle (adjust as needed)
+	var num_rays = 10  # Number of rays for simulating the cone
+	
+	
+	var space_state = get_world_3d().direct_space_state
+	var from = $".".global_position
+	var to = plr.global_position
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1, [self])
+	var result = space_state.intersect_ray(query)
+	if result:
+		if result.collider is Player:
+			return true
+		else:
+			return false
+	else:
+		return false
+
+func can_see_player(plr) -> bool:
+	var dir = (plr.global_position - $".".global_position).normalized()
+	var forward_dir = $".".transform.basis.z
+	var dot_product = dir.dot(forward_dir)
+	
+	if dot_product < visibility_range and is_player_visible(plr):
+		return true
+	else:
+		#print("huh?")
+		return false
+	return false
+		
