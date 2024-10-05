@@ -74,6 +74,7 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	target = get_tree().get_nodes_in_group("Player")[0]
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
 	face_target_x.face_point(target_pos, delta)
@@ -87,6 +88,7 @@ func chase(delta):
 
 
 func retreat(delta):
+	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
@@ -108,7 +110,6 @@ func no_move_debug(delta):
 func _on_chase_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
-		target = body
 		
 
 func shoot(tm):
@@ -152,19 +153,21 @@ func _on_chase_body_exited(body):
 
 func _on_weapons_manager_hit(tar):
 	if tar == hitbox:
-			#print("HITTTTT")
-			$AudioStreamPlayer3D.play()
-			f_t_y_shield.show()
-			f_t_x_shield.show()
-			await get_tree().create_timer(.1).timeout
-			f_t_y_shield.hide()
-			f_t_x_shield.hide()
-			
-			health -= 1
-			if health == 0:
-				#Animation_Player.queue("explosion")
-				#await Animation_Player.animation_finished
-				$".".queue_free()
+		if next_state == "idle":
+			next_state = "chase"
+		#print("HITTTTT")
+		$AudioStreamPlayer3D.play()
+		f_t_y_shield.show()
+		f_t_x_shield.show()
+		await get_tree().create_timer(.1).timeout
+		f_t_y_shield.hide()
+		f_t_x_shield.hide()
+		
+		health -= 1
+		if health == 0:
+			#Animation_Player.queue("explosion")
+			#await Animation_Player.animation_finished
+			$".".queue_free()
 		
 
 	pass # Replace with function body.
