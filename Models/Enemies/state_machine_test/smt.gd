@@ -165,6 +165,7 @@ func _on_weapons_manager_hit(tar):
 				#Animation_Player.queue("explosion")
 				#await Animation_Player.animation_finished
 				$".".queue_free()
+				SignalBus.emit_signal("enemy_death")
 		
 
 	pass # Replace with function body.
