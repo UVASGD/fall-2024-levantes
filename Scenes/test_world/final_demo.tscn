@@ -1642,15 +1642,6 @@ transform = Transform3D(0.987762, 0, 0.155969, 0, 1, 0, -0.155969, 0, 0.987762, 
 [node name="CharacterBody3D" parent="." instance=ExtResource("14_nygor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74695, 0, 3.73409)
 
-[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
-transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
-
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
-transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
-
-[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
-transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
-
 [connection signal="glass_broken" from="ARENA/enemy_room/lights/ALIEN_LAMP3" to="." method="_on_glass_broken"]
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="ARENA/enemy_room/lights/ALIEN_LAMP3" method="_on_weapons_manager_hit"]
 

@@ -157,21 +157,20 @@ func _on_chase_body_exited(body):
 
 func _on_weapons_manager_hit(tar):
 	if tar == hitbox:
-		if next_state == "idle":
-			next_state = "chase"
-		#print("HITTTTT")
-		$AudioStreamPlayer3D.play()
-		f_t_y_shield.show()
-		f_t_x_shield.show()
-		await get_tree().create_timer(.1).timeout
-		f_t_y_shield.hide()
-		f_t_x_shield.hide()
-		
-		health -= 1
-		if health == 0:
-			#Animation_Player.queue("explosion")
-			#await Animation_Player.animation_finished
-			$".".queue_free()
+			#print("HITTTTT")
+			$AudioStreamPlayer3D.play()
+			f_t_y_shield.show()
+			f_t_x_shield.show()
+			await get_tree().create_timer(.1).timeout
+			f_t_y_shield.hide()
+			f_t_x_shield.hide()
+			
+			health -= 1
+			if health == 0:
+				#Animation_Player.queue("explosion")
+				#await Animation_Player.animation_finished
+				$".".queue_free()
+				SignalBus.emit_signal("enemy_death")
 		
 
 	pass # Replace with function body.
