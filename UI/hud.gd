@@ -53,7 +53,7 @@ func update_pickup_weapon_name(weapon_name: String, weapon_indicator: int):
 	cur_weapon.get_child(1).text = weapon_name
 	
 	
-func update_shield_and_health(new_shield_amount: float, new_health_amount: float):
+func update_shield_and_health(new_shield_amount: int, new_health_amount: int):
 	var n_s_amount = str(new_shield_amount)
 	var n_h_amount = str(new_health_amount)
 	$player_info/shield/shield_amount.text = n_s_amount

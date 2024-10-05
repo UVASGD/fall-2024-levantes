@@ -2,8 +2,24 @@ extends CharacterBody3D
 
 class_name Player
 
-@export var shield_hp: float = 100
-@export var health_hp: float = 50
+signal on_health_change(current: int, max: int)
+signal on_shield_change(current: int, max: int)
+signal on_take_damage()
+signal on_die()
+
+enum PostDeath{DestroyNode, RestartScene}
+
+@export var post_death_action: PostDeath
+
+@export var max_shield_hp: int = 100
+@export var max_health_hp: int = 50
+
+var shield_hp: int
+var health_hp: int
+
+
+@export var shield_regen_amount: float = 10
+@export var health_regen_amount: float = 5
 @export var look_sens: float = 0.006
 @export var jump_velocity := 6.0
 @export var bhop_on := true
@@ -25,6 +41,8 @@ var headbob_time = 0.0
 #@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
+@onready var shield_regen_timer = $shield_regen_timer
+@onready var health_regen_timer = $health_regen_timer
 @onready var dash_length_timer := $Timers/DashLength
 @onready var dash_cooldown_timer := $Timers/DashCooldown
 
@@ -38,17 +56,24 @@ var can_dash : bool = true
 var is_dashing : bool = false
 var dash_tween: Tween
 var dash_velocity := Vector3.ZERO
+var can_regen_health : bool = false
+var can_regen_shield : bool = false
+
 
 func get_move_speed() -> float:
 	return walk_speed
 
 func _ready():
+	shield_hp = max_shield_hp
+	health_hp = max_health_hp
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
 		child.set_layer_mask_value(1, false)
 		child.set_layer_mask_value(2, true)
 	
 	hud.hud_initialize_player(shield_hp, health_hp)
 	SignalBus.connect("player_hit", _on_player_hit)
+	shield_regen_timer.connect("timeout", _on_shield_regen_timer_timeout)
+	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -98,6 +123,10 @@ func _handle_ground_physics(delta) -> void:
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
 	wish_dir = self.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
+	if can_regen_health:
+		regen_health(health_regen_amount)
+	if can_regen_shield:
+		regen_shield(shield_regen_amount)
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
@@ -109,29 +138,53 @@ func _physics_process(delta):
 	_handle_dash_logic()
 	
 	move_and_slide()
+	
 
 	
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
 	if not is_dashing:
-		var shield_amount = float($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
-		var health_amount = float($Head/Camera3D/HUD/player_info/health/health_amount.text)
+		var shield_amount = int($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
+		var health_amount = int($Head/Camera3D/HUD/player_info/health/health_amount.text)
 		
-		var new_shield_amount = max(shield_amount - damage_amount, 0)  
-		var damage_to_health = max(damage_amount - shield_amount, 0)   
-		var new_health_amount = max(health_amount - damage_to_health, 0)  
-		
-		hud.update_shield_and_health(new_shield_amount, new_health_amount)
-		
-		if new_health_amount == 0:
-			print("you died")
-			game_over()
+		can_regen_shield = false
+		can_regen_health = false
+		shield_regen_timer.start()
+		if shield_hp <= 0:
+			health_regen_timer.start()
+		take_damage(damage_amount)	
+		hud.update_shield_and_health(shield_hp, health_hp)
 	
 func game_over():
 	get_tree().reload_current_scene()
 
-func regen_shield():
+func take_damage(amount: int):
+	if shield_hp <= 0:
+		health_hp -= amount
+		on_health_change.emit(health_hp, max_health_hp)
+		on_take_damage.emit()
+	else:
+		shield_hp -= amount
+	if health_hp <= 0:
+		game_over()
 	pass
+
+func regen_shield(amount: int):
+	shield_hp += amount
+	if shield_hp >= max_shield_hp:
+		shield_hp = max_shield_hp
+		can_regen_shield = false
+	on_shield_change.emit(shield_hp, max_shield_hp)
+	hud.update_shield_and_health(shield_hp, health_hp)
+	pass
+	
+func regen_health(amount: int):
+	health_hp += amount
+	if health_hp >= max_health_hp:
+		health_hp = max_health_hp
+		can_regen_health = false
+	on_health_change.emit(health_hp, max_shield_hp)
+	hud.update_shield_and_health(shield_hp, health_hp)
 
 
 func _handle_dash_logic():
@@ -170,4 +223,13 @@ func _on_dash_length_timeout():
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
+
+
+func _on_shield_regen_timer_timeout():
+	can_regen_shield = true
+
+
+
+func _on_health_regen_timer_timeout():
+	can_regen_health = true
 
