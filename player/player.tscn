@@ -1475,7 +1475,7 @@ size = Vector3(2.92481, 2.45361, 3.20447)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_r47ex")
-health_hp = 100.0
+max_health_hp = 100
 HEADBOB_SWAY_AMOUNT = 0.01
 dash_speed = 10.0
 
