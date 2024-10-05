@@ -35,6 +35,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nugh6")
 
 [node name="Cone" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0o74x")
 skeleton = NodePath("")
