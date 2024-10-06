@@ -87,6 +87,15 @@ shape = SubResource("BoxShape3D_jugvo")
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_8irtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
 
+[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
+transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
+transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
+
+[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
+transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
 shadow_enabled = true
@@ -94,34 +103,31 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mdiys")
 
+[node name="SpawnHolder" type="Node3D" parent="."]
+
+[node name="Spawner1" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.105)
+
+[node name="Spawner2" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4923, 0, -116.787)
+
+[node name="Spawner3" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.337, 0, -92.4726)
+
+[node name="Spawner4" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0726, 0, -58.2814)
+
+[node name="Spawner5" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.281, 0, -62.852)
+
+[node name="InBetweenWaves" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [node name="Smt" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.13408, 3.93984, 0)
-
-[node name="Smt2" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8995, 3.93984, 0)
-
-[node name="Smt3" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.4838, 0.652137, 3.39211)
-
-[node name="Smt4" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.44483, 0.652137, 3.39211)
-
-[node name="Smt5" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.0991, 0.652137, 6.22782)
-
-[node name="Smt6" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.18171, 0.652137, 2.56689)
-
-[node name="Smt7" parent="." instance=ExtResource("3_rmk8k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.0329, 0.652137, -2.82191)
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt2" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt3" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt4" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt5" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt6" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt7" method="_on_weapons_manager_hit"]
 
 [editable path="CharacterBody3D"]
 [editable path="CharacterBody3D/Head/Camera3D/HUD"]

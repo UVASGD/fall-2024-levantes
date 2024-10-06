@@ -1,10 +1,14 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var SPEED = 5.0
-@export var health = 10
+
+@export var max_health: int = 100
+var health_hp: int
 @export var damage = 1
 @export var projectile_speed = 5
 @export var firing_speed_in_seconds = 2
+@export var visibility_range = 1000000
+
 
 @onready var face_target_y = $f_t_y
 @onready var face_target_x = $f_t_y/f_t_x
@@ -32,6 +36,9 @@ var target_pos
 func _ready():
 	offset = add_rand_offset(2)
 	timer.wait_time = firing_speed_in_seconds
+	health_hp = max_health
+	SignalBus.connect("enemy_hit", on_hit)
+	
 func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
@@ -74,6 +81,8 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	target = get_tree().get_nodes_in_group("Player")[0]
+	
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
 	face_target_x.face_point(target_pos, delta)
@@ -82,11 +91,13 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	shoot(timer)
+	if can_see_player(target):
+		shoot(timer)
 	
 
 
 func retreat(delta):
+	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
@@ -108,7 +119,6 @@ func no_move_debug(delta):
 func _on_chase_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
-		target = body
 		
 
 func shoot(tm):
@@ -147,29 +157,75 @@ func _on_chase_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
 
+func take_damage(amount: int):
+	health_hp -= amount
+	if health_hp <= 0:
+		$".".queue_free()
+		SignalBus.emit_signal("enemy_death")
 
-
-
-func _on_weapons_manager_hit(tar):
-	if tar == hitbox:
-			#print("HITTTTT")
-			$AudioStreamPlayer3D.play()
-			f_t_y_shield.show()
-			f_t_x_shield.show()
-			await get_tree().create_timer(.1).timeout
-			f_t_y_shield.hide()
-			f_t_x_shield.hide()
-			
-			health -= 1
-			if health == 0:
-				#Animation_Player.queue("explosion")
-				#await Animation_Player.animation_finished
-				$".".queue_free()
+func on_hit(damage_taken, collider):
+	if collider == hitbox:
+		$AudioStreamPlayer3D.play()
+		f_t_y_shield.show()
+		f_t_x_shield.show()
+		await get_tree().create_timer(.1).timeout
+		f_t_y_shield.hide()
+		f_t_x_shield.hide()
+		take_damage(damage_taken)
+	
+	pass
+#func _on_weapons_manager_hit(tar):
+	#if tar == hitbox:
+			##print("HITTTTT")
+			#$AudioStreamPlayer3D.play()
+			#f_t_y_shield.show()
+			#f_t_x_shield.show()
+			#await get_tree().create_timer(.1).timeout
+			#f_t_y_shield.hide()
+			#f_t_x_shield.hide()
+			#
+			#health -= 1
+			#if health == 0:
+				##Animation_Player.queue("explosion")
+				##await Animation_Player.animation_finished
+				#$".".queue_free()
+				#SignalBus.emit_signal("enemy_death")
 		
 
-	pass # Replace with function body.
+	#pass # Replace with function body.
 
 
 func _on_timer_timeout():
 	is_firing = false
 	pass # Replace with function body.
+
+func is_player_visible(plr) -> bool:
+	var cone_angle = deg_to_rad(45)  # 45 degree cone angle (adjust as needed)
+	var num_rays = 10  # Number of rays for simulating the cone
+	
+	
+	var space_state = get_world_3d().direct_space_state
+	var from = $".".global_position
+	var to = plr.global_position
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1, [self])
+	var result = space_state.intersect_ray(query)
+	if result:
+		if result.collider is Player:
+			return true
+		else:
+			return false
+	else:
+		return false
+
+func can_see_player(plr) -> bool:
+	var dir = (plr.global_position - $".".global_position).normalized()
+	var forward_dir = $".".transform.basis.z
+	var dot_product = dir.dot(forward_dir)
+	
+	if dot_product < visibility_range and is_player_visible(plr):
+		return true
+	else:
+		#print("huh?")
+		return false
+	return false
+		
