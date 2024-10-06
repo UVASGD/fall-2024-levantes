@@ -37,6 +37,7 @@ func enemy_death():
 func spawn_enemies():
 	for i in range(monster_dict[current_level]):
 		var m = monster.instantiate()
+		m.next_state = "chase"
 		print("spawning enemy")
 		#we check the amount of children on our spawn holder
 		var spawn_length = $SpawnHolder.get_child_count()-1

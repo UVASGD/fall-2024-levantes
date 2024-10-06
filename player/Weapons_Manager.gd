@@ -296,12 +296,19 @@ func _raycast() -> void:
 	#if result:
 		##print(screen_center)
 		#make_spark(result.get("position"), origin-endpoint)
-	if not intersection.is_empty():
-		emit_signal("hit", intersection.get("collider"))
-		print(intersection.get("collider"))
 		
+		
+		
+	if not intersection.is_empty():
+		#emit_signal("hit", intersection.get("collider"))
+		SignalBus.emit_signal("enemy_hit", Current_Weapon.dmg, intersection.get("collider"))
+		#print(intersection.get("collider"))
 	else:
 		print("nothing")
+		
+		
+		
+		
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	emit_signal("hit", %Ray.get_collider())
 	print(%Ray.get_collider())

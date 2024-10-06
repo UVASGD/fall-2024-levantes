@@ -1,7 +1,9 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var SPEED = 5.0
-@export var health = 10
+
+@export var max_health: int = 100
+var health_hp: int
 @export var damage = 1
 @export var projectile_speed = 5
 @export var firing_speed_in_seconds = 2
@@ -34,6 +36,9 @@ var target_pos
 func _ready():
 	offset = add_rand_offset(2)
 	timer.wait_time = firing_speed_in_seconds
+	health_hp = max_health
+	SignalBus.connect("enemy_hit", on_hit)
+	
 func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
@@ -152,28 +157,42 @@ func _on_chase_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
 
+func take_damage(amount: int):
+	health_hp -= amount
+	if health_hp <= 0:
+		$".".queue_free()
+		SignalBus.emit_signal("enemy_death")
 
-
-
-func _on_weapons_manager_hit(tar):
-	if tar == hitbox:
-			#print("HITTTTT")
-			$AudioStreamPlayer3D.play()
-			f_t_y_shield.show()
-			f_t_x_shield.show()
-			await get_tree().create_timer(.1).timeout
-			f_t_y_shield.hide()
-			f_t_x_shield.hide()
-			
-			health -= 1
-			if health == 0:
-				#Animation_Player.queue("explosion")
-				#await Animation_Player.animation_finished
-				$".".queue_free()
-				SignalBus.emit_signal("enemy_death")
+func on_hit(damage_taken, collider):
+	if collider == hitbox:
+		$AudioStreamPlayer3D.play()
+		f_t_y_shield.show()
+		f_t_x_shield.show()
+		await get_tree().create_timer(.1).timeout
+		f_t_y_shield.hide()
+		f_t_x_shield.hide()
+		take_damage(damage_taken)
+	
+	pass
+#func _on_weapons_manager_hit(tar):
+	#if tar == hitbox:
+			##print("HITTTTT")
+			#$AudioStreamPlayer3D.play()
+			#f_t_y_shield.show()
+			#f_t_x_shield.show()
+			#await get_tree().create_timer(.1).timeout
+			#f_t_y_shield.hide()
+			#f_t_x_shield.hide()
+			#
+			#health -= 1
+			#if health == 0:
+				##Animation_Player.queue("explosion")
+				##await Animation_Player.animation_finished
+				#$".".queue_free()
+				#SignalBus.emit_signal("enemy_death")
 		
 
-	pass # Replace with function body.
+	#pass # Replace with function body.
 
 
 func _on_timer_timeout():
