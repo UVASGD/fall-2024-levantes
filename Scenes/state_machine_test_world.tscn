@@ -100,10 +100,4 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.134
 [node name="Smt2" parent="." instance=ExtResource("3_rmk8k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8995, 3.93984, 0)
 
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt2" method="_on_weapons_manager_hit"]
-
 [editable path="CharacterBody3D"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

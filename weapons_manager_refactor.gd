@@ -57,7 +57,7 @@ func pickup():
 			"smg":
 				var smg = smg.instantiate()
 				smg.hide()
-				drop_weapon()
+				await drop_weapon()
 				current_weapon = smg
 				nearby_weapon_save.despawn()
 				add_child(smg)

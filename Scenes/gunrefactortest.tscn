@@ -95,9 +95,10 @@ mouse_force_pass_scroll_events = false
 [node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
 script = ExtResource("3_lg8hq")
 
-[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
-
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("3_cpec6")]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.292489, -0.109075, -0.194182)
+
+[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
 
 [node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
 collision_layer = 0
