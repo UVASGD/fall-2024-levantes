@@ -30,12 +30,14 @@ func _ready():
 func enemy_death():
 	print("enemy death")
 	dead_enemies += 1 
-	if dead_enemies == monster_dict[current_level]:
+	if current_level < monster_dict.size() and dead_enemies == monster_dict[current_level]:
 		wave_timer.start()
 		dead_enemies = 0
+	elif current_level >= monster_dict.size():
+		print("finished")
 
 func spawn_enemies():
-	for i in range(monster_dict[current_level]):
+	for i in range(monster_dict.size()):
 		var m = monster.instantiate()
 		m.next_state = "chase"
 		print("spawning enemy")
@@ -50,6 +52,7 @@ func spawn_enemies():
 		add_child(m)
 		
 		await get_tree().create_timer(2.0).timeout
+
 
 func update_level(level):
 	match level:
