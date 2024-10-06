@@ -96,10 +96,8 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("3_lg8hq")
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
-transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.679926, -0.277019, -0.195789)
 
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("3_cpec6")]
-transform = Transform3D(0.713113, 0, 0, 0, 0.858773, 0, 0, 0, 0.759818, 0.6, -0.3, -1)
 
 [node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
 collision_layer = 0
@@ -111,7 +109,6 @@ shape = SubResource("BoxShape3D_v3v36")
 
 [node name="husk_weapon" parent="." instance=ExtResource("6_o1d8p")]
 transform = Transform3D(-0.0359285, -0.999354, 0, 0.999354, -0.0359285, 0, 0, 0, 1, 0, 1.13339, -4.21238)
-collision_layer = 9
 
 [connection signal="body_entered" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_exited"]

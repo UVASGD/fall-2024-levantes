@@ -38,26 +38,16 @@ signal hit(target)
 var animation_player
 var model
 var audio_player
-var hidden = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var model = get_child(0)
+	animation_player = get_child(1)
 	audio_player = AudioStreamPlayer.new()
 	audio_player.max_polyphony = 3
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)
 	var root = get_tree().root
-	animation_player = AnimationPlayer.new()
-	var library = load(animation_library_path)
-	print(library.get_animation_list())
-	animation_player.add_animation_library(Name, library)
-	Equip_Ani = Name + "/" + Equip_Ani
-	if animation_player.has_animation(Equip_Ani):
-		print("has")
-	Fire_Ani = Name + "/" + Fire_Ani
-	Reload_Ani = Name + "/" + Reload_Ani
-	Dequip_Ani = Name + "/" + Dequip_Ani
-	Wait_Ani = Name + "/" + Wait_Ani
+	
 	pass
 
 
@@ -74,10 +64,6 @@ func shoot():
 					while Input.is_action_pressed("Shoot") and Curr_Mag_Ammo != 0 and animation_player.get_current_animation() != Reload_Ani:
 						animation_player.play(Fire_Ani)
 						audio_player.play()
-						#if %Ray.is_colliding():
-							##emit_signal("hit", %Ray.get_collider())
-							##print(%Ray.get_collider())
-							#pass
 						_raycast()
 						Curr_Mag_Ammo -= 1
 						await animation_player.animation_finished
@@ -122,39 +108,24 @@ func reload():
 
 func dequip():
 	animation_player.play(Dequip_Ani)
-	hidden = true
-	print("hiding " + Name)
 	await animation_player.animation_finished
 	hide()
 	
 func equip():
 	show()
-	if animation_player.has_animation(Equip_Ani):
-		print("has animation")
-	print("play " + Equip_Ani)
-	
 	animation_player.play(Equip_Ani)
 	await("animation_finished")
-	print("played")
-	hidden = false
-	print("unhiding " + Name)
 
 func _raycast():
 	var camera = get_parent().get_parent()
 	var space_state = camera.get_world_3d().direct_space_state
-	
 	var screen_center = get_viewport().size / 2
 	var origin = camera.project_ray_origin(screen_center)
-	#var endpoint = origin + camera.project_ray_normal(screen_center) * Current_Weapon.Projectile_Range
 	var endpoint = origin + camera.project_ray_normal(screen_center) * Projectile_Range
 	var query = PhysicsRayQueryParameters3D.create(origin, endpoint)
 	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
-	#var result = space_state.intersect_ray(query)
-	#if result:
-		##print(screen_center)
-		#make_spark(result.get("position"), origin-endpoint)
 	if not intersection.is_empty():
 		emit_signal("hit", intersection.get("collider"))
 		print(intersection.get("collider"))
@@ -167,7 +138,7 @@ func get_husk():
 	match Name:
 		"smg":
 			husk = husk_smg.instantiate()
-		"BURST":
+		"burst":
 			husk = sp_burst_rifle.instantiate()
 	husk.current_ammo = Curr_Mag_Ammo
 	husk.reserve_ammo = Reserve_Ammo

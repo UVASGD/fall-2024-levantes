@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://6rmh7rw6txhs"]
+[gd_scene load_steps=15 format=3 uid="uid://6rmh7rw6txhs"]
 
 [ext_resource type="Script" path="res://burst.gd" id="1_ppite"]
+[ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://burst_animations.res" id="2_kavpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgwv0"]
 
@@ -139,16 +140,16 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_otnof")
 
 [node name="BURST" type="Node3D"]
-transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0, 0, 0)
+transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.6, -0.2, -0.1)
 script = ExtResource("1_ppite")
 model_path = "res://Models/Weapons/burst_rifle/burst_rifle.glb"
 Name = "burst"
 Display_Name = "burst"
 animation_library_path = "res://burst_animations.res"
-Equip_Ani = "burst_equip"
-Fire_Ani = "burst_fire"
-Reload_Ani = "burst_reload"
-Dequip_Ani = "burst_dequip"
+Equip_Ani = "burst_animations/burst_equip"
+Fire_Ani = "burst_animations/burst_fire"
+Reload_Ani = "burst_animations/burst_reload"
+Dequip_Ani = "burst_animations/burst_dequip"
 Fire_Sound = "res://audio/gunshot_final_single_pitch_lower.mp3"
 Curr_Mag_Ammo = 30
 Reserve_Ammo = 30
@@ -156,6 +157,7 @@ Max_Mag_Capacity = 60
 Max_Ammo = 60
 Burst_Count = 3
 Type = 1
+Projectile_Range = 30.0
 dmg = 10
 
 [node name="burstModel" type="Node3D" parent="."]
@@ -190,3 +192,8 @@ transform = Transform3D(1, 0, 0, 0, 0, -1.09119, 0, 1.09119, 0, 8.8872, 0.759836
 layers = 2
 mesh = SubResource("ArrayMesh_8ni3n")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"burst_animations": ExtResource("2_kavpn")
+}

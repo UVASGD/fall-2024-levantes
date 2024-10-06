@@ -5,7 +5,6 @@ const burst_refactor = preload("res://burst-refactor.tscn")
 const husk_smg = preload("res://husk_smg.tscn")
 const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
 
-var weapons = [null, null]
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
@@ -14,17 +13,13 @@ var can_switch = false
 var nearby_weapon = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 2:
-		if get_child(i):
-			weapons[i] = get_child(i)
-	current_weapon = weapons[0]
-	other_weapon = weapons[1]
+	current_weapon = get_child(0)
+	other_weapon = get_child(1) #change this to support not spawning in with 2 weapons 
 	await hide_weapon(other_weapon)
 	await show_weapon(current_weapon)
 	if other_weapon:
 		can_switch = true
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,46 +41,40 @@ func _input(event):
 	pass
 
 func pickup():
-	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the newbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
+	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the nearbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
 	if other_weapon == null:
 			match nearby_weapon.weapon_name:
-				"SMG":
-					var smg = smg.new()
+				"smg":
+					var smg = smg.instantiate()
+					remove_child(nearby_weapon_save)
 					add_child(smg)
-					weapons[1] = smg
 					other_weapon = smg
 					other_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
 					other_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
-					nearby_weapon.queue_free()
 				#insert cases for other gun types
 	else:
 		match nearby_weapon.weapon_name:
-			"SMG":
-				var smg = smg.new()
+			"smg":
+				var smg = smg.instantiate()
 				smg.hide()
 				drop_weapon()
-				if weapons[0] == null:
-					weapons[0] = smg
-				else:
-					weapons[1] = smg
 				current_weapon = smg
+				nearby_weapon_save.despawn()
 				add_child(smg)
-				smg.equip()
-			"BURST":
+				await smg.equip()
+			"burst":
 				var burst = burst_refactor.instantiate()
 				burst.hide()
 				await drop_weapon()
-				if weapons[0] == null:
-					weapons[0] = burst
-				else:
-					weapons[1] = burst
 				current_weapon = burst
+				nearby_weapon_save.despawn()
+				
 				add_child(burst)
-				burst.equip()
+				await burst.equip()
 		#insert cases for other gun types
 		current_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
 		current_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
-		nearby_weapon_save.queue_free()
+		
 
 
 func hide_weapon(weapon):
@@ -93,8 +82,6 @@ func hide_weapon(weapon):
 		if weapon == current_weapon:
 			await weapon.dequip()
 		else:
-			weapon.hidden = true
-			print("hiding " + weapon.Name)
 			weapon.hide()
 
 func show_weapon(weapon):

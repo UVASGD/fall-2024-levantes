@@ -13,3 +13,8 @@ func _process(delta):
 
 func _ready():
 	pass
+
+func despawn():
+	var collision = get_child(0)
+	collision.disabled = true
+	self.queue_free()
