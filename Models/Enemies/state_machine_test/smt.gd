@@ -86,8 +86,13 @@ func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
 	target_pos = target.global_transform.origin
+	
+	face_target_y.current_turn_speed = face_target_y.normal_turn_speed
 	face_target_y.face_point(target_pos, delta)
+	
+	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
 	face_target_x.face_point(target_pos, delta)
+	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
@@ -102,8 +107,13 @@ func retreat(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	target_pos = target.global_transform.origin
+	
 	face_target_y.face_point(target_pos, delta)
+	face_target_y.current_turn_speed = face_target_y.retreat_turn_speed
+	
 	face_target_x.face_point(target_pos, delta)
+	face_target_x.current_turn_speed = face_target_x.retreat_turn_speed
+	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
@@ -183,9 +193,19 @@ func can_enemy_see_player() -> bool:
 	if overlaps.size() > 0:
 		for overlap in overlaps:
 			if overlap.is_in_group("Player") and vision_timer_done:
-				return is_player_visible(overlap)
+				match is_player_visible(overlap):
+					true:
+						face_target_y.current_turn_speed = face_target_x.normal_turn_speed
+						face_target_x.current_turn_speed = face_target_x.normal_turn_speed
+						return true
+					false:
+						face_target_y.current_turn_speed += 100
+						face_target_x.current_turn_speed += 100
+						return false
 			elif overlap.is_in_group("Player") and is_player_visible(overlap):
 				vision_timer.start()
+				face_target_y.current_turn_speed = face_target_x.normal_turn_speed
+				face_target_x.current_turn_speed = face_target_x.normal_turn_speed
 				return true
 	return false
 
