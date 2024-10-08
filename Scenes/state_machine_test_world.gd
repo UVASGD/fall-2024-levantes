@@ -25,7 +25,8 @@ extends Node3D
 func _ready():
 	add_to_group("level")
 	SignalBus.connect("enemy_death", enemy_death)
-	wave_timer.connect("timeout",_on_in_between_waves_timeout)
+	$Smt.next_state = "chase"
+	#wave_timer.connect("timeout",_on_in_between_waves_timeout)
 
 func enemy_death():
 	print("enemy death")
@@ -35,43 +36,43 @@ func enemy_death():
 		dead_enemies = 0
 	elif current_level >= monster_dict.size():
 		print("finished")
-
-func spawn_enemies():
-	for i in range(monster_dict.size()):
-		var m = monster.instantiate()
-		m.next_state = "chase"
-		print("spawning enemy")
-		#we check the amount of children on our spawn holder
-		var spawn_length = $SpawnHolder.get_child_count()-1
-		var rand_num = rand.randi_range(0,spawn_length)
-		#we use that number to randomly select a spawner number
-		var spawn_position = $SpawnHolder.get_child(rand_num)
-		#we add the monster as a child of the level
-		#we set the monsters position to the spawn location
-		m.position = spawn_position.global_transform.origin
-		add_child(m)
-		
-		await get_tree().create_timer(2.0).timeout
-
-
-func update_level(level):
-	match level:
-		1:
-			print("it's level one")
-		2:
-			print("it's level two")
-		3:
-			print("it's level three")
-		4:
-			print("it's level four")
-		5:
-			print("it's level five")
-	spawn_enemies()
-
-func _on_in_between_waves_timeout():
-	print("Leaving level: ", current_level)
-	current_level +=1
-	update_level(current_level)
+#
+#func spawn_enemies():
+	#for i in range(monster_dict.size()):
+		#var m = monster.instantiate()
+		#m.next_state = "chase"
+		#print("spawning enemy")
+		##we check the amount of children on our spawn holder
+		#var spawn_length = $SpawnHolder.get_child_count()-1
+		#var rand_num = rand.randi_range(0,spawn_length)
+		##we use that number to randomly select a spawner number
+		#var spawn_position = $SpawnHolder.get_child(rand_num)
+		##we add the monster as a child of the level
+		##we set the monsters position to the spawn location
+		#m.position = spawn_position.global_transform.origin
+		#add_child(m)
+		#
+		#await get_tree().create_timer(2.0).timeout
+#
+#
+#func update_level(level):
+	#match level:
+		#1:
+			#print("it's level one")
+		#2:
+			#print("it's level two")
+		#3:
+			#print("it's level three")
+		#4:
+			#print("it's level four")
+		#5:
+			#print("it's level five")
+	#spawn_enemies()
+#
+#func _on_in_between_waves_timeout():
+	#print("Leaving level: ", current_level)
+	#current_level +=1
+	#update_level(current_level)
 
 func _physics_process(delta):
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)

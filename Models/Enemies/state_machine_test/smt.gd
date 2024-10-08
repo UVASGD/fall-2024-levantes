@@ -18,10 +18,11 @@ var health_hp: int
 @onready var Animation_Player = get_node("AnimationPlayer")
 
 @onready var timer = $Timer
+@onready var vision_timer = $VisionTimer
 
-
-var timer_started = false
+var vision_timer_done = false
 var is_firing = false
+
 
 @onready var projectile_origin_spot = $f_t_y/f_t_x/Marker3D
 var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
@@ -38,6 +39,7 @@ func _ready():
 	timer.wait_time = firing_speed_in_seconds
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	
 func _physics_process(delta):
 	prev_state = curr_state
@@ -82,7 +84,7 @@ func idle():
 
 func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
-	
+	#_i_can_see()
 	target_pos = target.global_transform.origin
 	face_target_y.face_point(target_pos, delta)
 	face_target_x.face_point(target_pos, delta)
@@ -91,7 +93,7 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	if can_see_player(target):
+	if can_enemy_see_player():
 		shoot(timer)
 	
 
@@ -107,8 +109,8 @@ func retreat(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
-	
-	shoot(timer)
+	if can_enemy_see_player():
+		shoot(timer)
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
@@ -174,30 +176,25 @@ func on_hit(damage_taken, collider):
 		take_damage(damage_taken)
 	
 	pass
-#func _on_weapons_manager_hit(tar):
-	#if tar == hitbox:
-			##print("HITTTTT")
-			#$AudioStreamPlayer3D.play()
-			#f_t_y_shield.show()
-			#f_t_x_shield.show()
-			#await get_tree().create_timer(.1).timeout
-			#f_t_y_shield.hide()
-			#f_t_x_shield.hide()
-			#
-			#health -= 1
-			#if health == 0:
-				##Animation_Player.queue("explosion")
-				##await Animation_Player.animation_finished
-				#$".".queue_free()
-				#SignalBus.emit_signal("enemy_death")
-		
 
-	#pass # Replace with function body.
-
+func can_enemy_see_player() -> bool:
+	var overlaps = $f_t_y/f_t_y_model_group/Vision.get_overlapping_bodies()
+	var vision = $RayCast3D
+	if overlaps.size() > 0:
+		for overlap in overlaps:
+			if overlap.is_in_group("Player") and vision_timer_done:
+				return is_player_visible(overlap)
+			elif overlap.is_in_group("Player") and is_player_visible(overlap):
+				vision_timer.start()
+				return true
+	return false
 
 func _on_timer_timeout():
 	is_firing = false
 	pass # Replace with function body.
+	
+func _on_vision_timer_timeout():
+	vision_timer_done = true 
 
 func is_player_visible(plr) -> bool:
 	var cone_angle = deg_to_rad(45)  # 45 degree cone angle (adjust as needed)
@@ -217,15 +214,3 @@ func is_player_visible(plr) -> bool:
 	else:
 		return false
 
-func can_see_player(plr) -> bool:
-	var dir = (plr.global_position - $".".global_position).normalized()
-	var forward_dir = $".".transform.basis.z
-	var dot_product = dir.dot(forward_dir)
-	
-	if dot_product < visibility_range and is_player_visible(plr):
-		return true
-	else:
-		#print("huh?")
-		return false
-	return false
-		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://d2ipjyem2oaxa"]
+[gd_scene load_steps=83 format=3 uid="uid://d2ipjyem2oaxa"]
 
 [ext_resource type="Script" path="res://Models/Enemies/state_machine_test/smt.gd" id="1_n7xwg"]
 [ext_resource type="Script" path="res://Models/Enemies/test_enemy/f_t.gd" id="2_p12mc"]
@@ -129,6 +129,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_shu7a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teh3g"]
+albedo_color = Color(0.766561, 0.0669391, 0.148081, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oasru"]
+points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2dic"]
 albedo_color = Color(18.935, 0, 0, 1)
@@ -849,9 +855,6 @@ _data = {
 "smt_shoot": SubResource("Animation_bk6ch")
 }
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oasru"]
-points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
-
 [node name="Smt" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_n7xwg")
 SPEED = 10.0
@@ -915,6 +918,22 @@ transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_125nh")
 skeleton = NodePath("")
+
+[node name="Vision" type="Area3D" parent="f_t_y/f_t_y_model_group"]
+transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
+
+[node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("6_dfki5")]
+transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
+visible = false
+material_override = SubResource("StandardMaterial3D_teh3g")
+transparency = 0.72
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f_t_y/f_t_y_model_group/Vision"]
+transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
+shape = SubResource("ConvexPolygonShape3D_oasru")
+
+[node name="RayCast3D" type="RayCast3D" parent="f_t_y/f_t_y_model_group"]
+transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
 [node name="f_t_y_shield" type="Node3D" parent="f_t_y"]
 unique_name_in_owner = true
@@ -1080,15 +1099,8 @@ wait_time = 2.0
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_2rr2n")
 
-[node name="Vision" type="Area3D" parent="."]
-
-[node name="Cone" parent="Vision" instance=ExtResource("6_dfki5")]
-transform = Transform3D(-2.18557e-06, -50, 2.18557e-06, 0, -2.18557e-06, -50, 50, -2.18557e-06, 9.55343e-14, 49.9149, 1.49392, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
-transform = Transform3D(-2.18557e-06, -50, 2.18557e-06, 0, -2.18557e-06, -50, 50, -2.18557e-06, 9.55343e-14, 49.9149, 1.49392, 0)
-shape = SubResource("ConvexPolygonShape3D_oasru")
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
