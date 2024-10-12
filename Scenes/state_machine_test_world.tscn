@@ -29,12 +29,12 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_mm45y"]
+[sub_resource type="Sky" id="Sky_ocx2s"]
 sky_material = SubResource("ProceduralSkyMaterial_x83sr")
 
 [sub_resource type="Environment" id="Environment_mdiys"]
 background_mode = 2
-sky = SubResource("Sky_mm45y")
+sky = SubResource("Sky_ocx2s")
 tonemap_mode = 2
 glow_enabled = true
 

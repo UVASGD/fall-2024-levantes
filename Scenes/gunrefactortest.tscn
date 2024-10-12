@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2vtbuwblnbio"]
+[gd_scene load_steps=16 format=3 uid="uid://d2vtbuwblnbio"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_s1fl0"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_ckbki"]
@@ -20,6 +20,19 @@ size = Vector3(15.4096, 1, 19.094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
 size = Vector3(2.92481, 2.45361, 3.20447)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_consp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mm45y"]
+sky_material = SubResource("ProceduralSkyMaterial_consp")
+
+[sub_resource type="Environment" id="Environment_miqag"]
+background_mode = 2
+sky = SubResource("Sky_mm45y")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="gunrefactortest" type="Node3D"]
 
@@ -96,7 +109,6 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("3_lg8hq")
 
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("3_cpec6")]
-transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.292489, -0.109075, -0.194182)
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
 
@@ -110,6 +122,9 @@ shape = SubResource("BoxShape3D_v3v36")
 
 [node name="husk_weapon" parent="." instance=ExtResource("6_o1d8p")]
 transform = Transform3D(-0.0359285, -0.999354, 0, 0.999354, -0.0359285, 0, 0, 0, 1, 0, 1.13339, -4.21238)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_miqag")
 
 [connection signal="body_entered" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_exited"]
