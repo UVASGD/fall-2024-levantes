@@ -840,18 +840,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%Weapons_Manager/WeaponRig/smgModel/DirectionalLight3D:light_energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.02),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.943, 0.0]
-}
 
 [sub_resource type="Animation" id="Animation_erdql"]
 resource_name = "smg_reload"
@@ -1562,7 +1550,7 @@ material_override = SubResource("StandardMaterial3D_23w36")
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 light_color = Color(1, 0.541176, 0.227451, 1)
 light_energy = 0.0
-light_angular_distance = 22.5
+light_angular_distance = 5.0
 sky_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
@@ -1606,7 +1594,7 @@ material_override = SubResource("StandardMaterial3D_g7ibg")
 transform = Transform3D(-40, 0, 0.000101407, 0, 40, 0, -0.000101407, 0, -40, 9.82387, 3.3178, 2.05258)
 light_color = Color(1, 0.541176, 0.227451, 1)
 light_energy = 0.0
-light_angular_distance = 22.5
+light_angular_distance = 4.0
 sky_mode = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]

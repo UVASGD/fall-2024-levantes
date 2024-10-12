@@ -5,6 +5,7 @@ var me
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	me = $StaticBody3D
+	SignalBus.connect("object_hit", _on_hit)
 	pass # Replace with function body.
 
 

@@ -292,10 +292,10 @@ func _raycast() -> void:
 	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
-	#var result = space_state.intersect_ray(query)
-	#if result:
-		##print(screen_center)
-		#make_spark(result.get("position"), origin-endpoint)
+	var result = space_state.intersect_ray(query)
+	if result:
+		#print(screen_center)
+		make_spark(result.get("position"), origin-endpoint)
 		
 		
 		
