@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfde4dumfslig"]
+[gd_scene load_steps=10 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
 [ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="3_2wbv3"]
@@ -10,6 +10,67 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
 size = Vector3(2.92481, 2.45361, 3.20447)
+
+[sub_resource type="Animation" id="Animation_ps52s"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -0.74249)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kl5rf"]
+resource_name = "burst"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -1.14792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i65yi"]
+_data = {
+"RESET": SubResource("Animation_ps52s"),
+"burst": SubResource("Animation_kl5rf")
+}
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_r47ex")
@@ -76,5 +137,11 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animations" type="Node" parent="."]
+
+[node name="burst_rifle_animations" type="AnimationPlayer" parent="animations"]
 unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_i65yi")
+}

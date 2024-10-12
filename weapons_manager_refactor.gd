@@ -1,15 +1,16 @@
 extends Node3D
 
-const smg = preload("res://smg_refactor.tscn")
-const burst_refactor = preload("res://burst-refactor.tscn")
-const husk_smg = preload("res://husk_smg.tscn")
-const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
+#const smg = preload("res://smg_refactor.tscn")
+#const burst_refactor = preload("res://burst-refactor.tscn")
+#const husk_smg = preload("res://husk_smg.tscn")
+#const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
 
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
 var hud
 var can_switch = false
+var can_spawn = true
 var nearby_weapon = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,41 +43,66 @@ func _input(event):
 	pass
 
 func pickup():
+	var new_weapon 
+	if nearby_weapon == null:
+		return
+	else:
+		new_weapon = nearby_weapon.get_weapon()
 	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the nearbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
 	var nearby_weapon_save_curr_ammo = nearby_weapon.current_ammo
 	var nearby_weapon_save_reserve_ammo = nearby_weapon.reserve_ammo
-	if other_weapon == null:
-			match nearby_weapon.weapon_name:
-				"smg":
-					var smg = smg.instantiate()
-					remove_child(nearby_weapon_save)
-					add_child(smg)
-					other_weapon = smg
-					other_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
-					other_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
-				#insert cases for other gun types
-	else:
-		match nearby_weapon.weapon_name:
-			"smg":
-				var smg = smg.instantiate()
-				smg.hide()
-				await drop_weapon()
-				current_weapon = smg
-				nearby_weapon_save.despawn()
-				add_child(smg)
-				await smg.equip()
-			"burst":
-				var burst = burst_refactor.instantiate()
-				burst.hide()
-				await drop_weapon()
-				current_weapon = burst
-				nearby_weapon_save.despawn()
-				
-				add_child(burst)
-				await burst.equip()
+	'''
+		Case 1: You only have one weapon
+	'''
+	if other_weapon == null:	
+		remove_child(nearby_weapon_save)
+		add_child(new_weapon)
+		other_weapon = new_weapon
+		#other_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
+		#other_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
+		#match nearby_weapon.weapon_name:
+			#"smg":
+				#var smg = smg.instantiate()
+				#remove_child(nearby_weapon_save)
+				#add_child(smg)
+				#other_weapon = smg
+				#other_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
+				#other_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
+			#insert cases for other gun types
+			
+	#Case 2: You have two weapons and you are replacing your currently held weapon
+	
+	elif can_spawn:
+		can_spawn = false
+		await current_weapon.dequip()
+		await drop_weapon()
+		current_weapon = new_weapon
+		nearby_weapon_save.despawn()
+		add_child(new_weapon)
+		new_weapon.hide()
+		await new_weapon.equip()
+		can_spawn = true
+		#match nearby_weapon.weapon_name:
+			#"smg":
+				#var smg = smg.instantiate()
+				#smg.hide()
+				#await drop_weapon()
+				#current_weapon = smg
+				#nearby_weapon_save.despawn()
+				#add_child(smg)
+				#await smg.equip()
+			#"burst":
+				#var burst = burst_refactor.instantiate()
+				#burst.hide()
+				#await drop_weapon()
+				#current_weapon = burst
+				#nearby_weapon_save.despawn()
+				#
+				#add_child(burst)
+				#await burst.equip()
 		#insert cases for other gun types
-		current_weapon.Curr_Mag_Ammo = nearby_weapon_save_curr_ammo
-		current_weapon.Reserve_Ammo = nearby_weapon_save_reserve_ammo
+		#current_weapon.Curr_Mag_Ammo = nearby_weapon_save_curr_ammo
+		#current_weapon.Reserve_Ammo = nearby_weapon_save_reserve_ammo
 		
 
 
@@ -105,8 +131,10 @@ func switch():
 	
 func drop_weapon():
 	var husk = current_weapon.get_husk()
-	await current_weapon.dequip()
+	var player_position = $"../../..".global_transform.origin
+	
 	get_tree().root.add_child(husk)
+	husk.position = player_position + Vector3(0,1,0)
 	current_weapon.queue_free()
 	current_weapon = null
 	pass

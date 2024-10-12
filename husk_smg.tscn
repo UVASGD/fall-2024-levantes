@@ -184,6 +184,7 @@ script = ExtResource("1_ioco1")
 weapon_name = "smg"
 current_ammo = 30
 reserve_ammo = 300
+real_weapon_path = "res://smg_refactor.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027832, -0.0515747, -0.0317383)

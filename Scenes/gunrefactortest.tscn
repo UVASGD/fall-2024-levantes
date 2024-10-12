@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://burst-refactor.tscn" id="2_u7od1"]
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://smg_refactor.tscn" id="3_cpec6"]
 [ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="3_lg8hq"]
-[ext_resource type="PackedScene" uid="uid://dycrppyyvnj7b" path="res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn" id="6_o1d8p"]
+[ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://husk_burst_rifle.tscn" id="6_w2yy5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0m8ln"]
 
@@ -120,13 +120,11 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
 
-[node name="husk_weapon" parent="." instance=ExtResource("6_o1d8p")]
-transform = Transform3D(-0.0359285, -0.999354, 0, 0.999354, -0.0359285, 0, 0, 0, 1, 0, 1.13339, -4.21238)
-collision_layer = 8
-collision_mask = 13
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_miqag")
+
+[node name="HuskBurstRifle" parent="." instance=ExtResource("6_w2yy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350971, 2.26675, -4.26889)
 
 [connection signal="body_entered" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_entered"]
 [connection signal="body_exited" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_exited"]

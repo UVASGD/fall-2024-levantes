@@ -104,5 +104,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.89
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="0" instance=ExtResource("4_01bpx")]
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="1" instance=ExtResource("5_ha7ax")]
+transform = Transform3D(-0.369436, -0.678224, -0.63524, -0.340966, 0.734855, -0.586285, 0.864442, 8.9407e-08, -0.502733, 0.128455, -0.355517, -0.940877)
 
 [editable path="CharacterBody3D"]

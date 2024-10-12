@@ -1,4 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://fvoyks1slpb"]
+[gd_scene load_steps=15 format=3 uid="uid://fvoyks1slpb"]
+
+[ext_resource type="Script" path="res://husk_weapon.gd" id="1_l10os"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwnqh"]
+size = Vector3(0.192627, 0.331879, 1.00391)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n66q7"]
 
@@ -136,10 +141,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o0mck")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cwnqh"]
-size = Vector3(0.192627, 0.331879, 1.00391)
-
 [node name="HuskBurstRifle" type="RigidBody3D"]
+script = ExtResource("1_l10os")
+current_ammo = 30
+reserve_ammo = 210
+real_weapon_path = "res://burst-refactor.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0.00572205, 0.0478516)
+shape = SubResource("BoxShape3D_cwnqh")
 
 [node name="burst_rifle" type="Node3D" parent="."]
 transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, -0.150529, 0, -0.0330966)
@@ -173,7 +183,3 @@ transform = Transform3D(1, 0, 0, 0, 0, -1.09119, 0, 1.09119, 0, 8.8872, 0.759836
 layers = 2
 mesh = SubResource("ArrayMesh_280qd")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0.00572205, 0.0478516)
-shape = SubResource("BoxShape3D_cwnqh")

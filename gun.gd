@@ -1,6 +1,8 @@
 class_name Gun extends Node3D
-const husk_smg = preload("res://husk_smg.tscn")
-const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
+#const husk_smg = preload("res://husk_smg.tscn")
+#const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
+
+@export var husk_weapon_path: String
 @export var model_path: String
 @export var Name: String
 @export var Display_Name: String
@@ -110,6 +112,7 @@ func dequip():
 	animation_player.play(Dequip_Ani)
 	await animation_player.animation_finished
 	hide()
+	return
 	
 func equip():
 	show()
@@ -134,16 +137,12 @@ func _raycast():
 		print("nothing")
 		
 func get_husk():
-	var husk
-	match Name:
-		"smg":
-			husk = husk_smg.instantiate()
-		"burst":
-			husk = sp_burst_rifle.instantiate()
-	husk.current_ammo = Curr_Mag_Ammo
-	husk.reserve_ammo = Reserve_Ammo
-	husk.name = Name
-	return husk
+	var husk = load(husk_weapon_path)
+	var new_husk = husk.instantiate()
+	new_husk.current_ammo = Curr_Mag_Ammo
+	new_husk.reserve_ammo = Reserve_Ammo
+	new_husk.name = Name 
+	return new_husk
 	
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	#emit_signal("hit", %Ray.get_collider())
