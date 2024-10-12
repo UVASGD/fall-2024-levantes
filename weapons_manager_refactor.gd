@@ -14,7 +14,8 @@ var nearby_weapon = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_weapon = get_child(0)
-	other_weapon = get_child(1) #change this to support not spawning in with 2 weapons 
+	if get_child_count() > 1:
+		other_weapon = get_child(1) #change this to support not spawning in with 2 weapons 
 	await hide_weapon(other_weapon)
 	await show_weapon(current_weapon)
 	if other_weapon:
@@ -42,6 +43,8 @@ func _input(event):
 
 func pickup():
 	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the nearbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
+	var nearby_weapon_save_curr_ammo = nearby_weapon.current_ammo
+	var nearby_weapon_save_reserve_ammo = nearby_weapon.reserve_ammo
 	if other_weapon == null:
 			match nearby_weapon.weapon_name:
 				"smg":
@@ -72,8 +75,8 @@ func pickup():
 				add_child(burst)
 				await burst.equip()
 		#insert cases for other gun types
-		current_weapon.Curr_Mag_Ammo = nearby_weapon.current_ammo
-		current_weapon.Reserve_Ammo = nearby_weapon.reserve_ammo
+		current_weapon.Curr_Mag_Ammo = nearby_weapon_save_curr_ammo
+		current_weapon.Reserve_Ammo = nearby_weapon_save_reserve_ammo
 		
 
 

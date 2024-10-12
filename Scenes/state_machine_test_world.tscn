@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkhyw5o1ojai"]
+[gd_scene load_steps=18 format=3 uid="uid://bkhyw5o1ojai"]
 
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_8irtu"]
 [ext_resource type="Script" path="res://Scenes/state_machine_test_world.gd" id="1_uhjef"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Models/Enemies/state_machine_test/smt.tscn" id="3_rmk8k"]
+[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://smg_refactor.tscn" id="4_01bpx"]
+[ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://burst-refactor.tscn" id="5_ha7ax"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
 vertices = PackedVector3Array(-90.3186, 0.33532, -7.23399, -2.3186, 0.33532, -7.23399, -2.3186, 0.33532, -9.23399, -90.3186, 0.33532, -7.23399, -2.3186, 0.33532, -9.23399, -0.0686035, 0.33532, -9.48399, -0.0686035, 0.33532, -129.984, -90.3186, 0.33532, -129.984, 16.9314, 0.33532, -0.983994, 17.1814, 0.33532, 0.266006, 18.6814, 0.33532, 0.266006, 18.6814, 0.33532, -5.73399, 2.1814, 0.33532, -9.23399, 18.6814, 0.33532, -5.73399, 19.9314, 0.33532, -5.98399, 19.9314, 0.33532, -129.984, -0.0686035, 0.33532, -129.984, 1.6814, 0.33532, -4.98399, 5.9314, 0.33532, -0.483994, 6.1814, 0.33532, -0.983994, 2.1814, 0.33532, -5.23399, -0.0686035, 0.33532, -129.984, -0.0686035, 0.33532, -9.48399, 2.1814, 0.33532, -9.23399, 2.1814, 0.33532, -9.23399, 2.1814, 0.33532, -5.23399, 6.1814, 0.33532, -0.983994, 16.9314, 0.33532, -0.983994, 18.6814, 0.33532, -5.73399, 20.9314, 0.33532, -5.73399, 20.9314, 0.33532, -3.73399, 90.4314, 0.33532, -3.73399, 19.9314, 0.33532, -5.98399, 20.9314, 0.33532, -5.73399, 90.4314, 0.33532, -3.73399, 90.4314, 0.33532, -129.984, 19.9314, 0.33532, -129.984, -1.3186, 3.58532, -8.48399, -1.3186, 3.58532, -5.98399, 1.1814, 3.58532, -5.98399, 1.1814, 3.58532, -8.48399, -1.0686, 0.33532, -8.23399, -1.0686, 0.33532, -6.23399, 0.931396, 0.33532, -6.23399, 0.931396, 0.33532, -8.23399, 18.6814, 0.33532, 0.266006, 17.1814, 0.33532, 0.266006, 16.9314, 0.33532, 1.26601, 18.6814, 0.33532, 16.016, 6.1814, 0.33532, 1.26601, 5.9314, 0.33532, -0.483994, 1.6814, 0.33532, -4.98399, -2.0686, 0.33532, -4.98399, 19.6814, 0.33532, 16.266, 18.6814, 0.33532, 16.016, -90.3186, 0.33532, -7.23399, -90.3186, 0.33532, 130.016, 19.6814, 0.33532, 130.016, -2.0686, 0.33532, -4.98399, -2.3186, 0.33532, -7.23399, -90.3186, 0.33532, -7.23399, 18.6814, 0.33532, 16.016, 16.9314, 0.33532, 1.26601, 6.1814, 0.33532, 1.26601, 18.6814, 0.33532, 16.016, 6.1814, 0.33532, 1.26601, -2.0686, 0.33532, -4.98399, -90.3186, 0.33532, -7.23399, 20.9314, 0.33532, 14.016, 90.4314, 0.33532, 14.016, 90.4314, 0.33532, -3.73399, 20.9314, 0.33532, -3.73399, 90.4314, 0.33532, 14.016, 20.9314, 0.33532, 14.016, 20.9314, 0.33532, 16.016, 90.4314, 0.33532, 14.016, 20.9314, 0.33532, 16.016, 19.6814, 0.33532, 16.266, 19.6814, 0.33532, 130.016, 90.4314, 0.33532, 130.016)
@@ -84,9 +86,6 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_jugvo")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_8irtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
 shadow_enabled = true
@@ -99,5 +98,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.134
 
 [node name="Smt2" parent="." instance=ExtResource("3_rmk8k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8995, 3.93984, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_8irtu")]
+
+[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="0" instance=ExtResource("4_01bpx")]
+
+[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="1" instance=ExtResource("5_ha7ax")]
 
 [editable path="CharacterBody3D"]
