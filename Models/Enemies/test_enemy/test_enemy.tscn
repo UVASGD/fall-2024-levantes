@@ -1,7 +1,7 @@
 [gd_scene load_steps=92 format=3 uid="uid://dfaprawobuuvd"]
 
 [ext_resource type="Script" path="res://Models/Enemies/test_enemy/ta.gd" id="1_xtenq"]
-[ext_resource type="Script" path="res://Models/Enemies/test_enemy/f_t.gd" id="2_l1paq"]
+[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_l1paq"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_i6duh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64yr4"]
