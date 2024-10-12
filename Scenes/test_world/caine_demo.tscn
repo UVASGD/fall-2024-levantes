@@ -1,24 +1,23 @@
-[gd_scene load_steps=115 format=3 uid="uid://b1o8045la0x6s"]
+[gd_scene load_steps=112 format=3 uid="uid://bc47pnecuxgi6"]
 
-[ext_resource type="Script" path="res://Scenes/test_world/final_demo.gd" id="1_n2tlg"]
-[ext_resource type="Texture2D" uid="uid://cxxcdukvgnoqo" path="res://world_objects/ARENA_arenawall.png" id="1_y5xmo"]
-[ext_resource type="Texture2D" uid="uid://dvqnbrcdsh0pu" path="res://world_objects/ARENA_arenaground.png" id="2_mqlhk"]
-[ext_resource type="Texture2D" uid="uid://c1kmrmoa6652o" path="res://world_objects/ARENA_arenaground_nmap.png" id="3_nmj7h"]
-[ext_resource type="Texture2D" uid="uid://ciyugvtefqs2n" path="res://world_objects/ARENA_arenaground2.png" id="4_6rsk7"]
-[ext_resource type="Texture2D" uid="uid://dxhcfnbs6dy5i" path="res://world_objects/ARENA_arenaground2_nmap.png" id="5_fikp7"]
-[ext_resource type="PackedScene" uid="uid://cqk66e6glmj6c" path="res://world_objects/ALIEN_LAMP.glb" id="7_en470"]
-[ext_resource type="Script" path="res://world_objects/ALIEN_LAMP.gd" id="8_kmd26"]
-[ext_resource type="Texture2D" uid="uid://bde7prl2atj4m" path="res://world_objects/ALIEN_LAMP_arenaground2.png" id="9_i8c5h"]
-[ext_resource type="AudioStream" uid="uid://cxgx1w44rw14p" path="res://audio/glass_break.mp3" id="9_lqjul"]
-[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="14_nygor"]
-[ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="18_xep3x"]
-[ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="19_h6wki"]
-[ext_resource type="PackedScene" uid="uid://dfaprawobuuvd" path="res://Models/Enemies/test_enemy/test_enemy.tscn" id="22_loyvs"]
+[ext_resource type="Script" path="res://Scenes/test_world/final_demo.gd" id="1_xyvft"]
+[ext_resource type="Texture2D" uid="uid://cxxcdukvgnoqo" path="res://world_objects/ARENA_arenawall.png" id="2_yubr8"]
+[ext_resource type="Texture2D" uid="uid://dvqnbrcdsh0pu" path="res://world_objects/ARENA_arenaground.png" id="3_1wxd7"]
+[ext_resource type="Texture2D" uid="uid://c1kmrmoa6652o" path="res://world_objects/ARENA_arenaground_nmap.png" id="4_2cbkp"]
+[ext_resource type="Texture2D" uid="uid://ciyugvtefqs2n" path="res://world_objects/ARENA_arenaground2.png" id="5_udhle"]
+[ext_resource type="Texture2D" uid="uid://dxhcfnbs6dy5i" path="res://world_objects/ARENA_arenaground2_nmap.png" id="6_2t3jw"]
+[ext_resource type="PackedScene" uid="uid://cqk66e6glmj6c" path="res://world_objects/ALIEN_LAMP.glb" id="7_ax4df"]
+[ext_resource type="Script" path="res://world_objects/ALIEN_LAMP.gd" id="8_4spl5"]
+[ext_resource type="Texture2D" uid="uid://bde7prl2atj4m" path="res://world_objects/ALIEN_LAMP_arenaground2.png" id="9_hhyxk"]
+[ext_resource type="AudioStream" uid="uid://cxgx1w44rw14p" path="res://audio/glass_break.mp3" id="10_flilu"]
+[ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="11_bdxgp"]
+[ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="12_hcgag"]
+[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="14_cdfjh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tcy1"]
 resource_name = "Material.004"
 cull_mode = 2
-albedo_texture = ExtResource("1_y5xmo")
+albedo_texture = ExtResource("2_yubr8")
 metallic = 0.456693
 roughness = 0.826736
 uv1_scale = Vector3(1.4, 2, 1)
@@ -199,62 +198,17 @@ shadow_mesh = SubResource("ArrayMesh_6sudp")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ncrep"]
 data = PackedVector3Array(-21, -20, 20, -19, 20, -20, -21, -20, -20, -21, -20, 20, -19, 20, 20, -19, 20, -20, -19, 20, 20, -18.9484, 19.9708, 20.078, -19, 20, -20, -19, 20, -20, -18.9484, 19.9708, 20.078, -19.0189, 20.0599, -19.9218, -19, 20, 20, -19, 20, -20, -19, 20, -20, -19, 20, 20, -19, 20, 20, -19, 20, -20, -21, -20, -20, -21, -20, 20, -21, -20, 20, -21, -20, -20, -21, -20, -20, -21, -20, 20, -19, 20, -20, -21, -20, -20, -21, -20, -20, -19, 20, -20, -19, 20, -20, -21, -20, -20, -21, -20, 20, -19, 20, 20, -19, 20, 20, -21, -20, 20, -21, -20, 20, -19, 20, 20, -21.0309, -19.9749, 19.9926, -19.0189, 20.0599, -19.9218, -18.9484, 19.9708, 20.078, -21.0309, -19.9749, 19.9926, -21.1014, -19.8857, -20.0072, -19.0189, 20.0599, -19.9218, -21, -20, -20, -21.0309, -19.9749, 19.9926, -21, -20, 20, -21, -20, -20, -21.1014, -19.8857, -20.0072, -21.0309, -19.9749, 19.9926, -19, 20, -20, -21.1014, -19.8857, -20.0072, -21, -20, -20, -19, 20, -20, -19.0189, 20.0599, -19.9218, -21.1014, -19.8857, -20.0072, -21, -20, 20, -21.0309, -19.9749, 19.9926, -19, 20, 20, -19, 20, 20, -21.0309, -19.9749, 19.9926, -18.9484, 19.9708, 20.078)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qumfb"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("2_mqlhk")
-metallic = 0.51
-metallic_specular = 0.34
-roughness = 0.7
-normal_enabled = true
-normal_texture = ExtResource("3_nmj7h")
-refraction_enabled = true
-uv1_scale = Vector3(5, 5, 1)
-uv1_offset = Vector3(0, -4, 0)
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_xydm7"]
-_surfaces = [{
-"aabb": AABB(-1.00693, -0.850276, -1.00693, 2.01989, 0.853725, 2.01386),
-"format": 34359742465,
-"index_count": 36,
-"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0, 5, 0, 7, 0, 6, 0, 5, 0, 4, 0, 7, 0, 1, 0, 7, 0, 3, 0, 1, 0, 6, 0, 7, 0, 2, 0, 5, 0, 0, 0, 2, 0, 4, 0, 5, 0, 3, 0, 4, 0, 2, 0, 3, 0, 7, 0, 4, 0, 0, 0, 6, 0, 1, 0, 0, 0, 5, 0, 6, 0),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray(179, 195, 128, 191, 201, 95, 97, 59, 208, 81, 128, 63, 147, 168, 129, 63, 201, 95, 97, 59, 208, 81, 128, 63, 13, 227, 128, 191, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 63, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 191)
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_oxf2x"]
-resource_name = "ARENA_Plane_002"
-_surfaces = [{
-"aabb": AABB(-1.00693, -0.850276, -1.00693, 2.01989, 0.853725, 2.01386),
-"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray(1, 0, 10, 0, 7, 0, 1, 0, 4, 0, 10, 0, 15, 0, 22, 0, 18, 0, 15, 0, 13, 0, 22, 0, 5, 0, 23, 0, 11, 0, 5, 0, 20, 0, 23, 0, 8, 0, 17, 0, 2, 0, 8, 0, 14, 0, 17, 0, 9, 0, 12, 0, 6, 0, 9, 0, 21, 0, 12, 0, 0, 0, 19, 0, 3, 0, 0, 0, 16, 0, 19, 0),
-"material": SubResource("StandardMaterial3D_qumfb"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray(179, 195, 128, 191, 201, 95, 97, 59, 208, 81, 128, 63, 179, 195, 128, 191, 201, 95, 97, 59, 208, 81, 128, 63, 179, 195, 128, 191, 201, 95, 97, 59, 208, 81, 128, 63, 147, 168, 129, 63, 201, 95, 97, 59, 208, 81, 128, 63, 147, 168, 129, 63, 201, 95, 97, 59, 208, 81, 128, 63, 147, 168, 129, 63, 201, 95, 97, 59, 208, 81, 128, 63, 13, 227, 128, 191, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 191, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 191, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 63, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 63, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 63, 0, 0, 0, 0, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 191, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 63, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 191, 13, 227, 128, 63, 182, 171, 89, 191, 13, 227, 128, 191, 85, 255, 0, 0, 255, 255, 255, 191, 255, 127, 55, 0, 255, 255, 255, 63, 235, 255, 229, 127, 255, 255, 255, 191, 85, 255, 0, 0, 255, 255, 255, 191, 255, 127, 55, 0, 255, 255, 255, 63, 163, 0, 113, 128, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 55, 0, 255, 255, 255, 63, 235, 255, 229, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 55, 0, 255, 255, 255, 63, 163, 0, 113, 128, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 255, 255, 255, 255, 191, 235, 255, 229, 127, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 255, 191, 85, 255, 0, 0, 255, 255, 255, 191, 235, 255, 229, 127, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 255, 191, 85, 255, 0, 0, 255, 255, 255, 191, 163, 0, 113, 128, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 255, 255, 255, 255, 191, 163, 0, 113, 128, 255, 255, 255, 63)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xydm7")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jaaq7"]
 size = Vector3(1, 1, 1.40359)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlwqc"]
 resource_name = "Material.003"
 cull_mode = 2
-albedo_texture = ExtResource("4_6rsk7")
+albedo_texture = ExtResource("5_udhle")
 metallic = 0.709091
 roughness = 0.759091
 normal_enabled = true
-normal_texture = ExtResource("5_fikp7")
+normal_texture = ExtResource("6_2t3jw")
 uv1_scale = Vector3(5, 5, 1)
 uv1_offset = Vector3(0, -4, 0)
 
@@ -499,6 +453,19 @@ shadow_mesh = SubResource("ArrayMesh_dr6a0")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x4wep"]
 data = PackedVector3Array(-13.9504, -19.3132, 20.3688, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -11.8626, 20.733, 20.4547, -11.9333, 20.8225, -19.6462, -11.8626, 20.733, 20.4547, -11.9333, 20.8225, -19.6462, -11.9333, 20.8225, -19.6462, -11.8626, 20.733, 20.4547, -11.8626, 20.733, 20.4547, -11.9333, 20.8225, -19.6462, -11.8626, 20.733, 20.4547, -11.9333, 20.8225, -19.6462, -11.9333, 20.8225, -19.6462, -11.8626, 20.733, 20.4547, -11.8626, 20.733, 20.4547, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -13.9504, -19.3132, 20.3688, -14.0211, -19.2244, -19.7315, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -14.0211, -19.2244, -19.7315, -11.9333, 20.8225, -19.6462, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -11.8626, 20.733, 20.4547, -11.8626, 20.733, 20.4547, -13.9504, -19.3132, 20.3688, -13.9504, -19.3132, 20.3688, -11.8626, 20.733, 20.4547, -13.9504, -19.3132, 20.3688, -11.9333, 20.8225, -19.6462, -11.8626, 20.733, 20.4547, -13.9504, -19.3132, 20.3688, -14.0211, -19.2244, -19.7315, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -13.9504, -19.3132, 20.3688, -14.0211, -19.2244, -19.7315, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -14.0211, -19.2244, -19.7315, -11.9333, 20.8225, -19.6462, -11.9333, 20.8225, -19.6462, -14.0211, -19.2244, -19.7315, -13.9504, -19.3132, 20.3688, -11.8626, 20.733, 20.4547, -11.8626, 20.733, 20.4547, -13.9504, -19.3132, 20.3688, -13.9504, -19.3132, 20.3688, -11.8626, 20.733, 20.4547)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qumfb"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("3_1wxd7")
+metallic = 0.51
+metallic_specular = 0.34
+roughness = 0.7
+normal_enabled = true
+normal_texture = ExtResource("4_2cbkp")
+refraction_enabled = true
+uv1_scale = Vector3(5, 5, 1)
+uv1_offset = Vector3(0, -4, 0)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pmcye"]
 _surfaces = [{
@@ -1121,7 +1088,7 @@ data = PackedVector3Array(-37.0955, -0.1518, 40.0199, 38.9045, -0.1518, -35.9789
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ja4ea"]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_texture = ExtResource("9_i8c5h")
+albedo_texture = ExtResource("9_hhyxk")
 metallic = 0.472727
 roughness = 0.5
 
@@ -1208,7 +1175,7 @@ metallic_specular = 0.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_uy57k"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_n2tlg")
+script = ExtResource("1_xyvft")
 
 [node name="ARENA" type="Node3D" parent="."]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 4.26217, 0, -6.34791)
@@ -1216,6 +1183,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 4.26217, 0, -6.34791
 [node name="main_room" type="Node3D" parent="ARENA"]
 
 [node name="walls" type="Node3D" parent="ARENA/main_room"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Plane_004" type="MeshInstance3D" parent="ARENA/main_room/walls"]
 transform = Transform3D(3.93473, -0.205114, -0.00739431, 0.20513, 3.93473, 0.00841084, 0.0069464, -0.00878439, 3.94006, -194.214, -4.31755, -17.1743)
@@ -1268,19 +1236,19 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_ncrep")
 
 [node name="floors" type="Node3D" parent="ARENA/main_room"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="GROUND 1" type="MeshInstance3D" parent="ARENA/main_room/floors"]
+[node name="Nav" type="NavigationRegion3D" parent="ARENA/main_room/floors"]
 transform = Transform3D(78.2593, 0, 0, 0, 78.2593, 0, 0, 0, 78.2593, -88.2733, -0.269129, 138.545)
-mesh = SubResource("ArrayMesh_oxf2x")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ARENA/main_room/floors/GROUND 1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ARENA/main_room/floors/Nav"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ARENA/main_room/floors/GROUND 1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ARENA/main_room/floors/Nav/StaticBody3D"]
 transform = Transform3D(3.01515, 0, 0, 0, 0.0655702, 0, 0, 0, 1.46322, 0, 0, -0.000926867)
 shape = SubResource("BoxShape3D_jaaq7")
 
 [node name="cielings" type="Node3D" parent="ARENA/main_room"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="CIELING 1" type="MeshInstance3D" parent="ARENA/main_room/cielings"]
 transform = Transform3D(78.2593, 0, 0, 0, 78.2593, 0, 0, 0, 78.2593, -88.2733, 140.919, 138.545)
@@ -1288,19 +1256,21 @@ mesh = SubResource("ArrayMesh_2rgkg")
 skeleton = NodePath("")
 
 [node name="lights" type="Node3D" parent="ARENA/main_room"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="ARENA/main_room/lights"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -84.6076, 68.2168, 131.076)
+transform = Transform3D(4.16667, 0, 0, 0, 4.16667, 0, 0, 0, 4.16667, -84.6076, 29.2596, 131.076)
 layers = 3
 light_color = Color(0.54902, 0.686275, 1, 1)
-light_energy = 2.469
+light_energy = 12.765
 light_size = 1.695
 omni_range = 15.32
 
-[node name="ALIEN_LAMP" parent="ARENA/main_room/lights" instance=ExtResource("7_en470")]
+[node name="ALIEN_LAMP" parent="ARENA/main_room/lights" instance=ExtResource("7_ax4df")]
 transform = Transform3D(0.273797, 7.43496, 0, -7.43496, 0.273797, 0, 0, 0, 7.44, -86.7853, 72.4144, 132.784)
 
 [node name="hallway" type="Node3D" parent="ARENA"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="walls" type="Node3D" parent="ARENA/hallway"]
 
@@ -1415,7 +1385,7 @@ skeleton = NodePath("")
 
 [node name="lights" type="Node3D" parent="ARENA/hallway"]
 
-[node name="ALIEN_LAMP2" parent="ARENA/hallway/lights" instance=ExtResource("7_en470")]
+[node name="ALIEN_LAMP2" parent="ARENA/hallway/lights" instance=ExtResource("7_ax4df")]
 transform = Transform3D(0.273797, 7.43496, 0, -7.43496, 0.273797, 0, 0, 0, 7.44, -86.7853, 72.4144, -123.055)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="ARENA/hallway/lights"]
@@ -1427,6 +1397,7 @@ light_size = 1.695
 omni_range = 15.32
 
 [node name="enemy_room" type="Node3D" parent="ARENA"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="walls" type="Node3D" parent="ARENA/enemy_room"]
 
@@ -1567,7 +1538,7 @@ omni_range = 7.458
 
 [node name="ALIEN_LAMP3" type="Node3D" parent="ARENA/enemy_room/lights" groups=["alien_lamp"]]
 transform = Transform3D(-0.267233, -7.25672, 8.77501, 11.3354, -1.00275, -0.48404, 1.08092, 8.72162, 7.24548, 247.235, 12.817, -131.043)
-script = ExtResource("8_kmd26")
+script = ExtResource("8_4spl5")
 
 [node name="Sphere" type="MeshInstance3D" parent="ARENA/enemy_room/lights/ALIEN_LAMP3"]
 mesh = SubResource("ArrayMesh_elyjs")
@@ -1582,7 +1553,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_dynxm")
 transform = Transform3D(-0.0299262, -1.27465, -0.036163, -0.812644, 0.0469397, -0.982004, 0.98267, 3.86529e-09, -0.813195, -0.315481, 0.076726, -0.11425)
 layers = 3
 light_color = Color(0.4, 0.615686, 1, 1)
-light_energy = 8.184
+light_energy = 16.0
 light_indirect_energy = 0.0
 light_size = 1.0
 light_specular = 1.153
@@ -1598,65 +1569,22 @@ transform = Transform3D(1.34, -2.49594e-09, 0, 2.49594e-09, 1.34, 0, 0, 0, 1.34,
 shape = SubResource("SphereShape3D_uy57k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ARENA/enemy_room/lights/ALIEN_LAMP3"]
-stream = ExtResource("9_lqjul")
+stream = ExtResource("10_flilu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_xep3x")
+stream = ExtResource("11_bdxgp")
 volume_db = -9.145
 autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_h6wki")
+stream = ExtResource("12_hcgag")
 volume_db = -1.581
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.515
 one_shot = true
 
-[node name="Enemies" type="Node3D" parent="."]
-
-[node name="TestEnemy_2" parent="Enemies" instance=ExtResource("22_loyvs")]
-transform = Transform3D(-0.953738, 0, 0.300639, 0, 1, 0, -0.300639, 0, -0.953738, 24.5121, 1.115, -20.6053)
-
-[node name="Righthand2" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="2"]
-transform = Transform3D(0.135631, -0.0115109, -0.0346326, -0.00204345, -0.135472, 0.0370248, -0.0364381, -0.0352491, -0.130987, 0.716013, -0.354967, 0.953408)
-
-[node name="RightForearm_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="3"]
-transform = Transform3D(0.089043, -0.100375, -0.0415209, -0.107458, -0.0892423, -0.0147091, -0.0158697, 0.0410915, -0.133369, 0.690388, 0.188106, 0.224649)
-
-[node name="Righthand_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="4"]
-transform = Transform3D(0.0890428, -0.100375, -0.0415208, -0.106744, -0.0709115, -0.0574893, 0.0201217, 0.068001, -0.121238, 0.730006, 0.51637, 0.156809)
-
-[node name="TestEnemy_3" parent="Enemies" instance=ExtResource("22_loyvs")]
-transform = Transform3D(-0.799097, 0, -0.601201, 0, 1, 0, 0.601201, 0, -0.799097, 20.9709, 1.115, -20.5016)
-
-[node name="TestEnemy_4" parent="Enemies" instance=ExtResource("22_loyvs")]
-transform = Transform3D(-0.378729, 0, 0.925507, 0, 1, 0, -0.925507, 0, -0.378729, 26.8232, 1.115, -17.158)
-
-[node name="TestEnemy_5" parent="Enemies" instance=ExtResource("22_loyvs")]
-transform = Transform3D(0.927053, 0, 0.37493, 0, 1, 0, -0.37493, 0, 0.927053, 24.2892, 1.115, -12.8428)
-
-[node name="TestEnemy_6" parent="Enemies" instance=ExtResource("22_loyvs")]
-transform = Transform3D(0.987762, 0, 0.155969, 0, 1, 0, -0.155969, 0, 0.987762, 21.6815, 1.115, -12.2861)
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("14_nygor")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74695, 0, 3.73409)
-
-[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
-transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
-
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
-transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
-
-[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
-transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
+[node name="CharacterBody3D" parent="." instance=ExtResource("14_cdfjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4202, 1.90004, 24.207)
 
 [connection signal="glass_broken" from="ARENA/enemy_room/lights/ALIEN_LAMP3" to="." method="_on_glass_broken"]
-[connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="ARENA/enemy_room/lights/ALIEN_LAMP3" method="_on_weapons_manager_hit"]
-
-[editable path="Enemies/TestEnemy_2"]
-[editable path="CharacterBody3D"]
-[editable path="CharacterBody3D/Head/Camera3D/HUD"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

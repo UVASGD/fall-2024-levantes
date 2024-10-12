@@ -25,6 +25,7 @@ extends Node3D
 func _ready():
 	add_to_group("level")
 	SignalBus.connect("enemy_death", enemy_death)
+	$Smt.next_state = "chase"
 	wave_timer.connect("timeout",_on_in_between_waves_timeout)
 
 func enemy_death():
@@ -35,7 +36,7 @@ func enemy_death():
 		dead_enemies = 0
 	elif current_level >= monster_dict.size():
 		print("finished")
-
+#
 func spawn_enemies():
 	for i in range(monster_dict.size()):
 		var m = monster.instantiate()
