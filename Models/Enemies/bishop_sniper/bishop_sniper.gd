@@ -36,6 +36,10 @@ var prev_state
 var target
 var offset
 var target_pos
+
+var in_firing_state = false
+
+var animation_lock_on = false
 @onready var hitbox = $"."
 
 func _ready():
@@ -59,6 +63,8 @@ func _physics_process(delta):
 			retreat(delta)
 		"no_move_debug":
 			no_move_debug(delta)
+		"sight_on":
+			sight_on(delta)
 	
 
 func update_target_location(target_location):
@@ -102,11 +108,12 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
 	
 
-
+func sight_on(delta):
+	#TODO: Use face_target_y.face_point and face_target_x.face_point to make the 
+	# 	   enemy face the player and make them enter a shoot state
+	pass
 func retreat(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
@@ -123,8 +130,7 @@ func retreat(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
+
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
@@ -132,17 +138,15 @@ func no_move_debug(delta):
 	face_target_x.face_point(target_pos, delta)
 	shoot(timer)
 
-func _on_chase_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "chase"
 		
-
+# TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
+#		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
 func shoot(tm):
 	if face_target_x.is_facing_target(target_pos) and not is_firing:
 		tm.start()
 		is_firing = true
-		#Animation_Player.queue("smt_shoot")
-		#$AudioStreamPlayer3D2.play()
+		Animation_Player.queue("shoot_animation")
+		$AudioStreamPlayer3D2.play()
 		
 		var projectile_instance = projectile.instantiate()
 
@@ -162,16 +166,10 @@ func shoot(tm):
 
 	
 
-func _on_chill_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "retreat" 
-		
 
 
 
-func _on_chase_body_exited(body):
-	if body.is_in_group("Player"):
-		next_state = "chase"
+	
 
 func take_damage(amount: int):
 	health_hp -= amount
@@ -242,3 +240,11 @@ func is_player_visible(plr) -> bool:
 	else:
 		return false
 
+
+
+
+func _on_retreat_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "retreat" 
+
+		

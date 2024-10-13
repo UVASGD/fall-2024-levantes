@@ -802,6 +802,374 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tmfqs")
 
+[sub_resource type="Animation" id="Animation_fakjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.42446, 0, -3.2685e-13)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.61694, 1.02076, 3.54713)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.187799, 1.04824, -0.454618)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.19734, -0.844009, 3.54399)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.187799, 1.04824, -0.300471)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(21.0661, 6.08293, 0.542269)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.129593, 1.66127, 7.72585)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.37696e-08, 3.32598e-07, -0.840483)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_shield:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_shield:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.42446, 0, -2.87113e-13)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.61694, 1.02076, 3.54713)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.187799, 1.04824, -0.454618)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.19734, -0.844009, 3.54399)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.593335, 0.0761061, 0.116825)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.3863e-15, 1.07581e-13, -0.21663)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.181596, 0.0111959, -0.034189)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.593335, 0.0761061, 0.116825)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.09054e-15, 1.08672e-13, -0.21663)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.772749, -0.295828, 9.15118e-14)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.67007e-20, 1.05094e-19, -0.233176)]
+}
+
+[sub_resource type="Animation" id="Animation_agns7"]
+resource_name = "enter_chase_state"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("f_t_y:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.292483, 0.600404, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("f_t_y:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_kxex0"]
 resource_name = "enter_shoot_state"
 length = 0.35
@@ -909,10 +1277,10 @@ tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:po
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(21.0661, 6.08293, 0.542269)]
+"values": [Vector3(21.0661, 6.08293, 0.542269), Vector3(21.0661, 6.08293, 0.542269)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -945,10 +1313,10 @@ tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:r
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -1.5708, 0)]
+"values": [Vector3(0, -1.5708, 0), Vector3(0.0278565, -1.57972, -0.190413)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -1119,376 +1487,226 @@ tracks/25/keys = {
 "values": [Vector3(2.09054e-15, 1.08672e-13, -0.21663), Vector3(-0.261798, 0.000102242, -0.217407)]
 }
 
-[sub_resource type="Animation" id="Animation_agns7"]
-resource_name = "enter_chase_state"
-length = 0.2
-step = 0.05
+[sub_resource type="Animation" id="Animation_fipl1"]
+resource_name = "shoot_animation"
+length = 2.0
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y:position")
+tracks/0/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.292483, 0.600404, 0)]
+"values": [Vector3(1.98893, 0, -2.63416), Vector3(1.98893, 0, -2.63416), Vector3(1.98893, 0, -2.63416)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y:rotation")
+tracks/1/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -1.5708, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fakjd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.292483, 0.600404, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.5708, 0)]
+"values": [Vector3(0.325433, 0.00305806, 0.0009777), Vector3(0.325433, 0.00305806, 0.0009777), Vector3(0.325433, 0.00305806, 0.0009777)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
+tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 0.9, 1, 1.15, 1.375, 1.5, 1.65, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(2.51017, 0.951084, 0.351315), Vector3(2.05825, 0.951084, 0.351317), Vector3(0.0731218, 0.23658, 0.351324), Vector3(2.51017, 0.951084, 0.351315), Vector3(2.51017, 0.951084, 0.351315), Vector3(3.85932, 0.951084, 0.35131), Vector3(3.85932, 0.951084, 0.35131), Vector3(-0.776955, 0.951084, 0.351327), Vector3(-0.776955, 0.951084, 0.351327), Vector3(3.85932, 0.951084, 0.35131), Vector3(3.85932, 0.951084, 0.35131), Vector3(2.51017, 0.951084, 0.351315)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
+tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 0.9, 1, 1.15, 1.375, 1.5, 1.65, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181911, -0.00308508, -0.109368), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.181596, 0.0111959, -0.188336)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
+tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 1.05, 1.15, 1.375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(2.42446, 0, -3.2685e-13)]
+"values": [Vector3(3.30411, -0.774333, 0.806095), Vector3(2.85219, -0.774333, 0.806097), Vector3(0.998542, -1.42204, 0.806103), Vector3(3.30411, -0.774333, 0.806095), Vector3(3.30411, -0.774333, 0.806095), Vector3(3.30411, -0.774333, 0.806095), Vector3(2.47255, -0.774333, 0.806098), Vector3(2.47255, -0.774333, 0.806098), Vector3(3.30411, -0.774333, 0.806095)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
+tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 1.05, 1.15, 1.375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181911, -0.00308508, 0.0447789), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/6/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(2.61694, 1.02076, 3.54713)]
+"values": [Vector3(1.592, 0, -2.65639), Vector3(1.592, 0, -2.65639), Vector3(1.592, 0, -2.65639)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/7/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.187799, 1.04824, -0.454618)]
+"values": [Vector3(-6.06742e-09, -0.803148, -3.18432e-09), Vector3(-6.06742e-09, -0.803148, -3.18432e-09), Vector3(-6.06742e-09, -0.803148, -3.18432e-09)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(3.19734, -0.844009, 3.54399)]
+"values": [Vector3(21.0661, 6.08293, 0.542269), Vector3(21.0661, 6.08293, 0.542269), Vector3(21.0661, 6.08293, 0.542269), Vector3(21.0661, 6.08293, 0.542269), Vector3(21.0661, 6.08293, 0.542269)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.187799, 1.04824, -0.300471)]
+"values": [Vector3(0.0278565, -1.57972, -0.190413), Vector3(0.0278565, -1.57972, -0.190413), Vector3(0.0278565, -1.57972, -0.190413), Vector3(0.0278565, -1.57972, -0.190413), Vector3(0.0278565, -1.57972, -0.190413)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
+tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.15, 1.375, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(21.0661, 6.08293, 0.542269)]
+"values": [Vector3(0.129593, 1.66127, 7.72585), Vector3(0.129593, 1.66127, 7.72585), Vector3(0.129593, 1.66127, 7.72585), Vector3(0.129593, 1.66127, 7.72585), Vector3(0.124783, 1.64324, 11.6214), Vector3(0.124783, 1.64324, 11.6214), Vector3(0.129593, 1.66127, 7.72585), Vector3(0.129593, 1.66127, 7.72585)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
+tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.15, 1.375, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.129593, 1.66127, 7.72585)]
+"values": [Vector3(8.37696e-08, 3.32598e-07, -0.840483), Vector3(8.37696e-08, 3.32598e-07, -0.840483), Vector3(8.37696e-08, 3.32598e-07, -0.840483), Vector3(8.37696e-08, 3.32598e-07, -0.840483), Vector3(8.2598e-08, 3.32741e-07, -0.840483), Vector3(8.2598e-08, 3.32741e-07, -0.840483), Vector3(8.37696e-08, 3.32598e-07, -0.840483), Vector3(8.37696e-08, 3.32598e-07, -0.840483)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
+tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 0.9, 1, 1.15, 1.375, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(8.37696e-08, 3.32598e-07, -0.840483)]
+"values": [Vector3(2.51017, 0.951084, 0.351315), Vector3(2.05825, 0.951084, 0.351315), Vector3(0.0731232, 0.23658, 0.351315), Vector3(2.51017, 0.951084, 0.351315), Vector3(2.51017, 0.951084, 0.351315), Vector3(3.85932, 0.951084, 0.351315), Vector3(3.85932, 0.951084, 0.351315), Vector3(-0.776956, 0.951084, 0.351314), Vector3(-0.776956, 0.951084, 0.351314), Vector3(3.85932, 0.951084, 0.351315), Vector3(2.51017, 0.951084, 0.351315)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
+tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 0.9, 1, 1.15, 1.375, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -1.5708, 0)]
+"values": [Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181911, -0.0030851, -0.109368), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.181596, 0.0111959, -0.188336), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.180861, 0.108468, -0.0164102), Vector3(-0.181596, 0.0111959, -0.188336)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield:position")
+tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 1.05, 1.15, 1.375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(3.30411, -0.774333, 0.806095), Vector3(2.85219, -0.774333, 0.806095), Vector3(0.998543, -1.42204, 0.806095), Vector3(3.30411, -0.774333, 0.806095), Vector3(3.30411, -0.774333, 0.806095), Vector3(3.30411, -0.774333, 0.806095), Vector3(2.47255, -0.774333, 0.806098), Vector3(2.47255, -0.774333, 0.806098), Vector3(3.30411, -0.774333, 0.806095)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield:rotation")
+tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5, 1.05, 1.15, 1.375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.5708, 0)]
+"values": [Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181911, -0.0030851, 0.0447789), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189), Vector3(-0.181596, 0.0111959, -0.034189)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:position")
+tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(2.42446, 0, -2.87113e-13)]
+"values": [Vector3(-0.772749, -0.295828, 9.15118e-14), Vector3(-0.772749, -0.295828, 9.15118e-14), Vector3(-1.69555, -0.295825, -0.00266933), Vector3(-0.772749, -0.295828, 9.15118e-14), Vector3(-0.772749, -0.295828, 9.15118e-14)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:rotation")
+tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.025, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176)]
 }
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.61694, 1.02076, 3.54713)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.187799, 1.04824, -0.454618)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.19734, -0.844009, 3.54399)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:position")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.593335, 0.0761061, 0.116825)]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:rotation")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.3863e-15, 1.07581e-13, -0.21663)]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.181596, 0.0111959, -0.034189)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:rotation")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:position")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.593335, 0.0761061, 0.116825)]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:rotation")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.09054e-15, 1.08672e-13, -0.21663)]
-}
-
-[sub_resource type="Animation" id="Animation_fipl1"]
-resource_name = "shoot_animation"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3flr"]
 _data = {
@@ -1503,7 +1721,6 @@ script = ExtResource("1_1oh2a")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_je42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -1516,25 +1733,16 @@ mesh = SubResource("CapsuleMesh_leyqv")
 avoidance_enabled = true
 radius = 2.0
 
-[node name="chase" type="Area3D" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="chase"]
-transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
-shape = SubResource("SphereShape3D_gupe6")
-
-[node name="chill" type="Area3D" parent="."]
+[node name="retreat" type="Area3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
-visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="chill"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="retreat"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
 [node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(-3.93403e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.93403e-09, -0.292483, 0.600404, 0)
+transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, -0.292483, 0.600404, 0)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
@@ -1542,7 +1750,6 @@ retreat_turn_speed = 30
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="f_t_y_model_base" type="Node3D" parent="f_t_y/f_t_y_model_group"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_model_base"]
 transform = Transform3D(0.904152, 0, -0.000694632, 0, 0.904153, 0, 0.000694632, 0, 0.904152, 3.19116, 0, -3.72694e-20)
@@ -1585,7 +1792,6 @@ skeleton = NodePath("")
 
 [node name="Vision" type="Area3D" parent="f_t_y/f_t_y_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
-visible = false
 
 [node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("3_ra7jm")]
 transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
@@ -1612,7 +1818,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42446, 0, -3.2685e-13)
 
 [node name="head_n_face" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
-transform = Transform3D(0.972938, 0.231069, 0, -0.231069, 0.972938, 0, -1.0842e-19, 1.69407e-21, 1, -0.772749, -0.295828, 9.15118e-14)
+transform = Transform3D(0.972937, 0.231069, 1.05094e-19, -0.231069, 0.972938, -2.67007e-20, -1.0842e-19, 1.69407e-21, 1, -0.772749, -0.295828, 9.15118e-14)
 
 [node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face"]
 transform = Transform3D(1, 0, 1.35525e-20, 0, 1, 0, 0, 0, 1, 0.00422198, 0, -0.199909)
@@ -1627,13 +1833,13 @@ mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
 [node name="cape" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
-transform = Transform3D(0.976627, 0.21494, 1.07581e-13, -0.21494, 0.976627, 2.3863e-15, -1.04554e-13, -2.5454e-14, 1, -0.593335, 0.0761061, 0.116825)
+transform = Transform3D(0.976627, 0.21494, 1.07581e-13, -0.21494, 0.976627, 2.3863e-15, -1.04554e-13, -2.54539e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_axc23")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
 [node name="leftarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
-transform = Transform3D(0.519447, 0.0738155, 0.851308, -0.431398, 0.882632, 0.186697, -0.737611, -0.464232, 0.490325, 2.61694, 1.02076, 3.54713)
+transform = Transform3D(0.519444, 0.0738137, 0.85131, -0.431398, 0.882631, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
 [node name="RightForearm_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/leftarm"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)
@@ -1648,7 +1854,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
-transform = Transform3D(0.524622, -0.00681453, 0.851308, -0.290766, 0.938403, 0.186697, -0.800142, -0.345477, 0.490325, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.524619, -0.00681554, 0.851309, -0.290766, 0.938403, 0.186697, -0.800145, -0.345477, 0.490321, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
 transform = Transform3D(-0.00443194, 0.347224, 0.940205, 1.20537, 1.3411e-07, 0.00373595, 0.00125892, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
@@ -1669,7 +1875,7 @@ mesh = SubResource("ArrayMesh_00w01")
 skeleton = NodePath("")
 
 [node name="sniper_rifle" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.0661, 6.08293, 0.542269)
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 21.0661, 6.08293, 0.542269)
 
 [node name="model" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
 
@@ -1694,7 +1900,7 @@ mesh = SubResource("ArrayMesh_f1ayx")
 skeleton = NodePath("")
 
 [node name="Bolt" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
-transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86265e-08, -1.25728e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
+transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86264e-08, -1.25729e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
 material_override = SubResource("StandardMaterial3D_dbfai")
 mesh = SubResource("ArrayMesh_df0wc")
 skeleton = NodePath("")
@@ -1746,7 +1952,7 @@ transform = Transform3D(0.156415, 2.02672, 10.9236, 0.2445, 10.9214, -2.02982, -
 visible = false
 
 [node name="f_t_x_shield" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
 visible = false
 
 [node name="enemy_head_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
@@ -1768,13 +1974,13 @@ mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
 [node name="cape_s" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_s"]
-transform = Transform3D(0.976627, 0.21494, 1.08672e-13, -0.21494, 0.976627, -2.09054e-15, -1.06581e-13, -2.13163e-14, 1, -0.593335, 0.0761061, 0.116825)
+transform = Transform3D(0.976627, 0.21494, 1.08672e-13, -0.21494, 0.976627, -2.09054e-15, -1.06581e-13, -2.13162e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
 [node name="leftarm_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
-transform = Transform3D(0.519448, 0.0738155, 0.851309, -0.431398, 0.882632, 0.186697, -0.737611, -0.464232, 0.490325, 2.61694, 1.02076, 3.54713)
+transform = Transform3D(0.519445, 0.0738137, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
 [node name="RightForearm_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/leftarm_s"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)
@@ -1789,7 +1995,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
-transform = Transform3D(0.999422, 0.0321594, 0.0110116, -0.0336202, 0.982982, 0.1806, -0.00501619, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.999423, 0.0321594, 0.0110116, -0.0336203, 0.982982, 0.180599, -0.0050162, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm_s"]
 transform = Transform3D(-0.00443193, 0.347224, 0.940205, 1.20537, 1.2666e-07, 0.00373596, 0.00125889, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
@@ -1826,9 +2032,9 @@ wait_time = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_m3flr")
 }
+autoplay = "RESET"
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
-[connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
-[connection signal="body_entered" from="chill" to="." method="_on_chill_body_entered"]
+[connection signal="body_entered" from="retreat" to="." method="_on_retreat_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
