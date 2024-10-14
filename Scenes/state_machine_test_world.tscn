@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkhyw5o1ojai"]
+[gd_scene load_steps=26 format=3 uid="uid://bkhyw5o1ojai"]
 
-[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_8irtu"]
 [ext_resource type="Script" path="res://Scenes/state_machine_test_world.gd" id="1_uhjef"]
+[ext_resource type="Script" path="res://player/player_controller.gd" id="3_0rti5"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Models/Enemies/state_machine_test/smt.tscn" id="3_rmk8k"]
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://smg_refactor.tscn" id="4_01bpx"]
+[ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="4_hgwsr"]
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://burst-refactor.tscn" id="5_ha7ax"]
+[ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="5_oo7w6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
 vertices = PackedVector3Array(-90.3186, 0.33532, -7.23399, -2.3186, 0.33532, -7.23399, -2.3186, 0.33532, -9.23399, -90.3186, 0.33532, -7.23399, -2.3186, 0.33532, -9.23399, -0.0686035, 0.33532, -9.48399, -0.0686035, 0.33532, -129.984, -90.3186, 0.33532, -129.984, 16.9314, 0.33532, -0.983994, 17.1814, 0.33532, 0.266006, 18.6814, 0.33532, 0.266006, 18.6814, 0.33532, -5.73399, 2.1814, 0.33532, -9.23399, 18.6814, 0.33532, -5.73399, 19.9314, 0.33532, -5.98399, 19.9314, 0.33532, -129.984, -0.0686035, 0.33532, -129.984, 1.6814, 0.33532, -4.98399, 5.9314, 0.33532, -0.483994, 6.1814, 0.33532, -0.983994, 2.1814, 0.33532, -5.23399, -0.0686035, 0.33532, -129.984, -0.0686035, 0.33532, -9.48399, 2.1814, 0.33532, -9.23399, 2.1814, 0.33532, -9.23399, 2.1814, 0.33532, -5.23399, 6.1814, 0.33532, -0.983994, 16.9314, 0.33532, -0.983994, 18.6814, 0.33532, -5.73399, 20.9314, 0.33532, -5.73399, 20.9314, 0.33532, -3.73399, 90.4314, 0.33532, -3.73399, 19.9314, 0.33532, -5.98399, 20.9314, 0.33532, -5.73399, 90.4314, 0.33532, -3.73399, 90.4314, 0.33532, -129.984, 19.9314, 0.33532, -129.984, -1.3186, 3.58532, -8.48399, -1.3186, 3.58532, -5.98399, 1.1814, 3.58532, -5.98399, 1.1814, 3.58532, -8.48399, -1.0686, 0.33532, -8.23399, -1.0686, 0.33532, -6.23399, 0.931396, 0.33532, -6.23399, 0.931396, 0.33532, -8.23399, 18.6814, 0.33532, 0.266006, 17.1814, 0.33532, 0.266006, 16.9314, 0.33532, 1.26601, 18.6814, 0.33532, 16.016, 6.1814, 0.33532, 1.26601, 5.9314, 0.33532, -0.483994, 1.6814, 0.33532, -4.98399, -2.0686, 0.33532, -4.98399, 19.6814, 0.33532, 16.266, 18.6814, 0.33532, 16.016, -90.3186, 0.33532, -7.23399, -90.3186, 0.33532, 130.016, 19.6814, 0.33532, 130.016, -2.0686, 0.33532, -4.98399, -2.3186, 0.33532, -7.23399, -90.3186, 0.33532, -7.23399, 18.6814, 0.33532, 16.016, 16.9314, 0.33532, 1.26601, 6.1814, 0.33532, 1.26601, 18.6814, 0.33532, 16.016, 6.1814, 0.33532, 1.26601, -2.0686, 0.33532, -4.98399, -90.3186, 0.33532, -7.23399, 20.9314, 0.33532, 14.016, 90.4314, 0.33532, 14.016, 90.4314, 0.33532, -3.73399, 20.9314, 0.33532, -3.73399, 90.4314, 0.33532, 14.016, 20.9314, 0.33532, 14.016, 20.9314, 0.33532, 16.016, 90.4314, 0.33532, 14.016, 20.9314, 0.33532, 16.016, 19.6814, 0.33532, 16.266, 19.6814, 0.33532, 130.016, 90.4314, 0.33532, 130.016)
@@ -39,6 +41,74 @@ background_mode = 2
 sky = SubResource("Sky_ocx2s")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1c20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
+size = Vector3(2.92481, 2.45361, 3.20447)
+
+[sub_resource type="Animation" id="Animation_ps52s"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -0.74249)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kl5rf"]
+resource_name = "burst"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -1.14792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i65yi"]
+_data = {
+"RESET": SubResource("Animation_ps52s"),
+"burst": SubResource("Animation_kl5rf")
+}
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_uhjef")
@@ -99,11 +169,81 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.134
 [node name="Smt2" parent="." instance=ExtResource("3_rmk8k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8995, 3.93984, 0)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_8irtu")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
+script = ExtResource("3_0rti5")
+HEADBOB_SWAY_AMOUNT = 0.01
 
-[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="0" instance=ExtResource("4_01bpx")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j86j8")
 
-[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="1" instance=ExtResource("5_ha7ax")]
-transform = Transform3D(-0.369436, -0.678224, -0.63524, -0.340966, 0.734855, -0.586285, 0.864442, 8.9407e-08, -0.502733, 0.128455, -0.355517, -0.940877)
+[node name="WorldModel" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0138981, 0)
 
-[editable path="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/WorldModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_u1c20")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+unique_name_in_owner = true
+cull_mask = 1048573
+current = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79666, 0)
+cull_mask = 1047554
+
+[node name="HUD" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("4_hgwsr")]
+scale = Vector2(1.00143, 1)
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+script = ExtResource("5_oo7w6")
+
+[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("4_01bpx")]
+
+[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("5_ha7ax")]
+transform = Transform3D(-0.36944, -0.678224, -0.635238, -0.340966, 0.734855, -0.586285, 0.86444, -2.74181e-06, -0.502736, 0.128455, -0.355517, -0.940877)
+
+[node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/pickup_detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
+shape = SubResource("BoxShape3D_v3v36")
+
+[node name="animations" type="Node" parent="CharacterBody3D"]
+
+[node name="burst_rifle_animations" type="AnimationPlayer" parent="CharacterBody3D/animations"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_i65yi")
+}
