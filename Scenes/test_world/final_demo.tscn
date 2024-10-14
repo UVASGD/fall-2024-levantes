@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://b1o8045la0x6s"]
+[gd_scene load_steps=123 format=3 uid="uid://b1o8045la0x6s"]
 
 [ext_resource type="Script" path="res://Scenes/test_world/final_demo.gd" id="1_n2tlg"]
 [ext_resource type="Texture2D" uid="uid://cxxcdukvgnoqo" path="res://world_objects/ARENA_arenawall.png" id="1_y5xmo"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://world_objects/ALIEN_LAMP.gd" id="8_kmd26"]
 [ext_resource type="Texture2D" uid="uid://bde7prl2atj4m" path="res://world_objects/ALIEN_LAMP_arenaground2.png" id="9_i8c5h"]
 [ext_resource type="AudioStream" uid="uid://cxgx1w44rw14p" path="res://audio/glass_break.mp3" id="9_lqjul"]
-[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="14_nygor"]
+[ext_resource type="Script" path="res://player/player_controller.gd" id="14_bveho"]
+[ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="15_lyqp1"]
+[ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="16_df8tp"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="18_xep3x"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="19_h6wki"]
 [ext_resource type="PackedScene" uid="uid://dfaprawobuuvd" path="res://Models/Enemies/test_enemy/test_enemy.tscn" id="22_loyvs"]
@@ -1207,6 +1209,74 @@ metallic_specular = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uy57k"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1c20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
+size = Vector3(2.92481, 2.45361, 3.20447)
+
+[sub_resource type="Animation" id="Animation_ps52s"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -0.74249)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kl5rf"]
+resource_name = "burst"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -1.14792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i65yi"]
+_data = {
+"RESET": SubResource("Animation_ps52s"),
+"burst": SubResource("Animation_kl5rf")
+}
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_n2tlg")
 
@@ -1618,15 +1688,6 @@ one_shot = true
 [node name="TestEnemy_2" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.953738, 0, 0.300639, 0, 1, 0, -0.300639, 0, -0.953738, 24.5121, 1.115, -20.6053)
 
-[node name="Righthand2" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="2"]
-transform = Transform3D(0.135631, -0.0115109, -0.0346326, -0.00204345, -0.135472, 0.0370248, -0.0364381, -0.0352491, -0.130987, 0.716013, -0.354967, 0.953408)
-
-[node name="RightForearm_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="3"]
-transform = Transform3D(0.089043, -0.100375, -0.0415209, -0.107458, -0.0892423, -0.0147091, -0.0158697, 0.0410915, -0.133369, 0.690388, 0.188106, 0.224649)
-
-[node name="Righthand_002" parent="Enemies/TestEnemy_2/f_t_y/f_t_x/f_t_x_model_group/non_face_x" index="4"]
-transform = Transform3D(0.0890428, -0.100375, -0.0415208, -0.106744, -0.0709115, -0.0574893, 0.0201217, 0.068001, -0.121238, 0.730006, 0.51637, 0.156809)
-
 [node name="TestEnemy_3" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(-0.799097, 0, -0.601201, 0, 1, 0, 0.601201, 0, -0.799097, 20.9709, 1.115, -20.5016)
 
@@ -1639,10 +1700,81 @@ transform = Transform3D(0.927053, 0, 0.37493, 0, 1, 0, -0.37493, 0, 0.927053, 24
 [node name="TestEnemy_6" parent="Enemies" instance=ExtResource("22_loyvs")]
 transform = Transform3D(0.987762, 0, 0.155969, 0, 1, 0, -0.155969, 0, 0.987762, 21.6815, 1.115, -12.2861)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("14_nygor")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74695, 0, 3.73409)
+script = ExtResource("14_bveho")
+HEADBOB_SWAY_AMOUNT = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j86j8")
+
+[node name="WorldModel" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0138981, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/WorldModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_u1c20")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+unique_name_in_owner = true
+cull_mask = 1048573
+current = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79666, 0)
+cull_mask = 1047554
+
+[node name="HUD" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("15_lyqp1")]
+scale = Vector2(1.00143, 1)
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+script = ExtResource("16_df8tp")
+
+[node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/pickup_detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
+shape = SubResource("BoxShape3D_v3v36")
+
+[node name="animations" type="Node" parent="CharacterBody3D"]
+
+[node name="burst_rifle_animations" type="AnimationPlayer" parent="CharacterBody3D/animations"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_i65yi")
+}
 
 [connection signal="glass_broken" from="ARENA/enemy_room/lights/ALIEN_LAMP3" to="." method="_on_glass_broken"]
 
 [editable path="Enemies/TestEnemy_2"]
-[editable path="CharacterBody3D"]
