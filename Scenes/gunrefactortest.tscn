@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2vtbuwblnbio"]
+[gd_scene load_steps=15 format=3 uid="uid://d2vtbuwblnbio"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_s1fl0"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_ckbki"]
-[ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://burst-refactor.tscn" id="2_u7od1"]
-[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://smg_refactor.tscn" id="3_cpec6"]
-[ext_resource type="Script" path="res://weapons_manager_refactor.gd" id="3_lg8hq"]
+[ext_resource type="PackedScene" uid="uid://c1v1mbdnx6rj7" path="res://weapon_manager.tscn" id="3_ut6gf"]
+[ext_resource type="PackedScene" uid="uid://d1d10pso3mj0p" path="res://husk_smg.tscn" id="5_vi2t6"]
 [ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://husk_burst_rifle.tscn" id="6_w2yy5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0m8ln"]
@@ -105,14 +104,10 @@ scale = Vector2(1.00143, 1)
 mouse_filter = 1
 mouse_force_pass_scroll_events = false
 
-[node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
-script = ExtResource("3_lg8hq")
-
-[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("3_cpec6")]
-
-[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("2_u7od1")]
+[node name="weapon manager" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("3_ut6gf")]
 
 [node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 8
 
@@ -126,5 +121,5 @@ environment = SubResource("Environment_miqag")
 [node name="HuskBurstRifle" parent="." instance=ExtResource("6_w2yy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350971, 2.26675, -4.26889)
 
-[connection signal="body_entered" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_entered"]
-[connection signal="body_exited" from="CharacterBody3D/pickup_detection" to="CharacterBody3D/Head/Camera3D/weapon manager" method="_on_pickup_detection_body_exited"]
+[node name="husk_weapon" parent="." instance=ExtResource("5_vi2t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61968, 1.73404, -3.48006)

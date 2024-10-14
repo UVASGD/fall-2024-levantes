@@ -1,6 +1,4 @@
 class_name Gun extends Node3D
-#const husk_smg = preload("res://husk_smg.tscn")
-#const sp_burst_rifle = preload("res://Models/Weapons/spawnable_weapons/sp_burst_rifle.tscn")
 
 @export var husk_weapon_path: String
 @export var model_path: String
