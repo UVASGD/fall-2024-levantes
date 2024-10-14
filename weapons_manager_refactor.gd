@@ -34,9 +34,9 @@ func _input(event):
 		hide_weapon(current_weapon)
 	if event.is_action_pressed("Weapon_Switch"):
 		if can_switch:
-			switch()
+			await switch()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
-		pickup()
+		await pickup()
 	if event.is_action_pressed("Shoot"):
 		if current_weapon == null:
 			return
@@ -44,7 +44,7 @@ func _input(event):
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null:
 			return
-		current_weapon.reload()
+		await current_weapon.reload()
 	pass
 
 func pickup():
@@ -92,7 +92,7 @@ func switch():
 	if(other_weapon != null):
 		can_switch = false
 		await hide_weapon(current_weapon)
-		show_weapon(other_weapon)
+		await show_weapon(other_weapon)
 		var temp = other_weapon
 		other_weapon = current_weapon
 		current_weapon = temp

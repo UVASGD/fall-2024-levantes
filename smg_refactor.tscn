@@ -41,8 +41,9 @@ Curr_Mag_Ammo = 30
 Reserve_Ammo = 30
 Max_Mag_Capacity = 30
 Max_Ammo = 30
+Shoot_Cooldown_Ms = 100
 Type = 1
-Projectile_Range = 1000.0
+Projectile_Range = 100.0
 dmg = 10
 
 [node name="smgModel" parent="." instance=ExtResource("2_fdjyp")]

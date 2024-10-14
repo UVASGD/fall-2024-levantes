@@ -17,13 +17,15 @@ class_name Gun extends Node3D
 @export var Reserve_Ammo: int
 @export var Max_Mag_Capacity: int
 @export var Max_Ammo: int
-
+@export var Shoot_Cooldown_Ms: int
 @export var Fire_Mode: String
 @export var Burst_Count: int
 @export var Wait_Interval: float
 @export var Is_Waiting: bool
-@export var Is_Reloading: bool
-
+@export var is_reloading: bool
+var is_dequipped
+var is_equipping
+var is_dequipping
 @export_flags("HitScan","Projectile") var Type
 @export var Projectile_Range: float
 @export var dmg: int
@@ -34,10 +36,14 @@ class_name Gun extends Node3D
 @export var light_path: String
 
 signal hit(target)
-
+var can_equip
+var can_dequip
+var can_shoot
+var can_reload
 var animation_player
 var model
 var audio_player
+var last_shot_time = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var model = get_child(0)
@@ -47,7 +53,7 @@ func _ready():
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)
 	var root = get_tree().root
-	
+	can_equip = true
 	pass
 
 
@@ -56,66 +62,78 @@ func _process(delta):
 	pass
 	
 	
-func shoot():
-	if Curr_Mag_Ammo != 0:
-				var cur_anim = animation_player.get_current_animation()
-				var anim_checks = (cur_anim != Dequip_Ani and cur_anim != Equip_Ani)
-				if anim_checks and Curr_Mag_Ammo != 0:
-					while Input.is_action_pressed("Shoot") and Curr_Mag_Ammo != 0 and animation_player.get_current_animation() != Reload_Ani:
-						animation_player.play(Fire_Ani)
-						audio_player.play()
-						_raycast()
-						Curr_Mag_Ammo -= 1
-						await animation_player.animation_finished
-						#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
-						if Reserve_Ammo != 0 and Curr_Mag_Ammo == 0:
-							reload()
-				elif anim_checks and Curr_Mag_Ammo == 0 and Reserve_Ammo != 0:
-					reload()
+func shoot(): #default shoot logic
+	while Input.is_action_pressed("Shoot") and can_shoot:
+		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
+		await play_fire()
+		_raycast()
+		Curr_Mag_Ammo -= 1
+
+	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
+		if Curr_Mag_Ammo == 0:
+			if Reserve_Ammo > 0:
+				await reload()
+			else:
+				can_shoot = false #out of all ammo
 	pass
 
 func reload():
-	var r_ammo = Reserve_Ammo
-	var c_mag_ammo = Curr_Mag_Ammo
-	var max_mag_ammo = Max_Mag_Capacity
-	
-	var refill_amount = max_mag_ammo - c_mag_ammo
-	if c_mag_ammo == max_mag_ammo:
+	if Curr_Mag_Ammo == Max_Mag_Capacity || !can_reload:
 		pass
-	elif r_ammo >= refill_amount:
-		var cur_anim = animation_player.get_current_animation()
-		if ((cur_anim != Dequip_Ani) 
-			and (cur_anim != Equip_Ani)
-			and cur_anim != Reload_Ani
-		):
-			animation_player.play(Reload_Ani)
-			Curr_Mag_Ammo += refill_amount
-			Reserve_Ammo -= refill_amount
-			await animation_player.animation_finished
-			#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
+		
+	can_dequip = false
+	can_shoot = false
+	can_reload = false
+	
+	var refill_amount = Max_Mag_Capacity - Curr_Mag_Ammo
+	
+	if Reserve_Ammo <= refill_amount:
+		refill_amount = Reserve_Ammo
+		Reserve_Ammo = 0
 	else:
-		var cur_anim = animation_player.get_current_animation()
-		if ((cur_anim != Dequip_Ani) 
-			and (cur_anim != Equip_Ani)
-			and cur_anim != Reload_Ani
-		):
-			animation_player.play(Reload_Ani)
-			Curr_Mag_Ammo += refill_amount
-			Reserve_Ammo = 0
-			await animation_player.animation_finished
-			#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
+		Reserve_Ammo -= refill_amount
+		
+	animation_player.play(Reload_Ani)
+	Curr_Mag_Ammo += refill_amount
+	await animation_player.animation_finished
+	
+	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
+	can_reload = true
+	can_shoot = true
+	can_dequip = true
 	pass
 
 func dequip():
+	if !can_dequip:
+		pass
+	can_equip = false
+	can_shoot = false
+	can_reload = false
+	can_dequip = false
+	
 	animation_player.play(Dequip_Ani)
 	await animation_player.animation_finished
 	hide()
+	
+	can_equip = true
 	return
 	
 func equip():
+	if !can_equip:
+		pass
+	can_shoot = false
+	can_reload = false
+	can_dequip = false
+	can_equip = false
+	
 	show()
 	animation_player.play(Equip_Ani)
-	await("animation_finished")
+	await animation_player.animation_finished
+
+	if(Curr_Mag_Ammo > 0):
+		can_shoot = true
+	can_reload = true
+	can_dequip = true
 
 func _raycast():
 	var camera = get_parent().get_parent()
@@ -153,3 +171,7 @@ func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	await get_tree().create_timer(1).timeout
 	instance.queue_free()
 
+func play_fire():
+	animation_player.play(Fire_Ani)
+	audio_player.play()
+	await animation_player.animation_finished
