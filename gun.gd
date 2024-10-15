@@ -4,6 +4,7 @@ class_name Gun extends Node3D
 @export var model_path: String
 @export var Name: String
 @export var Display_Name: String
+@export var animation_player_treepath: String
 @export var animation_library_path: String
 @export var Equip_Ani: String
 @export var Fire_Ani: String
@@ -23,9 +24,6 @@ class_name Gun extends Node3D
 @export var Wait_Interval: float
 @export var Is_Waiting: bool
 @export var is_reloading: bool
-var is_dequipped
-var is_equipping
-var is_dequipping
 @export_flags("HitScan","Projectile") var Type
 @export var Projectile_Range: float
 @export var dmg: int
@@ -47,7 +45,8 @@ var last_shot_time = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var model = get_child(0)
-	animation_player = get_child(1)
+	animation_player = get_node(animation_player_treepath)
+	print(animation_player)
 	audio_player = AudioStreamPlayer.new()
 	audio_player.max_polyphony = 3
 	audio_player.stream = load(Fire_Sound)
@@ -79,7 +78,7 @@ func shoot(): #default shoot logic
 
 func reload():
 	if Curr_Mag_Ammo == Max_Mag_Capacity || !can_reload:
-		pass
+		return
 		
 	can_dequip = false
 	can_shoot = false
@@ -105,14 +104,15 @@ func reload():
 
 func dequip():
 	if !can_dequip:
-		pass
+		return
 	can_equip = false
 	can_shoot = false
 	can_reload = false
 	can_dequip = false
-	
+	print("playing $Name dequip")
 	animation_player.play(Dequip_Ani)
 	await animation_player.animation_finished
+	print("finished $Name dequip")
 	hide()
 	
 	can_equip = true
@@ -120,16 +120,17 @@ func dequip():
 	
 func equip():
 	if !can_equip:
-		pass
+		return
 	can_shoot = false
 	can_reload = false
 	can_dequip = false
 	can_equip = false
 	
 	show()
+	print("playing $Name equip")
 	animation_player.play(Equip_Ani)
 	await animation_player.animation_finished
-
+	print("finished $Name equip")
 	if(Curr_Mag_Ammo > 0):
 		can_shoot = true
 	can_reload = true
@@ -157,7 +158,7 @@ func get_husk():
 	var new_husk = husk.instantiate()
 	new_husk.current_ammo = Curr_Mag_Ammo
 	new_husk.reserve_ammo = Reserve_Ammo
-	new_husk.name = Name 
+	new_husk.name = Name
 	return new_husk
 	
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
@@ -175,3 +176,6 @@ func play_fire():
 	animation_player.play(Fire_Ani)
 	audio_player.play()
 	await animation_player.animation_finished
+
+func add_animationplayer(ani):
+	animation_player = ani

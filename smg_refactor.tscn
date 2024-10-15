@@ -1,28 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drrbjw4jfeol1"]
+[gd_scene load_steps=3 format=3 uid="uid://drrbjw4jfeol1"]
 
 [ext_resource type="Script" path="res://smg.gd" id="1_7sv6o"]
 [ext_resource type="PackedScene" uid="uid://cgncprbjcjodd" path="res://Models/smg.gltf" id="2_fdjyp"]
-[ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://smg_animations.res" id="3_jruhs"]
-
-[sub_resource type="Animation" id="Animation_033ls"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_582xp"]
-_data = {
-"RESET": SubResource("Animation_033ls")
-}
 
 [node name="SMG" type="Node3D"]
 transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.292489, -0.109075, -0.194182)
@@ -31,6 +10,7 @@ husk_weapon_path = "res://husk_smg.tscn"
 model_path = "res://Models/smg.gltf"
 Name = "smg"
 Display_Name = "smg"
+animation_player_treepath = "../AnimationPlayers/SMG"
 animation_library_path = "res://smg_animations.res"
 Equip_Ani = "smg_animations/smg_equip"
 Fire_Ani = "smg_animations/smg_fire"
@@ -51,11 +31,5 @@ transform = Transform3D(0.135217, 0, 0, 0, 0.0982383, 0, 0, 0, 0.0857658, 0, 0, 
 
 [node name="Bolt" parent="smgModel" index="4"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.03275, -2.43264, 9.71132)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_582xp"),
-"smg_animations": ExtResource("3_jruhs")
-}
 
 [editable path="smgModel"]

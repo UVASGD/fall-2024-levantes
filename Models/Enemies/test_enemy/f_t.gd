@@ -1,7 +1,10 @@
 extends Node3D
 
 
-@export var turn_speed = 60
+@export var current_turn_speed = 60
+@export var normal_turn_speed = 60
+@export var retreat_turn_speed = 40
+
 @export var follow_speed = 0.05
 
 func face_point(point: Vector3, delta: float):
@@ -9,7 +12,7 @@ func face_point(point: Vector3, delta: float):
 	local_point.y = 0.0
 	# turn_dir is neg or positive depending on if its left or right
 	var turn_dir = sign(local_point.x)
-	var turn_amount = deg_to_rad(turn_speed * delta)
+	var turn_amount = deg_to_rad(current_turn_speed * delta)
 	var angle = Vector3.FORWARD.angle_to(local_point)
 	
 	if angle < turn_amount:

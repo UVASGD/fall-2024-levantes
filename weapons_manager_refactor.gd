@@ -11,15 +11,16 @@ var pickup_detection
 var animationplayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_child_count() > 0:
-		current_weapon = get_child(0)
-		if get_child_count() > 1:
-			other_weapon = get_child(1)
+	animationplayer = get_child(0)
+	if get_child_count() > 1:
+		current_weapon = get_child(1)
+		if get_child_count() > 2:
+			other_weapon = get_child(2)
 		await hide_weapon(other_weapon)
 		await show_weapon(current_weapon)
 	if other_weapon:
 		can_switch = true
-
+	
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
@@ -51,8 +52,13 @@ func pickup():
 	var new_weapon 
 	if nearby_weapon == null:
 		return
-	else:
-		new_weapon = nearby_weapon.get_weapon()
+	
+	new_weapon = nearby_weapon.get_weapon()
+	
+	if current_weapon != null and new_weapon.Name == current_weapon.Name:
+		return
+	if other_weapon != null and new_weapon.Name == other_weapon.Name:
+		return
 	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the nearbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
 	var nearby_weapon_save_curr_ammo = nearby_weapon.current_ammo
 	var nearby_weapon_save_reserve_ammo = nearby_weapon.reserve_ammo

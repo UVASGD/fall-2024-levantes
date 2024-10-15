@@ -287,16 +287,23 @@ func _raycast() -> void:
 	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
-	#var result = space_state.intersect_ray(query)
-	#if result:
-		##print(screen_center)
-		#make_spark(result.get("position"), origin-endpoint)
-	if not intersection.is_empty():
-		emit_signal("hit", intersection.get("collider"))
-		print(intersection.get("collider"))
+	var result = space_state.intersect_ray(query)
+	if result:
+		#print(screen_center)
+		make_spark(result.get("position"), origin-endpoint)
 		
+		
+		
+	if not intersection.is_empty():
+		#emit_signal("hit", intersection.get("collider"))
+		SignalBus.emit_signal("enemy_hit", Current_Weapon.dmg, intersection.get("collider"))
+		#print(intersection.get("collider"))
 	else:
 		print("nothing")
+		
+		
+		
+		
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	emit_signal("hit", %Ray.get_collider())
 	print(%Ray.get_collider())

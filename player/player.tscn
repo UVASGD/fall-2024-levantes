@@ -13,7 +13,9 @@ size = Vector3(2.92481, 2.45361, 3.20447)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_r47ex")
+max_health_hp = 100
 HEADBOB_SWAY_AMOUNT = 0.01
+dash_speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -68,9 +70,25 @@ mouse_force_pass_scroll_events = false
 [node name="weapon manager" parent="Head/Camera3D" instance=ExtResource("3_ol2y5")]
 
 [node name="pickup_detection" type="Area3D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
 shape = SubResource("BoxShape3D_v3v36")
+
+[node name="shield_regen_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="health_regen_timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="DashLength" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="Timers"]
+one_shot = true
