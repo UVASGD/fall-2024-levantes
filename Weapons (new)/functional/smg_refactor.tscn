@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://drrbjw4jfeol1"]
+
+[ext_resource type="Script" path="res://Weapons (new)/functional/smg.gd" id="1_hymp6"]
+[ext_resource type="PackedScene" uid="uid://cgncprbjcjodd" path="res://Weapons (new)/models/smg.gltf" id="2_j0tul"]
+
+[node name="SMG" type="Node3D"]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.292489, -0.109075, -0.194182)
+script = ExtResource("1_hymp6")
+husk_weapon_path = "res://husk_smg.tscn"
+model_path = "res://Models/smg.gltf"
+Name = "smg"
+Display_Name = "smg"
+animation_player_treepath = "../AnimationPlayers/SMG"
+animation_library_path = "res://smg_animations.res"
+Equip_Ani = "smg_animations/smg_equip"
+Fire_Ani = "smg_animations/smg_fire"
+Reload_Ani = "smg_animations/smg_reload"
+Dequip_Ani = "smg_animations/smg_dequip"
+Fire_Sound = "res://audio/gunshot_final_single_pitch_lower.mp3"
+Curr_Mag_Ammo = 30
+Reserve_Ammo = 30
+Max_Mag_Capacity = 30
+Max_Ammo = 30
+Shoot_Cooldown_Ms = 100
+Type = 1
+Projectile_Range = 100.0
+dmg = 10
+
+[node name="smgModel" parent="." instance=ExtResource("2_j0tul")]
+transform = Transform3D(0.135217, 0, 0, 0, 0.0982383, 0, 0, 0, 0.0857658, 0, 0, 0)
+
+[node name="Bolt" parent="smgModel" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.03275, -2.43264, 9.71132)
+
+[editable path="smgModel"]

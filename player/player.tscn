@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
-[ext_resource type="PackedScene" uid="uid://c1v1mbdnx6rj7" path="res://weapon_manager.tscn" id="3_ol2y5"]
+[ext_resource type="PackedScene" uid="uid://c1v1mbdnx6rj7" path="res://Weapons (new)/weapon_manager.tscn" id="3_ol2y5"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]

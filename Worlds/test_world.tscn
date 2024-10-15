@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://qfu183wmac2x"]
+
+[ext_resource type="Script" path="res://player/player_controller.gd" id="1_bcd8m"]
+[ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_xlq6n"]
+[ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="3_ebgue"]
+[ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="4_4jfki"]
+[ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="5_qfm3y"]
+[ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="6_5i8wq"]
+[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="7_c841b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ndvp6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ejrxk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78c2h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ijo41"]
+sky_energy_multiplier = 1.5
+ground_bottom_color = Color(0.283384, 0.115163, 0.112978, 1)
+ground_horizon_color = Color(0.738382, 0.5904, 0.806254, 1)
+ground_curve = 0.0509831
+ground_energy_multiplier = 2.19
+
+[sub_resource type="Sky" id="Sky_hchu0"]
+sky_material = SubResource("ProceduralSkyMaterial_ijo41")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_83m8q"]
+background_mode = 2
+background_energy_multiplier = 1.44
+sky = SubResource("Sky_hchu0")
+ambient_light_source = 2
+ambient_light_color = Color(0.654902, 0.247059, 0.337255, 1)
+ambient_light_energy = 0.1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yl2qd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1c20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
+size = Vector3(2.92481, 2.45361, 3.20447)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(71.5507, 0, 0, 0, 1, 0, 0, 0, 66.061, 0, 0, 0)
+mesh = SubResource("BoxMesh_ndvp6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_ejrxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_78c2h")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_83m8q")
+camera_attributes = SubResource("CameraAttributesPractical_yl2qd")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20328, 0)
+script = ExtResource("1_bcd8m")
+max_health_hp = 100
+HEADBOB_SWAY_AMOUNT = 0.01
+dash_speed = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j86j8")
+
+[node name="WorldModel" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0138981, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/WorldModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_u1c20")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+unique_name_in_owner = true
+cull_mask = 1048573
+current = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79666, 0)
+cull_mask = 1047554
+
+[node name="HUD" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("2_xlq6n")]
+scale = Vector2(1.00143, 1)
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+script = ExtResource("3_ebgue")
+
+[node name="AnimationPlayers" type="Node" parent="CharacterBody3D/Head/Camera3D/weapon manager"]
+
+[node name="SMG" type="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/weapon manager/AnimationPlayers"]
+libraries = {
+"smg_animations": ExtResource("4_4jfki")
+}
+
+[node name="BURST" type="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/weapon manager/AnimationPlayers"]
+libraries = {
+"burst_animations": ExtResource("5_qfm3y")
+}
+
+[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("6_5i8wq")]
+
+[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("7_c841b")]
+
+[node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/pickup_detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
+shape = SubResource("BoxShape3D_v3v36")
+
+[node name="shield_regen_timer" type="Timer" parent="CharacterBody3D"]
+wait_time = 3.0
+
+[node name="health_regen_timer" type="Timer" parent="CharacterBody3D"]
+wait_time = 6.0
+
+[node name="Timers" type="Node" parent="CharacterBody3D"]
+
+[node name="DashLength" type="Timer" parent="CharacterBody3D/Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="CharacterBody3D/Timers"]
+one_shot = true

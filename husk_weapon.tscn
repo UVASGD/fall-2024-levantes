@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://23nqo1u01bhp"]
-
-[ext_resource type="Script" path="res://husk_weapon.gd" id="1_2c85p"]
-
-[node name="husk_weapon" type="Node3D"]
-script = ExtResource("1_2c85p")
