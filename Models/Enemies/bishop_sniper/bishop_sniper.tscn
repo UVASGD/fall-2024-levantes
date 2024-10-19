@@ -1735,9 +1735,16 @@ radius = 2.0
 
 [node name="retreat" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="retreat"]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
+shape = SubResource("SphereShape3D_gupe6")
+
+[node name="Enter" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enter"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
@@ -1818,7 +1825,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42446, 0, -3.2685e-13)
 
 [node name="head_n_face" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
-transform = Transform3D(0.972937, 0.231069, 1.05094e-19, -0.231069, 0.972938, -2.67007e-20, -1.0842e-19, 1.69407e-21, 1, -0.772749, -0.295828, 9.15118e-14)
+transform = Transform3D(0.972937, 0.231069, 1.05094e-19, -0.231069, 0.972938, -2.67007e-20, -1.0842e-19, 1.69417e-21, 1, -0.772749, -0.295828, 9.15118e-14)
 
 [node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face"]
 transform = Transform3D(1, 0, 1.35525e-20, 0, 1, 0, 0, 0, 1, 0.00422198, 0, -0.199909)
@@ -1854,7 +1861,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
-transform = Transform3D(0.524619, -0.00681554, 0.851309, -0.290766, 0.938403, 0.186697, -0.800145, -0.345477, 0.490321, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.524619, -0.00681554, 0.851309, -0.290767, 0.938403, 0.186697, -0.800145, -0.345477, 0.490321, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
 transform = Transform3D(-0.00443194, 0.347224, 0.940205, 1.20537, 1.3411e-07, 0.00373595, 0.00125892, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
@@ -1900,7 +1907,7 @@ mesh = SubResource("ArrayMesh_f1ayx")
 skeleton = NodePath("")
 
 [node name="Bolt" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
-transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86264e-08, -1.25729e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
+transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86265e-08, -1.25729e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
 material_override = SubResource("StandardMaterial3D_dbfai")
 mesh = SubResource("ArrayMesh_df0wc")
 skeleton = NodePath("")
@@ -1995,7 +2002,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
-transform = Transform3D(0.999423, 0.0321594, 0.0110116, -0.0336203, 0.982982, 0.180599, -0.0050162, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.999423, 0.0321594, 0.0110116, -0.0336203, 0.982982, 0.1806, -0.0050162, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm_s"]
 transform = Transform3D(-0.00443193, 0.347224, 0.940205, 1.20537, 1.2666e-07, 0.00373596, 0.00125889, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
@@ -2036,5 +2043,8 @@ autoplay = "RESET"
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="retreat" to="." method="_on_retreat_body_entered"]
+[connection signal="body_exited" from="retreat" to="." method="_on_retreat_body_exited"]
+[connection signal="body_entered" from="Enter" to="." method="_on_enter_body_entered"]
+[connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

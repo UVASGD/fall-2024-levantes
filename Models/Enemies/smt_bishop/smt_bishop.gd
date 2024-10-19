@@ -12,11 +12,7 @@ var health_hp: int
 
 @onready var face_target_y = $f_t_y
 @onready var face_target_x = $f_t_y/f_t_x
-
-@onready var f_t_y_model_group = $f_t_y/f_t_y_model_group
-@onready var f_t_x_model_group = $f_t_y/f_t_x/f_t_x_model_group
-
-@onready var f_t_y_shield = $f_t_y/f_t_y_model_group/f_t_y_shield
+@onready var f_t_y_shield = %f_t_y_shield
 @onready var f_t_x_shield = $f_t_y/f_t_x/f_t_x_shield
 
 @onready var Animation_Player = get_node("AnimationPlayer")
@@ -28,18 +24,14 @@ var vision_timer_done = false
 var is_firing = false
 
 
-@onready var projectile_origin_spot = $f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/Marker3D
+@onready var projectile_origin_spot = $f_t_y/f_t_x/Marker3D
 var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
-var next_state = "chase"
+var next_state = "idle"
 var prev_state
 var target
 var offset
 var target_pos
-
-var in_firing_state = false
-
-var animation_lock_on = false
 @onready var hitbox = $"."
 
 func _ready():
@@ -63,8 +55,6 @@ func _physics_process(delta):
 			retreat(delta)
 		"no_move_debug":
 			no_move_debug(delta)
-		"sight_on":
-			sight_on(delta)
 	
 
 func update_target_location(target_location):
@@ -108,22 +98,11 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
+	if can_enemy_see_player():
+		shoot(timer)
 	
 
-func sight_on(delta):
-	target = get_tree().get_nodes_in_group("Player")[0]
-	#_i_can_see()
-	target_pos = target.global_transform.origin
-	
-	face_target_y.current_turn_speed = face_target_y.normal_turn_speed
-	face_target_y.face_point(target_pos, delta)
-	
-	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
-	face_target_x.face_point(target_pos, delta)
-	
-	#TODO: Use face_target_y.face_point and face_target_x.face_point to make the 
-	# 	   enemy face the player and make them enter a shoot state
-	pass
+
 func retreat(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
@@ -140,7 +119,8 @@ func retreat(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
-
+	if can_enemy_see_player():
+		shoot(timer)
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
@@ -148,14 +128,16 @@ func no_move_debug(delta):
 	face_target_x.face_point(target_pos, delta)
 	shoot(timer)
 
+func _on_chase_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "chase"
 		
-# TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
-#		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
+
 func shoot(tm):
 	if face_target_x.is_facing_target(target_pos) and not is_firing:
 		tm.start()
 		is_firing = true
-		Animation_Player.queue("shoot_animation")
+		Animation_Player.queue("smt_shoot")
 		$AudioStreamPlayer3D2.play()
 		
 		var projectile_instance = projectile.instantiate()
@@ -176,10 +158,16 @@ func shoot(tm):
 
 	
 
+func _on_chill_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "retreat" 
+		
 
 
 
-	
+func _on_chase_body_exited(body):
+	if body.is_in_group("Player"):
+		next_state = "chase"
 
 func take_damage(amount: int):
 	health_hp -= amount
@@ -190,15 +178,11 @@ func take_damage(amount: int):
 func on_hit(damage_taken, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
-		f_t_y_model_group.hide()
-		f_t_x_model_group.hide()
 		f_t_y_shield.show()
 		f_t_x_shield.show()
 		await get_tree().create_timer(.1).timeout
 		f_t_y_shield.hide()
 		f_t_x_shield.hide()
-		f_t_y_model_group.show()
-		f_t_x_model_group.show()
 		take_damage(damage_taken)
 	
 	pass
@@ -250,34 +234,3 @@ func is_player_visible(plr) -> bool:
 	else:
 		return false
 
-
-
-
-func _on_retreat_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "retreat"
-		Animation_Player.play_backwards("enter_shoot_state")
-
-
-
-
-func _on_enter_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "sight_on"
-		Animation_Player.queue("enter_shoot_state")
-		
-
-
-
-
-
-func _on_retreat_body_exited(body):
-	if body.is_in_group("Player"):
-		next_state = "sight_on"
-		Animation_Player.queue("enter_shoot_state")
-
-
-func _on_enter_body_exited(body):
-	if body.is_in_group("Player"):
-		next_state = "chase"
-		Animation_Player.play_backwards("enter_shoot_state")
