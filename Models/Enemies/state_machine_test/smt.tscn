@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="2_pdsiy"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_7vm3h"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_2rr2n"]
-[ext_resource type="PackedScene" path="res://cone.tscn" id="6_dfki5"]
+[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="6_dfki5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999

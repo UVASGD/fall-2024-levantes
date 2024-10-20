@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdi48a2cr3mlg"]
+[gd_scene load_steps=7 format=3 uid="uid://cdi48a2cr3mlg"]
 
 [ext_resource type="Script" path="res://spider.gd" id="1_eactp"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ynol"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qxuri"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e78m1"]
+albedo_color = Color(6.509, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_miuym"]
 
@@ -11,8 +16,15 @@
 [node name="Node3D" type="CharacterBody3D"]
 script = ExtResource("1_eactp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="idle_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+material_override = SubResource("StandardMaterial3D_5ynol")
+mesh = SubResource("CapsuleMesh_qxuri")
+
+[node name="attack_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+visible = false
+material_override = SubResource("StandardMaterial3D_e78m1")
 mesh = SubResource("CapsuleMesh_qxuri")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
@@ -24,5 +36,3 @@ shape = SubResource("CapsuleShape3D_miuym")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="detection"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 shape = SubResource("SphereShape3D_v13ip")
-
-[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
