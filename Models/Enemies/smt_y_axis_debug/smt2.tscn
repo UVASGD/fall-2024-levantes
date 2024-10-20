@@ -1,11 +1,11 @@
-[gd_scene load_steps=83 format=3 uid="uid://d2ipjyem2oaxa"]
+[gd_scene load_steps=83 format=3 uid="uid://bw00ekmbtywg2"]
 
-[ext_resource type="Script" path="res://Models/Enemies/state_machine_test/smt.gd" id="1_n7xwg"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_p12mc"]
-[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="2_pdsiy"]
-[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_7vm3h"]
-[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_2rr2n"]
-[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="6_dfki5"]
+[ext_resource type="Script" path="res://Models/Enemies/smt_y_axis_debug/smt2.gd" id="1_1a8au"]
+[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_exo71"]
+[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_gvfxa"]
+[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="4_rohbg"]
+[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_wx813"]
+[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="6_fvest"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999
@@ -855,12 +855,8 @@ _data = {
 "smt_shoot": SubResource("Animation_bk6ch")
 }
 
-[node name="Smt" type="CharacterBody3D" groups=["enemies"]]
-script = ExtResource("1_n7xwg")
-SPEED = 10.0
-damage = 10
-projectile_speed = 25
-firing_speed_in_seconds = 1
+[node name="Smt2" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_1a8au")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
@@ -892,11 +888,12 @@ transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
 [node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
-script = ExtResource("2_p12mc")
+transform = Transform3D(1.07324e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, 1.07324e-09, 0, 0.600404, 0)
+script = ExtResource("2_exo71")
+retreat_turn_speed = 30
 
 [node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="Base" type="Node3D" parent="f_t_y/f_t_y_model_group"]
 
@@ -922,7 +919,7 @@ skeleton = NodePath("")
 [node name="Vision" type="Area3D" parent="f_t_y/f_t_y_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("6_dfki5")]
+[node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("3_gvfxa")]
 transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
 visible = false
 material_override = SubResource("StandardMaterial3D_teh3g")
@@ -937,7 +934,7 @@ transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0,
 
 [node name="f_t_y_shield" type="Node3D" parent="f_t_y"]
 unique_name_in_owner = true
-transform = Transform3D(-5.24536e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24536e-08, -1.31478e-09, -0.984708, -0.0300787)
+transform = Transform3D(1.43099e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 1.43099e-08, 3.58685e-10, -0.984708, -0.0300787)
 visible = false
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_shield"]
@@ -955,14 +952,15 @@ mesh = SubResource("ArrayMesh_3e4t6")
 skeleton = NodePath("")
 
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
-script = ExtResource("2_p12mc")
+transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 0)
+script = ExtResource("2_exo71")
+retreat_turn_speed = 30
 
 [node name="Marker3D" type="Marker3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(2.12299e-14, 11.1111, -4.85682e-07, 4.85683e-07, -4.85682e-07, -11.1111, -11.1111, 0, -4.85683e-07, -2.89837, -1.84555, -18.7508)
+transform = Transform3D(1.45704e-06, 0, 11.1111, 0, 11.1111, 0, -11.1111, 0, 1.45704e-06, 1.84555, 4.5066, -18.7508)
 
 [node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08, -1, -1, 0, -4.37113e-08, -7.40497, 3.23681e-07, 0)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="enemy_head" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
 
@@ -1009,7 +1007,7 @@ material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_gvcge")
 skeleton = NodePath("")
 
-[node name="alien_pistol" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm" instance=ExtResource("2_pdsiy")]
+[node name="alien_pistol" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm" instance=ExtResource("4_rohbg")]
 transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 11.4766, 2.75096, 2.84834)
 
 [node name="RightWrist" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
@@ -1019,7 +1017,7 @@ mesh = SubResource("ArrayMesh_t4rfi")
 skeleton = NodePath("")
 
 [node name="f_t_x_shield" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(5.21113e-15, 1.2, -5.24537e-08, 1.19217e-07, -5.24537e-08, -1.2, -1.2, 0, -1.19217e-07, -8.08735, 3.51658e-07, 0.0423657)
+transform = Transform3D(9.05976e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 9.05976e-08, -5.55563e-09, -0.682385, 0.0423657)
 visible = false
 
 [node name="enemy_head_shield" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
@@ -1085,7 +1083,7 @@ mesh = SubResource("ArrayMesh_wg12p")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_7vm3h")
+stream = ExtResource("5_wx813")
 volume_db = 5.818
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1097,12 +1095,10 @@ libraries = {
 wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_2rr2n")
+stream = ExtResource("6_fvest")
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
-
-[node name="temp" type="Node3D" parent="."]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]

@@ -1353,7 +1353,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.5708, 0)]
+"values": [Vector3(1.5708, 1.5708, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -1762,7 +1762,7 @@ transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
 [node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, 0.371266, 1.18733, 0)
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -0.292483, 0.600404, 0)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
@@ -1827,12 +1827,12 @@ shape = SubResource("ConvexPolygonShape3D_oasru")
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
-transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 2.66974e-05, -6.5214, 7.37499)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.67029e-05, -6.5214, 7.37499)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
 [node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
+transform = Transform3D(-5.21259e-16, 1, -4.37114e-08, -1.1925e-08, -4.37114e-08, -1, -1, 0, 1.1925e-08, 0, 0, 0)
 
 [node name="enemy_head" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42446, 0, -3.2685e-13)

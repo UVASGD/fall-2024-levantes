@@ -10,6 +10,8 @@ var enemy
 var can_move = false
 var in_chill = false
 
+@onready var laser = %Laser
+
 var health = 10
 #@onready var speed = face_target_y.follow_speed
 @onready var speed = rng.randf_range(0.02,0.05)
@@ -23,30 +25,20 @@ var in_chase = false
 func _ready():
 	speed = rng.randf_range(0.02,0.05)
 	enemy = $CharacterBody3D
+	laser.player = get_tree().get_nodes_in_group("Player")[0]
 	pass
 	
-
+func face_target(target_pos, delta):
+	target_pos = target.global_transform.origin + Vector3(0,1.5,0)
+	face_target_y.face_point(target_pos, delta)
+	face_target_x.face_point(target_pos, delta)
+	
+	if face_target_x.is_facing_target(target_pos):
+		laser.show()
+		laser.laser_state = "active"
 func _physics_process(delta):
-	if target and can_move:
-		target_pos = target.global_transform.origin
-		face_target_y.face_point(target_pos, delta)
-		face_target_x.face_point(target_pos, delta)
-		if face_target_y.is_facing_target(target_pos) and face_target_x.is_facing_target(target_pos):
-			show_angry()
-			if in_chase:
-				var velocity = position.direction_to(target.position) * speed
-				self.position += velocity
-			else:
-				var velocity = position.direction_to(target.position) * speed
-				self.position -= velocity
-		else:
-			show_happy()
-		 # Reset z-axis rotation
-		var rot = rotation_degrees
-		rot.z = 0
-		rotation_degrees = rot
-	#else:
-		#print(target)
+	if target:
+		face_target(target_pos, delta)
 func show_angry():
 	$f_t_y/f_t_x/f_t_x_model_group/Angry_Face.show()
 	$f_t_y/f_t_y_model_group/Angry_Flame.show()
@@ -95,10 +87,12 @@ func _on_chase_body_entered(body):
 
 
 func _on_chase_body_exited(body):
-	if !in_chill and body.is_in_group("Player"):
+	if body.is_in_group("Player"):
 		in_chase = false
 		target = null
 		print("OUT")
+		laser.laser_state = "none"
+		laser.hide()
 		show_happy()
 	elif in_chill and body.is_in_group("Player"):
 		in_chase = true

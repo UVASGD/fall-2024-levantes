@@ -76,7 +76,14 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
 			
-
+func face_target(delta):
+	target_pos = target.global_transform.origin + Vector3(0,1.5,0)
+	
+	face_target_y.current_turn_speed = face_target_y.normal_turn_speed
+	face_target_y.face_point(target_pos, delta)
+	
+	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
+	face_target_x.face_point(target_pos, delta)
 func idle():
 	#print("idling")
 	velocity = Vector3.ZERO
@@ -85,13 +92,7 @@ func idle():
 func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
-	target_pos = target.global_transform.origin
-	
-	face_target_y.current_turn_speed = face_target_y.normal_turn_speed
-	face_target_y.face_point(target_pos, delta)
-	
-	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
-	face_target_x.face_point(target_pos, delta)
+	face_target(delta)
 	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
@@ -106,14 +107,7 @@ func chase(delta):
 func retreat(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
-	target_pos = target.global_transform.origin
-	
-	face_target_y.face_point(target_pos, delta)
-	face_target_y.current_turn_speed = face_target_y.retreat_turn_speed
-	
-	face_target_x.face_point(target_pos, delta)
-	face_target_x.current_turn_speed = face_target_x.retreat_turn_speed
-	
+	face_target(delta)
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
@@ -149,7 +143,7 @@ func shoot(tm):
 		var spawn_pos = projectile_origin_spot.global_transform.origin
 		spawn_pos.y += -1
 
-		var direction = (target_pos - spawn_pos).normalized()  
+		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
 		projectile_instance.velocity = direction * projectile_speed  
 
 
