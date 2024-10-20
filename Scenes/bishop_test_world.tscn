@@ -1,6 +1,5 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkm1pp4si3myq"]
+[gd_scene load_steps=22 format=3 uid="uid://dkm1pp4si3myq"]
 
-[ext_resource type="Script" path="res://Scenes/state_machine_test_world.gd" id="1_316n1"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_7vl3q"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="3_4ddg8"]
 [ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Models/Weapons/spawnable_weapons/sp_sniper_rifle.tscn" id="5_lqi5q"]
@@ -60,99 +59,96 @@ glow_enabled = true
 
 [node name="BishopTestWorld" type="Node3D"]
 
-[node name="World" type="Node3D" parent="."]
-script = ExtResource("1_316n1")
+[node name="bishop_sniper" parent="." instance=ExtResource("7_3c6l5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83293, 0.0544254, -36.7356)
 
-[node name="Nav" type="NavigationRegion3D" parent="World"]
+[node name="Nav" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_2tm68")
 
-[node name="Ground" type="MeshInstance3D" parent="World/Nav"]
+[node name="Ground" type="MeshInstance3D" parent="Nav"]
 transform = Transform3D(90.8186, 0, 0, 0, 10, 0, 0, 0, 130.484, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_d7ngi")
 mesh = SubResource("PlaneMesh_v37cu")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Nav/Ground"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Nav/Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gf8jg")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Nav/Ground"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nav/Ground"]
 transform = Transform3D(0.11011, 0, 0, 0, 0.5, 0, 0, 0, 0.00766378, 0.125888, 0.25, 0.00117256)
 material_override = SubResource("StandardMaterial3D_bjhjp")
 mesh = SubResource("BoxMesh_rue08")
-skeleton = NodePath("../../..")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Nav/Ground/MeshInstance3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Nav/Ground/MeshInstance3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_lr1o4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Nav/Ground"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Nav/Ground"]
 transform = Transform3D(0.011011, 0, 0, 0, 0.6, 0, 0, 0, 0.161399, 0.218083, 0.3, 0.0400739)
 material_override = SubResource("StandardMaterial3D_tfr55")
 mesh = SubResource("BoxMesh_ln3ly")
-skeleton = NodePath("../../..")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Nav/Ground/MeshInstance3D3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Nav/Ground/MeshInstance3D3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("BoxShape3D_2fce5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Nav/Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nav/Ground"]
 transform = Transform3D(0.036171, 0, 0, 0, 0.3285, 0, 0, 0, 0.0251755, 0, -0.0156175, -0.055776)
 material_override = SubResource("StandardMaterial3D_gk5ws")
 mesh = SubResource("BoxMesh_gpevm")
-skeleton = NodePath("../../..")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Nav/Ground/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Nav/Ground/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_jugvo")
 
-[node name="CharacterBody3D" parent="World" instance=ExtResource("3_4ddg8")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_4ddg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mdiys")
 
-[node name="SpawnHolder" type="Node3D" parent="World"]
+[node name="SpawnHolder" type="Node3D" parent="."]
 
-[node name="Spawner1" type="Node3D" parent="World/SpawnHolder"]
+[node name="Spawner1" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.105)
 
-[node name="Spawner2" type="Node3D" parent="World/SpawnHolder"]
+[node name="Spawner2" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4923, 0, -116.787)
 
-[node name="Spawner3" type="Node3D" parent="World/SpawnHolder"]
+[node name="Spawner3" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.337, 0, -92.4726)
 
-[node name="Spawner4" type="Node3D" parent="World/SpawnHolder"]
+[node name="Spawner4" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0726, 0, -58.2814)
 
-[node name="Spawner5" type="Node3D" parent="World/SpawnHolder"]
+[node name="Spawner5" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.281, 0, -62.852)
 
-[node name="InBetweenWaves" type="Timer" parent="World"]
+[node name="InBetweenWaves" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="sniper_rifle" parent="World" instance=ExtResource("5_lqi5q")]
+[node name="sniper_rifle" parent="." instance=ExtResource("5_lqi5q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_bqg5v")
 
-[node name="bishop_sniper" parent="." instance=ExtResource("7_3c6l5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83293, 0.985402, -36.7356)
-
-[editable path="World/CharacterBody3D"]
-[editable path="World/CharacterBody3D/Head/Camera3D/HUD"]
-[editable path="World/CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
-[editable path="World/CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
-[editable path="World/CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]
+[editable path="CharacterBody3D"]
+[editable path="CharacterBody3D/Head/Camera3D/HUD"]
+[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
+[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
+[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

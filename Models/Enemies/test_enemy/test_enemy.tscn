@@ -1040,7 +1040,6 @@ script = ExtResource("1_xtenq")
 [node name="f_t_y" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08445, 0)
 script = ExtResource("2_l1paq")
-turn_speed = 145
 
 [node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38834, 0)
@@ -1091,7 +1090,6 @@ skeleton = NodePath("")
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.95305e-08, 1.45112, -0.0404378)
 script = ExtResource("2_l1paq")
-turn_speed = 130
 
 [node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846146, 0, -0.54189)

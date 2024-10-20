@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dx3k3nehr35dh"]
+[gd_scene load_steps=97 format=3 uid="uid://dx3k3nehr35dh"]
 
 [ext_resource type="Script" path="res://Models/Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
 [ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_o3jtk"]
@@ -58,8 +58,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h6vk8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h0w5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsfmc"]
 albedo_color = Color(3, 3, 1, 1)
+emission_enabled = true
+emission = Color(0.92549, 0.92549, 0.105882, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2ux1"]
 
@@ -170,9 +173,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v7xno")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsfmc"]
-albedo_color = Color(3, 3, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqy1u"]
 
@@ -1762,12 +1762,12 @@ transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
 [node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, -0.292483, 0.600404, 0)
+transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, 0.371266, 1.18733, 0)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
 [node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
-transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
+transform = Transform3D(1.19244e-08, 0, 1, 0, 1, 0, -1, 0, 1.19244e-08, 2.66974e-05, -6.5214, 7.37499)
 
 [node name="f_t_y_model_base" type="Node3D" parent="f_t_y/f_t_y_model_group"]
 
@@ -1779,7 +1779,7 @@ skeleton = NodePath("")
 
 [node name="Flame" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_model_base"]
 transform = Transform3D(0.601802, 0, -0.495611, 0, 0.779612, 0, 0.495611, 0, 0.601802, 3.19116, 0.0462801, 0)
-material_override = SubResource("StandardMaterial3D_6h0w5")
+material_override = SubResource("StandardMaterial3D_jsfmc")
 mesh = SubResource("ArrayMesh_b2ve8")
 skeleton = NodePath("")
 
@@ -1827,7 +1827,7 @@ shape = SubResource("ConvexPolygonShape3D_oasru")
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
-transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 2.66974e-05, -6.5214, 7.37499)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
@@ -1973,7 +1973,7 @@ visible = false
 
 [node name="Laser" type="RayCast3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
 unique_name_in_owner = true
-transform = Transform3D(-0.00851681, -0.00123946, 0.999968, 0.999954, -0.0046268, 0.00851164, 0.00461603, 0.999989, 0.00127877, 0.00209276, 1.06215, -8.73025)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1.00001, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37116e-08, 0.00209276, 1.06215, -8.73025)
 target_position = Vector3(0, -10000, 0)
 script = ExtResource("4_sagom")
 

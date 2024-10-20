@@ -141,6 +141,7 @@ one_shot = true
 autostart = true
 
 [node name="Smt" parent="." instance=ExtResource("3_rmk8k")]
+SPEED = 100.0
 
 [node name="sniper_rifle" parent="." instance=ExtResource("4_dfgy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)

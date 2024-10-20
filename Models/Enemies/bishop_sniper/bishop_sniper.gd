@@ -1,6 +1,6 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
-@export var SPEED = 5.0
+@export var SPEED = 10
 
 @export var max_health: int = 100
 var health_hp: int
@@ -89,6 +89,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
 			
+			
 
 func idle():
 	#print("idling")
@@ -111,6 +112,7 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
+	hide_laser()
 	
 
 func sight_on(delta):
@@ -128,6 +130,7 @@ func sight_on(delta):
 	# 	   enemy face the player and make them enter a shoot state
 	pass
 func retreat(delta):
+	hide_laser()
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	target_pos = target.global_transform.origin
@@ -272,9 +275,11 @@ func _on_enter_body_entered(body):
 		show_laser()
 
 func show_laser():
+	laser.laser_state = "activate"
 	laser.show()
 
 func hide_laser():
+	laser.laser_state = "none"
 	laser.hide()
 
 
