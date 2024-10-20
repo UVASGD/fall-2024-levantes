@@ -148,7 +148,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sph3o")
-autoplay = true
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
 

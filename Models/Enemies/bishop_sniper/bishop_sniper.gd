@@ -44,7 +44,8 @@ var animation_lock_on = false
 @onready var hitbox = $"."
 
 func _ready():
-	offset = add_rand_offset(2)
+	#offset = add_rand_offset(2)
+	offset = Vector3(0,0,0)
 	timer.wait_time = firing_speed_in_seconds
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
@@ -125,7 +126,6 @@ func sight_on(delta):
 	
 	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
 	face_target_x.face_point(target_pos, delta)
-	
 	#TODO: Use face_target_y.face_point and face_target_x.face_point to make the 
 	# 	   enemy face the player and make them enter a shoot state
 	pass
