@@ -893,12 +893,7 @@ shape = SubResource("SphereShape3D_gupe6")
 
 [node name="f_t_y" type="Node3D" parent="."]
 transform = Transform3D(1.07324e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, 1.07324e-09, 0, 0.600404, 0)
-<<<<<<< HEAD
-script = ExtResource("2_eycwu")
-retreat_turn_speed = 30
-=======
 script = ExtResource("2_p12mc")
->>>>>>> 76c9fbcaef01e364136a18650036b527c1690384
 
 [node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
@@ -961,12 +956,7 @@ skeleton = NodePath("")
 
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
 transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 0)
-<<<<<<< HEAD
-script = ExtResource("2_eycwu")
-retreat_turn_speed = 30
-=======
 script = ExtResource("2_p12mc")
->>>>>>> 76c9fbcaef01e364136a18650036b527c1690384
 
 [node name="Marker3D" type="Marker3D" parent="f_t_y/f_t_x"]
 transform = Transform3D(1.45704e-06, 0, 11.1111, 0, 11.1111, 0, -11.1111, 0, 1.45704e-06, 1.84555, 4.5066, -18.7508)

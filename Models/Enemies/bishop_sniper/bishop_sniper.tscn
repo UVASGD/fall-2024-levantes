@@ -1,8 +1,9 @@
-[gd_scene load_steps=95 format=3 uid="uid://dx3k3nehr35dh"]
+[gd_scene load_steps=98 format=3 uid="uid://dx3k3nehr35dh"]
 
 [ext_resource type="Script" path="res://Models/Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
 [ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_o3jtk"]
 [ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_ra7jm"]
+[ext_resource type="Script" path="res://Scenes/Assets/projectiles/laser.gd" id="4_sagom"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_50s5u"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="6_ny24y"]
 
@@ -801,6 +802,18 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tmfqs")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wtdug"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13m16"]
+transparency = 1
+albedo_color = Color(1, 0.0745098, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="Animation" id="Animation_fakjd"]
 length = 0.001
@@ -1958,6 +1971,16 @@ skeleton = NodePath("")
 transform = Transform3D(0.156415, 2.02672, 10.9236, 0.2445, 10.9214, -2.02982, -11.1073, 0.268948, 0.109146, 0.0397015, 1.0719, -8.90248)
 visible = false
 
+[node name="Laser" type="RayCast3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
+unique_name_in_owner = true
+transform = Transform3D(-0.00851681, -0.00123946, 0.999968, 0.999954, -0.0046268, 0.00851164, 0.00461603, 0.999989, 0.00127877, 0.00209276, 1.06215, -8.73025)
+target_position = Vector3(0, -10000, 0)
+script = ExtResource("4_sagom")
+
+[node name="beam_mesh" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/Laser"]
+mesh = SubResource("CylinderMesh_wtdug")
+surface_material_override/0 = SubResource("StandardMaterial3D_13m16")
+
 [node name="f_t_x_shield" type="Node3D" parent="f_t_y/f_t_x"]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
 visible = false
@@ -2047,4 +2070,3 @@ autoplay = "RESET"
 [connection signal="body_entered" from="Enter" to="." method="_on_enter_body_entered"]
 [connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

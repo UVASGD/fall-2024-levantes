@@ -147,7 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("6_bqg5v")
-autoplay = true
 
 [node name="bishop_sniper" parent="." instance=ExtResource("7_3c6l5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83293, 0.985402, -36.7356)

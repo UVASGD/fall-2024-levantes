@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddpry1xabum8c"]
+
+[ext_resource type="PackedScene" uid="uid://cplfxvk02ichf" path="res://Scenes/laser_world_test/box.tscn" id="1_tykwj"]
+[ext_resource type="PackedScene" uid="uid://f4abqinf4p1a" path="res://Scenes/Assets/projectiles/laser.tscn" id="2_pkem2"]
+[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="3_bc7hk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dv7j8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_u2vgc"]
+sky_material = SubResource("ProceduralSkyMaterial_dv7j8")
+
+[sub_resource type="Environment" id="Environment_vl3c5"]
+background_mode = 2
+sky = SubResource("Sky_u2vgc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_coqlh"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80ogq"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="LaserWorldTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vl3c5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
+shadow_enabled = true
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_coqlh")
+
+[node name="Box" parent="floor" instance=ExtResource("1_tykwj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.600125, 0.06, 0)
+
+[node name="Box2" parent="floor" instance=ExtResource("1_tykwj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.581809, 0.06, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_80ogq")
+
+[node name="Laser" parent="." instance=ExtResource("2_pkem2")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.68628, 0.291596, 0)
+target_position = Vector3(0, -10, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_bc7hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00209689, 0.660194, 2.98122)

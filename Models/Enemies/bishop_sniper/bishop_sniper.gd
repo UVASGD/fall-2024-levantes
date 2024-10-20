@@ -24,10 +24,11 @@ var health_hp: int
 @onready var timer = $Timer
 @onready var vision_timer = $VisionTimer
 
+
 var vision_timer_done = false
 var is_firing = false
 
-
+@onready var laser = %Laser
 @onready var projectile_origin_spot = $f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/Marker3D
 var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
@@ -48,6 +49,8 @@ func _ready():
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
+	Animation_Player.connect("animation_finished", _animation_player_finished)
+	laser.player = get_tree().get_nodes_in_group("Player")[0]
 	
 func _physics_process(delta):
 	prev_state = curr_state
@@ -256,8 +259,9 @@ func is_player_visible(plr) -> bool:
 func _on_retreat_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "retreat"
+		hide_laser()
 		Animation_Player.play_backwards("enter_shoot_state")
-
+		
 
 
 
@@ -265,9 +269,13 @@ func _on_enter_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "sight_on"
 		Animation_Player.queue("enter_shoot_state")
-		
+		show_laser()
 
+func show_laser():
+	laser.show()
 
+func hide_laser():
+	laser.hide()
 
 
 
@@ -275,9 +283,14 @@ func _on_retreat_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "sight_on"
 		Animation_Player.queue("enter_shoot_state")
+		show_laser()
 
 
 func _on_enter_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
+		hide_laser()
 		Animation_Player.play_backwards("enter_shoot_state")
+
+func _animation_player_finished():
+	return true
