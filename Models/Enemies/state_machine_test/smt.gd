@@ -10,10 +10,10 @@ var health_hp: int
 @export var visibility_range = 1000000
 
 
-@onready var face_target_y = $f_t_y
-@onready var face_target_x = $f_t_y/f_t_x
-@onready var f_t_y_shield = %f_t_y_shield
-@onready var f_t_x_shield = $f_t_y/f_t_x/f_t_x_shield
+@onready var x_axis = %x_axis
+@onready var y_axis = %y_axis
+@onready var x_axis_shield = %x_axis_shield
+@onready var y_axis_shield = %y_axis_shield
 
 @onready var Animation_Player = get_node("AnimationPlayer")
 
@@ -22,9 +22,10 @@ var health_hp: int
 
 var vision_timer_done = false
 var is_firing = false
+var can_move_y_axis = false
 
 
-@onready var projectile_origin_spot = $f_t_y/f_t_x/Marker3D
+@onready var projectile_origin_spot = %projectile_origin_spot
 var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
 var next_state = "idle"
@@ -32,6 +33,8 @@ var prev_state
 var target
 var offset
 var target_pos
+
+@onready var vision = %Vision
 @onready var hitbox = $"."
 
 func _ready():
@@ -79,11 +82,17 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 func face_target(delta):
 	target_pos = target.global_transform.origin + Vector3(0,1.5,0)
 	
-	face_target_y.current_turn_speed = face_target_y.normal_turn_speed
-	face_target_y.face_point(target_pos, delta)
+	x_axis.current_turn_speed = x_axis.normal_turn_speed
+	x_axis.face_point(target_pos, delta)
 	
-	face_target_x.current_turn_speed = face_target_x.normal_turn_speed
-	face_target_x.face_point(target_pos, delta)
+	if can_move_y_axis:
+		y_axis.current_turn_speed = y_axis.normal_turn_speed
+		y_axis.face_point(target_pos, delta)
+
+func update_turn_speed(new_speed):
+	x_axis.current_turn_speed = new_speed
+	y_axis.current_turn_speed = new_speed
+
 func idle():
 	#print("idling")
 	velocity = Vector3.ZERO
@@ -118,8 +127,8 @@ func retreat(delta):
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
-	face_target_y.face_point(target_pos, delta)
-	face_target_x.face_point(target_pos, delta)
+	x_axis.face_point(target_pos, delta)
+	y_axis.face_point(target_pos, delta)
 	shoot(timer)
 
 func _on_chase_body_entered(body):
@@ -128,7 +137,7 @@ func _on_chase_body_entered(body):
 		
 
 func shoot(tm):
-	if face_target_x.is_facing_target(target_pos) and not is_firing:
+	if y_axis.is_facing_target(target_pos) and not is_firing:
 		tm.start()
 		is_firing = true
 		Animation_Player.queue("smt_shoot")
@@ -172,34 +181,31 @@ func take_damage(amount: int):
 func on_hit(damage_taken, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
-		f_t_y_shield.show()
-		f_t_x_shield.show()
+		x_axis_shield.show()
+		y_axis_shield.show()
 		await get_tree().create_timer(.1).timeout
-		f_t_y_shield.hide()
-		f_t_x_shield.hide()
+		x_axis_shield.hide()
+		y_axis_shield.hide()
 		take_damage(damage_taken)
 	
 	pass
 
 func can_enemy_see_player() -> bool:
-	var overlaps = $f_t_y/f_t_y_model_group/Vision.get_overlapping_bodies()
-	var vision = $RayCast3D
+	var overlaps = vision.get_overlapping_bodies()
 	if overlaps.size() > 0:
 		for overlap in overlaps:
 			if overlap.is_in_group("Player") and vision_timer_done:
 				match is_player_visible(overlap):
 					true:
-						face_target_y.current_turn_speed = face_target_x.normal_turn_speed
-						face_target_x.current_turn_speed = face_target_x.normal_turn_speed
+						update_turn_speed(y_axis.normal_turn_speed)
 						return true
 					false:
-						face_target_y.current_turn_speed += 100
-						face_target_x.current_turn_speed += 100
+						var new_turn_speed = y_axis.current_turn_speed + 100
+						update_turn_speed(new_turn_speed)
 						return false
 			elif overlap.is_in_group("Player") and is_player_visible(overlap):
 				vision_timer.start()
-				face_target_y.current_turn_speed = face_target_x.normal_turn_speed
-				face_target_x.current_turn_speed = face_target_x.normal_turn_speed
+				update_turn_speed(y_axis.normal_turn_speed)
 				return true
 	return false
 
@@ -228,3 +234,14 @@ func is_player_visible(plr) -> bool:
 	else:
 		return false
 
+
+
+
+func _on_vision_body_entered(body):
+	if body.is_in_group("Player"):
+		can_move_y_axis = true
+
+
+func _on_vision_body_exited(body):
+	if body.is_in_group("Player"):
+		can_move_y_axis = false

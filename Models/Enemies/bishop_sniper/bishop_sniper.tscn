@@ -820,7 +820,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
+tracks/0/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -832,7 +832,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
+tracks/1/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -844,7 +844,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -856,7 +856,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -868,7 +868,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -880,7 +880,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -892,7 +892,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/6/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -904,7 +904,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/7/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -916,7 +916,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
+tracks/8/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -928,7 +928,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
+tracks/9/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -940,7 +940,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
+tracks/10/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -952,7 +952,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
+tracks/11/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -964,7 +964,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_shield:position")
+tracks/12/path = NodePath("x_axis/y_axis/y_axis_shield:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -976,7 +976,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_shield:rotation")
+tracks/13/path = NodePath("x_axis/y_axis/y_axis_shield:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -988,7 +988,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:position")
+tracks/14/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1000,7 +1000,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:rotation")
+tracks/15/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1012,7 +1012,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
+tracks/16/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1024,7 +1024,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
+tracks/17/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -1036,7 +1036,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
+tracks/18/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -1048,7 +1048,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:position")
+tracks/19/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/cape:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -1060,7 +1060,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:rotation")
+tracks/20/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/cape:rotation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -1072,7 +1072,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
+tracks/21/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:rotation")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -1084,7 +1084,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:position")
+tracks/22/path = NodePath("x_axis/x_axis_model_group/x_axis_shield:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1096,7 +1096,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:rotation")
+tracks/23/path = NodePath("x_axis/x_axis_model_group/x_axis_shield:rotation")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -1108,7 +1108,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:position")
+tracks/24/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s/cape_s:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -1120,7 +1120,7 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:rotation")
+tracks/25/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s/cape_s:rotation")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
@@ -1132,7 +1132,7 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:position")
+tracks/26/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
@@ -1144,7 +1144,7 @@ tracks/26/keys = {
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:rotation")
+tracks/27/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face:rotation")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
@@ -1152,6 +1152,30 @@ tracks/27/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(2.67007e-20, 1.05094e-19, -0.233176)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/Laser:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00209276, 1.06215, -8.73025)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/Laser:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.51484e-21, 1.5708, 1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_agns7"]
@@ -1161,7 +1185,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y:position")
+tracks/0/path = NodePath("x_axis:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1173,7 +1197,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y:rotation")
+tracks/1/path = NodePath("x_axis:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1190,7 +1214,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
+tracks/0/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1202,7 +1226,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
+tracks/1/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1214,7 +1238,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1226,7 +1250,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1238,7 +1262,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1250,7 +1274,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1262,7 +1286,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/6/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1274,7 +1298,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/7/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1286,7 +1310,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
+tracks/8/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1298,7 +1322,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
+tracks/9/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1310,7 +1334,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
+tracks/10/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1322,7 +1346,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
+tracks/11/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1334,7 +1358,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_shield:position")
+tracks/12/path = NodePath("x_axis/y_axis/y_axis_shield:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1346,7 +1370,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_shield:rotation")
+tracks/13/path = NodePath("x_axis/y_axis/y_axis_shield:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1358,7 +1382,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:position")
+tracks/14/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1370,7 +1394,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s:rotation")
+tracks/15/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1382,7 +1406,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
+tracks/16/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1394,7 +1418,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
+tracks/17/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -1406,7 +1430,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
+tracks/18/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -1418,7 +1442,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:position")
+tracks/19/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/cape:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -1430,7 +1454,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/cape:rotation")
+tracks/20/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/cape:rotation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -1442,7 +1466,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
+tracks/21/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:rotation")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -1454,7 +1478,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:position")
+tracks/22/path = NodePath("x_axis/x_axis_model_group/x_axis_shield:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1466,7 +1490,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_shield:rotation")
+tracks/23/path = NodePath("x_axis/x_axis_model_group/x_axis_shield:rotation")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -1478,7 +1502,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:position")
+tracks/24/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s/cape_s:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -1490,7 +1514,7 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("f_t_y/f_t_x/f_t_x_shield/enemy_head_s/cape_s:rotation")
+tracks/25/path = NodePath("x_axis/y_axis/y_axis_shield/enemy_head_s/cape_s:rotation")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
@@ -1507,7 +1531,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:position")
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1519,7 +1543,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head:rotation")
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1531,7 +1555,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1543,7 +1567,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1555,7 +1579,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1567,7 +1591,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1579,7 +1603,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:position")
+tracks/6/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1591,7 +1615,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("f_t_y/f_t_y_model_group/f_t_y_model_base:rotation")
+tracks/7/path = NodePath("x_axis/x_axis_model_group/x_axis_model_base:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1603,7 +1627,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:position")
+tracks/8/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1615,7 +1639,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle:rotation")
+tracks/9/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1627,7 +1651,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:position")
+tracks/10/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1639,7 +1663,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
+tracks/11/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model/Bolt:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1651,7 +1675,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:position")
+tracks/12/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1663,7 +1687,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("f_t_y/f_t_x/f_t_x_shield/leftarm_s:rotation")
+tracks/13/path = NodePath("x_axis/y_axis/y_axis_shield/leftarm_s:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1675,7 +1699,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:position")
+tracks/14/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1687,7 +1711,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("f_t_y/f_t_x/f_t_x_shield/rightarm_s:rotation")
+tracks/15/path = NodePath("x_axis/y_axis/y_axis_shield/rightarm_s:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1699,7 +1723,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:position")
+tracks/16/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1711,7 +1735,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face:rotation")
+tracks/17/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -1719,6 +1743,30 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176), Vector3(2.67007e-20, 1.05094e-19, -0.233176)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/Laser:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00209276, 1.06215, -8.73025)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/Laser:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.51484e-21, 1.5708, 1.5708)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3flr"]
@@ -1761,285 +1809,292 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
-[node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -0.292483, 0.600404, 0)
+[node name="x_axis" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, -0.292483, 0.600404, 0)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
-[node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
+[node name="x_axis_model_group" type="Node3D" parent="x_axis"]
+unique_name_in_owner = true
 transform = Transform3D(1.19244e-08, 0, 1, 0, 1, 0, -1, 0, 1.19244e-08, 2.66974e-05, -6.5214, 7.37499)
 
-[node name="f_t_y_model_base" type="Node3D" parent="f_t_y/f_t_y_model_group"]
+[node name="x_axis_model_base" type="Node3D" parent="x_axis/x_axis_model_group"]
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_model_base"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_model_base"]
 transform = Transform3D(0.904152, 0, -0.000694632, 0, 0.904153, 0, 0.000694632, 0, 0.904152, 3.19116, 0, -3.72694e-20)
 material_override = SubResource("StandardMaterial3D_4d6uq")
 mesh = SubResource("ArrayMesh_4ibqn")
 skeleton = NodePath("")
 
-[node name="Flame" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_model_base"]
+[node name="Flame" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_model_base"]
 transform = Transform3D(0.601802, 0, -0.495611, 0, 0.779612, 0, 0.495611, 0, 0.601802, 3.19116, 0.0462801, 0)
 material_override = SubResource("StandardMaterial3D_jsfmc")
 mesh = SubResource("ArrayMesh_b2ve8")
 skeleton = NodePath("")
 
-[node name="BackPack" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_model_base"]
+[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_model_base"]
 transform = Transform3D(0.904152, 0, -0.000315866, 0, 0.904153, 0, 0.000315866, 0, 0.904152, 3.19116, 0, -3.04932e-20)
 material_override = SubResource("StandardMaterial3D_6lbvl")
 mesh = SubResource("ArrayMesh_ooisw")
 skeleton = NodePath("")
 
-[node name="f_t_y_shield" type="Node3D" parent="f_t_y/f_t_y_model_group"]
+[node name="x_axis_shield" type="Node3D" parent="x_axis/x_axis_model_group"]
+unique_name_in_owner = true
 visible = false
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_shield"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_shield"]
 transform = Transform3D(0.904152, 0, -0.000694632, 0, 0.904153, 0, 0.000694632, 0, 0.904152, 3.19116, 0, -3.72694e-20)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_4ibqn")
 skeleton = NodePath("")
 
-[node name="Flame" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_shield"]
+[node name="Flame" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_shield"]
 transform = Transform3D(0.601802, 0, -0.495611, 0, 0.779612, 0, 0.495611, 0, 0.601802, 3.19116, 0.0462801, 0)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_b2ve8")
 skeleton = NodePath("")
 
-[node name="BackPack" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/f_t_y_shield"]
+[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_shield"]
 transform = Transform3D(0.904152, 0, -0.000315866, 0, 0.904153, 0, 0.000315866, 0, 0.904152, 3.19116, 0, -3.04932e-20)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_ooisw")
 skeleton = NodePath("")
 
-[node name="Vision" type="Area3D" parent="f_t_y/f_t_y_model_group"]
+[node name="Vision" type="Area3D" parent="x_axis/x_axis_model_group"]
+unique_name_in_owner = true
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("3_ra7jm")]
+[node name="debug_cone" parent="x_axis/x_axis_model_group/Vision" instance=ExtResource("3_ra7jm")]
 transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
 visible = false
 material_override = SubResource("StandardMaterial3D_teh3g")
 transparency = 0.72
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="f_t_y/f_t_y_model_group/Vision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/Vision"]
 transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
 shape = SubResource("ConvexPolygonShape3D_oasru")
 
-[node name="RayCast3D" type="RayCast3D" parent="f_t_y/f_t_y_model_group"]
+[node name="RayCast3D" type="RayCast3D" parent="x_axis/x_axis_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="f_t_x" type="Node3D" parent="f_t_y"]
+[node name="y_axis" type="Node3D" parent="x_axis"]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.67029e-05, -6.5214, 7.37499)
 script = ExtResource("2_o3jtk")
 retreat_turn_speed = 30
 
-[node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
+[node name="y_axis_model_group" type="Node3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
 transform = Transform3D(-5.21259e-16, 1, -4.37114e-08, -1.1925e-08, -4.37114e-08, -1, -1, 0, 1.1925e-08, 0, 0, 0)
 
-[node name="enemy_head" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="enemy_head" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42446, 0, -3.2685e-13)
 
-[node name="head_n_face" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
+[node name="head_n_face" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
 transform = Transform3D(0.972937, 0.231069, 1.05094e-19, -0.231069, 0.972938, -2.67007e-20, -1.0842e-19, 1.69417e-21, 1, -0.772749, -0.295828, 9.15118e-14)
 
-[node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face"]
+[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face"]
 transform = Transform3D(1, 0, 1.35525e-20, 0, 1, 0, 0, 0, 1, 0.00422198, 0, -0.199909)
 material_override = SubResource("StandardMaterial3D_4d6uq")
 mesh = SubResource("ArrayMesh_hwyje")
 skeleton = NodePath("")
 
-[node name="Face" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head/head_n_face"]
+[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head/head_n_face"]
 transform = Transform3D(1, 0, 1.35525e-20, 0, 1, 0, 0, 0, 1, 0.00422198, 0, -0.199909)
 material_override = SubResource("StandardMaterial3D_jsfmc")
 mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
-[node name="cape" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
+[node name="cape" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
 transform = Transform3D(0.976627, 0.21494, 1.07581e-13, -0.21494, 0.976627, 2.3863e-15, -1.04554e-13, -2.54539e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_axc23")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
-[node name="leftarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 transform = Transform3D(0.519444, 0.0738137, 0.85131, -0.431398, 0.882631, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
-[node name="RightForearm_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/leftarm"]
+[node name="RightForearm_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)
 material_override = SubResource("StandardMaterial3D_4d6uq")
 mesh = SubResource("ArrayMesh_quuiq")
 skeleton = NodePath("")
 
-[node name="Righthand_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/leftarm"]
+[node name="Righthand_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 4.28239, 6.35316, -5.1637)
 material_override = SubResource("StandardMaterial3D_ths7t")
 mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
-[node name="rightarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 transform = Transform3D(0.524619, -0.00681554, 0.851309, -0.290767, 0.938403, 0.186697, -0.800145, -0.345477, 0.490321, 3.19734, -0.844009, 3.54399)
 
-[node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(-0.00443194, 0.347224, 0.940205, 1.20537, 1.3411e-07, 0.00373595, 0.00125892, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
 material_override = SubResource("StandardMaterial3D_4d6uq")
 mesh = SubResource("ArrayMesh_3v454")
 skeleton = NodePath("")
 
-[node name="Righthand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.364382, 0.352491, 1.30987, 1.35631, -0.115106, -0.346327, 0.0204308, 1.35472, -0.370246, -3.6836, 6.21323, 3.54967)
 material_override = SubResource("StandardMaterial3D_ths7t")
 mesh = SubResource("ArrayMesh_t0occ")
 skeleton = NodePath("")
 
-[node name="RightWrist_002" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="RightWrist_002" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -3.61125, 7.16346, 4.48337)
 material_override = SubResource("StandardMaterial3D_4d6uq")
 mesh = SubResource("ArrayMesh_00w01")
 skeleton = NodePath("")
 
-[node name="sniper_rifle" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="sniper_rifle" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 21.0661, 6.08293, 0.542269)
 
-[node name="model" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
+[node name="model" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
 
-[node name="Empty" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Empty" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0, 9.1, 0, 2.38419e-07, 0, -9.1, -9.1, 0, 0, -1.45868, 0, 0)
 
-[node name="Cylinder" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Cylinder" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.235042, 7.45058e-09, 3.72529e-09, 0, 0, -0.235042, -7.45058e-09, 0.235042, -7.45058e-09, 2.38419e-07, 1.55406, 15.8729)
 material_override = SubResource("StandardMaterial3D_y24kx")
 mesh = SubResource("ArrayMesh_fkxku")
 skeleton = NodePath("")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.365083, 1.49012e-08, 3.72529e-09, -3.72529e-09, 0, -0.365083, 0, 0.365083, -7.45058e-09, 0, 1.01946, 4.77347)
 mesh = SubResource("ArrayMesh_ce3hi")
 skeleton = NodePath("")
 
-[node name="Main Barrel" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Main Barrel" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.365083, 1.49012e-08, 3.72529e-09, -3.72529e-09, 0, -0.365083, 0, 0.365083, -7.45058e-09, 0, 1.01946, 13.6669)
 material_override = SubResource("StandardMaterial3D_4f81l")
 mesh = SubResource("ArrayMesh_f1ayx")
 skeleton = NodePath("")
 
-[node name="Bolt" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Bolt" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86265e-08, -1.25729e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
 material_override = SubResource("StandardMaterial3D_dbfai")
 mesh = SubResource("ArrayMesh_df0wc")
 skeleton = NodePath("")
 
-[node name="BarrelAttachment" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="BarrelAttachment" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.217742, 0, 0, 0, 0, -0.217742, -7.45058e-09, 0.217742, -7.45058e-09, 4.76837e-07, 1.01946, 6.45193)
 material_override = SubResource("StandardMaterial3D_lub5q")
 mesh = SubResource("ArrayMesh_gpqeh")
 skeleton = NodePath("")
 
-[node name="Mag Release" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Mag Release" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.235042, 7.45058e-09, 3.72529e-09, 0, 0, -0.235042, -7.45058e-09, 0.235042, -7.45058e-09, 4.76837e-07, 2.06905, 15.136)
 material_override = SubResource("StandardMaterial3D_lub5q")
 mesh = SubResource("ArrayMesh_bspd7")
 skeleton = NodePath("")
 
-[node name="Cylinder_011" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Cylinder_011" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.235042, 7.45058e-09, 3.72529e-09, 0, 0, -0.235042, -7.45058e-09, 0.235042, -7.45058e-09, 2.38419e-07, 1.55406, 15.8729)
 visible = false
 mesh = SubResource("ArrayMesh_k4s1w")
 skeleton = NodePath("")
 
-[node name="Scope" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Scope" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.215528, -7.45058e-09, 0, -3.72529e-09, -2.98023e-08, 0.215528, 0, -0.215528, -2.23517e-08, 7.15256e-07, 2.07104, 14.0395)
 material_override = SubResource("StandardMaterial3D_jwd18")
 mesh = SubResource("ArrayMesh_ihpd4")
 skeleton = NodePath("")
 
-[node name="Trigger" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Trigger" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.239955, 0, 7.45058e-09, 3.72529e-09, -2.98023e-08, -0.239955, -7.45058e-09, 0.239955, -2.23517e-08, 2.38419e-07, 1.55406, 15.8729)
 material_override = SubResource("StandardMaterial3D_4f81l")
 mesh = SubResource("ArrayMesh_phy7p")
 skeleton = NodePath("")
 
-[node name="OriginalStock" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="OriginalStock" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.235042, 7.45058e-09, 3.72529e-09, 0, 0, -0.235042, -7.45058e-09, 0.235042, -7.45058e-09, 2.38419e-07, 1.55406, 15.8729)
 material_override = SubResource("StandardMaterial3D_4f81l")
 mesh = SubResource("ArrayMesh_x85a4")
 skeleton = NodePath("")
 
-[node name="Tube" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/model"]
+[node name="Tube" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.235042, 7.45058e-09, 3.72529e-09, 0, 0, -0.235042, -7.45058e-09, 0.235042, -7.45058e-09, 2.38419e-07, 1.55406, 15.8729)
 material_override = SubResource("StandardMaterial3D_4f81l")
 mesh = SubResource("ArrayMesh_5i75q")
 skeleton = NodePath("")
 
-[node name="Marker3D" type="Marker3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
+[node name="Marker3D" type="Marker3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
 transform = Transform3D(0.156415, 2.02672, 10.9236, 0.2445, 10.9214, -2.02982, -11.1073, 0.268948, 0.109146, 0.0397015, 1.0719, -8.90248)
 visible = false
 
-[node name="Laser" type="RayCast3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle"]
+[node name="Laser" type="RayCast3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1.00001, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37116e-08, 0.00209276, 1.06215, -8.73025)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1.00001, 1, -4.37114e-08, -3.51488e-21, 4.37114e-08, 1, -4.37118e-08, 0.00209276, 1.06215, -8.73025)
 target_position = Vector3(0, -10000, 0)
 script = ExtResource("4_sagom")
 
-[node name="beam_mesh" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm/sniper_rifle/Laser"]
+[node name="beam_mesh" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/Laser"]
 mesh = SubResource("CylinderMesh_wtdug")
 surface_material_override/0 = SubResource("StandardMaterial3D_13m16")
 
-[node name="f_t_x_shield" type="Node3D" parent="f_t_y/f_t_x"]
+[node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
 visible = false
 
-[node name="enemy_head_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="enemy_head_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42446, 0, -2.87113e-13)
 
-[node name="head_n_face" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_s"]
+[node name="head_n_face" type="Node3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_s"]
 transform = Transform3D(0.972938, 0.231069, 0, -0.231069, 0.972938, 0, -1.0842e-19, 1.69407e-21, 1, -0.772749, -0.295828, 9.15118e-14)
 
-[node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_s/head_n_face"]
+[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_s/head_n_face"]
 transform = Transform3D(1, 2.98023e-08, 7.10543e-15, -1.49012e-08, 1, 0, -7.10543e-15, -3.55271e-15, 1, 0.00422192, 0, -0.199909)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_hwyje")
 skeleton = NodePath("")
 
-[node name="Face" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_s/head_n_face"]
+[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_s/head_n_face"]
 transform = Transform3D(1, 2.98023e-08, 7.10543e-15, -1.49012e-08, 1, 0, -7.10543e-15, -3.55271e-15, 1, 0.00422192, 0, -0.199909)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
-[node name="cape_s" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_s"]
+[node name="cape_s" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_s"]
 transform = Transform3D(0.976627, 0.21494, 1.08672e-13, -0.21494, 0.976627, -2.09054e-15, -1.06581e-13, -2.13162e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
-[node name="leftarm_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="leftarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 transform = Transform3D(0.519445, 0.0738137, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
-[node name="RightForearm_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/leftarm_s"]
+[node name="RightForearm_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm_s"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_quuiq")
 skeleton = NodePath("")
 
-[node name="Righthand_001" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/leftarm_s"]
+[node name="Righthand_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm_s"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 4.28239, 6.35316, -5.1637)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
-[node name="rightarm_s" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="rightarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 transform = Transform3D(0.999423, 0.0321594, 0.0110116, -0.0336203, 0.982982, 0.1806, -0.0050162, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
 
-[node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm_s"]
+[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm_s"]
 transform = Transform3D(-0.00443193, 0.347224, 0.940205, 1.20537, 1.2666e-07, 0.00373596, 0.00125889, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_3v454")
 skeleton = NodePath("")
 
-[node name="Righthand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm_s"]
+[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm_s"]
 transform = Transform3D(0.364382, 0.352491, 1.30987, 1.35631, -0.115106, -0.346327, 0.0204308, 1.35472, -0.370246, -3.6836, 6.21323, 3.54967)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_t0occ")
 skeleton = NodePath("")
 
-[node name="RightWrist_002" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm_s"]
+[node name="RightWrist_002" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm_s"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -3.61125, 7.16346, 4.48337)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_00w01")
@@ -2069,4 +2124,7 @@ autoplay = "RESET"
 [connection signal="body_exited" from="retreat" to="." method="_on_retreat_body_exited"]
 [connection signal="body_entered" from="Enter" to="." method="_on_enter_body_entered"]
 [connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
+[connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
