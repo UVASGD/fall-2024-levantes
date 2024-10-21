@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://f4abqinf4p1a"]
+[gd_scene load_steps=4 format=3 uid="uid://8xx1bkl3e4st"]
 
-[ext_resource type="Script" path="res://Scenes/Assets/projectiles/laser_test_script.gd" id="1_ataqn"]
+[ext_resource type="Script" path="res://Scenes/Assets/projectiles/laser_test_script.gd" id="1_8624r"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_phqbf"]
 resource_local_to_scene = true
@@ -16,7 +16,7 @@ emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 10.0
 
 [node name="Laser" type="RayCast3D"]
-script = ExtResource("1_ataqn")
+script = ExtResource("1_8624r")
 
 [node name="beam_mesh" type="MeshInstance3D" parent="." groups=["laser"]]
 mesh = SubResource("CylinderMesh_phqbf")

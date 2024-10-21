@@ -31,7 +31,7 @@ var is_firing = false
 @onready var laser = %Laser
 
 var curr_state = "idle"
-var next_state = "idle"
+var next_state = "chase"
 var prev_state
 var target
 var offset
@@ -52,7 +52,7 @@ func _ready():
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	Animation_Player.connect("animation_finished", _animation_player_finished)
-	laser.player = get_tree().get_nodes_in_group("Player")[0]
+	#laser.player = get_tree().get_nodes_in_group("Player")[0]
 	
 func _physics_process(delta):
 	prev_state = curr_state
@@ -80,7 +80,7 @@ func add_rand_offset(offset_amount) -> Vector3:
 	return offset
 	
 func face_target(delta):
-	target_pos = target.global_transform.origin + Vector3(0,1.2,0)
+	target_pos = target.global_transform.origin + Vector3(0,1.25,0)
 	
 	update_turn_speed(x_axis.normal_turn_speed)
 	x_axis.face_point(target_pos, delta)
@@ -88,6 +88,8 @@ func face_target(delta):
 	if can_move_y_axis:
 		show_laser()
 		y_axis.face_point(target_pos, delta)
+	show_laser()
+	y_axis.face_point(target_pos, delta)
 		
 func update_turn_speed(new_speed):
 	x_axis.current_turn_speed = new_speed
@@ -238,11 +240,11 @@ func is_player_visible(plr) -> bool:
 func show_laser():
 	await get_tree().create_timer(0.1).timeout
 	laser.show()
-	laser.laser_state = "active"
+	#laser.laser_state = "active"
 
 func hide_laser():
 	laser.hide()
-	laser.laser_state = "none"
+	#laser.laser_state = "none"
 
 
 func _on_retreat_body_entered(body):

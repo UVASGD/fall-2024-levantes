@@ -151,23 +151,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 stream = ExtResource("6_sph3o")
 
 [node name="bishop_sniper" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9253, 0.824076, 8.82126)
-axis_lock_linear_y = true
-
-[node name="bishop_sniper2" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5739, 0.824076, 18.5011)
-axis_lock_linear_y = true
-
-[node name="bishop_sniper3" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.512, 0.824076, 13.0671)
-axis_lock_linear_y = true
-
-[node name="bishop_sniper4" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96737, 0.824076, 0.280459)
+transform = Transform3D(-0.966698, 0, -0.255918, 0, 1, 0, 0.255918, 0, -0.966698, 1.64203, 0.824076, -26.6809)
 axis_lock_linear_y = true
 
 [node name="bishop_sniper5" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23235, 0.824076, 5.22165)
+transform = Transform3D(0.999995, 0, -0.00300215, 0, 1, 0, 0.00300215, 0, 0.999995, -46.5664, 3.97651, -32.7499)
+axis_lock_linear_y = true
+
+[node name="bishop_sniper2" parent="." instance=ExtResource("12_6qkm3")]
+transform = Transform3D(0.999995, 0, -0.00300215, 0, 1, 0, 0.00300215, 0, 0.999995, -42.6757, 3.97651, -51.8394)
+axis_lock_linear_y = true
+
+[node name="bishop_sniper6" parent="." instance=ExtResource("12_6qkm3")]
+transform = Transform3D(0.999995, 0, -0.00300215, 0, 1, 0, 0.00300215, 0, 0.999995, -28.1048, 3.97651, -27.8031)
+axis_lock_linear_y = true
+
+[node name="bishop_sniper3" parent="." instance=ExtResource("12_6qkm3")]
+transform = Transform3D(-0.966698, 0, -0.255918, 0, 1, 0, 0.255918, 0, -0.966698, 22.2156, 0.824076, -30.505)
+axis_lock_linear_y = true
+
+[node name="bishop_sniper7" parent="." instance=ExtResource("12_6qkm3")]
+transform = Transform3D(-0.966698, 0, -0.255918, 0, 1, 0, 0.255918, 0, -0.966698, 1.92016, 0.824076, -49.9511)
 axis_lock_linear_y = true
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]

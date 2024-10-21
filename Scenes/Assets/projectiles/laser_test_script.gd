@@ -1,25 +1,31 @@
+
 extends RayCast3D
 
 
-
-@onready var beam_mesh = $beam_mesh
+@export var max_length = -10000000
+@export var min_length = -0.1
+@onready var beam = $beam_mesh
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	var cast_point
+func _process(delta):
+	var contact_point
+	
 	force_raycast_update()
 	
 	if is_colliding():
 		var collider = get_collider()
-			#cast_point = to_local(get_collision_point())
-		cast_point = to_local(get_collision_point())
-		
-		beam_mesh.mesh.height = cast_point.y
-		beam_mesh.position.y = cast_point.y/2
-		if collider.is_in_group("Player"):
-			pass
-				#print("player hit!")
+		if collider.is_in_group("laser"):
+			add_exception(collider)
+		contact_point = to_local(get_collision_point())
+		var length = contact_point.y
+		change_beam_length(length)
+	else:
+		change_beam_length(max_length)
+
+func change_beam_length(length):
+	beam.mesh.height = length
+	beam.position.y = length/2
