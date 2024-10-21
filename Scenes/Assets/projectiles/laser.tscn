@@ -17,6 +17,6 @@ emission_energy_multiplier = 10.0
 [node name="Laser" type="RayCast3D"]
 script = ExtResource("1_8c4m7")
 
-[node name="beam_mesh" type="MeshInstance3D" parent="."]
+[node name="beam_mesh" type="MeshInstance3D" parent="." groups=["laser"]]
 mesh = SubResource("CylinderMesh_wtdug")
 surface_material_override/0 = SubResource("StandardMaterial3D_13m16")

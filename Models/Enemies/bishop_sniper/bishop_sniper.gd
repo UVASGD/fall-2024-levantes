@@ -80,7 +80,7 @@ func add_rand_offset(offset_amount) -> Vector3:
 	return offset
 	
 func face_target(delta):
-	target_pos = target.global_transform.origin + Vector3(0,0,0)
+	target_pos = target.global_transform.origin + Vector3(0,1.2,0)
 	
 	update_turn_speed(x_axis.normal_turn_speed)
 	x_axis.face_point(target_pos, delta)

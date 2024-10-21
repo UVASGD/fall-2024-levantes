@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddpry1xabum8c"]
+[gd_scene load_steps=10 format=3 uid="uid://ddpry1xabum8c"]
 
 [ext_resource type="PackedScene" uid="uid://cplfxvk02ichf" path="res://Scenes/laser_world_test/box.tscn" id="1_tykwj"]
 [ext_resource type="PackedScene" uid="uid://f4abqinf4p1a" path="res://Scenes/Assets/projectiles/laser.tscn" id="2_pkem2"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="3_bc7hk"]
+[ext_resource type="Script" path="res://Scenes/Assets/projectiles/laser_test_script.gd" id="3_u6k3o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dv7j8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,6 +50,7 @@ shape = SubResource("ConcavePolygonShape3D_80ogq")
 [node name="Laser" parent="." instance=ExtResource("2_pkem2")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.68628, 0.291596, 0)
 target_position = Vector3(0, -10, 0)
+script = ExtResource("3_u6k3o")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_bc7hk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00209689, 0.660194, 2.98122)
