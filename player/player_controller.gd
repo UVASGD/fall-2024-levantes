@@ -165,6 +165,7 @@ func take_damage(amount: int):
 		on_take_damage.emit()
 	else:
 		shield_hp -= amount
+		shield_hp = max(shield_hp, 0)
 	if health_hp <= 0:
 		game_over()
 	pass

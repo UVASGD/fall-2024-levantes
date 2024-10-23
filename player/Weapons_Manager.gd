@@ -200,7 +200,7 @@ func fire_Wep():
 						$AudioStreamPlayer.play()
 						if %Ray.is_colliding():
 							emit_signal("hit", %Ray.get_collider())
-							print(%Ray.get_collider())
+							#print(%Ray.get_collider())
 						_raycast()
 						#print(str(Current_Weapon.Curr_Mag_Ammo) + "\n")
 						Current_Weapon.Curr_Mag_Ammo -= 1
@@ -311,7 +311,7 @@ func _raycast() -> void:
 		
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	emit_signal("hit", %Ray.get_collider())
-	print(%Ray.get_collider())
+	#print(%Ray.get_collider())
 	var instance = Raycast_test.new()
 	instance.directionval = raycast_angle
 	instance.impactpoint = impact_position

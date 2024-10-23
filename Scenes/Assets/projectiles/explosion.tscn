@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://cupay32y8612k"]
+
+[ext_resource type="Script" path="res://Models/Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q586k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjm2p"]
+albedo_color = Color(0, 0.737255, 0.858824, 1)
+emission_enabled = true
+emission = Color(0.27451, 0.607843, 0.952941, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="Animation" id="Animation_41i38"]
+resource_name = "explode"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosion:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(15, 15, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_6lc70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosion:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwust"]
+_data = {
+"RESET": SubResource("Animation_6lc70"),
+"explode": SubResource("Animation_41i38")
+}
+
+[node name="explosion" type="Area3D"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.582662, 0)
+visible = false
+script = ExtResource("1_dabnm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0o7cn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transparency = 0.77
+mesh = SubResource("SphereMesh_q586k")
+surface_material_override/0 = SubResource("StandardMaterial3D_qjm2p")
+
+[node name="explosion_animation_player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_vwust")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="explosion_animation_player" to="." method="_on_explosion_animation_player_animation_finished"]

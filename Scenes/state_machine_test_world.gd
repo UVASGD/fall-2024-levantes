@@ -30,7 +30,7 @@ func _ready():
 	wave_timer.connect("timeout",_on_in_between_waves_timeout)
 
 func enemy_death():
-	print("enemy death")
+	#print("enemy death")
 	dead_enemies += 1 
 	if current_level < monster_dict.size() and dead_enemies == monster_dict[current_level]:
 		wave_timer.start()
@@ -48,7 +48,7 @@ func spawn_enemies():
 			2:
 				m = sniper.instantiate() 
 		m.next_state = "chase"
-		print("spawning enemy")
+		#print("spawning enemy")
 		#we check the amount of children on our spawn holder
 		var spawn_length = $SpawnHolder.get_child_count()-1
 		var rand_num = rand.randi_range(0,spawn_length)

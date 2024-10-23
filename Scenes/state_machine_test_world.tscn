@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bkhyw5o1ojai"]
+[gd_scene load_steps=25 format=3 uid="uid://bkhyw5o1ojai"]
 
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_8irtu"]
 [ext_resource type="Script" path="res://Scenes/state_machine_test_world.gd" id="1_uhjef"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Models/Enemies/state_machine_test/smt.tscn" id="3_rmk8k"]
 [ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Models/Weapons/spawnable_weapons/sp_sniper_rifle.tscn" id="4_dfgy7"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_sph3o"]
+[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="8_5qgu1"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Models/Enemies/bishop_sniper/bishop_sniper.tscn" id="12_6qkm3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -150,7 +151,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sph3o")
 volume_db = -20.0
-autoplay = true
 
 [node name="bishop_sniper" parent="." instance=ExtResource("12_6qkm3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0079, 0, 0)
@@ -162,7 +162,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5584, 0, 5.91775)
 transform = Transform3D(0.557904, 0, -0.829905, 0, 1, 0, 0.829905, 0, 0.557904, 13.3757, 0, -5.34672)
 
 [node name="bishop_sniper4" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(-0.220851, 0, -0.975308, 0, 1, 0, 0.975308, 0, -0.220851, 6.19598, 0, -5.34672)
+transform = Transform3D(-0.220851, 0, -0.975308, 0, 1, 0, 0.975308, 0, -0.220851, -5.27456, 0, 2.01576)
+
+[node name="Wallbreaker" parent="." instance=ExtResource("8_5qgu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81755, 0.723794, 4.41947)
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
 
