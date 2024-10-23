@@ -48,6 +48,7 @@ var can_move_y_axis = false
 @onready var vision = %Vision
 
 func _ready():
+	wait_time_till_fire_seconds = wait_time_till_fire_seconds + randf_range(-.5,.5)
 	offset = add_rand_offset(2)
 	fire_timer.wait_time = wait_time_till_fire_seconds
 	health_hp = max_health
@@ -178,24 +179,26 @@ func no_move_debug(delta):
 # TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
 #		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
 func shoot():
-	
-	Animation_Player.play("shoot_animation")
-	$AudioStreamPlayer3D2.play()
-	
-	var projectile_instance = projectile.instantiate()
+	if can_enemy_see_player():
+		Animation_Player.play("shoot_animation")
+		$AudioStreamPlayer3D2.play()
 
-	projectile_instance.damage_amount = damage
+		var projectile_instance = projectile.instantiate()
 
-	
-	projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
-	var spawn_pos = projectile_origin_spot.global_transform.origin
-	spawn_pos.y += -1
+		projectile_instance.damage_amount = damage
 
-	var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
-	projectile_instance.velocity = direction * projectile_speed  
 
-	get_parent().add_child(projectile_instance)
-	await Animation_Player.animation_finished
+		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
+		var spawn_pos = projectile_origin_spot.global_transform.origin
+		spawn_pos.y += -1.5
+
+		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
+		projectile_instance.velocity = direction * projectile_speed  
+
+		get_parent().add_child(projectile_instance)
+		await Animation_Player.animation_finished
+	else:
+		state_lock_on = false
 	
 
 

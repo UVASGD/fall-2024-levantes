@@ -2023,7 +2023,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
-transform = Transform3D(0.999428, 0.0321594, 0.0110116, -0.0336205, 0.982982, 0.1806, -0.00501622, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.999429, 0.0321594, 0.0110116, -0.0336205, 0.982982, 0.1806, -0.00501623, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm_s"]
 transform = Transform3D(-0.00443193, 0.347224, 0.940205, 1.20537, 1.2666e-07, 0.00373596, 0.00125889, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
