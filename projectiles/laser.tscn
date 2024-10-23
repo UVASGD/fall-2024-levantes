@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://f4abqinf4p1a"]
 
-[ext_resource type="Script" path="res://Scenes/Assets/projectiles/laser_test_script.gd" id="1_ataqn"]
+[ext_resource type="Script" path="res://projectiles/laser_test_script.gd" id="1_ataqn"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_phqbf"]
 resource_local_to_scene = true

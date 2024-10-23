@@ -1,8 +1,8 @@
 [gd_scene load_steps=81 format=3 uid="uid://d2ipjyem2oaxa"]
 
-[ext_resource type="Script" path="res://Models/Enemies/state_machine_test/smt.gd" id="1_n7xwg"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_p12mc"]
-[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="2_pdsiy"]
+[ext_resource type="Script" path="res://Enemies/state_machine_test/smt.gd" id="1_c2inb"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_l4233"]
+[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Weapons (old)/enemy_pistol/alien_pistol.tscn" id="2_pdsiy"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_7vm3h"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_2rr2n"]
 
@@ -852,11 +852,7 @@ _data = {
 }
 
 [node name="Smt" type="CharacterBody3D" groups=["enemies"]]
-script = ExtResource("1_n7xwg")
-SPEED = 10.0
-damage = 10
-projectile_speed = 25
-firing_speed_in_seconds = 1
+script = ExtResource("1_c2inb")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
@@ -890,7 +886,7 @@ shape = SubResource("SphereShape3D_gupe6")
 [node name="x_axis" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
-script = ExtResource("2_p12mc")
+script = ExtResource("2_l4233")
 
 [node name="x_axis_model_group" type="Node3D" parent="x_axis"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -949,7 +945,7 @@ skeleton = NodePath("")
 [node name="y_axis" type="Node3D" parent="x_axis"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
-script = ExtResource("2_p12mc")
+script = ExtResource("2_l4233")
 
 [node name="projectile_origin_spot" type="Marker3D" parent="x_axis/y_axis"]
 unique_name_in_owner = true

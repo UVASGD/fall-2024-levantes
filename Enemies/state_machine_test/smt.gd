@@ -26,7 +26,7 @@ var can_move_y_axis = false
 
 
 @onready var projectile_origin_spot = %projectile_origin_spot
-var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
+var projectile = preload("res://projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
 var next_state = "idle"
 var prev_state

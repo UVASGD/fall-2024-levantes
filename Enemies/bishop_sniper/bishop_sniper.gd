@@ -25,7 +25,7 @@ var health_hp: int
 @onready var fire_timer = $fire_timer
 @onready var vision_timer = $VisionTimer
 
-var projectile = preload("res://Scenes/Assets/projectiles/sniper_projectile.tscn")
+var projectile = preload("res://projectiles/sniper_projectile.tscn")
 @onready var projectile_origin_spot = %projectile_origin_spot
 var vision_timer_done = false
 var is_firing = false
@@ -184,9 +184,9 @@ func shoot():
 		$AudioStreamPlayer3D2.play()
 
 		var projectile_instance = projectile.instantiate()
-
+		
 		projectile_instance.damage_amount = damage
-
+		get_tree().root.add_child(projectile_instance)
 
 		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
 		var spawn_pos = projectile_origin_spot.global_transform.origin
@@ -195,7 +195,7 @@ func shoot():
 		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
 		projectile_instance.velocity = direction * projectile_speed  
 
-		get_parent().add_child(projectile_instance)
+		#get_parent().add_child(projectile_instance)
 		await Animation_Player.animation_finished
 	else:
 		state_lock_on = false
@@ -313,7 +313,7 @@ func _on_enter_body_exited(body):
 		hide_laser()
 		Animation_Player.play_backwards("enter_shoot_state")
 
-func _animation_player_finished():
+func _animation_player_finished(useless):
 	return true
 
 

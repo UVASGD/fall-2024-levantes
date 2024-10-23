@@ -1,9 +1,9 @@
 [gd_scene load_steps=95 format=3 uid="uid://dx3k3nehr35dh"]
 
-[ext_resource type="Script" path="res://Models/Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_o3jtk"]
-[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_ra7jm"]
-[ext_resource type="PackedScene" uid="uid://f4abqinf4p1a" path="res://Scenes/Assets/projectiles/laser.tscn" id="4_vjpgk"]
+[ext_resource type="Script" path="res://Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
+[ext_resource type="Script" path="res://Enemies/test_enemy/f_t.gd" id="2_o3jtk"]
+[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://Worlds/world_objects/cone.tscn" id="3_ra7jm"]
+[ext_resource type="PackedScene" uid="uid://f4abqinf4p1a" path="res://projectiles/laser.tscn" id="4_vjpgk"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_50s5u"]
 [ext_resource type="AudioStream" uid="uid://bmst1w3vgt3iv" path="res://audio/levantes_sniper_sound_effect.mp3" id="6_gv388"]
 
@@ -1853,7 +1853,7 @@ mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
 [node name="cape" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
-transform = Transform3D(0.976627, 0.214939, 1.07581e-13, -0.214939, 0.976627, 2.3863e-15, -1.04554e-13, -2.54539e-14, 1, -0.593335, 0.0761061, 0.116825)
+transform = Transform3D(0.976627, 0.21494, 1.07581e-13, -0.21494, 0.976627, 2.3863e-15, -1.04554e-13, -2.54539e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_axc23")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
@@ -2002,13 +2002,13 @@ mesh = SubResource("ArrayMesh_jhyi8")
 skeleton = NodePath("")
 
 [node name="cape_s" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_s"]
-transform = Transform3D(0.976627, 0.214939, 1.08672e-13, -0.214939, 0.976627, -2.09054e-15, -1.06581e-13, -2.13162e-14, 1, -0.593335, 0.0761061, 0.116825)
+transform = Transform3D(0.976627, 0.21494, 1.08672e-13, -0.21494, 0.976627, -2.09054e-15, -1.06581e-13, -2.13162e-14, 1, -0.593335, 0.0761061, 0.116825)
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
 [node name="leftarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
-transform = Transform3D(0.519445, 0.0738138, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
+transform = Transform3D(0.519445, 0.0738137, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
 [node name="RightForearm_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm_s"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)

@@ -147,7 +147,7 @@ func _raycast():
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	if not intersection.is_empty():
-		emit_signal("hit", intersection.get("collider"))
+		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
 		print(intersection.get("collider"))
 		
 	else:
