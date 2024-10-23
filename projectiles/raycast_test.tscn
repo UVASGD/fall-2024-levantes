@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://1mp3bevnppfh"]
+
+[ext_resource type="Script" path="res://projectiles/raycast_test.gd" id="1_j7geh"]
+[ext_resource type="Script" path="res://projectiles/spark.gd" id="2_hv1vv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bb8g"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l127o"]
+material = SubResource("StandardMaterial3D_3bb8g")
+radius = 10.0
+height = 20.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Gradient" id="Gradient_sd062"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.160784, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_8jn57"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfsd"]
+albedo_color = Color(1, 0.662745, 0, 1)
+
+[sub_resource type="PointMesh" id="PointMesh_6lkvt"]
+material = SubResource("StandardMaterial3D_pjfsd")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_j7geh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+light_color = Color(1, 0.541176, 0.109804, 1)
+light_energy = 1.98
+light_size = 0.031
+omni_range = 1.966
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0, 0)
+visible = false
+amount = 4
+explosiveness = 1.0
+local_coords = true
+draw_order = 2
+mesh = SubResource("CapsuleMesh_l127o")
+emission_shape = 1
+emission_sphere_radius = 4.92
+initial_velocity_max = 40.81
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_sd062")
+color_initial_ramp = SubResource("Gradient_8jn57")
+script = ExtResource("2_hv1vv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CPUParticles3D"]
+mesh = SubResource("PointMesh_6lkvt")

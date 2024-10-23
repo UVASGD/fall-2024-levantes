@@ -64,6 +64,7 @@ func get_move_speed() -> float:
 	return walk_speed
 
 func _ready():
+	
 	shield_hp = max_shield_hp
 	health_hp = max_health_hp
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
@@ -74,6 +75,8 @@ func _ready():
 	SignalBus.connect("player_hit", _on_player_hit)
 	shield_regen_timer.connect("timeout", _on_shield_regen_timer_timeout)
 	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
+	dash_length_timer.connect("timeout", _on_dash_length_timeout)
+	dash_cooldown_timer.connect("timeout", _on_dash_cooldown_timeout)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

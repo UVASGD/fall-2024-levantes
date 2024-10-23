@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://ylehy7odbg8w"]
+
+[ext_resource type="Script" path="res://Weapons (old)/weapon_resource.gd" id="1_au4pn"]
+
+[resource]
+script = ExtResource("1_au4pn")
+Wep_Name = "shotgun"
+Wep_Display_Name = "shotgun"
+Equip_Ani = ""
+Fire_Ani = ""
+Reload_Ani = ""
+Dequip_Ani = ""
+Wait_Ani = ""
+Fire_Sound = ""
+Curr_Mag_Ammo = 0
+Reserve_Ammo = 0
+Max_Mag_Capacity = 0
+Max_Ammo = 0
+Fire_Mode = ""
+Burst_Count = 0
+Wait_Interval = 0.0
+Is_Waiting = false
+Is_Reloading = false
+Type = null
+Projectile_Range = 0.0
+dmg = 0
+ray_path = ""
+light_path = ""

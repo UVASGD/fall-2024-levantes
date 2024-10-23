@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://rmoydhwwv2uy"]
-
-[ext_resource type="Script" path="res://Models/Enemies/Pawn/enemy_manager.gd" id="1_3vpbr"]
-
-[node name="EnemyManager" type="Node"]
-script = ExtResource("1_3vpbr")
-
-[node name="AttackSpeedTimer" type="Timer" parent="."]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpv0vse6jqelh"
+path="res://.godot/imported/smg_obj_var.obj-3fee1207e1bbed104719b07aa3edde5b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/smg_obj_var.obj-3fee1207e1bbed104719b07aa3edde5b.mesh"]
+
+source_file="res://Weapons (old)/smg/smg_obj_var.obj"
+dest_files=["res://.godot/imported/smg_obj_var.obj-3fee1207e1bbed104719b07aa3edde5b.mesh", "res://.godot/imported/smg_obj_var.obj-3fee1207e1bbed104719b07aa3edde5b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

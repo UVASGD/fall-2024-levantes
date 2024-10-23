@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkm30bs6fxpuu"]
+
+[ext_resource type="Script" path="res://Enemies/Pawn/hurt_box.gd" id="1_rjkvi"]
+
+[node name="HurtBox" type="Area3D"]
+script = ExtResource("1_rjkvi")
