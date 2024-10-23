@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Models/Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
 [ext_resource type="Script" path="res://Models/Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_hwhgo"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_hwhgo"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5act7"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="5_6kyp3"]
 

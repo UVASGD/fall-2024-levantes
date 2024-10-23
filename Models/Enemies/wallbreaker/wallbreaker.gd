@@ -13,7 +13,7 @@ var health_hp: int
 
 
 @onready var Animation_Player = %AnimationPlayer
-var explosion = preload("res://Scenes/Assets/projectiles/explosion.tscn")
+var explosion = preload("res://projectiles/explosion.tscn")
 
 
 
