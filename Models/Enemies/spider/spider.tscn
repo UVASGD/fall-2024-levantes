@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdi48a2cr3mlg"]
+
+[ext_resource type="Script" path="res://spider.gd" id="1_eactp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qxuri"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_miuym"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v13ip"]
+
+[node name="Node3D" type="CharacterBody3D"]
+script = ExtResource("1_eactp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+mesh = SubResource("CapsuleMesh_qxuri")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_miuym")
+
+[node name="detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detection"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("SphereShape3D_v13ip")
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

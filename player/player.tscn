@@ -1687,7 +1687,7 @@ target_position = Vector3(-10, 5, -200)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera3D/Weapons_Manager"]
 stream = ExtResource("8_muae0")
-volume_db = -11.245
+volume_db = -20.0
 pitch_scale = 0.6
 max_polyphony = 3
 

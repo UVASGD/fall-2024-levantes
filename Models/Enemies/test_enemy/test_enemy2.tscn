@@ -1,8 +1,8 @@
-[gd_scene load_steps=92 format=3 uid="uid://dfaprawobuuvd"]
+[gd_scene load_steps=92 format=3 uid="uid://bh6vkx3e22fkb"]
 
-[ext_resource type="Script" path="res://Models/Enemies/test_enemy/ta.gd" id="1_xtenq"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_l1paq"]
-[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_i6duh"]
+[ext_resource type="Script" path="res://Models/Enemies/test_enemy/ta.gd" id="1_pwogx"]
+[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_3fhsm"]
+[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_i4ywi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64yr4"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1035,11 +1035,11 @@ albedo_color = Color(50.296, 1.5, 0.344, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_k457u"]
 
 [node name="TestEnemy" type="Node3D"]
-script = ExtResource("1_xtenq")
+script = ExtResource("1_pwogx")
 
 [node name="f_t_y" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08445, 0)
-script = ExtResource("2_l1paq")
+script = ExtResource("2_3fhsm")
 
 [node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38834, 0)
@@ -1089,7 +1089,7 @@ skeleton = NodePath("")
 
 [node name="f_t_x" type="Node3D" parent="f_t_y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.95305e-08, 1.45112, -0.0404378)
-script = ExtResource("2_l1paq")
+script = ExtResource("2_3fhsm")
 
 [node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846146, 0, -0.54189)
@@ -1310,7 +1310,7 @@ material_override = SubResource("StandardMaterial3D_7lavs")
 mesh = SubResource("SphereMesh_k457u")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_i6duh")
+stream = ExtResource("3_i4ywi")
 volume_db = 5.818
 
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
