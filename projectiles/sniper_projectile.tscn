@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds3h0ptqnuo04"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/projectiles/enemy_projectile.gd" id="1_ss84u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u3mkd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pyi0"]
+emission_enabled = true
+emission = Color(0.92549, 0, 0, 1)
+emission_energy_multiplier = 7.66
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iapnq"]
+
+[node name="EnemyProjectile" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_ss84u")
+time_to_despawn_in_seconds = 100
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_u3mkd")
+surface_material_override/0 = SubResource("StandardMaterial3D_5pyi0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_iapnq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(5, 0.059, 0.083, 1)
+light_energy = 5.0
+omni_range = 0.25
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

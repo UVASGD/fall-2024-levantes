@@ -1,72 +1,109 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
-@export var SPEED = 5.0
+@export var SPEED = 10
 
 @export var max_health: int = 100
 var health_hp: int
-@export var damage = 1
+@export var damage = 50
 @export var projectile_speed = 5
-@export var firing_speed_in_seconds = 2
+@export var wait_time_till_fire_seconds = 4
 @export var visibility_range = 1000000
 
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
+@onready var sniper_rifle = %sniper_rifle
+
+@onready var x_axis_model_group = %x_axis_model_group
+@onready var y_axis_model_group = %y_axis_model_group
+
 @onready var x_axis_shield = %x_axis_shield
 @onready var y_axis_shield = %y_axis_shield
 
 @onready var Animation_Player = get_node("AnimationPlayer")
 
-@onready var timer = $Timer
+@onready var fire_timer = $fire_timer
 @onready var vision_timer = $VisionTimer
 
+var projectile = preload("res://Scenes/Assets/projectiles/sniper_projectile.tscn")
+@onready var projectile_origin_spot = %projectile_origin_spot
 var vision_timer_done = false
 var is_firing = false
-var can_move_y_axis = false
 
+@onready var laser = %Laser
 
-@onready var projectile_origin_spot = %projectile_origin_spot
-var projectile = preload("res://Scenes/Assets/projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
-var next_state = "idle"
+var next_state = "chase"
 var prev_state
 var target
 var offset
 var target_pos
 
-@onready var vision = %Vision
+var in_firing_state = false
+
+var state_lock_on = false
+
+var can_move_y_axis = false
 @onready var hitbox = $"."
+@onready var vision = %Vision
 
 func _ready():
+	wait_time_till_fire_seconds = wait_time_till_fire_seconds + randf_range(-.5,.5)
 	offset = add_rand_offset(2)
-	timer.wait_time = firing_speed_in_seconds
+	fire_timer.wait_time = wait_time_till_fire_seconds
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+	fire_timer.connect("timeout", _on_fire_timer_timeout)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
+	Animation_Player.connect("animation_finished", _animation_player_finished)
+	#laser.player = get_tree().get_nodes_in_group("Player")[0]
 	
 func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
 	
-	
-	match curr_state:
-		"idle":
-			idle()
-		"chase":
-			chase(delta)
-		"retreat":
-			retreat(delta)
-		"no_move_debug":
-			no_move_debug(delta)
-	
-
+	if not state_lock_on:
+		match curr_state:
+			"idle":
+				idle()
+			"chase":
+				stop_and_reset_fire_timer()
+				chase(delta)
+			"retreat":
+				stop_and_reset_fire_timer()
+				retreat(delta)
+			"no_move_debug":
+				stop_and_reset_fire_timer()
+				no_move_debug(delta)
+			"sight_on":
+				sight_on(delta)
+			"shoot":
+				shoot()
+		
+func stop_and_reset_fire_timer():
+	fire_timer.stop()
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	
 func add_rand_offset(offset_amount) -> Vector3:
 	var offset = Vector3(randf() - offset_amount, 0, randf() - offset_amount).normalized() * offset_amount
 	return offset
-
+	
+func face_target(delta):
+	target_pos = target.global_transform.origin + Vector3(0,1.3,0)
+	
+	update_turn_speed(x_axis.normal_turn_speed)
+	x_axis.face_point(target_pos, delta)
+	
+	if can_move_y_axis:
+		show_laser()
+		y_axis.face_point(target_pos, delta)
+	show_laser()
+	y_axis.face_point(target_pos, delta)
+		
+func update_turn_speed(new_speed):
+	x_axis.current_turn_speed = new_speed
+	y_axis.current_turn_speed = new_speed
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	match curr_state:
 		"idle":
@@ -78,99 +115,96 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		"retreat":
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
+		"shoot":
+			velocity = Vector3.ZERO
+			move_and_slide()
 			
-func face_target(delta):
-	target_pos = target.global_transform.origin + Vector3(0,1.5,0)
-	
-	x_axis.current_turn_speed = x_axis.normal_turn_speed
-	x_axis.face_point(target_pos, delta)
-	
-	if can_move_y_axis:
-		y_axis.current_turn_speed = y_axis.normal_turn_speed
-		y_axis.face_point(target_pos, delta)
-
-func update_turn_speed(new_speed):
-	x_axis.current_turn_speed = new_speed
-	y_axis.current_turn_speed = new_speed
+			
+			
 
 func idle():
-	#print("idling")
 	velocity = Vector3.ZERO
 	move_and_slide()
 
 func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
-	#_i_can_see()
+	
+	
 	face_target(delta)
+	update_turn_speed(y_axis.normal_turn_speed)
 	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
+	hide_laser()
 	
 
+func sight_on(delta):
+	if fire_timer.is_stopped():
+		fire_timer.start()
+	target = get_tree().get_nodes_in_group("Player")[0]
+	#_i_can_see()
+	target_pos = target.global_transform.origin
+	
+	face_target(delta)
+	update_turn_speed(y_axis.normal_turn_speed - 20)
 
+	#TODO: Use x_axis.face_point and y_axis.face_point to make the 
+	# 	   enemy face the player and make them enter a shoot state
+	pass
 func retreat(delta):
+	hide_laser()
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
+	target_pos = target.global_transform.origin
+	
 	face_target(delta)
+	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
+
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
 	x_axis.face_point(target_pos, delta)
 	y_axis.face_point(target_pos, delta)
-	shoot(timer)
+	shoot()
 
-func _on_chase_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "chase"
 		
-
-func shoot(tm):
-	if y_axis.is_facing_target(target_pos) and not is_firing:
-		tm.start()
-		is_firing = true
-		Animation_Player.queue("smt_shoot")
+# TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
+#		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
+func shoot():
+	if can_enemy_see_player():
+		Animation_Player.play("shoot_animation")
 		$AudioStreamPlayer3D2.play()
-		
+
 		var projectile_instance = projectile.instantiate()
 
 		projectile_instance.damage_amount = damage
 
-		
+
 		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
 		var spawn_pos = projectile_origin_spot.global_transform.origin
-		spawn_pos.y += -1
+		spawn_pos.y += -1.5
 
 		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
 		projectile_instance.velocity = direction * projectile_speed  
 
-
 		get_parent().add_child(projectile_instance)
-		
-
+		await Animation_Player.animation_finished
+	else:
+		state_lock_on = false
 	
 
-func _on_chill_body_entered(body):
-	if body.is_in_group("Player"):
-		next_state = "retreat" 
-		
 
 
 
-func _on_chase_body_exited(body):
-	if body.is_in_group("Player"):
-		next_state = "chase"
+	
 
 func take_damage(amount: int):
 	health_hp -= amount
@@ -181,11 +215,15 @@ func take_damage(amount: int):
 func on_hit(damage_taken, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
+		x_axis_model_group.hide()
+		y_axis_model_group.hide()
 		x_axis_shield.show()
 		y_axis_shield.show()
 		await get_tree().create_timer(.1).timeout
 		x_axis_shield.hide()
 		y_axis_shield.hide()
+		x_axis_model_group.show()
+		y_axis_model_group.show()
 		take_damage(damage_taken)
 	
 	pass
@@ -200,8 +238,7 @@ func can_enemy_see_player() -> bool:
 						update_turn_speed(y_axis.normal_turn_speed)
 						return true
 					false:
-						var new_turn_speed = y_axis.current_turn_speed + 100
-						update_turn_speed(new_turn_speed)
+						update_turn_speed(y_axis.current_turn_speed + 100)
 						return false
 			elif overlap.is_in_group("Player") and is_player_visible(overlap):
 				vision_timer.start()
@@ -209,9 +246,9 @@ func can_enemy_see_player() -> bool:
 				return true
 	return false
 
-func _on_timer_timeout():
-	is_firing = false
-	pass # Replace with function body.
+func _on_fire_timer_timeout():
+	state_lock_on = true
+	shoot()
 	
 func _on_vision_timer_timeout():
 	vision_timer_done = true 
@@ -235,6 +272,49 @@ func is_player_visible(plr) -> bool:
 		return false
 
 
+func show_laser():
+	await get_tree().create_timer(0.1).timeout
+	laser.show()
+	#laser.laser_state = "active"
+
+func hide_laser():
+	laser.hide()
+	#laser.laser_state = "none"
+
+
+func _on_retreat_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "retreat"
+		hide_laser()
+		Animation_Player.play_backwards("enter_shoot_state")
+		
+
+
+
+func _on_enter_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "sight_on"
+		Animation_Player.queue("enter_shoot_state")
+		show_laser()
+
+
+
+
+func _on_retreat_body_exited(body):
+	if body.is_in_group("Player"):
+		next_state = "sight_on"
+		Animation_Player.queue("enter_shoot_state")
+		show_laser()
+
+
+func _on_enter_body_exited(body):
+	if body.is_in_group("Player"):
+		next_state = "chase"
+		hide_laser()
+		Animation_Player.play_backwards("enter_shoot_state")
+
+func _animation_player_finished():
+	return true
 
 
 func _on_vision_body_entered(body):
@@ -245,3 +325,10 @@ func _on_vision_body_entered(body):
 func _on_vision_body_exited(body):
 	if body.is_in_group("Player"):
 		can_move_y_axis = false
+		
+
+
+
+func _on_animation_player_animation_finished(anim_name):
+	state_lock_on = false
+		

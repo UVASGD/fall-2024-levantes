@@ -1,9 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://bkhyw5o1ojai"]
 
-[ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_uhjef"]
+[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_8irtu"]
+[ext_resource type="Script" path="res://Scenes/state_machine_test_world.gd" id="1_uhjef"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_5pah8"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="3_rmk8k"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/husk_sniper.tscn" id="4_dfgy7"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Models/Enemies/state_machine_test/smt.tscn" id="3_rmk8k"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Models/Weapons/spawnable_weapons/sp_sniper_rifle.tscn" id="4_dfgy7"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_sph3o"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Models/Enemies/bishop_sniper/bishop_sniper.tscn" id="12_6qkm3"]
 
@@ -49,82 +50,14 @@ ground_bottom_color = Color(0.054902, 0.0392157, 0.027451, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 sun_angle_max = 0.0
 
-[sub_resource type="Sky" id="Sky_ocx2s"]
+[sub_resource type="Sky" id="Sky_mm45y"]
 sky_material = SubResource("ProceduralSkyMaterial_x83sr")
 
 [sub_resource type="Environment" id="Environment_mdiys"]
 background_mode = 2
-sky = SubResource("Sky_ocx2s")
+sky = SubResource("Sky_mm45y")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1c20"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
-size = Vector3(2.92481, 2.45361, 3.20447)
-
-[sub_resource type="Animation" id="Animation_ps52s"]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -0.74249)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_kl5rf"]
-resource_name = "burst"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/weapon manager/BURST:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.128455, -0.355517, -0.940877), Vector3(0.6, -0.2, -1.14792)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/weapon manager/BURST:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.626465, -2.24028, -0.434427), Vector3(0, 3.13957, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i65yi"]
-_data = {
-"RESET": SubResource("Animation_ps52s"),
-"burst": SubResource("Animation_kl5rf")
-}
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_uhjef")
@@ -179,6 +112,15 @@ shape = SubResource("BoxShape3D_jugvo")
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_8irtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
 
+[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
+transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
+transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
+
+[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
+transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
 shadow_enabled = true
@@ -216,20 +158,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sph3o")
-volume_db = -20.0
-autoplay = true
 
 [node name="bishop_sniper" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0079, 0, 0)
-
-[node name="bishop_sniper2" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5584, 0, 5.91775)
-
-[node name="bishop_sniper3" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(0.557904, 0, -0.829905, 0, 1, 0, 0.829905, 0, 0.557904, 13.3757, 0, -5.34672)
-
-[node name="bishop_sniper4" parent="." instance=ExtResource("12_6qkm3")]
-transform = Transform3D(-0.220851, 0, -0.975308, 0, 1, 0, 0.975308, 0, -0.220851, 6.19598, 0, -5.34672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9253, 10.1882, 8.82126)
+axis_lock_linear_y = true
+SPEED = 10
+max_health = 100
+damage = 1
+projectile_speed = 5
+firing_speed_in_seconds = 2
+visibility_range = 1000000
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
 
