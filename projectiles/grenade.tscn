@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0y0827061bpw"]
+
+[ext_resource type="Script" path="res://Grenade.gd" id="1_jb4av"]
+[ext_resource type="PackedScene" uid="uid://dvf4vyg7y0si" path="res://projectiles/grenade.glb" id="2_82h83"]
+
+[node name="Grenade" type="Node3D"]
+script = ExtResource("1_jb4av")
+
+[node name="grenade" parent="." instance=ExtResource("2_82h83")]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0)
