@@ -4,14 +4,15 @@ extends CharacterBody3D
 
 @export var max_health: int = 100
 var health_hp: int
-@export var damage = 1
+@export var damage = 50
 @export var projectile_speed = 5
-@export var firing_speed_in_seconds = 2
+@export var wait_time_till_fire_seconds = 4
 @export var visibility_range = 1000000
 
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
+@onready var sniper_rifle = %sniper_rifle
 
 @onready var x_axis_model_group = %x_axis_model_group
 @onready var y_axis_model_group = %y_axis_model_group
@@ -21,10 +22,11 @@ var health_hp: int
 
 @onready var Animation_Player = get_node("AnimationPlayer")
 
-@onready var timer = $Timer
+@onready var fire_timer = $fire_timer
 @onready var vision_timer = $VisionTimer
 
-
+var projectile = preload("res://Scenes/Assets/projectiles/sniper_projectile.tscn")
+@onready var projectile_origin_spot = %projectile_origin_spot
 var vision_timer_done = false
 var is_firing = false
 
@@ -39,7 +41,7 @@ var target_pos
 
 var in_firing_state = false
 
-var animation_lock_on = false
+var state_lock_on = false
 
 var can_move_y_axis = false
 @onready var hitbox = $"."
@@ -47,9 +49,10 @@ var can_move_y_axis = false
 
 func _ready():
 	offset = add_rand_offset(2)
-	timer.wait_time = firing_speed_in_seconds
+	fire_timer.wait_time = wait_time_till_fire_seconds
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+	fire_timer.connect("timeout", _on_fire_timer_timeout)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	Animation_Player.connect("animation_finished", _animation_player_finished)
 	#laser.player = get_tree().get_nodes_in_group("Player")[0]
@@ -58,20 +61,26 @@ func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
 	
-	
-	match curr_state:
-		"idle":
-			idle()
-		"chase":
-			chase(delta)
-		"retreat":
-			retreat(delta)
-		"no_move_debug":
-			no_move_debug(delta)
-		"sight_on":
-			sight_on(delta)
-	
-
+	if not state_lock_on:
+		match curr_state:
+			"idle":
+				idle()
+			"chase":
+				stop_and_reset_fire_timer()
+				chase(delta)
+			"retreat":
+				stop_and_reset_fire_timer()
+				retreat(delta)
+			"no_move_debug":
+				stop_and_reset_fire_timer()
+				no_move_debug(delta)
+			"sight_on":
+				sight_on(delta)
+			"shoot":
+				shoot()
+		
+func stop_and_reset_fire_timer():
+	fire_timer.stop()
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	
@@ -80,7 +89,7 @@ func add_rand_offset(offset_amount) -> Vector3:
 	return offset
 	
 func face_target(delta):
-	target_pos = target.global_transform.origin + Vector3(0,1.25,0)
+	target_pos = target.global_transform.origin + Vector3(0,1.3,0)
 	
 	update_turn_speed(x_axis.normal_turn_speed)
 	x_axis.face_point(target_pos, delta)
@@ -105,6 +114,10 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		"retreat":
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
+		"shoot":
+			velocity = Vector3.ZERO
+			move_and_slide()
+			
 			
 			
 
@@ -128,13 +141,15 @@ func chase(delta):
 	
 
 func sight_on(delta):
-	
+	if fire_timer.is_stopped():
+		fire_timer.start()
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
 	target_pos = target.global_transform.origin
 	
 	face_target(delta)
 	update_turn_speed(y_axis.normal_turn_speed - 20)
+
 	#TODO: Use x_axis.face_point and y_axis.face_point to make the 
 	# 	   enemy face the player and make them enter a shoot state
 	pass
@@ -157,13 +172,30 @@ func no_move_debug(delta):
 	target_pos = target.global_transform.origin
 	x_axis.face_point(target_pos, delta)
 	y_axis.face_point(target_pos, delta)
-	shoot(timer)
+	shoot()
 
 		
 # TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
 #		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
-func shoot(tm):
-	pass
+func shoot():
+	
+	Animation_Player.play("shoot_animation")
+	$AudioStreamPlayer3D2.play()
+	
+	var projectile_instance = projectile.instantiate()
+
+	projectile_instance.damage_amount = damage
+
+	
+	projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
+	var spawn_pos = projectile_origin_spot.global_transform.origin
+	spawn_pos.y += -1
+
+	var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
+	projectile_instance.velocity = direction * projectile_speed  
+
+	get_parent().add_child(projectile_instance)
+	await Animation_Player.animation_finished
 	
 
 
@@ -211,9 +243,9 @@ func can_enemy_see_player() -> bool:
 				return true
 	return false
 
-func _on_timer_timeout():
-	is_firing = false
-	pass # Replace with function body.
+func _on_fire_timer_timeout():
+	state_lock_on = true
+	shoot()
 	
 func _on_vision_timer_timeout():
 	vision_timer_done = true 
@@ -295,5 +327,5 @@ func _on_vision_body_exited(body):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	pass
+	state_lock_on = false
 		

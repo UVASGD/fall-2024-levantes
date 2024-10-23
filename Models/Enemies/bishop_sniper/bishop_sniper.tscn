@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_ra7jm"]
 [ext_resource type="PackedScene" uid="uid://f4abqinf4p1a" path="res://Scenes/Assets/projectiles/laser.tscn" id="4_vjpgk"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_50s5u"]
-[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="6_ny24y"]
+[ext_resource type="AudioStream" uid="uid://bmst1w3vgt3iv" path="res://audio/levantes_sniper_sound_effect.mp3" id="6_gv388"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 1.2884
@@ -1719,6 +1719,7 @@ _data = {
 
 [node name="bishop_sniper" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_1oh2a")
+projectile_speed = 100
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
@@ -1754,6 +1755,8 @@ shape = SubResource("SphereShape3D_gupe6")
 unique_name_in_owner = true
 transform = Transform3D(-3.25799e-07, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.25799e-07, 0.372815, 1.25594, 2.40837e-06)
 script = ExtResource("2_o3jtk")
+current_turn_speed = 40
+normal_turn_speed = 40
 retreat_turn_speed = 30
 
 [node name="x_axis_model_group" type="Node3D" parent="x_axis"]
@@ -1823,6 +1826,8 @@ transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0,
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.67029e-05, -6.5214, 7.37499)
 script = ExtResource("2_o3jtk")
+current_turn_speed = 40
+normal_turn_speed = 40
 retreat_turn_speed = 30
 
 [node name="y_axis_model_group" type="Node3D" parent="x_axis/y_axis"]
@@ -1890,6 +1895,7 @@ mesh = SubResource("ArrayMesh_00w01")
 skeleton = NodePath("")
 
 [node name="sniper_rifle" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
+unique_name_in_owner = true
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 21.0661, 6.08293, 0.542269)
 
 [node name="model" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
@@ -1962,7 +1968,8 @@ material_override = SubResource("StandardMaterial3D_4f81l")
 mesh = SubResource("ArrayMesh_5i75q")
 skeleton = NodePath("")
 
-[node name="Marker3D" type="Marker3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
+[node name="projectile_origin_spot" type="Marker3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle"]
+unique_name_in_owner = true
 transform = Transform3D(0.156415, 2.02672, 10.9236, 0.2445, 10.9214, -2.02982, -11.1073, 0.268948, 0.109146, 0.0397015, 1.0719, -8.90248)
 visible = false
 
@@ -2001,7 +2008,7 @@ mesh = SubResource("ArrayMesh_7vbgh")
 skeleton = NodePath("")
 
 [node name="leftarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
-transform = Transform3D(0.519445, 0.0738137, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
+transform = Transform3D(0.519445, 0.0738138, 0.851311, -0.431399, 0.882632, 0.186697, -0.737613, -0.464232, 0.490322, 2.61694, 1.02076, 3.54713)
 
 [node name="RightForearm_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm_s"]
 transform = Transform3D(0.158699, -0.410917, 1.33369, 0.890429, -1.00375, -0.415214, 1.07458, 0.89242, 0.147091, 3.60399, 5.95698, -1.88106)
@@ -2016,7 +2023,7 @@ mesh = SubResource("ArrayMesh_dg8ik")
 skeleton = NodePath("")
 
 [node name="rightarm_s" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
-transform = Transform3D(0.999425, 0.0321594, 0.0110116, -0.0336204, 0.982982, 0.1806, -0.00501621, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
+transform = Transform3D(0.999428, 0.0321594, 0.0110116, -0.0336205, 0.982982, 0.1806, -0.00501622, -0.180865, 0.983495, 3.19734, -0.844009, 3.54399)
 
 [node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm_s"]
 transform = Transform3D(-0.00443193, 0.347224, 0.940205, 1.20537, 1.2666e-07, 0.00373596, 0.00125889, 1.22231, -0.267086, -1.34865, 5.87255, 3.77587)
@@ -2040,11 +2047,12 @@ skeleton = NodePath("")
 stream = ExtResource("5_50s5u")
 volume_db = 5.818
 
-[node name="Timer" type="Timer" parent="."]
+[node name="fire_timer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_ny24y")
+stream = ExtResource("6_gv388")
+volume_db = 50.0
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -2062,5 +2070,4 @@ autoplay = "RESET"
 [connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
 [connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
