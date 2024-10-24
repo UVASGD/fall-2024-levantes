@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qfu183wmac2x"]
+[gd_scene load_steps=23 format=3 uid="uid://qfu183wmac2x"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_bcd8m"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_xlq6n"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="8_25oti"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="9_3pkyx"]
 [ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="10_jedjq"]
+[ext_resource type="PackedScene" uid="uid://b1dmbc5ccwkec" path="res://projectiles/husk_grenade.tscn" id="11_qvg6q"]
+[ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="12_7m82n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ndvp6"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -178,3 +180,9 @@ light_size = 1.0
 light_specular = 0.0
 omni_range = 4096.0
 omni_attenuation = 0.31864
+
+[node name="husk_grenade" parent="." instance=ExtResource("11_qvg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73238, -7.42136)
+
+[node name="HuskBurstRifle" parent="." instance=ExtResource("12_7m82n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83645, 2.63893, -5.31928)

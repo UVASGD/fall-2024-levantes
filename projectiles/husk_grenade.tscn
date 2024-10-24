@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1dmbc5ccwkec"]
+
+[ext_resource type="Script" path="res://husk_grenade.gd" id="1_hxy35"]
+[ext_resource type="PackedScene" uid="uid://dvf4vyg7y0si" path="res://projectiles/grenade.glb" id="2_n0oua"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5slil"]
+
+[node name="husk_grenade" type="RigidBody3D"]
+script = ExtResource("1_hxy35")
+weapon_name = "Grenade"
+real_weapon_path = "res://projectiles/grenade.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.43, 0, 0, 0, 1.43, 0, 0, 0, 1.43, 0, 0, 0)
+shape = SubResource("SphereShape3D_5slil")
+
+[node name="grenade_model" parent="." instance=ExtResource("2_n0oua")]
+transform = Transform3D(0.285, 0, 0, 0, 0.285, 0, 0, 0, 0.285, 0, 0, 0)

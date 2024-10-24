@@ -9,7 +9,7 @@ signal ya_got_hit
 var velocity = Vector3.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	
 	pass # Replace with function body.
 
 
@@ -19,7 +19,8 @@ func _physics_process(delta):
 	pass
 
 func play_explode_animation():
-	animation_player.queue("explode")
+	animation_player.play("explode")
+	$AudioStreamPlayer3D.play()
 	
 
 func _on_body_entered(body):
@@ -36,5 +37,5 @@ func _on_body_entered(body):
 
 
 func _on_explosion_animation_player_animation_finished(anim_name):
-	if anim_name == "explode":
-		$".".call_deferred("queue_free")
+	await $AudioStreamPlayer3D.finished
+	$".".queue_free()

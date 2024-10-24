@@ -1,5 +1,6 @@
 extends Node3D
 
+var throwable = "res://throwable.gd"
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
@@ -9,6 +10,10 @@ var can_spawn = true
 var nearby_weapon = null
 var pickup_detection
 var animationplayer
+
+var grenade_equipped = false
+var grenade = null
+var grenade_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animationplayer = get_child(0)
@@ -39,22 +44,60 @@ func _input(event):
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		await pickup()
 	if event.is_action_pressed("Shoot"):
+		if grenade_equipped:
+				throw()
+				return
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
 	if event.is_action_pressed("Reload"):
-		if current_weapon == null:
+		if current_weapon == null or grenade_equipped:
 			return
 		await current_weapon.reload()
+	if event.is_action_pressed("grenade"):
+		equip_throwable()
 	pass
 
+func equip_throwable():
+	if grenade != null:
+		await hide_weapon(current_weapon)
+		await grenade.equip()
+		grenade_equipped = true
+
+func dequip_throwable():
+	if grenade:
+		await grenade.dequip()
+		grenade_equipped = false
+
+func throw():
+	if grenade:
+		await grenade.throw()
+		grenade = null
+		grenade_equipped = false
+	if current_weapon:
+		await current_weapon.equip()
+
+func pickup_throwable(weapon):
+	if current_weapon != null:
+		await current_weapon.dequip()
+	grenade = weapon
+	add_child(grenade)
+	await grenade.equip()
+	grenade_equipped = true
+
+		
 func pickup():
 	var new_weapon 
 	if nearby_weapon == null:
 		return
 	
 	new_weapon = nearby_weapon.get_weapon()
-	
+	if new_weapon is throwable:
+		if grenade != null and grenade.name == new_weapon.name:
+			return
+		nearby_weapon.despawn()
+		await pickup_throwable(new_weapon)
+		return
 	if current_weapon != null and new_weapon.Name == current_weapon.Name:
 		return
 	if other_weapon != null and new_weapon.Name == other_weapon.Name:
@@ -95,6 +138,12 @@ func show_weapon(weapon):
 		weapon.equip()
 
 func switch():
+	if(grenade_equipped):
+		can_switch = false
+		await dequip_throwable()
+		await show_weapon(current_weapon)
+		can_switch = true
+		return
 	if(other_weapon != null):
 		can_switch = false
 		await hide_weapon(current_weapon)
