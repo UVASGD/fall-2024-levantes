@@ -232,7 +232,7 @@ transform = Transform3D(0.557904, 0, -0.829905, 0, 1, 0, 0.829905, 0, 0.557904, 
 transform = Transform3D(-0.220851, 0, -0.975308, 0, 1, 0, 0.975308, 0, -0.220851, -5.27456, 0, 2.01576)
 
 [node name="Wallbreaker" parent="." instance=ExtResource("8_5qgu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81755, 0.723794, 4.41947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39378, -0.293723, 0)
 
 [connection signal="hit" from="CharacterBody3D/Head/Camera3D/Weapons_Manager" to="Smt" method="_on_weapons_manager_hit"]
 
