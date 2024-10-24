@@ -147,7 +147,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k7jux")
 
 [node name="SMG" type="Node3D"]
-transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.292489, -0.109075, -0.194182)
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.574, -0.263322, -0.634992)
 script = ExtResource("1_hymp6")
 husk_weapon_path = "res://husk_smg.tscn"
 model_path = "res://Models/smg.gltf"
