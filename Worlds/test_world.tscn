@@ -187,7 +187,6 @@ libraries = {
 }
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("6_5i8wq")]
-transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.6, -0.2, -0.1)
 dmg = 20
 
 [node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("7_c841b")]
