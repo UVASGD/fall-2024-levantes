@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6rmh7rw6txhs"]
+[gd_scene load_steps=17 format=3 uid="uid://6rmh7rw6txhs"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/burst.gd" id="1_i6xhm"]
 
@@ -70,6 +70,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sdeql")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plprb"]
+emission_enabled = true
+emission = Color(0.2, 0.576471, 0.74902, 1)
+emission_energy_multiplier = 11.65
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nv1p5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_q44ks"]
@@ -103,6 +108,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q44ks")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysmhv"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8pac"]
 
@@ -138,6 +146,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_otnof")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7rc4"]
+albedo_color = Color(0.145098, 0.231373, 0.258824, 1)
+
 [node name="BURST" type="Node3D"]
 transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.6, -0.2, -0.1)
 script = ExtResource("1_i6xhm")
@@ -159,8 +170,8 @@ Max_Ammo = 60
 Burst_Count = 3
 Wait_Interval = 0.3
 Type = 1
-Projectile_Range = 30.0
-dmg = 10
+Projectile_Range = 1e+06
+dmg = 25
 
 [node name="burstModel" type="Node3D" parent="."]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -1.60943, 0)
@@ -179,6 +190,7 @@ transform = Transform3D(1, 0, -2.91038e-10, 1.74623e-10, -1.19209e-07, -1.09119,
 layers = 2
 mesh = SubResource("ArrayMesh_qptgy")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_plprb")
 
 [node name="Empty_001" type="Node3D" parent="burstModel"]
 transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, 0, 1.58483, 5.97358)
@@ -188,9 +200,11 @@ transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 8.8872, 9.75421, 11.8175)
 layers = 2
 mesh = SubResource("ArrayMesh_mqvw5")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysmhv")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="burstModel"]
 transform = Transform3D(1, 0, 0, 0, 0, -1.09119, 0, 1.09119, 0, 8.8872, 0.759836, 25.3597)
 layers = 2
 mesh = SubResource("ArrayMesh_8ni3n")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_c7rc4")

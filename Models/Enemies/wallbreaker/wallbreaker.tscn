@@ -259,7 +259,7 @@ unique_name_in_owner = true
 script = ExtResource("2_hwhgo")
 
 [node name="graphics" type="Node3D" parent="x_axis"]
-transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
+transform = Transform3D(-0.3, 0, 7.60555e-07, 0, 0.3, 0, -7.60555e-07, 0, -0.3, 0, 0, 0)
 
 [node name="WheelLeft" type="MeshInstance3D" parent="x_axis/graphics"]
 transform = Transform3D(0, -0.12233, 0, 0, 0, -1, -1, 0, 0, -1.12233, 1.0615, 0)

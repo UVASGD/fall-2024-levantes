@@ -853,6 +853,9 @@ _data = {
 
 [node name="Smt" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_c2inb")
+SPEED = 20.0
+damage = 10
+projectile_speed = 20
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
