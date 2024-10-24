@@ -54,15 +54,10 @@ func _input(event):
 		if cur_anim != Current_Weapon.Dequip_Ani and Weapon_Stack.size() > 1:
 			Weapon_Indicator = !Weapon_Indicator
 			exit(Weapon_Stack[Weapon_Indicator], false)
-	if event.is_action_pressed("Shoot"):
-		fire_Wep()
-		#print("Weapon: " + Current_Weapon.Wep_Name + "\n" + "Weapon_Indicator: " + str(Weapon_Indicator))
-	if event.is_action_pressed("Reload"):
-		reload()
 	#if event.is_action_pressed("Drop_Weapon"):
 		#spawn_drop_weapon(Current_Weapon.Wep_Name)
 	if in_pickup_range and Input.is_action_just_pressed("pick_up_weapon"):
-		if Weapon_Stack.size() == 1:
+		if o_wep == null:
 			var weapon_in_stack = Weapon_Stack.find(sp_weapon.weapon_name, 0)
 			if weapon_in_stack == -1:
 				Weapon_Indicator = !Weapon_Indicator
@@ -74,7 +69,7 @@ func _input(event):
 				exit(sp_weapon.weapon_name, true)
 				sp_weapon.queue_free()
 			print(sp_weapon.weapon_name)
-		elif Weapon_Stack.size() == 2:
+		else:
 			var weapon_in_stack = Weapon_Stack.find(sp_weapon.weapon_name, 0)
 			if weapon_in_stack == -1:
 				spawn_drop_weapon(Current_Weapon.Wep_Name)

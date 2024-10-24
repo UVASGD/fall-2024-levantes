@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjpmobdh51vtq"]
+
+[ext_resource type="PackedScene" uid="uid://cs0cwmm66yb5f" path="res://Weapons (new)/models/smg_of_the_future.gltf" id="1_g77am"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_451n6"]
+albedo_color = Color(0.121569, 0.309804, 0.360784, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yu23"]
+albedo_color = Color(0.004, 3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n08b"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="smg_of_the_future" instance=ExtResource("1_g77am")]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0, 0, 0)
+
+[node name="Upper" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_451n6")
+
+[node name="Mag" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_0yu23")
+
+[node name="Lower" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_3n08b")
+
+[node name="Upper_001" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_0yu23")

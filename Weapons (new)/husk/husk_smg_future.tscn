@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi170mgn206nk"]
+
+[ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_akowq"]
+[ext_resource type="PackedScene" uid="uid://bjpmobdh51vtq" path="res://Weapons (old)/smg/smg_of_the_future.tscn" id="2_frbjy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cl20e"]
+size = Vector3(0.411255, 0.474121, 1.26929)
+
+[node name="SmgOfTheFuture" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_akowq")
+
+[node name="smg_of_the_future" parent="." instance=ExtResource("2_frbjy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, -0.00805664, -0.0142822)
+shape = SubResource("BoxShape3D_cl20e")

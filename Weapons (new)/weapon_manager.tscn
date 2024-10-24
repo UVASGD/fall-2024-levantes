@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1v1mbdnx6rj7"]
+
+[ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="1_wiay8"]
+[ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="2_6j07v"]
+[ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="3_puk1m"]
+
+[node name="weapon manager" type="Node3D"]
+script = ExtResource("1_wiay8")
+
+[node name="AnimationPlayers" type="Node" parent="."]
+
+[node name="SMG" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"smg_animations": ExtResource("3_puk1m")
+}
+
+[node name="BURST" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"burst_animations": ExtResource("2_6j07v")
+}

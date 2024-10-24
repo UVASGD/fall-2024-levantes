@@ -13,7 +13,7 @@ var health_hp: int
 
 
 @onready var Animation_Player = %AnimationPlayer
-var explosion = preload("res://Scenes/Assets/projectiles/explosion.tscn")
+var explosion = preload("res://projectiles/explosion.tscn")
 
 
 
@@ -105,15 +105,17 @@ func explode():
 
 		explosion_instance.damage_amount = damage
 
-		
+		$AudioStreamPlayer3D2.play()
 		explosion_instance.global_transform.origin = hitbox.global_transform.origin
 		var spawn_pos = hitbox.global_transform.origin
 		spawn_pos.y += -1
 
-
+		
 		get_parent().add_child(explosion_instance)
 		explosion_instance.play_explode_animation()
+		hide()
 		await explosion_instance.animation_player.animation_finished
+		await $AudioStreamPlayer3D2.finished
 		SignalBus.emit_signal("enemy_death")
 		$".".queue_free()
 		pass

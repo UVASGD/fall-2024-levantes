@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://f4abqinf4p1a"]
+
+[ext_resource type="Script" path="res://projectiles/laser_test_script.gd" id="1_ataqn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_phqbf"]
+resource_local_to_scene = true
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13m16"]
+transparency = 1
+albedo_color = Color(0.976471, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.961518, 4.45209e-06, 9.62615e-07, 1)
+emission_energy_multiplier = 10.0
+
+[node name="Laser" type="RayCast3D"]
+script = ExtResource("1_ataqn")
+
+[node name="beam_mesh" type="MeshInstance3D" parent="." groups=["laser"]]
+transparency = 0.5
+mesh = SubResource("CylinderMesh_phqbf")
+surface_material_override/0 = SubResource("StandardMaterial3D_13m16")
