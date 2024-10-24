@@ -84,6 +84,7 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	Animation_Player.play("ArmatureAction")
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
 	face_target(delta)
@@ -98,6 +99,8 @@ func explode():
 	state_lock_on = true
 	if not has_exploded:
 		has_exploded = true
+		Animation_Player.play("explode")
+		await Animation_Player.animation_finished
 		var explosion_instance = explosion.instantiate()
 
 		explosion_instance.damage_amount = damage
@@ -140,8 +143,7 @@ func on_hit(damage_taken, collider):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "explode":
-		return true
+	pass
 
 
 func _on_explode_radius_body_entered(body):

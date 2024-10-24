@@ -130,59 +130,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -2.98023e-08, 7.10543e-15, 3.55271e-15, 1, 0.0333333, 1, -2.98023e-08, 7.10543e-15, 3.55271e-15, 1, 0.0666667, 1, 0.0203574, 7.10398e-15, 2.35424e-11, 0.999793, 0.1, 1, 0.0639484, 2.20467e-12, 1.10303e-11, 0.997953, 0.166667, 1, 0.183194, 1.11088e-11, -2.35452e-10, 0.983077, 0.2, 1, 0.209809, 2.30964e-11, 4.09533e-08, 0.977742, 0.233333, 1, 0.209485, 3.75116e-12, 5.15401e-08, 0.977812, 0.266667, 1, 0.192104, 7.49164e-11, 5.17738e-08, 0.981375, 0.3, 1, 0.163365, 1.40463e-10, 5.19871e-08, 0.986566, 0.333333, 1, 0.124936, -1.1366e-10, 5.26184e-08, 0.992165, 0.366667, 1, 0.0773973, 2.39369e-11, 5.30226e-08, 0.997, 0.4, 1, 0.026208, 1.24353e-11, 5.30274e-08, 0.999656, 0.433333, 1, -0.0262081, -1.18238e-11, 5.28108e-08, 0.999656, 0.466667, 1, -0.0773974, 2.16642e-11, 5.25091e-08, 0.997, 0.5, 1, -0.124936, 1.17342e-10, 5.22167e-08, 0.992165, 0.533333, 1, -0.163366, -8.88193e-11, 5.20253e-08, 0.986566, 0.566667, 1, -0.192104, -1.03794e-10, 5.12146e-08, 0.981375, 0.6, 1, -0.209485, 1.31415e-10, 9.59198e-09, 0.977812, 0.633333, 1, -0.212032, 3.51071e-10, -5.2051e-08, 0.977263, 0.666667, 1, -0.19436, -3.52109e-11, -5.19443e-08, 0.98093, 0.7, 1, -0.151724, 5.47064e-11, -5.20092e-08, 0.988423, 0.733333, 1, -0.102422, 5.33424e-11, -5.19978e-08, 0.994741, 0.766667, 1, -0.0550032, 2.15889e-11, -5.1859e-08, 0.998486, 0.8, 1, -0.0180483, -1.72209e-12, -4.13478e-08, 0.999837, 0.833333, 1, -5.96047e-08, 3.55271e-15, -1.19076e-15, 1)
 
-[sub_resource type="Animation" id="Animation_65u4l"]
-resource_name = "explode"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.389799, 0), Vector3(0, 0.739439, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.32149e-08, 0.905006, 0.229406), Vector3(-4.82226e-08, 2.5304, 0.229406)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../hitbox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.593332, 0), Vector3(0, 0.983131, 0), Vector3(0.115472, 1.29985, 0.0809111)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../hitbox:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.42276e-08, 0.905006, 0.229406), Vector3(5.05863e-08, 2.5304, 0.229406)]
-}
-
 [sub_resource type="Animation" id="Animation_ckgni"]
 length = 0.001
 tracks/0/type = "value"
@@ -207,7 +154,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 3.14159, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -234,6 +181,59 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_65u4l"]
+resource_name = "explode"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.389799, 0), Vector3(0, 0.739439, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-1.32149e-08, 0.905006, 0.229406), Vector3(-0.224679, -1.97511, -0.0467255)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../hitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.593332, 0), Vector3(0, 0.983131, 0), Vector3(0.115472, 1.29985, 0.0809111)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../hitbox:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.42276e-08, 0.905006, 0.229406), Vector3(5.05863e-08, 2.5304, 0.229406)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2u0m"]
 _data = {
 "ArmatureAction": SubResource("Animation_ydmcd"),
@@ -248,8 +248,9 @@ height = 1.56706
 [sub_resource type="SphereShape3D" id="SphereShape3D_y7klq"]
 radius = 0.181508
 
-[node name="Wallbreaker" type="CharacterBody3D"]
+[node name="Wallbreaker" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w8434")
+SPEED = 50.0
 damage = 200
 
 [node name="x_axis" type="Node3D" parent="."]
@@ -257,7 +258,7 @@ unique_name_in_owner = true
 script = ExtResource("2_hwhgo")
 
 [node name="graphics" type="Node3D" parent="x_axis"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
 
 [node name="WheelLeft" type="MeshInstance3D" parent="x_axis/graphics"]
 transform = Transform3D(0, -0.12233, 0, 0, 0, -1, -1, 0, 0, -1.12233, 1.0615, 0)
