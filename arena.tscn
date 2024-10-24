@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ded23w7280j2y"]
+
+[ext_resource type="PackedScene" uid="uid://wkt21k7lcpvt" path="res://Models/world objects/arena.blend" id="1_2d5os"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="arena" parent="." instance=ExtResource("1_2d5os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.1491, 6.70377, 16.8655)
+
+[editable path="arena"]
