@@ -1,8 +1,8 @@
 [gd_scene load_steps=57 format=3 uid="uid://iyyt2g6137bd"]
 
-[ext_resource type="Script" path="res://Models/Enemies/simple_bishop_sniper_test/simple_bishop_sniper_test.gd" id="1_wjyer"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_jqrl4"]
-[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_1jgju"]
+[ext_resource type="Script" path="res://Enemies/simple_bishop_sniper_test/simple_bishop_sniper_test.gd" id="1_wjyer"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_jqrl4"]
+[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://Worlds/world_objects/cone.tscn" id="3_1jgju"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_ev6mp"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_21o76"]
 

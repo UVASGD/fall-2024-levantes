@@ -101,6 +101,7 @@ func explode():
 		has_exploded = true
 		Animation_Player.play("explode")
 		await Animation_Player.animation_finished
+		$".".hide()
 		var explosion_instance = explosion.instantiate()
 
 		explosion_instance.damage_amount = damage
@@ -124,7 +125,7 @@ func explode():
 func take_damage(amount: int):
 	health_hp -= amount
 	if health_hp <= 0:
-		$".".hide()
+		
 		explode()
 		
 
