@@ -17,8 +17,9 @@ extends Node3D
 }
 
 #the monster we will be spawing in
-@onready var monster = preload("res://Models/Enemies/state_machine_test/smt.tscn")
-@onready var sniper = preload("res://Models/Enemies/bishop_sniper/bishop_sniper.tscn")
+@onready var monster = preload("res://Enemies/state_machine_test/smt.tscn")
+@onready var sniper = preload("res://Enemies/bishop_sniper/bishop_sniper.tscn")
+@onready var bomb_enemy = preload("res://Models/Enemies/wallbreaker/wallbreaker.tscn")
 #A random number generator to spawn from alternating spawn points
 @onready var rand = RandomNumberGenerator.new()
 @onready var dead_enemies = 0
@@ -41,12 +42,14 @@ func enemy_death():
 func spawn_enemies():
 	for i in range(monster_dict.size()):
 		var m
-		var rand_monster_type_num = randi_range(1,2)
+		var rand_monster_type_num = randi_range(1,3)
 		match rand_monster_type_num:
 			1:
 				m = monster.instantiate()
 			2:
 				m = sniper.instantiate() 
+			3:
+				m = bomb_enemy.instantiate()
 		m.next_state = "chase"
 		#print("spawning enemy")
 		#we check the amount of children on our spawn holder

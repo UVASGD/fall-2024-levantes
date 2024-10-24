@@ -155,7 +155,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 3.14159, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -185,7 +185,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_65u4l"]
 resource_name = "explode"
 length = 0.2
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -208,7 +208,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.32149e-08, 0.905006, 0.229406), Vector3(-4.82226e-08, 2.5304, 0.229406)]
+"values": [Vector3(0, 3.14159, 0), Vector3(-1.32149e-08, 0.905006, 0.229406), Vector3(-0.224679, -1.97511, -0.0467255)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -249,8 +249,9 @@ height = 1.56706
 [sub_resource type="SphereShape3D" id="SphereShape3D_y7klq"]
 radius = 0.181508
 
-[node name="Wallbreaker" type="CharacterBody3D"]
+[node name="Wallbreaker" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w8434")
+SPEED = 50.0
 damage = 200
 
 [node name="x_axis" type="Node3D" parent="."]
@@ -258,7 +259,7 @@ unique_name_in_owner = true
 script = ExtResource("2_hwhgo")
 
 [node name="graphics" type="Node3D" parent="x_axis"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(-0.3, 0, 7.60555e-07, 0, 0.3, 0, -7.60555e-07, 0, -0.3, 0, 0, 0)
 
 [node name="WheelLeft" type="MeshInstance3D" parent="x_axis/graphics"]
 transform = Transform3D(0, -0.12233, 0, 0, 0, -1, -1, 0, 0, -1.12233, 1.0615, 0)

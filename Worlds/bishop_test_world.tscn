@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_7vl3q"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="3_4ddg8"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Models/Weapons/spawnable_weapons/sp_sniper_rifle.tscn" id="5_lqi5q"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/husk_sniper.tscn" id="5_lqi5q"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_bqg5v"]
-[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Models/Enemies/bishop_sniper/bishop_sniper.tscn" id="7_3c6l5"]
+[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="7_3c6l5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
 vertices = PackedVector3Array(-90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -0.0686035, 0.451325, -9.48399, -0.0686035, 0.451325, -129.984, -90.3186, 0.451325, -129.984, 16.9314, 0.451325, -0.983994, 17.1814, 0.451325, 0.266006, 18.6814, 0.451325, 0.266006, 18.6814, 0.451325, -5.73399, 2.1814, 0.451325, -9.23399, 18.6814, 0.451325, -5.73399, 19.9314, 0.451325, -5.98399, 19.9314, 0.451325, -129.984, -0.0686035, 0.451325, -129.984, 1.6814, 0.451325, -4.98399, 5.9314, 0.451325, -0.483994, 6.1814, 0.451325, -0.983994, 2.1814, 0.451325, -5.23399, -0.0686035, 0.451325, -129.984, -0.0686035, 0.451325, -9.48399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -5.23399, 6.1814, 0.451325, -0.983994, 16.9314, 0.451325, -0.983994, 18.6814, 0.451325, -5.73399, 20.9314, 0.451325, -5.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, -3.73399, 19.9314, 0.451325, -5.98399, 20.9314, 0.451325, -5.73399, 90.4314, 0.451325, -3.73399, 90.4314, 0.451325, -129.984, 19.9314, 0.451325, -129.984, -1.3186, 1.95132, -8.48399, -1.3186, 1.95132, -5.98399, 1.1814, 1.95132, -5.98399, 1.1814, 1.95132, -8.48399, 18.6814, 0.451325, 0.266006, 17.1814, 0.451325, 0.266006, 16.9314, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, 5.9314, 0.451325, -0.483994, 1.6814, 0.451325, -4.98399, -2.0686, 0.451325, -4.98399, 19.6814, 0.451325, 16.266, 18.6814, 0.451325, 16.016, -90.3186, 0.451325, -7.23399, -90.3186, 0.451325, 130.016, 19.6814, 0.451325, 130.016, -2.0686, 0.451325, -4.98399, -2.3186, 0.451325, -7.23399, -90.3186, 0.451325, -7.23399, 18.6814, 0.451325, 16.016, 16.9314, 0.451325, 1.26601, 6.1814, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, -2.0686, 0.451325, -4.98399, -90.3186, 0.451325, -7.23399, 20.9314, 0.451325, 14.016, 90.4314, 0.451325, 14.016, 90.4314, 0.451325, -3.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 19.6814, 0.451325, 16.266, 19.6814, 0.451325, 130.016, 90.4314, 0.451325, 130.016)
@@ -112,14 +112,8 @@ shape = SubResource("BoxShape3D_jugvo")
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_4ddg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
 
-[node name="burst_rifle" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig" index="2"]
-transform = Transform3D(-0.025, 0, -6.33795e-08, 0, 0.025, 0, 6.33795e-08, 0, -0.025, 0.629609, -0.222115, -0.677336)
-
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="1"]
-transform = Transform3D(-1, 2.76636e-06, 2.48108e-13, -2.53518e-06, -1.09119, -5.41469e-21, 2.27374e-13, -6.34414e-19, 1.09119, 8.88721, -9.15357, 31.2051)
-
-[node name="Cylinder_001" parent="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle" index="2"]
-transform = Transform3D(1, 2.48108e-13, -8.98149e-19, 0, -3.9501e-06, -1.09119, -2.27374e-13, 1.09119, -3.9501e-06, 1.59222, -3.40636, 23.3421)
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/BURST/burstModel" index="1"]
+transform = Transform3D(-1, 2.76639e-06, 0, -2.53518e-06, -1.0912, 0, 0, 0, 1.09119, 8.8872, -9.15356, 31.2051)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
@@ -158,6 +152,3 @@ stream = ExtResource("6_bqg5v")
 
 [editable path="CharacterBody3D"]
 [editable path="CharacterBody3D/Head/Camera3D/HUD"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/smgModel"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/burst_rifle"]
-[editable path="CharacterBody3D/Head/Camera3D/Weapons_Manager/WeaponRig/sniper_rifle"]

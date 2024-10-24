@@ -374,3 +374,5 @@ transform = Transform3D(0.966313, 0, 0.257369, 0, 1, 0, -0.257369, 0, 0.966313, 
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="CharacterBody3D"]

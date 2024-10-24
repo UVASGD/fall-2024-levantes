@@ -16,7 +16,7 @@ var grenade = null
 var grenade_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	animationplayer = get_child(0)
+
 	if get_child_count() > 1:
 		current_weapon = get_child(1)
 		if get_child_count() > 2:
