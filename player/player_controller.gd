@@ -31,9 +31,9 @@ var headbob_time = 0.0
 
 @export var air_cap := 0.85
 @export var air_accel := 880.0
-@export var air_move_speed := 500.0
+@export var air_move_speed := 550.0
 
-@export var dash_speed := 20.0  
+@export var dash_speed := 40.0  
 
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
