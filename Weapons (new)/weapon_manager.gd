@@ -4,7 +4,7 @@ var throwable = "res://throwable.gd"
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
-var hud
+@onready var hud = $"../HUD"
 var can_switch = false
 var can_spawn = true
 var nearby_weapon = null
@@ -16,11 +16,14 @@ var grenade = null
 var grenade_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	var weapon_array = []
 	if get_child_count() > 1:
 		current_weapon = get_child(1)
+		weapon_array.append(current_weapon)
 		if get_child_count() > 2:
 			other_weapon = get_child(2)
+			weapon_array.append(other_weapon)
+		hud.hud_initialize(weapon_array)
 		await hide_weapon(other_weapon)
 		await show_weapon(current_weapon)
 	if other_weapon:
@@ -41,8 +44,11 @@ func _input(event):
 	if event.is_action_pressed("Weapon_Switch"):
 		if can_switch:
 			await switch()
+			call_hud_initialize()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		await pickup()
+		call_hud_initialize()
+		
 	if event.is_action_pressed("Shoot"):
 		if grenade_equipped:
 				throw()
@@ -50,10 +56,12 @@ func _input(event):
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
+		call_hud_initialize()
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped:
 			return
 		await current_weapon.reload()
+		call_hud_initialize()
 	if event.is_action_pressed("grenade"):
 		equip_throwable()
 	pass
@@ -115,6 +123,7 @@ func pickup():
 		else:
 			other_weapon = new_weapon
 			can_switch = true
+		
 	elif can_spawn: #already holding 2 weapons
 		can_spawn = false
 		await current_weapon.dequip()
@@ -125,6 +134,7 @@ func pickup():
 		new_weapon.hide()
 		await new_weapon.equip()
 		can_spawn = true
+		
 
 func hide_weapon(weapon):
 	if weapon:
@@ -172,4 +182,7 @@ func _on_pickup_detection_body_exited(body):
 	nearby_weapon = null
 	can_pickup= false
 
+func call_hud_initialize():
+	var weapon_array = [current_weapon, other_weapon]
+	hud.hud_initialize(weapon_array)
 

@@ -15,19 +15,19 @@ var hud_wep_list = [
 ]
 
 
-func hud_initialize(weapons: Array, weapon_list: Dictionary):
+func hud_initialize(weapons: Array):
 	for i in range(len(weapons)):
-		var wep_obj = weapon_list[weapons[i]]
-		var cur_weapon = $weapons_info.get_child(i)
-		
-		cur_weapon.get_child(1).text = wep_obj.Wep_Name
-		
-		cur_weapon.get_child(2).text = str(wep_obj.Curr_Mag_Ammo)
-		
-		if wep_obj.Reserve_Ammo != 0:
-			cur_weapon.get_child(4).text = str(wep_obj.Reserve_Ammo)
-		else:
-			cur_weapon.get_child(4).text = ""
+		if weapons[i] != null:
+			var cur_weapon = $weapons_info.get_child(i)
+			
+			cur_weapon.get_child(1).text = weapons[i].Display_Name
+			
+			cur_weapon.get_child(2).text = str(weapons[i].Curr_Mag_Ammo)
+			
+			if weapons[i].Reserve_Ammo != 0:
+				cur_weapon.get_child(4).text = str(weapons[i].Reserve_Ammo)
+			else:
+				cur_weapon.get_child(4).text = ""
 			
 func hud_initialize_player(shield, health):
 	var shield_string = str(shield)

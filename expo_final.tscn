@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3sp0nl5n25go"]
+[gd_scene load_steps=22 format=3 uid="uid://c3sp0nl5n25go"]
 
 [ext_resource type="Script" path="res://arena_collisions.gd" id="1_akpv4"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="2_l3uks"]
@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="7_0pcoj"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="8_x2ktw"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="9_bfied"]
-[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="10_8q4at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4lhth"]
 size = Vector3(17.6295, 7.02771, 13.0366)
@@ -185,18 +184,6 @@ transform = Transform3D(0.682981, 0, 0.730437, 0, 1, 0, -0.730437, 0, 0.682981, 
 
 [node name="bishop_sniper3" parent="." instance=ExtResource("9_bfied")]
 transform = Transform3D(0.682981, 0, 0.730437, 0, 1, 0, -0.730437, 0, 0.682981, -10.9736, 7.86803, 9.75065)
-
-[node name="Wallbreaker" parent="." instance=ExtResource("10_8q4at")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0107, 7.60611, -2.40619)
-
-[node name="Wallbreaker2" parent="." instance=ExtResource("10_8q4at")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0107, 7.60611, -1.05641)
-
-[node name="Wallbreaker3" parent="." instance=ExtResource("10_8q4at")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0107, 7.60611, 0.439288)
-
-[node name="Wallbreaker4" parent="." instance=ExtResource("10_8q4at")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0107, 7.60611, 1.95347)
 
 [connection signal="body_entered" from="arena_simple/Area3D" to="arena_simple" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="arena_simple/Area3D" to="arena_simple" method="_on_area_3d_body_exited"]

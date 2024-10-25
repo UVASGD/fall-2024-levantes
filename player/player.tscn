@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfde4dumfslig"]
+[gd_scene load_steps=14 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
 [ext_resource type="PackedScene" uid="uid://w52k7iojvbpg" path="res://Weapons (new)/weapon_manager.tscn" id="3_ol2y5"]
 [ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="4_8tra1"]
 [ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="5_y6phs"]
+[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="6_4463m"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -233,6 +234,8 @@ libraries = {
 "": SubResource("AnimationLibrary_klolv"),
 "burst_animations": ExtResource("5_y6phs")
 }
+
+[node name="SMG" parent="Head/Camera3D/weapon manager" instance=ExtResource("6_4463m")]
 
 [node name="pickup_detection" type="Area3D" parent="."]
 unique_name_in_owner = true
