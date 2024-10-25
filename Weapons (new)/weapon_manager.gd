@@ -47,6 +47,7 @@ func _input(event):
 			call_hud_initialize()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		await pickup()
+		await switch()
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
@@ -56,7 +57,6 @@ func _input(event):
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
-		call_hud_initialize()
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped:
 			return
