@@ -148,7 +148,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_bqg5v")
-autoplay = true
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_4ddg8")]
 transform = Transform3D(-0.999248, 0, -0.0387716, 0, 1, 0, 0.0387716, 0, -0.999248, 8.51535, 1.89229, -4.14318)

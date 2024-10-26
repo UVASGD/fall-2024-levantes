@@ -28,7 +28,7 @@ func _ready():
 		await show_weapon(current_weapon)
 	if other_weapon:
 		can_switch = true
-	
+	SignalBus.connect("update_ammo", call_update_ammo)
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
@@ -57,6 +57,7 @@ func _input(event):
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
+		
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped:
 			return
@@ -186,3 +187,6 @@ func call_hud_initialize():
 	var weapon_array = [current_weapon, other_weapon]
 	hud.hud_initialize(weapon_array)
 
+func call_update_ammo(ammo):
+	hud.update_ammo(ammo)
+	

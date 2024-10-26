@@ -33,6 +33,8 @@ class_name Gun extends Node3D
 @export var ray_path: String
 @export var light_path: String
 
+
+
 signal hit(target)
 var can_equip
 var can_dequip
@@ -67,7 +69,7 @@ func shoot(): #default shoot logic
 		await play_fire()
 		_raycast()
 		Curr_Mag_Ammo -= 1
-
+		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
 		if Curr_Mag_Ammo == 0:
 			if Reserve_Ammo > 0:
@@ -75,6 +77,9 @@ func shoot(): #default shoot logic
 			else:
 				can_shoot = false #out of all ammo
 	pass
+
+func pass_curr_mag_ammo():
+	return Curr_Mag_Ammo
 
 func reload():
 	if Curr_Mag_Ammo == Max_Mag_Capacity || !can_reload:

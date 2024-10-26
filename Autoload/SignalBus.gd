@@ -9,4 +9,5 @@ signal enemy_death
 
 signal object_hit
 
+signal update_ammo(ammo_amount)
 

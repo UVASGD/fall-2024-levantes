@@ -35,10 +35,9 @@ func hud_initialize_player(shield, health):
 	$player_info/shield/shield_amount.text = shield_string
 	$player_info/health/health_amount.text = health_string
 			
-func update_ammo(mag: int, reserve: int, weapon_indicator: int):
-	var cur_weapon = $weapons_info.get_child(weapon_indicator)
+func update_ammo(mag: int):
+	var cur_weapon = $weapons_info.get_child(0)
 	cur_weapon.get_child(2).text = str(mag)
-	cur_weapon.get_child(4).text = str(reserve)
 	
 		
 func update_weapon_indicator(weapon_indicator: int):
