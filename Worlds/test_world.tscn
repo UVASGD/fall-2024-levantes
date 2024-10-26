@@ -37,7 +37,9 @@ radiance_size = 1
 
 [sub_resource type="Environment" id="Environment_83m8q"]
 background_mode = 2
+background_energy_multiplier = 0.35
 sky = SubResource("Sky_hchu0")
+ambient_light_source = 1
 ambient_light_energy = 0.1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yl2qd"]

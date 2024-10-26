@@ -149,7 +149,9 @@ func _raycast():
 	if not intersection.is_empty():
 		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
 		print(intersection.get("collider"))
-		
+		var impact_position = intersection.get("position")
+		var raycast_angle = (endpoint - origin).normalized()
+		make_spark(impact_position, raycast_angle)
 	else:
 		print("nothing")
 		
@@ -162,8 +164,6 @@ func get_husk():
 	return new_husk
 	
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
-	#emit_signal("hit", %Ray.get_collider())
-	#print(%Ray.get_collider())
 	var instance = Raycast_test.new()
 	instance.directionval = raycast_angle
 	instance.impactpoint = impact_position
@@ -179,3 +179,4 @@ func play_fire():
 
 func add_animationplayer(ani):
 	animation_player = ani
+	

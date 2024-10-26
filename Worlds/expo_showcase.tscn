@@ -170,12 +170,6 @@ script = ExtResource("1_xs2rq")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_raj47")]
 
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
-transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
-
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/BURST/burstModel" index="1"]
-transform = Transform3D(-1, 2.76639e-06, 0, -2.53518e-06, -1.0912, 0, 0, 0, 1.09119, 8.8872, -9.15356, 31.2051)
-
 [node name="HuskBurstRifle" parent="." instance=ExtResource("2_huhnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71873, -5.67464)
 

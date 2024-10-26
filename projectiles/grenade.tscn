@@ -116,3 +116,7 @@ stream = ExtResource("3_8wpxd")
 libraries = {
 "": SubResource("AnimationLibrary_ekeke")
 }
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.383179, 0.648092, 1, 1)
+light_energy = 2.846

@@ -209,3 +209,12 @@ layers = 2
 mesh = SubResource("ArrayMesh_8ni3n")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_c7rc4")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.997502, 0, 0.0706443, 0, 1, 0, -0.0706443, 0, -0.997502, 0.296427, -1.51867, 1.12697)
+light_color = Color(1, 0.403922, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+spot_range = 47.3421
+spot_attenuation = 0.5
+spot_angle = 41.3903

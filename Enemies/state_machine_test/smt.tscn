@@ -21,7 +21,12 @@ height = 2.11801
 radius = 0.181508
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjyo2"]
-albedo_color = Color(0.137255, 0.137255, 0.137255, 1)
+albedo_color = Color(0.217458, 0.261959, 0.360267, 1)
+metallic = 1.0
+metallic_specular = 0.31
+roughness = 0.0
+rim_tint = 0.66
+clearcoat_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iu0n"]
 
@@ -96,6 +101,9 @@ shadow_mesh = SubResource("ArrayMesh_vmsle")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snhl8"]
 albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8r75"]
 

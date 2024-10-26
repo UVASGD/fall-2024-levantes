@@ -170,14 +170,12 @@ transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, 0, 0, 0)
 
 [node name="Mag" type="MeshInstance3D" parent="burstModel"]
 transform = Transform3D(-1, 9.53952e-08, 0, -8.74228e-08, -1.09119, 0, 0, 0, 1.09119, 8.8872, -9.15356, 31.2051)
-layers = 2
 mesh = SubResource("ArrayMesh_pkn27")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nmvw0")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="burstModel"]
 transform = Transform3D(1, 0, -2.91038e-10, 1.74623e-10, -1.19209e-07, -1.09119, -2.32831e-10, 1.09119, -1.49012e-07, 1.59222, -3.40635, 23.3421)
-layers = 2
 mesh = SubResource("ArrayMesh_886oh")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nmvw0")
@@ -187,14 +185,12 @@ transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, 0, 1.58483, 5.97358
 
 [node name="Cylinder_003" type="MeshInstance3D" parent="burstModel"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 8.8872, 9.75421, 11.8175)
-layers = 2
 mesh = SubResource("ArrayMesh_pjw4s")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ksuaa")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="burstModel"]
 transform = Transform3D(1, 0, 0, 0, 0, -1.09119, 0, 1.09119, 0, 8.8872, 0.759836, 25.3597)
-layers = 2
 mesh = SubResource("ArrayMesh_glk3s")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jkqlr")

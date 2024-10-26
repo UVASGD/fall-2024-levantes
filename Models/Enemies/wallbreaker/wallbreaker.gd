@@ -1,6 +1,6 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
-@export var SPEED = 5.0
+@export var SPEED = 2.0
 
 @export var max_health: int = 100
 var health_hp: int
@@ -27,14 +27,18 @@ var target_pos
 var state_lock_on = false
 var has_exploded = false
 
+var can_move = false
 @onready var vision = %Vision
 @onready var hitbox = $"."
 
 func _ready():
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+
 	
 func _physics_process(delta):
+	if not can_move:
+		return
 	prev_state = curr_state
 	curr_state = next_state
 	
@@ -56,6 +60,8 @@ func add_rand_offset(offset_amount) -> Vector3:
 	return offset
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	if not can_move:
+		return
 	if not state_lock_on:
 		match curr_state:
 			"idle":
@@ -84,6 +90,8 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	if not can_move:
+		return
 	Animation_Player.play("ArmatureAction")
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
@@ -152,3 +160,9 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_explode_radius_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "explode"
+
+
+func _on_aggro_body_entered(body):
+	if body.is_in_group("Player"):
+		can_move = true
+	pass # Replace with function body.
