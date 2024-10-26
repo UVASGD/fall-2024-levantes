@@ -1,5 +1,6 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
+@export var set_next_state: String
 @export var SPEED = 10
 
 @export var max_health: int = 100
@@ -48,6 +49,8 @@ var can_move_y_axis = false
 @onready var vision = %Vision
 
 func _ready():
+	if set_next_state:
+		next_state = set_next_state
 	wait_time_till_fire_seconds = wait_time_till_fire_seconds + randf_range(-.5,.5)
 	offset = add_rand_offset(2)
 	fire_timer.wait_time = wait_time_till_fire_seconds

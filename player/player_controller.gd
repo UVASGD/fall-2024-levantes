@@ -41,11 +41,15 @@ var headbob_time = 0.0
 #@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
+
+@export var shield_regen_timer_length: int = 5
+@export var health_regen_timer_length: int = 8
+
 @onready var shield_regen_timer = $shield_regen_timer
 @onready var health_regen_timer = $health_regen_timer
 @onready var dash_length_timer := $Timers/DashLength
 @onready var dash_cooldown_timer := $Timers/DashCooldown
-
+@onready var shield_deplete_sound := $shield_deplete_sound
 @onready var hud = $Head/Camera3D/HUD
 
 # The direction which the player "wishes" to move (according to WASD keys)
@@ -73,6 +77,10 @@ func _ready():
 	
 	hud.hud_initialize_player(shield_hp, health_hp)
 	SignalBus.connect("player_hit", _on_player_hit)
+	
+	shield_regen_timer.wait_time = shield_regen_timer_length
+	health_regen_timer.wait_time = health_regen_timer_length
+	
 	shield_regen_timer.connect("timeout", _on_shield_regen_timer_timeout)
 	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
 	dash_length_timer.connect("timeout", _on_dash_length_timeout)
@@ -169,6 +177,8 @@ func take_damage(amount: int):
 	else:
 		shield_hp -= amount
 		shield_hp = max(shield_hp, 0)
+		if shield_hp == 0:
+			shield_deplete_sound.play()
 	if health_hp <= 0:
 		game_over()
 	pass

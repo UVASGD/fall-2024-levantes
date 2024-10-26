@@ -243,6 +243,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vqm7n"]
+resource_local_to_scene = true
 radius = 0.626365
 height = 1.56706
 
@@ -327,6 +328,7 @@ volume_db = 5.818
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_6kyp3")
+volume_db = 19.048
 
 [connection signal="animation_finished" from="x_axis/graphics/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="2_xc0mg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_q586k"]
 
@@ -42,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_41i38"]
 resource_name = "explode"
-length = 0.2
+length = 0.15
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,10 +64,10 @@ tracks/1/path = NodePath("explosion:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwust"]
@@ -76,7 +77,7 @@ _data = {
 }
 
 [node name="explosion" type="Area3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.582662, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.582662, 0)
 script = ExtResource("1_dabnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

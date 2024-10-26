@@ -1088,7 +1088,6 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_2rr2n")

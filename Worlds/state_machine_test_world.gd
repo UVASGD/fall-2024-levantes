@@ -29,6 +29,7 @@ func _ready():
 	SignalBus.connect("enemy_death", enemy_death)
 	$Smt.next_state = "chase"
 	wave_timer.connect("timeout",_on_in_between_waves_timeout)
+	
 
 func enemy_death():
 	#print("enemy death")
@@ -50,7 +51,7 @@ func spawn_enemies():
 				m = sniper.instantiate() 
 			3:
 				m = bomb_enemy.instantiate()
-		m.next_state = "chase"
+		m.set_next_state = "chase"
 		#print("spawning enemy")
 		#we check the amount of children on our spawn holder
 		var spawn_length = $SpawnHolder.get_child_count()-1

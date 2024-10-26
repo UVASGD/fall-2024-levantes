@@ -1,10 +1,12 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
+
+@export var set_next_state: String
 @export var SPEED = 5.0
 
 @export var max_health: int = 100
 var health_hp: int
-@export var damage = 1
+@export var damage = 15
 @export var projectile_speed = 5
 @export var firing_speed_in_seconds = 2
 @export var visibility_range = 1000000
@@ -38,6 +40,8 @@ var target_pos
 @onready var hitbox = $"."
 
 func _ready():
+	if set_next_state:
+		next_state = set_next_state
 	offset = add_rand_offset(2)
 	timer.wait_time = firing_speed_in_seconds
 	health_hp = max_health

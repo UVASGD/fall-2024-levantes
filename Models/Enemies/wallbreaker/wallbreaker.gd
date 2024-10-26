@@ -1,4 +1,5 @@
 extends CharacterBody3D
+@export var set_next_state: String
 @onready var nav_agent = $NavigationAgent3D
 @export var SPEED = 5.0
 
@@ -31,6 +32,8 @@ var has_exploded = false
 @onready var hitbox = $"."
 
 func _ready():
+	if set_next_state:
+		next_state = set_next_state
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	
@@ -107,9 +110,10 @@ func explode():
 		explosion_instance.damage_amount = damage
 
 		$AudioStreamPlayer3D2.play()
-		explosion_instance.global_transform.origin = hitbox.global_transform.origin
-		var spawn_pos = hitbox.global_transform.origin
+		explosion_instance.global_transform.origin = global_transform.origin
+		var spawn_pos = global_transform.origin
 		spawn_pos.y += -1
+
 
 		
 		get_parent().add_child(explosion_instance)
