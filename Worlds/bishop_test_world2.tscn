@@ -153,6 +153,9 @@ far = 100.0
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="1" instance=ExtResource("7_kynvf")]
 
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
+transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
+
 [node name="SmgOfTheFuture" parent="." instance=ExtResource("8_xq5ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3324, 0.497864, -4.95767)
 
