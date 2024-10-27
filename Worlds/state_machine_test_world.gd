@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var player = $CharacterBody3D
-#
+
 #essentially just a counter
 @onready var current_level = 1
 #the level is the key the amount of monsters is the value
