@@ -1,11 +1,11 @@
-[gd_scene load_steps=83 format=3 uid="uid://bw00ekmbtywg2"]
+[gd_scene load_steps=84 format=3 uid="uid://d2ipjyem2oaxa"]
 
-[ext_resource type="Script" path="res://Models/Enemies/smt_y_axis_debug/smt2.gd" id="1_1a8au"]
-[ext_resource type="Script" path="res://Models/Enemies/f_t.gd" id="2_exo71"]
-[ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://cone.tscn" id="3_gvfxa"]
-[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Models/Weapons/enemy_pistol/alien_pistol.tscn" id="4_rohbg"]
-[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_wx813"]
-[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="6_fvest"]
+[ext_resource type="Script" path="res://Enemies/state_machine_test/smt_OLD/smt.gd" id="1_4m6vi"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_y7n7d"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="3_1fa7x"]
+[ext_resource type="PackedScene" uid="uid://2iwpgwfcbm1r" path="res://Weapons (old)/enemy_pistol/alien_pistol.tscn" id="4_srfmo"]
+[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_l0t8p"]
+[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="6_344cm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999
@@ -57,6 +57,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_us75h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pi"]
+render_priority = 0
+shader = ExtResource("3_1fa7x")
+shader_parameter/ColorParameter = Color(0.226707, 0.226707, 0.226707, 1)
+shader_parameter/Strength = 2.0
+shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
+shader_parameter/FloatParameter = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2uugi"]
 albedo_color = Color(5, 0.188, 0.16, 1)
@@ -130,11 +138,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_shu7a")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teh3g"]
-albedo_color = Color(0.766561, 0.0669391, 0.148081, 1)
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oasru"]
-points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
+points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, -4.905, -1.915, -1, -4.62, -2.78, -1, -4.16, -3.535, -1, -3.535, -4.16, -1, -2.78, -4.62, -1, -1.915, -4.905, -1, -0.975, -5, -1, 0, -4.905, -1, 0.975, -4.62, -1, 1.915, -4.16, -1, 2.775, -3.535, -1, 3.535, -2.78, -1, 4.155, -1.915, -1, 4.62, -0.975, -1, 4.905, 0, -1, 5, 0.975, -1, 4.905, 1.915, -1, 4.62, 2.775, -1, 4.155, 3.535, -1, 3.535, 4.155, -1, 2.775, 4.62, -1, 1.915, 4.905, -1, 0.975, 5, -1, 0, 4.905, -1, -0.975, 4.62, -1, -1.915, 4.155, -1, -2.78, 3.535, -1, -3.535, 2.775, -1, -4.16, 1.915, -1, -4.62)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2dic"]
 albedo_color = Color(18.935, 0, 0, 1)
@@ -750,7 +755,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -762,7 +767,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -774,7 +779,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -786,7 +791,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -794,6 +799,150 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/x_axis_model_group/Base/Cylinder_001:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("x_axis/x_axis_model_group/Base/Flame:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("x_axis/x_axis_model_group/Base/BackPack:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Head:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Face:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Mohawk:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm/LeftForearm:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm/LeftHand:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightForearm:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/Righthand:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_bk6ch"]
@@ -803,7 +952,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:position")
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -815,7 +964,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/leftarm:rotation")
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -827,7 +976,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -839,7 +988,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("f_t_y/f_t_x/f_t_x_model_group/rightarm:rotation")
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -849,14 +998,166 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-9.61724e-21, 3.31869e-20, 0.479459), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qg7pv"]
+resource_name = "smt_death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/x_axis_model_group/Base/Cylinder_001:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/x_axis_model_group/Base/Flame:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/x_axis_model_group/Base/BackPack:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Head:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Face:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/enemy_head/Mohawk:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm/LeftForearm:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm/LeftHand:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightForearm:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/Righthand:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kxpsa"]
 _data = {
 "RESET": SubResource("Animation_d8tn4"),
+"smt_death": SubResource("Animation_qg7pv"),
 "smt_shoot": SubResource("Animation_bk6ch")
 }
 
-[node name="Smt2" type="CharacterBody3D" groups=["enemies"]]
-script = ExtResource("1_1a8au")
+[node name="Smt" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_4m6vi")
+SPEED = 20.0
+damage = 10
+projectile_speed = 35
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
@@ -887,195 +1188,203 @@ transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
-[node name="f_t_y" type="Node3D" parent="."]
-transform = Transform3D(1.07324e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, 1.07324e-09, 0, 0.600404, 0)
-script = ExtResource("2_exo71")
-retreat_turn_speed = 30
+[node name="x_axis" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
+script = ExtResource("2_y7n7d")
 
-[node name="f_t_y_model_group" type="Node3D" parent="f_t_y"]
-transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
+[node name="x_axis_model_group" type="Node3D" parent="x_axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Base" type="Node3D" parent="f_t_y/f_t_y_model_group"]
+[node name="Base" type="Node3D" parent="x_axis/x_axis_model_group"]
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/Base"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_xjyo2")
 mesh = SubResource("ArrayMesh_ob8px")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="Flame" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/Base"]
+[node name="Flame" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.779612, 0, 0, 0, 0.779612, 0, 0, 0, 0.779612, 0, 0.0462801, 0)
 material_override = SubResource("StandardMaterial3D_2uugi")
 transparency = 0.5
 mesh = SubResource("ArrayMesh_gpuuw")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="BackPack" type="MeshInstance3D" parent="f_t_y/f_t_y_model_group/Base"]
+[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_125nh")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="Vision" type="Area3D" parent="f_t_y/f_t_y_model_group"]
+[node name="Vision" type="Area3D" parent="x_axis/x_axis_model_group"]
+unique_name_in_owner = true
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="debug_cone" parent="f_t_y/f_t_y_model_group/Vision" instance=ExtResource("3_gvfxa")]
-transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
-visible = false
-material_override = SubResource("StandardMaterial3D_teh3g")
-transparency = 0.72
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="f_t_y/f_t_y_model_group/Vision"]
-transform = Transform3D(-4.37114e-06, -100, 4.37114e-06, 0, -4.37114e-06, -100, 100, -4.37114e-06, 1.91069e-13, 100, 1.49392, 8.61103e-20)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/Vision"]
+transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)
 shape = SubResource("ConvexPolygonShape3D_oasru")
 
-[node name="RayCast3D" type="RayCast3D" parent="f_t_y/f_t_y_model_group"]
+[node name="RayCast3D" type="RayCast3D" parent="x_axis/x_axis_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="f_t_y_shield" type="Node3D" parent="f_t_y"]
+[node name="x_axis_shield" type="Node3D" parent="x_axis"]
 unique_name_in_owner = true
-transform = Transform3D(1.43099e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 1.43099e-08, 3.58685e-10, -0.984708, -0.0300787)
+transform = Transform3D(-5.24536e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24536e-08, -1.31478e-09, -0.984708, -0.0300787)
 visible = false
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="f_t_y/f_t_y_shield"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_shield"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0.116874, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_bx486")
 skeleton = NodePath("")
 
-[node name="BackPack" type="MeshInstance3D" parent="f_t_y/f_t_y_shield"]
+[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_shield"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_3e4t6")
 skeleton = NodePath("")
 
-[node name="f_t_x" type="Node3D" parent="f_t_y"]
-transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 0)
-script = ExtResource("2_exo71")
-retreat_turn_speed = 30
+[node name="y_axis" type="Node3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
+script = ExtResource("2_y7n7d")
 
-[node name="Marker3D" type="Marker3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(1.45704e-06, 0, 11.1111, 0, 11.1111, 0, -11.1111, 0, 1.45704e-06, 1.84555, 4.5066, -18.7508)
+[node name="projectile_origin_spot" type="Marker3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
+transform = Transform3D(2.12299e-14, 11.1111, -4.85682e-07, 4.85683e-07, -4.85682e-07, -11.1111, -11.1111, 0, -4.85683e-07, -2.89837, -1.84555, -18.7508)
 
-[node name="f_t_x_model_group" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
+[node name="y_axis_model_group" type="Node3D" parent="x_axis/y_axis"]
+transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08, -1, -1, 0, -4.37113e-08, -7.40497, 3.23681e-07, 0)
 
-[node name="enemy_head" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="enemy_head" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 
-[node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
+[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
 material_override = SubResource("StandardMaterial3D_xjyo2")
 mesh = SubResource("ArrayMesh_pjpgm")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="Face" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
+[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
 material_override = SubResource("StandardMaterial3D_2uugi")
 mesh = SubResource("ArrayMesh_rj233")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="Mohawk" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/enemy_head"]
+[node name="Mohawk" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
 material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_ejswj")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="leftarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 
-[node name="LeftForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/leftarm"]
+[node name="LeftForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 0.22331, 3.09609, -4.76425)
 material_override = SubResource("StandardMaterial3D_xjyo2")
 mesh = SubResource("ArrayMesh_su664")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="LeftHand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/leftarm"]
+[node name="LeftHand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 0.22331, 2.91627, -4.2082)
 material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_r48m8")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="rightarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_model_group"]
+[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 
-[node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.570999, 0.383809, 1.22451, 1.27296, 3.99603e-07, -0.593591, -0.162205, 1.3511, -0.347848, 0.318876, 5.35682, 5.56527)
 material_override = SubResource("StandardMaterial3D_xjyo2")
 mesh = SubResource("ArrayMesh_6uar7")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="Righthand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.355699, 0.11866, 1.35358, 1.35631, -0.115106, -0.346327, 0.0816698, 1.39479, -0.143734, -0.173245, 3.28212, 3.49625)
 material_override = SubResource("StandardMaterial3D_snhl8")
 mesh = SubResource("ArrayMesh_gvcge")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="alien_pistol" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm" instance=ExtResource("4_rohbg")]
+[node name="alien_pistol" parent="x_axis/y_axis/y_axis_model_group/rightarm" instance=ExtResource("4_srfmo")]
 transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 11.4766, 2.75096, 2.84834)
 
-[node name="RightWrist" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_model_group/rightarm"]
+[node name="RightWrist" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -0.267176, 4.19144, 5.79651)
 material_override = SubResource("StandardMaterial3D_xjyo2")
 mesh = SubResource("ArrayMesh_t4rfi")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_ur7pi")
 
-[node name="f_t_x_shield" type="Node3D" parent="f_t_y/f_t_x"]
-transform = Transform3D(9.05976e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 9.05976e-08, -5.55563e-09, -0.682385, 0.0423657)
+[node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
+transform = Transform3D(5.21113e-15, 1.2, -5.24537e-08, 1.19217e-07, -5.24537e-08, -1.2, -1.2, 0, -1.19217e-07, -8.08735, 3.51658e-07, 0.0423657)
 visible = false
 
-[node name="enemy_head_shield" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="enemy_head_shield" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 
-[node name="Head" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_shield"]
+[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(0.979937, 0, 0, 0, 1, 0, -3.55271e-15, 0, 1, -0.0646654, -0.984776, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_qkemw")
 skeleton = NodePath("")
 
-[node name="Face" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_shield"]
+[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(1.108, 0, 0, 0, 0.941883, 0, -7.10543e-15, 0, 1, -0.328974, -0.377965, 0.0405548)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_71r3l")
 skeleton = NodePath("")
 
-[node name="Mohawk" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/enemy_head_shield"]
+[node name="Mohawk" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430411, -1.61265, -6.66134e-16)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_03um6")
 skeleton = NodePath("")
 
-[node name="leftarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 
-[node name="LeftForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/leftarm"]
+[node name="LeftForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm"]
 transform = Transform3D(-0.221799, -0.773681, 1.0677, 0.98153, -1.14201, -0.365663, 1.17666, 0.806792, 0.506288, 0.0993495, 3.57874, -4.14052)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_7s7tx")
 skeleton = NodePath("")
 
-[node name="LeftHand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/leftarm"]
+[node name="LeftHand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm"]
 transform = Transform3D(-0.207271, -0.795632, 1.33402, 0.917237, -1.17441, -0.456874, 1.09958, 0.829682, 0.632577, -2.8603, 3.34839, -5.7896)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_3f6uq")
 skeleton = NodePath("")
 
-[node name="rightarm" type="Node3D" parent="f_t_y/f_t_x/f_t_x_shield"]
+[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
 
-[node name="RightForearm" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm"]
+[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.703721, 0.377625, 1.06655, 1.56884, 3.93164e-07, -0.51702, -0.199908, 1.32933, -0.302978, 0.183837, 5.31202, 4.84852)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_2r7ym")
 skeleton = NodePath("")
 
-[node name="Righthand" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm"]
+[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.355699, 0.11866, 1.35358, 1.35631, -0.115106, -0.346327, 0.0816698, 1.39479, -0.143734, -1.93849, 3.60857, 3.00448)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_o2npx")
 skeleton = NodePath("")
 
-[node name="RightWrist" type="MeshInstance3D" parent="f_t_y/f_t_x/f_t_x_shield/rightarm"]
+[node name="RightWrist" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -0.267176, 4.19144, 5.79651)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
@@ -1083,7 +1392,7 @@ mesh = SubResource("ArrayMesh_wg12p")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_wx813")
+stream = ExtResource("5_l0t8p")
 volume_db = 5.818
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1092,17 +1401,21 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_fvest")
+stream = ExtResource("6_344cm")
+volume_db = -10.0
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="temp" type="Node3D" parent="."]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
 [connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
 [connection signal="body_entered" from="chill" to="." method="_on_chill_body_entered"]
+[connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

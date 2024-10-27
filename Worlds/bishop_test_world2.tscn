@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=24 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_evsfr"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="6_wh58c"]
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="7_kynvf"]
-[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="8_fwfdj"]
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_xq5ue"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -153,18 +152,7 @@ far = 100.0
 
 [node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" index="1" instance=ExtResource("7_kynvf")]
 
-[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
-transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
-
 [node name="SmgOfTheFuture" parent="." instance=ExtResource("8_xq5ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3324, 0.497864, -4.95767)
-
-[node name="Wallbreaker" parent="." instance=ExtResource("8_fwfdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5417, 0, -32.5065)
-set_next_state = "idle"
-
-[node name="Wallbreaker2" parent="." instance=ExtResource("8_fwfdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18384, 4.49647, -32.5374)
-set_next_state = "idle"
 
 [editable path="CharacterBody3D"]

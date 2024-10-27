@@ -16,9 +16,9 @@ extends Node3D
 }
 
 #the monster we will be spawing in
-@onready var monster = preload("res://Enemies/state_machine_test/smt.tscn")
-@onready var sniper = preload("res://Enemies/bishop_sniper/bishop_sniper.tscn")
-@onready var bomb_enemy = preload("res://Models/Enemies/wallbreaker/wallbreaker.tscn")
+#@onready var monster = preload("res://Enemies/state_machine_test/smt.tscn")
+#@onready var sniper = preload("res://Enemies/bishop_sniper/bishop_sniper.tscn")
+#@onready var bomb_enemy = preload("res://Models/Enemies/wallbreaker/wallbreaker.tscn")
 #A random number generator to spawn from alternating spawn points
 @onready var rand = RandomNumberGenerator.new()
 @onready var dead_enemies = 0

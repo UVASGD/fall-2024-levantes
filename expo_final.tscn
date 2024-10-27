@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b1dmbc5ccwkec" path="res://projectiles/husk_grenade.tscn" id="5_i3txe"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="6_p3q7m"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="7_0pcoj"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="8_x2ktw"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="9_bfied"]
+[ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="9_fo86w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4lhth"]
 size = Vector3(17.6295, 7.02771, 13.0366)
@@ -170,12 +170,6 @@ autoplay = true
 stream = ExtResource("7_0pcoj")
 autoplay = true
 
-[node name="Smt" parent="." instance=ExtResource("8_x2ktw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20746, 7.70259, 17.6878)
-
-[node name="Smt2" parent="." instance=ExtResource("8_x2ktw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5661, 7.51433, 20.5234)
-
 [node name="bishop_sniper" parent="." instance=ExtResource("9_bfied")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84309, 7.86803, 18.9629)
 
@@ -184,6 +178,9 @@ transform = Transform3D(0.682981, 0, 0.730437, 0, 1, 0, -0.730437, 0, 0.682981, 
 
 [node name="bishop_sniper3" parent="." instance=ExtResource("9_bfied")]
 transform = Transform3D(0.682981, 0, 0.730437, 0, 1, 0, -0.730437, 0, 0.682981, -10.9736, 7.86803, 9.75065)
+
+[node name="smt_update" parent="." instance=ExtResource("9_fo86w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.41062, 7.76363, 15.6437)
 
 [connection signal="body_entered" from="arena_simple/Area3D" to="arena_simple" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="arena_simple/Area3D" to="arena_simple" method="_on_area_3d_body_exited"]

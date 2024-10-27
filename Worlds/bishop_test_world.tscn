@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="7_3c6l5"]
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="7_6nh26"]
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_wgiv7"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="9_njbaq"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="9_njbaq"]
 [ext_resource type="PackedScene" uid="uid://b1dmbc5ccwkec" path="res://projectiles/husk_grenade.tscn" id="10_rx0r4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]

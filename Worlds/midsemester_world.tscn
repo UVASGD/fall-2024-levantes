@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="5_wimf1"]
 [ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="6_hb0dv"]
 [ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="7_sdbnm"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="7_tpwuw"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="7_tpwuw"]
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="8_eh5ec"]
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="9_5w6wb"]
 
