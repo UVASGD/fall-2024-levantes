@@ -36,6 +36,7 @@ default_value_enabled = true
 default_value = Color(0.226707, 0.226707, 0.226707, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rqqha"]
+noise_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_namgt"]
 noise = SubResource("FastNoiseLite_rqqha")
@@ -124,6 +125,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-377.076, -21.7477)
 modes/cull = 2
 nodes/fragment/0/position = Vector2(940, 140)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_aax81")
