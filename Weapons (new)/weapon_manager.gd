@@ -11,6 +11,9 @@ var nearby_weapon = null
 var pickup_detection
 var animationplayer
 
+var is_input_lock_on = false
+var is_meleeing = false
+var is_reloading = false
 var grenade_equipped = false
 var grenade = null
 var grenade_count = 0
@@ -42,8 +45,10 @@ func _input(event):
 	if event.is_action_pressed("debug_button"):
 		hide_weapon(current_weapon)
 	if event.is_action_pressed("Weapon_Switch"):
-		if can_switch:
+		if can_switch and not is_input_lock_on:
+			is_input_lock_on = true
 			await switch()
+			is_input_lock_on = false
 			call_hud_initialize()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		await pickup()
@@ -61,8 +66,16 @@ func _input(event):
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped:
 			return
+		can_switch = false
 		await current_weapon.reload()
+		can_switch = true
 		call_hud_initialize()
+	if event.is_action_pressed("Melee"):
+		if current_weapon == null or grenade_equipped:
+			return
+		can_switch = false
+		await current_weapon.call_melee_animation()
+		can_switch = true
 	if event.is_action_pressed("grenade"):
 		equip_throwable()
 	pass

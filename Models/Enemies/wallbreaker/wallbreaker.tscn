@@ -253,7 +253,7 @@ radius = 0.181508
 [node name="Wallbreaker" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w8434")
 SPEED = 50.0
-damage = 200
+max_health = 70
 
 [node name="x_axis" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -290,7 +290,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 8.47033e-22, 1.42109e-14, -8.47033e-22, 1, 7.10542e-15, -1.42109e-14, -7.10542e-15, 1, 0, 0.898224, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.898224, 0)
-bones/1/rotation = Quaternion(-5.96047e-08, 3.55271e-15, -1.19076e-15, 1)
+bones/1/rotation = Quaternion(-2.98023e-08, 7.10543e-15, 3.55271e-15, 1)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Body" type="MeshInstance3D" parent="x_axis/graphics/Armature/Skeleton3D"]

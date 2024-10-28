@@ -43,14 +43,13 @@ func spawn_enemies():
 	for i in range(monster_dict.size()):
 		var m
 		var rand_monster_type_num = randi_range(1,3)
-		rand_monster_type_num = 1
 		match rand_monster_type_num:
 			1:
 				m = monster.instantiate()
-			#2:
-				#m = sniper.instantiate() 
-			#3:
-				#m = bomb_enemy.instantiate()
+			2:
+				m = sniper.instantiate() 
+			3:
+				m = bomb_enemy.instantiate()
 		m.set_next_state = "chase"
 		#print("spawning enemy")
 		#we check the amount of children on our spawn holder
