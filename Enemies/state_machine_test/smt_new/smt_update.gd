@@ -54,16 +54,16 @@ func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
 	
-	
-	match curr_state:
-		"idle":
-			idle()
-		"chase":
-			chase(delta)
-		"retreat":
-			retreat(delta)
-		"no_move_debug":
-			no_move_debug(delta)
+	if not is_dying:
+		match curr_state:
+			"idle":
+				idle()
+			"chase":
+				chase(delta)
+			"retreat":
+				retreat(delta)
+			"no_move_debug":
+				no_move_debug(delta)
 	
 
 func update_target_location(target_location):
@@ -253,6 +253,7 @@ func _on_vision_body_exited(body):
 		can_move_y_axis = false
 
 func death():
+	next_state = "idle"
 	Animation_Player.play("smt_death")
 	await Animation_Player.animation_finished
 	$".".queue_free()

@@ -2052,7 +2052,7 @@ wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_gv388")
-volume_db = 50.0
+volume_db = 70.0
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
