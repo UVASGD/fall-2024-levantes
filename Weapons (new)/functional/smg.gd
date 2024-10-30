@@ -8,5 +8,3 @@ func melee():
 	_raycast(melee_dmg, Melee_Range)
 	pass
 	
-func call_melee_animation():
-	animation_player.play(Melee_Ani)

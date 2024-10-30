@@ -591,7 +591,7 @@ transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, -0.384714, 0, 0)
 transform = Transform3D(0, 78.1524, 0, 0, 0, -78.1524, -78.1524, 0, 0, -209.508, 0, 0)
 
 [node name="Upper" type="MeshInstance3D" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future"]
-transform = Transform3D(16.7444, 0, 0, 0, 0, 6.96987, 0, -6.96987, 0, 0, 31.7938, 173.441)
+transform = Transform3D(16.7444, 0, 0, 0, -3.04663e-07, 6.96987, 0, -6.96987, -3.04663e-07, 0, 31.7938, 173.441)
 layers = 2
 mesh = SubResource("ArrayMesh_rjpqy")
 skeleton = NodePath("")
@@ -605,14 +605,14 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hmel3")
 
 [node name="Lower" type="MeshInstance3D" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future"]
-transform = Transform3D(1.32, 0, 0, 0, 0, 1, 0, -1, 0, 0, 31.7938, 173.441)
+transform = Transform3D(1.32, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31.7938, 173.441)
 layers = 2
 mesh = SubResource("ArrayMesh_vg11w")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_c6bco")
 
 [node name="Upper_001" type="MeshInstance3D" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future"]
-transform = Transform3D(16.7444, 0, 0, 0, 0, 6.96987, 0, -6.96987, 0, 0, 31.7938, 173.441)
+transform = Transform3D(16.7444, 0, 0, 0, -3.04663e-07, 6.96987, 0, -6.96987, -3.04663e-07, 0, 31.7938, 173.441)
 layers = 2
 mesh = SubResource("ArrayMesh_1xit3")
 skeleton = NodePath("")

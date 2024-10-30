@@ -27,7 +27,7 @@ func hud_initialize(weapons: Array):
 			if weapons[i].Reserve_Ammo != 0:
 				cur_weapon.get_child(4).text = str(weapons[i].Reserve_Ammo)
 			else:
-				cur_weapon.get_child(4).text = ""
+				cur_weapon.get_child(4).text = "0"
 			
 func hud_initialize_player(shield, health):
 	var shield_string = str(shield)

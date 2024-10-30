@@ -6,6 +6,7 @@ class_name Gun extends Node3D
 @export var Display_Name: String
 @export var animation_player_treepath: String
 @export var animation_library_path: String
+@export var Reset_Ani: String
 @export var Equip_Ani: String
 @export var Fire_Ani: String
 @export var Reload_Ani: String
@@ -149,7 +150,9 @@ func melee():
 	
 
 func call_melee_animation():
-	animation_player.play(Melee_Ani)
+	animation_player.play(Reset_Ani)
+	await animation_player.animation_finished
+	animation_player.queue(Melee_Ani)
 
 func _raycast(dmg, range):
 	var camera = get_parent().get_parent()
