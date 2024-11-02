@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/smt_update.gd" id="1_erjey"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_7c3xv"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="3_8xav0"]
+[ext_resource type="Shader" uid="uid://c3fl7jvufrc7a" path="res://visual_shader_test.tres" id="3_8xav0"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5iuv7"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_g4v2e"]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6hpu4aaw50lq"]
+
+[ext_resource type="Script" path="res://Worlds/world_objects/gravity_test/gravity_change_area.gd" id="1_524dx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2sqg"]
+
+[node name="GravityChangeArea" type="Node3D"]
+script = ExtResource("1_524dx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_l2sqg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
