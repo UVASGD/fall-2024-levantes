@@ -60,5 +60,5 @@ func make_bullet_trail(target_pos: Vector3):
 		tracer.global_position = start_pos
 		tracer.look_at(target_pos + Vector3(0,1,0))
 		
-		
+
 	

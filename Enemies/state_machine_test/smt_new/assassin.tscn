@@ -1,0 +1,293 @@
+[gd_scene load_steps=14 format=3 uid="uid://cb6lyhn01m8cn"]
+
+[ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/assassin.gd" id="1_cbyde"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
+[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
+[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
+radius = 0.623999
+height = 2.11801
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
+albedo_color = Color(0.427451, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_leyqv"]
+radius = 0.623999
+height = 2.11801
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gupe6"]
+radius = 0.181508
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oasru"]
+points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, -4.905, -1.915, -1, -4.62, -2.78, -1, -4.16, -3.535, -1, -3.535, -4.16, -1, -2.78, -4.62, -1, -1.915, -4.905, -1, -0.975, -5, -1, 0, -4.905, -1, 0.975, -4.62, -1, 1.915, -4.16, -1, 2.775, -3.535, -1, 3.535, -2.78, -1, 4.155, -1.915, -1, 4.62, -0.975, -1, 4.905, 0, -1, 5, 0.975, -1, 4.905, 1.915, -1, 4.62, 2.775, -1, 4.155, 3.535, -1, 3.535, 4.155, -1, 2.775, 4.62, -1, 1.915, 4.905, -1, 0.975, 5, -1, 0, 4.905, -1, -0.975, 4.62, -1, -1.915, 4.155, -1, -2.78, 3.535, -1, -3.535, 2.775, -1, -4.16, 1.915, -1, -4.62)
+
+[sub_resource type="Animation" id="Animation_d8tn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.12]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qg7pv"]
+resource_name = "smt_death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.12, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bk6ch"]
+resource_name = "smt_shoot"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.44642, 0.0813584, -2.71183e-13), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-9.61724e-21, 3.31869e-20, 0.479459), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.44642, 0.0813584, -2.71183e-13), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-9.61724e-21, 3.31869e-20, 0.479459), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxpsa"]
+_data = {
+"RESET": SubResource("Animation_d8tn4"),
+"smt_death": SubResource("Animation_qg7pv"),
+"smt_shoot": SubResource("Animation_bk6ch")
+}
+
+[node name="assassin" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_cbyde")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
+shape = SubResource("CapsuleShape3D_je42x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
+material_override = SubResource("StandardMaterial3D_ulsyh")
+mesh = SubResource("CapsuleMesh_leyqv")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 2.0
+
+[node name="chase" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chase"]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
+shape = SubResource("SphereShape3D_gupe6")
+
+[node name="x_axis" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
+script = ExtResource("2_dwvr6")
+
+[node name="x_axis_model_group" type="Node3D" parent="x_axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Base" type="Node3D" parent="x_axis/x_axis_model_group"]
+transform = Transform3D(1, 0, -2.4869e-14, 0, 1, 0, 2.4869e-14, 0, 1, 0.0637161, 2.86102e-06, -0.147581)
+
+[node name="Vision" type="Area3D" parent="x_axis/x_axis_model_group"]
+unique_name_in_owner = true
+transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/Vision"]
+transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)
+shape = SubResource("ConvexPolygonShape3D_oasru")
+
+[node name="RayCast3D" type="RayCast3D" parent="x_axis/x_axis_model_group"]
+transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
+
+[node name="x_axis_shield" type="Node3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(-5.24536e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24536e-08, -1.31478e-09, -0.984708, -0.0300787)
+visible = false
+
+[node name="y_axis" type="Node3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
+script = ExtResource("2_dwvr6")
+
+[node name="projectile_origin_spot" type="Marker3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
+transform = Transform3D(2.12299e-14, 11.1111, -4.85682e-07, 4.85683e-07, -4.85682e-07, -11.1111, -11.1111, 0, -4.85683e-07, -2.89837, -1.84555, -18.7508)
+
+[node name="y_axis_model_group" type="Node3D" parent="x_axis/y_axis"]
+transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08, -1, -1, 0, -4.37113e-08, -7.40497, 3.23681e-07, 0)
+
+[node name="enemy_head" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+
+[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+
+[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+
+[node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
+unique_name_in_owner = true
+transform = Transform3D(5.21113e-15, 1.2, -5.24537e-08, 1.19217e-07, -5.24537e-08, -1.2, -1.2, 0, -1.19217e-07, -8.08735, 3.51658e-07, 0.0423657)
+visible = false
+
+[node name="enemy_head_shield" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+
+[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+
+[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_lo5vc")
+volume_db = 5.818
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kxpsa")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_5oame")
+volume_db = -10.0
+
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="temp" type="Node3D" parent="."]
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
+[connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
+[connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
