@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_uhjef"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_5pah8"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="3_rmk8k"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/husk_sniper.tscn" id="4_dfgy7"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="4_dfgy7"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_sph3o"]
 [ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="8_5qgu1"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="12_6qkm3"]

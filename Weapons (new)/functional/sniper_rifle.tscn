@@ -359,12 +359,12 @@ shadow_mesh = SubResource("ArrayMesh_f05hl")
 
 [node name="SNIPER" type="Node3D"]
 script = ExtResource("1_mhi17")
-husk_weapon_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
+husk_weapon_path = "res://husk_sniper_rifle.tscn"
 Name = "sniper"
-Display_Name = "LRSR-200"
+Display_Name = "sniper"
 animation_player_treepath = "../AnimationPlayers2/SNIPER"
 animation_library_path = "res://sniper_animations.res"
-Reset_Ani = "sniper_animations/RESET"
+volume_db_increase = 10
 Equip_Ani = "sniper_animations/sniper_equip"
 Fire_Ani = "sniper_animations/sniper_fire"
 Reload_Ani = "sniper_animations/sniper_reload"

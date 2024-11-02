@@ -2,8 +2,10 @@ extends Gun
 
 
 func shoot(): #default shoot logic
-	if Input.is_action_pressed("Shoot") and can_shoot:
+	if can_shoot:
+		can_shoot = false
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
+		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
 		_raycast(dmg, Projectile_Range)
 		await play_fire()
 		Curr_Mag_Ammo -= 1
@@ -12,4 +14,7 @@ func shoot(): #default shoot logic
 			if Reserve_Ammo > 0:
 				await reload()
 			else:
-				can_shoot = false #out of all ammo
+				can_shoot = false
+				return
+		can_shoot = true
+

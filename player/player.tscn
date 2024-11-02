@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfde4dumfslig"]
+[gd_scene load_steps=20 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
 [ext_resource type="PackedScene" uid="uid://w52k7iojvbpg" path="res://Weapons (new)/weapon_manager.tscn" id="3_ol2y5"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="6_o2npw"]
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="7_4w6sm"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
-[ext_resource type="PackedScene" uid="uid://bkepft1ayeuu7" path="res://Weapons (new)/functional/sniper_rifle.tscn" id="8_4og8x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -263,7 +262,7 @@ _data = {
 "RESET": SubResource("Animation_apoff")
 }
 
-[sub_resource type="Animation" id="Animation_lwdxx"]
+[sub_resource type="Animation" id="Animation_ms4nx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -289,34 +288,10 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../SNIPER/sniper_rifle/Bolt:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.129594, 1.66127, 7.72586)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../SNIPER/sniper_rifle/Bolt:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.840483)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ros7p"]
 _data = {
-"RESET": SubResource("Animation_lwdxx")
+"RESET": SubResource("Animation_ms4nx")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ee15"]
@@ -352,7 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
 unique_name_in_owner = true
 cull_mask = 1048573
 current = true
-far = 54.29
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D"]
 anchors_preset = 8
@@ -407,20 +381,6 @@ libraries = {
 [node name="SMG" parent="Head/Camera3D/weapon manager" instance=ExtResource("6_o2npw")]
 visible = false
 
-[node name="Upper" parent="Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="1"]
-transform = Transform3D(16.7444, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 31.7938, 173.441)
-
-[node name="Mag" parent="Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
-transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
-
-[node name="Lower" parent="Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="3"]
-transform = Transform3D(1.32, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 31.7938, 173.441)
-
-[node name="Upper_001" parent="Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="4"]
-transform = Transform3D(16.7444, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 31.7938, 173.441)
-
-[node name="SNIPER" parent="Head/Camera3D/weapon manager" instance=ExtResource("8_4og8x")]
-
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
 
@@ -455,5 +415,3 @@ one_shot = true
 [node name="shield_deplete_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_4w6sm")
 volume_db = 5.0
-
-[editable path="Head/Camera3D/weapon manager/SMG"]

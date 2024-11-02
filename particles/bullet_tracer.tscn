@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://djsbr4cqvel26"]
+
+[sub_resource type="GDScript" id="GDScript_fjhcq"]
+script/source = "extends Node3D
+
+@export var target_pos = Vector3(0,0,0)
+@export var speed = 75.0 #m/s
+@export var tracer_length = 1
+
+const MAX_LIFETIME_MS = 5000
+
+@onready var spawn_time = Time.get_ticks_msec()
+
+func _physics_process(delta: float) -> void:
+	var diff = target_pos - self.global_position
+	var add = diff.normalized() * speed * delta
+	add = add.limit_length(diff.length())
+	self.global_position += add
+	if (target_pos - self.global_position).length() <= tracer_length or Time.get_ticks_msec() - spawn_time > MAX_LIFETIME_MS:
+		self.queue_free()
+"
+
+[sub_resource type="Gradient" id="Gradient_8d0jy"]
+offsets = PackedFloat32Array(0, 0.104478, 0.868159, 1)
+colors = PackedColorArray(0.823529, 0.447059, 0, 0, 0.823529, 0.447059, 0, 1, 1, 0.592157, 0.776471, 1, 1, 0.592157, 0.776471, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rwi5d"]
+gradient = SubResource("Gradient_8d0jy")
+height = 256
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jl35"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("GradientTexture2D_rwi5d")
+emission_enabled = true
+emission_texture = SubResource("GradientTexture2D_rwi5d")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_k1em7"]
+material = SubResource("StandardMaterial3D_0jl35")
+size = 0.04
+sections = 2
+section_length = 0.5
+section_segments = 1
+
+[node name="BulletTracer" type="Node3D"]
+script = SubResource("GDScript_fjhcq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 0, -0.514231)
+mesh = SubResource("RibbonTrailMesh_k1em7")

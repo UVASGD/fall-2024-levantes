@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="1_560k0"]
 [ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="2_uj5pm"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Models/Weapons/spawnable_weapons/sp_sniper_rifle.tscn" id="4_thvar"]
-[ext_resource type="PackedScene" uid="uid://cdi48a2cr3mlg" path="res://Models/Enemies/spider/spider.tscn" id="5_casw7"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="4_thvar"]
+[ext_resource type="PackedScene" uid="uid://cdi48a2cr3mlg" path="res://Enemies/spider/spider.tscn" id="5_casw7"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_fxjij"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]

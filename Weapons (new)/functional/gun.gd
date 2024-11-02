@@ -6,6 +6,7 @@ class_name Gun extends Node3D
 @export var Display_Name: String
 @export var animation_player_treepath: String
 @export var animation_library_path: String
+@export var volume_db_increase: int = 0
 @export var Reset_Ani: String
 @export var Equip_Ani: String
 @export var Fire_Ani: String
@@ -48,6 +49,9 @@ var animation_player
 var model
 var audio_player
 var last_shot_time = 0
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var model = get_child(0)
@@ -55,6 +59,7 @@ func _ready():
 	print(animation_player)
 	audio_player = AudioStreamPlayer.new()
 	audio_player.max_polyphony = 3
+	audio_player.volume_db = volume_db_increase
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)
 	var root = get_tree().root
@@ -148,6 +153,8 @@ func equip():
 func melee():
 	pass
 	
+func make_bullet_trail(target_pos: Vector3):
+	pass
 
 func call_melee_animation():
 	animation_player.play(Reset_Ani)
@@ -165,6 +172,7 @@ func _raycast(dmg, range):
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	if not intersection.is_empty():
+		
 		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
 		print(intersection.get("collider"))
 		

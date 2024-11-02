@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_iclxk"]
 [ext_resource type="Script" path="res://player/player_controller.gd" id="3_5ogod"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="4_2gbcm"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/husk_sniper.tscn" id="4_f4yv7"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="4_f4yv7"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_7v6ir"]
 [ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="5_wimf1"]
 [ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="6_hb0dv"]

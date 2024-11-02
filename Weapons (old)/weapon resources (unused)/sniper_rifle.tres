@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://c74kyau0hyqyp"]
 
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/husk_sniper.tscn" id="1_0t0x8"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="1_0t0x8"]
 [ext_resource type="Script" path="res://Weapons (old)/weapon_resource.gd" id="1_jcv7f"]
 
 [resource]

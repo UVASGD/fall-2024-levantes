@@ -205,3 +205,6 @@ layers = 2
 mesh = SubResource("ArrayMesh_1xit3")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hmel3")
+
+[node name="marker" type="Node3D" parent="smg_of_the_future"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.37196, -208.713)
