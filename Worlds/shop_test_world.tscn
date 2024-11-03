@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_qxc61"]
 [ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="3_6mhxn"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="4_vkn8j"]
-[ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="5_dc6kk"]
 [ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="6_fbpx7"]
 [ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="8_isjki"]
 [ext_resource type="PackedScene" uid="uid://vbvy4uppo6py" path="res://Weapons (new)/husk/husk_sniper_rifle.tscn" id="9_e1cbb"]
 [ext_resource type="PackedScene" uid="uid://dpq8sesvlcf7a" path="res://player/shop_player.tscn" id="9_y106e"]
+[ext_resource type="PackedScene" uid="uid://btapduwgki6cc" path="res://Weapons (new)/shop/shop_smg.tscn" id="10_qn2kx"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
 vertices = PackedVector3Array(-90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -0.0686035, 0.451325, -9.48399, -0.0686035, 0.451325, -129.984, -90.3186, 0.451325, -129.984, 16.9314, 0.451325, -0.983994, 17.1814, 0.451325, 0.266006, 18.6814, 0.451325, 0.266006, 18.6814, 0.451325, -5.73399, 2.1814, 0.451325, -9.23399, 18.6814, 0.451325, -5.73399, 19.9314, 0.451325, -5.98399, 19.9314, 0.451325, -129.984, -0.0686035, 0.451325, -129.984, 1.6814, 0.451325, -4.98399, 5.9314, 0.451325, -0.483994, 6.1814, 0.451325, -0.983994, 2.1814, 0.451325, -5.23399, -0.0686035, 0.451325, -129.984, -0.0686035, 0.451325, -9.48399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -5.23399, 6.1814, 0.451325, -0.983994, 16.9314, 0.451325, -0.983994, 18.6814, 0.451325, -5.73399, 20.9314, 0.451325, -5.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, -3.73399, 19.9314, 0.451325, -5.98399, 20.9314, 0.451325, -5.73399, 90.4314, 0.451325, -3.73399, 90.4314, 0.451325, -129.984, 19.9314, 0.451325, -129.984, -1.3186, 1.95132, -8.48399, -1.3186, 1.95132, -5.98399, 1.1814, 1.95132, -5.98399, 1.1814, 1.95132, -8.48399, 18.6814, 0.451325, 0.266006, 17.1814, 0.451325, 0.266006, 16.9314, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, 5.9314, 0.451325, -0.483994, 1.6814, 0.451325, -4.98399, -2.0686, 0.451325, -4.98399, 19.6814, 0.451325, 16.266, 18.6814, 0.451325, 16.016, -90.3186, 0.451325, -7.23399, -90.3186, 0.451325, 130.016, 19.6814, 0.451325, 130.016, -2.0686, 0.451325, -4.98399, -2.3186, 0.451325, -7.23399, -90.3186, 0.451325, -7.23399, 18.6814, 0.451325, 16.016, 16.9314, 0.451325, 1.26601, 6.1814, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, -2.0686, 0.451325, -4.98399, -90.3186, 0.451325, -7.23399, 20.9314, 0.451325, 14.016, 90.4314, 0.451325, 14.016, 90.4314, 0.451325, -3.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 19.6814, 0.451325, 16.266, 19.6814, 0.451325, 130.016, 90.4314, 0.451325, 130.016)
@@ -150,9 +150,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_vkn8j")
 
-[node name="SmgOfTheFuture" parent="." instance=ExtResource("5_dc6kk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3324, 0.497864, -4.95767)
-
 [node name="smt_update" parent="." instance=ExtResource("6_fbpx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4009, 0, -21.6387)
 
@@ -173,3 +170,6 @@ collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_r3d81")
+
+[node name="shop_smg" parent="." instance=ExtResource("10_qn2kx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.28672, 1.76874, 2.96972)
