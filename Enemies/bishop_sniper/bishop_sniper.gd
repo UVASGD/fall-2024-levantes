@@ -195,7 +195,7 @@ func shoot():
 		var spawn_pos = projectile_origin_spot.global_transform.origin
 		spawn_pos.y += -1.5
 
-		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
+		var direction = (target_pos - Vector3(0,1.6,0) - spawn_pos).normalized()  
 		
 		projectile_instance.look_at(target_pos)
 		projectile_instance.velocity = direction * projectile_speed  

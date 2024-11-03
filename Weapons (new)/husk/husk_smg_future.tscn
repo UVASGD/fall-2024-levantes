@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_akowq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cl20e"]
-size = Vector3(0.411255, 0.474121, 1.26929)
+size = Vector3(0.368881, 0.585648, 1.65224)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl6cq"]
 
@@ -159,11 +159,11 @@ reserve_ammo = 60
 real_weapon_path = "res://Weapons (new)/functional/smg_refactor.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, -0.00805664, -0.0142822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38935e-05, -0.0240555, -0.0213847)
 shape = SubResource("BoxShape3D_cl20e")
 
 [node name="smg_of_the_future" type="Node3D" parent="."]
-transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0.00581473, 0, 0)
+transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0.00581473, 0, 0)
 
 [node name="Empty" type="Node3D" parent="smg_of_the_future"]
 transform = Transform3D(0, 78.1524, 0, 0, 0, -78.1524, -78.1524, 0, 0, -209.508, 0, 0)

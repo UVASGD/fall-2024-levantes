@@ -1346,6 +1346,8 @@ script = ExtResource("1_erjey")
 SPEED = 50.0
 damage = 10
 projectile_speed = 40
+min_firing_speed_in_seconds = 1.0
+max_firing_speed_in_seconds = 1.5
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)

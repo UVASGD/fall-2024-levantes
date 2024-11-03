@@ -7,6 +7,8 @@ class_name Gun extends Node3D
 @export var animation_player_treepath: String
 @export var animation_library_path: String
 @export var volume_db_increase: int = 0
+@export var change_pitch_mult: float = 1.0
+@export var max_pol: int = 3
 @export var Reset_Ani: String
 @export var Equip_Ani: String
 @export var Fire_Ani: String
@@ -58,7 +60,8 @@ func _ready():
 	animation_player = get_node(animation_player_treepath)
 	print(animation_player)
 	audio_player = AudioStreamPlayer.new()
-	audio_player.max_polyphony = 3
+	audio_player.max_polyphony = max_pol
+	audio_player.pitch_scale = change_pitch_mult
 	audio_player.volume_db = volume_db_increase
 	audio_player.stream = load(Fire_Sound)
 	add_child(audio_player)

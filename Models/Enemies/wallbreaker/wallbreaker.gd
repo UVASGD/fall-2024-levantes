@@ -14,6 +14,7 @@ var health_hp: int
 
 
 @onready var Animation_Player = %AnimationPlayer
+@onready var hit_animation_player = $hit_animation_player
 var explosion = preload("res://projectiles/explosion.tscn")
 
 
@@ -136,6 +137,7 @@ func take_damage(amount: int):
 func on_hit(damage_taken, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
+		hit_animation_player.play("got_hit")
 
 
 		await get_tree().create_timer(.1).timeout

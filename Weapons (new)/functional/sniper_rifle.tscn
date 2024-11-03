@@ -110,8 +110,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1nik3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbfai"]
-albedo_color = Color(10.059, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etadj"]
+albedo_color = Color(0.447059, 0.447059, 0.447059, 1)
+emission_enabled = true
+emission = Color(0, 0.701961, 0.858824, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfjln"]
 
@@ -407,7 +410,7 @@ skeleton = NodePath("")
 [node name="Bolt" type="MeshInstance3D" parent="sniper_rifle"]
 transform = Transform3D(0.0437092, 0.0488108, 0, -0.0488108, 0.0437092, 0, 0, 0, 0.0655209, 0.129594, 1.66127, 7.72586)
 layers = 2
-material_override = SubResource("StandardMaterial3D_dbfai")
+material_override = SubResource("StandardMaterial3D_etadj")
 mesh = SubResource("ArrayMesh_prylf")
 skeleton = NodePath("")
 

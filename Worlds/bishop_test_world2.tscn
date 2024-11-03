@@ -153,6 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3324, 0.497864, -4.95767)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4009, 0, -21.6387)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("7_e04ph")]
+look_sens = 0.003
 
 [node name="HuskBurstRifle" parent="." instance=ExtResource("8_ukhhu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67675, 0.748965, -3.99942)

@@ -59,10 +59,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h6vk8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsfmc"]
-albedo_color = Color(3, 3, 1, 1)
 emission_enabled = true
-emission = Color(0.92549, 0.92549, 0.105882, 1)
-emission_energy_multiplier = 10.0
+emission = Color(0.243137, 0.835294, 1, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2ux1"]
 
@@ -209,7 +208,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1giro")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axc23"]
-albedo_color = Color(0.2, 0.207843, 0.0705882, 1)
+albedo_color = Color(0.133333, 0.137255, 0.0352941, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v358r"]
 
@@ -522,8 +521,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_axsfr")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbfai"]
-albedo_color = Color(10.059, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xi1f8"]
+albedo_color = Color(0.447059, 0.447059, 0.447059, 1)
+emission_enabled = true
+emission = Color(0, 0.701961, 0.858824, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emhb2"]
 
@@ -1922,7 +1924,7 @@ skeleton = NodePath("")
 
 [node name="Bolt" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/sniper_rifle/model"]
 transform = Transform3D(0.0437092, 0.0488108, 2.17921e-08, -0.0488108, 0.0437092, -5.48866e-09, -1.86265e-08, -1.25729e-08, 0.0655209, 0.129593, 1.66127, 7.72585)
-material_override = SubResource("StandardMaterial3D_dbfai")
+material_override = SubResource("StandardMaterial3D_xi1f8")
 mesh = SubResource("ArrayMesh_df0wc")
 skeleton = NodePath("")
 

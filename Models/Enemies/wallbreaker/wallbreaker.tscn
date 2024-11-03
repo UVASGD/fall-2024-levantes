@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4exv62ao5bai"]
+[gd_scene load_steps=28 format=3 uid="uid://b4exv62ao5bai"]
 
 [ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Models/Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
 [ext_resource type="Script" path="res://Models/Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_hwhgo"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5act7"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_ex7kl"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="5_6kyp3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2xkd"]
@@ -181,6 +182,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../shield/MeshInstance3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.593332, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../shield/MeshInstance3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_65u4l"]
 resource_name = "explode"
@@ -234,6 +259,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(1.42276e-08, 0.905006, 0.229406), Vector3(5.05863e-08, 2.5304, 0.229406)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../shield/MeshInstance3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.593332, 0), Vector3(-1.43389e-09, 0.983131, -1.00472e-09), Vector3(0.115472, 1.29985, 0.0809111)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../shield/MeshInstance3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.42276e-08, 0.905006, 0.229406), Vector3(5.05863e-08, 2.5304, 0.229406)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2u0m"]
 _data = {
@@ -242,6 +291,18 @@ _data = {
 "explode": SubResource("Animation_65u4l")
 }
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nsy43"]
+radius = 0.626365
+height = 1.56706
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpra6"]
+render_priority = 0
+shader = ExtResource("4_ex7kl")
+shader_parameter/ColorParameter = Color(0, 0.647059, 0.913725, 1)
+shader_parameter/Strength = 10.0
+shader_parameter/LightColor = Color(0.784314, 0.972549, 0.976471, 1)
+shader_parameter/FloatParameter = 0.6
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vqm7n"]
 resource_local_to_scene = true
 radius = 0.626365
@@ -249,6 +310,68 @@ height = 1.56706
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y7klq"]
 radius = 0.181508
+
+[sub_resource type="Animation" id="Animation_2yve1"]
+resource_name = "got_hit"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/shield/MeshInstance3D:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/shield:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0mxcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/shield/MeshInstance3D:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/shield:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvjqd"]
+_data = {
+"RESET": SubResource("Animation_0mxcq"),
+"got_hit": SubResource("Animation_2yve1")
+}
 
 [node name="Wallbreaker" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w8434")
@@ -303,7 +426,13 @@ libraries = {
 "": SubResource("AnimationLibrary_m2u0m")
 }
 
-[node name="graphics" type="Node3D" parent="x_axis/graphics"]
+[node name="shield" type="Node3D" parent="x_axis"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="x_axis/shield"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593332, 0)
+mesh = SubResource("CapsuleMesh_nsy43")
+surface_material_override/0 = SubResource("ShaderMaterial_gpra6")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
@@ -329,6 +458,11 @@ volume_db = 5.818
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_6kyp3")
 volume_db = 19.048
+
+[node name="hit_animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvjqd")
+}
 
 [connection signal="animation_finished" from="x_axis/graphics/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_l10os"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cwnqh"]
-size = Vector3(0.192627, 0.331879, 1.00391)
+size = Vector3(0.318329, 0.58576, 1.68628)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgwv0"]
 
@@ -159,11 +159,11 @@ reserve_ammo = 210
 real_weapon_path = "res://Weapons (new)/functional/burst-refactor.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0.00572205, 0.0478516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63312e-05, -0.00860505, 0.132935)
 shape = SubResource("BoxShape3D_cwnqh")
 
 [node name="burstModel" type="Node3D" parent="."]
-transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, -0.127653, -0.0143237, 0)
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, -0.247117, -0.0143237, 0)
 
 [node name="Empty" type="Node3D" parent="burstModel"]
 transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, 0, 0, 0)
