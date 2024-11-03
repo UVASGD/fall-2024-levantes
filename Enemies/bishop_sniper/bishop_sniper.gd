@@ -196,6 +196,8 @@ func shoot():
 		spawn_pos.y += -1.5
 
 		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
+		
+		projectile_instance.look_at(target_pos)
 		projectile_instance.velocity = direction * projectile_speed  
 
 		#get_parent().add_child(projectile_instance)

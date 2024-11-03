@@ -1344,6 +1344,7 @@ _data = {
 [node name="smt_update" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_erjey")
 SPEED = 50.0
+damage = 10
 projectile_speed = 40
 
 [node name="hitbox" type="CollisionShape3D" parent="."]

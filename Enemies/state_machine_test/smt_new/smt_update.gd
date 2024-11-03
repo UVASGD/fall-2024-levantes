@@ -3,14 +3,18 @@ extends CharacterBody3D
 
 @export var set_next_state: String
 @export var SPEED = 5.0
+@export var shots_per_burst = 3
+@export var time_between_each_shot = 0.1
+@export var max_spread_deviaton_degs: float = 1.2
 
 @export var max_health: int = 100
 var health_hp: int
 @export var damage = 15
 @export var projectile_speed = 5
-@export var firing_speed_in_seconds = 2
+@export var min_firing_speed_in_seconds = 1.5
+@export var max_firing_speed_in_seconds = 2.0
 @export var visibility_range = 1000000
-
+@export var shots_per_shoot_call = 3
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
@@ -25,7 +29,7 @@ var health_hp: int
 var vision_timer_done = false
 var is_firing = false
 var can_move_y_axis = false
-
+var is_anim_playing = false
 
 @onready var projectile_origin_spot = %projectile_origin_spot
 var projectile = preload("res://projectiles/enemy_projectile.tscn")
@@ -38,6 +42,8 @@ var target_pos
 
 var is_dying = false
 
+var shot_count = 0
+
 @onready var vision = %Vision
 @onready var hitbox = $"."
 
@@ -45,7 +51,7 @@ func _ready():
 	if set_next_state:
 		next_state = set_next_state
 	offset = add_rand_offset(2)
-	timer.wait_time = firing_speed_in_seconds
+	timer.wait_time = randf_range(min_firing_speed_in_seconds, max_firing_speed_in_seconds)
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
@@ -144,25 +150,44 @@ func _on_chase_body_entered(body):
 
 func shoot(tm):
 	if y_axis.is_facing_target(target_pos) and not is_firing and not is_dying:
-		tm.start()
 		is_firing = true
-		Animation_Player.queue("smt_shoot")
+		fire_burst()
+
+func fire_burst():
+	for i in shots_per_burst:
+		if is_dying:
+			break
+			
+		Animation_Player.play("smt_shoot")
 		$AudioStreamPlayer3D2.play()
+		spawn_projectile()
 		
-		var projectile_instance = projectile.instantiate()
+		if i < shots_per_burst - 1:  # Don't wait after the last shot
+			await get_tree().create_timer(time_between_each_shot).timeout
+	
+	# Start the main firing cooldown timer after burst is complete
+	timer.start()
+	await timer.timeout
+	is_firing = false
+func spawn_projectile():
+	var projectile_instance = projectile.instantiate()
+	projectile_instance.damage_amount = damage
+	get_parent().add_child(projectile_instance)
+	
+	projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
+	var spawn_pos = projectile_origin_spot.global_transform.origin
+	spawn_pos.y += -1
 
-		projectile_instance.damage_amount = damage
-
+	var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()
+	
+	var random_y_angle = randf_range(-max_spread_deviaton_degs, max_spread_deviaton_degs)
+	var random_x_angle = randf_range(-max_spread_deviaton_degs, max_spread_deviaton_degs)
+	
+	direction = direction.rotated(Vector3.UP, deg_to_rad(random_y_angle))
+	direction = direction.rotated(Vector3.RIGHT, deg_to_rad(random_x_angle))
+	projectile_instance.look_at(target_pos + direction)  
+	projectile_instance.velocity = direction * projectile_speed
 		
-		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
-		var spawn_pos = projectile_origin_spot.global_transform.origin
-		spawn_pos.y += -1
-
-		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
-		projectile_instance.velocity = direction * projectile_speed  
-
-
-		get_parent().add_child(projectile_instance)
 		
 
 	
@@ -261,4 +286,5 @@ func death():
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
+	is_anim_playing = false
 	pass # Replace with function body.

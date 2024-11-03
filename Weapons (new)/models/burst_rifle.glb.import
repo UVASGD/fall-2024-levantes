@@ -31,16 +31,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Cylinder_001": {
-"mesh_instance/layers": 2
-},
-"PATH:Cylinder_003": {
-"mesh_instance/layers": 2
-},
 "PATH:Cylinder_004": {
-"mesh_instance/layers": 2
-},
-"PATH:Mag": {
 "mesh_instance/layers": 2
 }
 }
