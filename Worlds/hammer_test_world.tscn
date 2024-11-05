@@ -186,4 +186,4 @@ transform = Transform3D(-0.0608221, 0, 0.998149, 0, 1, 0, -0.998149, 0, -0.06082
 transform = Transform3D(0.0214484, 0, 0.99977, 0, 1, 0, -0.99977, 0, 0.0214484, -19.0231, 2.2632, -1.20629)
 
 [node name="Hammerguy" parent="." instance=ExtResource("12_3qhf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22395, 1.17856, -6.23083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44129, 1.31867, 19.9091)

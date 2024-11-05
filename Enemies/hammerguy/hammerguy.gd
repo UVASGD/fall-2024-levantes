@@ -16,8 +16,8 @@ var health_hp: int
 @export var visibility_range = 1000000
 @export var shots_per_shoot_call = 3
 
-@onready var x_axis = $model/y_axis
-@onready var y_axis = $model/y_axis
+@onready var x_axis = $x_axis
+@onready var y_axis = $x_axis/y_axis
 @onready var timer = $Timer
 @onready var Animation_Player = $AnimationPlayer
 
@@ -172,6 +172,7 @@ func on_hit(damage_taken, collider):
 	if not is_dying and collider == hitbox:
 		$AudioStreamPlayer3D.play()
 		take_damage(damage_taken)
+		print(health_hp)
 	
 	pass
 
@@ -233,10 +234,10 @@ func _on_vision_body_exited(body):
 
 func death():
 	next_state = "idle"
-	Animation_Player.play("smt_death")
-	await Animation_Player.animation_finished
+	#Animation_Player.play("smt_death")
+	#await Animation_Player.animation_finished
 	$".".queue_free()
-	SignalBus.emit_signal("enemy_death")
+	#SignalBus.emit_signal("enemy_death")
 	pass
 
 func _on_animation_player_animation_finished(anim_name):

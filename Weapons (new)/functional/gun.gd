@@ -177,10 +177,11 @@ func _raycast(dmg, range):
 	if not intersection.is_empty():
 		
 		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
-		print(intersection.get("collider"))
+		#print(intersection.get("collider"))
 		
 	else:
-		print("nothing")
+		pass
+		#print("nothing")
 		
 func get_husk():
 	var husk = load(husk_weapon_path)
