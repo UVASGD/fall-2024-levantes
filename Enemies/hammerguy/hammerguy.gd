@@ -169,7 +169,7 @@ func take_damage(amount: int):
 		death()
 
 func on_hit(damage_taken, collider):
-	if not is_dying and collider == hitbox:
+	if not is_dying and collider == self:
 		$AudioStreamPlayer3D.play()
 		take_damage(damage_taken)
 		print(health_hp)
