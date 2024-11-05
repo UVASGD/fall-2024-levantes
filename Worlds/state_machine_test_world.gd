@@ -21,6 +21,7 @@ extends Node3D
 @onready var sniper = preload("res://Enemies/bishop_sniper/bishop_sniper.tscn")
 @onready var bomb_enemy = preload("res://Enemies/wallbreaker/wallbreaker.tscn")
 @onready var assassin = preload("res://Enemies/assassin/assassin.tscn")
+@onready var hammer = preload("res://Enemies/hammerguy/hammerguy.tscn")
 #A random number generator to spawn from alternating spawn points
 @onready var rand = RandomNumberGenerator.new()
 @onready var dead_enemies = 0
@@ -43,8 +44,7 @@ func enemy_death():
 func spawn_enemies():
 	for i in range(monster_dict.size()):
 		var m
-		#var rand_monster_type_num = randi_range(1,4)
-		var rand_monster_type_num = 4
+		var rand_monster_type_num = randi_range(1,5)
 		match rand_monster_type_num:
 			1:
 				m = monster.instantiate()
@@ -54,6 +54,8 @@ func spawn_enemies():
 				m = bomb_enemy.instantiate()
 			4:
 				m = assassin.instantiate()
+			5:
+				m = hammer.instantiate()
 		m.set_next_state = "chase"
 		#print("spawning enemy")
 		#we check the amount of children on our spawn holder
