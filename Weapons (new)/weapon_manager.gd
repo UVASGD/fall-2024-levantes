@@ -1,5 +1,5 @@
 extends Node3D
-
+var Shop_Weapon = "res://shop_weapon.gd"
 var throwable = "res://throwable.gd"
 var current_weapon = null
 var other_weapon = null
@@ -17,6 +17,8 @@ var is_reloading = false
 var grenade_equipped = false
 var grenade = null
 var grenade_count = 0
+var money = 0
+var shop_ray = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var weapon_array = []
@@ -35,6 +37,7 @@ func _ready():
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
+	shop_ray = $"../RayCast3D"
 	pass 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +59,10 @@ func _input(event):
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
+		if shop_ray.is_colliding():
+			print("buy")
+			buy()
+			return
 		if grenade_equipped:
 				throw()
 				return
@@ -186,7 +193,24 @@ func drop_weapon():
 	current_weapon.queue_free()
 	current_weapon = null
 	pass
-	
+
+func buy():
+	if(shop_ray.get_collider().get_parent() is Shop_Weapon):
+		var player_position = $"../../..".global_transform.origin
+		print("buying")
+		var shop_weapon = shop_ray.get_collider().get_parent()
+		money -= shop_weapon.price
+		if money < 0:
+			go_in_debt()
+		var new_weapon = shop_weapon.sell()
+		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
+		new_weapon.position = player_position + Vector3(0, 3, 3)
+	return
+
+func go_in_debt():
+	print("you are in debt")
+	return
+
 func _on_pickup_detection_body_entered(body):
 	nearby_weapon = body
 	can_pickup = true
