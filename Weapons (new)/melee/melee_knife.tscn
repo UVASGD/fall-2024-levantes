@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwo61h7n01ib8"]
+[gd_scene load_steps=14 format=3 uid="uid://cwo61h7n01ib8"]
+
+[ext_resource type="Script" path="res://Weapons (new)/melee/melee_knife.gd" id="1_lwfou"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4moy"]
 
@@ -113,8 +115,12 @@ _data = {
 "shaderknifetest": SubResource("Animation_yf5wi")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgpfw"]
+size = Vector3(9.87256, 56.7286, 2.6532)
+
 [node name="MeleeKnife" type="Node3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("1_lwfou")
 
 [node name="knife" type="Node3D" parent="."]
 
@@ -137,3 +143,12 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_6k363")
 }
+
+[node name="hitbox" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.116455, 10.9464, -0.0620727)
+shape = SubResource("BoxShape3D_tgpfw")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

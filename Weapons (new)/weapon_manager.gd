@@ -59,7 +59,7 @@ func _input(event):
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
-		if shop_ray.is_colliding():
+		if shop_ray and shop_ray.is_colliding():
 			print("buy")
 			buy()
 			return

@@ -3,6 +3,9 @@ extends CharacterBody3D
 
 @export var set_next_state: String
 @export var SPEED = 5.0
+@export var speed_when_attacking = 10.0
+@export var retreat_speed = 10.0
+var chase_speed = SPEED
 
 @export var max_health: int = 100
 var health_hp: int
@@ -19,6 +22,8 @@ var health_hp: int
 @onready var timer = $Timer
 @onready var vision_timer = $VisionTimer
 
+@onready var knife = %MeleeKnife
+
 var vision_timer_done = false
 var is_firing = false
 var can_move_y_axis = false
@@ -32,6 +37,8 @@ var offset
 var target_pos
 
 var is_invis = false
+
+var lock = false
 
 var is_dying = false
 
@@ -60,6 +67,8 @@ func _physics_process(delta):
 				retreat(delta)
 			"no_move_debug":
 				no_move_debug(delta)
+			"melee":
+				melee(delta)
 	
 
 func update_target_location(target_location):
@@ -75,10 +84,15 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 			velocity = Vector3.ZERO
 			move_and_slide()
 		"chase":
+			#SPEED = chase_speed
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
 		"retreat":
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
+			move_and_slide()
+		"melee":
+			#velocity = velocity.move_toward(safe_velocity, 0.25)
+			velocity = velocity.move_toward(safe_velocity, 0.25)
 			move_and_slide()
 			
 func face_target(delta):
@@ -114,7 +128,15 @@ func chase(delta):
 
 	nav_agent.set_velocity(new_velocity)
 
-	
+func melee(delta):
+	face_target(delta)
+	if not lock:
+		lock = true
+		Animation_Player.play("attack_state")
+		await Animation_Player.animation_finished
+		next_state = "retreat"
+		lock = false
+		knife.is_attacking = false
 
 
 func retreat(delta):
@@ -223,3 +245,8 @@ func death():
 
 func _on_animation_player_animation_finished(anim_name):
 	pass # Replace with function body.
+
+
+func _on_melee_body_entered(body):
+	if body.is_in_group("Player"):
+		next_state = "melee"
