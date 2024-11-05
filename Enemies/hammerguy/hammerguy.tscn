@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_660g2"]
-radius = 1.7984
-height = 4.30272
+radius = 1.2042
+height = 2.57631
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fry8a"]
 radius = 0.181508
@@ -637,12 +637,15 @@ points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, 
 script = ExtResource("1_3nxlu")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0309163, 0.220161, -0.0255892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0309163, 0.364565, -0.0255892)
 shape = SubResource("CapsuleShape3D_660g2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 2.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_point_size = 15.81
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -780,6 +783,7 @@ shape = SubResource("ConvexPolygonShape3D_knvra")
 stream = ExtResource("3_my570")
 volume_db = 5.818
 
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
