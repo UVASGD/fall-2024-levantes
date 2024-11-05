@@ -15,25 +15,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_laser_on != null and is_laser_on:
-		var contact_point
-		
-		force_raycast_update()
-		
-		if is_colliding():
-			var collider = get_collider()
-			if collider.is_in_group("laser"):
-				add_exception(collider)
-			contact_point = to_local(get_collision_point())
-			length = contact_point.y
-			if collider.is_in_group("Player"):
-				SignalBus.emit_signal("sniper_can_see_player")
-				length += -5
-			change_beam_length(length)
-	else:
-		change_beam_length(0)
-		#else:
-			#change_beam_length(max_length)
+	#if is_laser_on != null and is_laser_on:
+	var contact_point
+	
+	force_raycast_update()
+	
+	if is_colliding():
+		var collider = get_collider()
+		if collider.is_in_group("laser"):
+			add_exception(collider)
+		contact_point = to_local(get_collision_point())
+		length = contact_point.y
+		if collider.is_in_group("Player"):
+			SignalBus.emit_signal("sniper_can_see_player")
+			length += -5
+		change_beam_length(length)
+	#else:
+		#change_beam_length(0)
+		##else:
+			##change_beam_length(max_length)
 func change_beam_length(length):
 	beam.mesh.height = length
 	beam.position.y = length/2

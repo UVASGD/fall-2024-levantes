@@ -102,7 +102,7 @@ func face_target(delta):
 		show_laser()
 		y_axis.face_point(target_pos, delta)
 	show_laser()
-	y_axis.face_point(target_pos, delta)
+	#y_axis.face_point(target_pos, delta)
 		
 func update_turn_speed(new_speed):
 	x_axis.current_turn_speed = new_speed
