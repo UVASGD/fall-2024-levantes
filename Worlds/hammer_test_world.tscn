@@ -171,3 +171,9 @@ transform = Transform3D(0.0214484, 0, 0.99977, 0, 1, 0, -0.99977, 0, 0.0214484, 
 
 [node name="Hammerguy" parent="." groups=["enemies"] instance=ExtResource("12_3qhf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44129, 0.907018, 19.9091)
+
+[node name="Hammerguy2" parent="." groups=["enemies"] instance=ExtResource("12_3qhf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94757, 0.907018, 19.9091)
+
+[node name="Hammerguy3" parent="." groups=["enemies"] instance=ExtResource("12_3qhf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97916, 0.907018, 25.6022)
