@@ -8,6 +8,21 @@
 radius = 1.2042
 height = 2.57631
 
+[sub_resource type="Animation" id="Animation_0e7y8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/x_axis_model_group/right joint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.86176e-08, -4.16307e-09, 1.44508)]
+}
+
 [sub_resource type="Animation" id="Animation_7rdqu"]
 resource_name = "attack"
 length = 1.5
@@ -36,21 +51,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"create_danger_ring"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_0e7y8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("x_axis/x_axis_model_group/right joint:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.86176e-08, -4.16307e-09, 1.44508)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e0mo3"]
@@ -687,6 +687,7 @@ points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, 
 [node name="Hammerguy" type="CharacterBody3D"]
 script = ExtResource("1_3nxlu")
 SPEED = 3
+damage = 20
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0309163, 0.364565, -0.0255892)
@@ -768,7 +769,7 @@ mesh = SubResource("ArrayMesh_u0ix5")
 skeleton = NodePath("")
 
 [node name="right joint" type="MeshInstance3D" parent="x_axis/x_axis_model_group"]
-transform = Transform3D(0.0360018, -0.284864, -1.19534e-09, 0.284864, 0.0360018, -5.34568e-09, 5.45336e-09, -5.15639e-10, 0.28713, -0.0893373, 1.63895, -1.99319)
+transform = Transform3D(0.0360019, -0.284864, -1.19534e-09, 0.284864, 0.0360019, -5.34567e-09, 5.45336e-09, -5.1564e-10, 0.28713, -0.0893373, 1.63895, -1.99319)
 mesh = SubResource("ArrayMesh_trqej")
 skeleton = NodePath("")
 
@@ -829,7 +830,7 @@ skeleton = NodePath("")
 
 [node name="Vision" type="Area3D" parent="x_axis"]
 unique_name_in_owner = true
-transform = Transform3D(-1.67476e-06, 0, 38.3141, 0, 38.3141, 0, -38.3141, 0, -1.67476e-06, -0.050969, -53.1779, 8.69477)
+transform = Transform3D(-1.67476e-06, 0, 38.3141, 0, 38.3141, 0, -38.3141, 0, -1.67476e-06, -0.050969, -55.2925, 15.921)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/Vision"]
 transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)

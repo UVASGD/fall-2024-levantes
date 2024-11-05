@@ -178,21 +178,6 @@ material = SubResource("ShaderMaterial_ywvqo")
 inner_radius = 0.839
 outer_radius = 0.708
 
-[sub_resource type="Animation" id="Animation_mydgd"]
-resource_name = "disappear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("donut:mesh:material:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_wu4rb"]
 length = 0.001
 tracks/0/type = "value"
@@ -206,6 +191,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mydgd"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("donut:mesh:material:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_bffi6"]
@@ -235,6 +235,7 @@ _data = {
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, 0)
 script = ExtResource("1_765r2")
 speed = 0.04
+damage = 20
 
 [node name="inner" type="Area3D" parent="."]
 transform = Transform3D(0.845, 0, 0, 0, 0.845, 0, 0, 0, 0.845, 0, 0, 0)
