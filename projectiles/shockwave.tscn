@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcub0gdg0qvsc"]
+
+[ext_resource type="Script" path="res://shockwave.gd" id="1_765r2"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_xex7v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_72yeu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4dqpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jspn5"]
+render_priority = 0
+shader = ExtResource("2_xex7v")
+shader_parameter/ColorParameter = Color(18.919, 0, 0, 1)
+shader_parameter/Strength = 4.0
+shader_parameter/LightColor = Color(1, 1, 1, 1)
+shader_parameter/FloatParameter = 0.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_77ou1"]
+material = SubResource("ShaderMaterial_jspn5")
+inner_radius = 0.839
+outer_radius = 0.708
+
+[sub_resource type="Animation" id="Animation_mydgd"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("donut:mesh:material:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wu4rb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("donut:mesh:material:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bffi6"]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("donut:mesh:material:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1, 1.3, 1.7, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.11, 0.345, 0.205, -0.34, 0.175, -0.055]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpmu8"]
+_data = {
+"RESET": SubResource("Animation_wu4rb"),
+"disappear": SubResource("Animation_mydgd"),
+"idle": SubResource("Animation_bffi6")
+}
+
+[node name="shockwave" type="Node3D"]
+transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, 0)
+script = ExtResource("1_765r2")
+speed = 0.04
+
+[node name="inner" type="Area3D" parent="."]
+transform = Transform3D(0.845, 0, 0, 0, 0.845, 0, 0, 0, 0.845, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="inner"]
+shape = SubResource("SphereShape3D_72yeu")
+
+[node name="outer" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="outer"]
+shape = SubResource("SphereShape3D_4dqpj")
+
+[node name="donut" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.600042, 0, 0, 0, 2.57392, 0, 0, 0, 0.587508, 0, 0, 0)
+mesh = SubResource("TorusMesh_77ou1")
+
+[node name="life_timer" type="Timer" parent="."]
+wait_time = 2.967
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bpmu8")
+}
+
+[connection signal="area_entered" from="inner" to="." method="_on_inner_area_entered"]
+[connection signal="area_entered" from="outer" to="." method="_on_outer_area_entered"]
+[connection signal="body_entered" from="outer" to="." method="_on_outer_body_entered"]
+[connection signal="timeout" from="life_timer" to="." method="_on_life_timer_timeout"]

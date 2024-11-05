@@ -2,7 +2,7 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 
 @export var set_next_state: String
-@export var SPEED = 5.0
+@export var SPEED:int
 @export var shots_per_burst = 3
 @export var time_between_each_shot = 0.1
 @export var max_spread_deviaton_degs: float = 1.2
@@ -23,7 +23,7 @@ var health_hp: int
 
 
 @onready var vision_timer = $VisionTimer
-
+var ring = preload("res://projectiles/shockwave.tscn")
 var vision_timer_done = false
 var is_firing = false
 var can_move_y_axis = false
@@ -38,8 +38,8 @@ var offset
 var target_pos
 
 var is_dying = false
-
-
+var ring_exists = false
+@onready var animtimer = $animtimer
 @onready var vision = %Vision
 @onready var hitbox = $hitbox
 
@@ -50,6 +50,7 @@ func _ready():
 	timer.wait_time = randf_range(min_firing_speed_in_seconds, max_firing_speed_in_seconds)
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+	SignalBus.connect("shockwave_death", on_shockwave_death)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	
 func _physics_process(delta):
@@ -65,7 +66,6 @@ func _physics_process(delta):
 			"retreat":
 				retreat(delta)
 
-	
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
@@ -85,7 +85,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		"retreat":
 			velocity = velocity.move_toward(safe_velocity+offset, 0.25)
 			move_and_slide()
-			
+
 func face_target(delta):
 	target_pos = target.global_transform.origin + Vector3(0,1.5,0)
 	
@@ -139,17 +139,25 @@ func _on_chase_body_entered(body):
 		
 
 func attack():
-	if y_axis.is_facing_target(target_pos) and not is_firing and not is_dying:
+	if y_axis.is_facing_target(target_pos) and not is_firing and not is_dying and not ring_exists:
 		is_firing = true
-		#play_animation
-		#create danger ring 
-		print("attacked")
+		Animation_Player.play("attack")
+		await Animation_Player.animation_finished
 		timer.start()
 		await  timer.timeout
 		is_firing = false
 
 
+func create_danger_ring():
+	if not ring_exists:
+		ring_exists = true
+		var instance = ring.instantiate()
+		get_tree().root.add_child(instance)
+		instance.transform.origin = self.transform.origin
+	pass
 
+func on_shockwave_death():
+	ring_exists = false
 
 func _on_chill_body_entered(body):
 	if body.is_in_group("Player"):
