@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnjlqhabk027b"
-path="res://.godot/imported/sniper.glb-34d2a235761193a8e290227863708d9a.scn"
+uid="uid://drlk46n675ajm"
+path="res://.godot/imported/wallbreaker.glb-db1d75d39c81371865dea372a49d0d79.scn"
 
 [deps]
 
-source_file="res://Enemies/Sniper/sniper.glb"
-dest_files=["res://.godot/imported/sniper.glb-34d2a235761193a8e290227863708d9a.scn"]
+source_file="res://Enemies/wallbreaker/wallbreaker.glb"
+dest_files=["res://.godot/imported/wallbreaker.glb-db1d75d39c81371865dea372a49d0d79.scn"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=15 format=3 uid="uid://cb6lyhn01m8cn"]
 
-[ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/assassin.gd" id="1_cbyde"]
+[ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
+[ext_resource type="PackedScene" uid="uid://cwo61h7n01ib8" path="res://Weapons (new)/melee/melee_knife.tscn" id="3_lfcrg"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
 
@@ -13,6 +14,7 @@ height = 2.11801
 albedo_color = Color(0.427451, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_leyqv"]
+lightmap_size_hint = Vector2i(21, 16)
 radius = 0.623999
 height = 2.11801
 
@@ -27,26 +29,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
+tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/MeleeKnife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(1.3477, 4.3607, 8.0843)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/MeleeKnife:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -1.0886e-13, 2.35619)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -75,114 +77,125 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/4/path = NodePath("MeshInstance3D:transparency")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.12]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_qg7pv"]
-resource_name = "smt_death"
-length = 0.3
+[sub_resource type="Animation" id="Animation_nms6l"]
+resource_name = "enter_cloak_state"
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/RightWrist:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/path = NodePath("MeshInstance3D:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.95]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/MeleeKnife:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.14, 0.15, 0.16, 0.2, 0.24, 0.25, 0.26, 0.27, 0.31, 0.35, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/MeleeKnife:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.14, 0.15, 0.16, 0.2, 0.24, 0.25, 0.26, 0.27, 0.31, 0.35, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699), Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699), Vector3(0, 0, -3.92699), Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.31),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.80562, -3.01908, 0.939191)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.31),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.71262, 0.536985, 0.0969235)]
+}
+
+[sub_resource type="Animation" id="Animation_dawew"]
+resource_name = "attack_state"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:transparency")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.12, 1.0]
+"values": [0.95, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol:visible")
+tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_bk6ch"]
-resource_name = "smt_shoot"
-length = 0.1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2.44642, 0.0813584, -2.71183e-13), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("x_axis/y_axis/y_axis_model_group/leftarm:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-9.61724e-21, 3.31869e-20, 0.479459), Vector3(0, 0, 0)]
+"values": [Vector3(6.80562, -3.01908, 0.939191), Vector3(12.4558, 10.2356, -13.7549)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:position")
+tracks/2/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2.44642, 0.0813584, -2.71183e-13), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("x_axis/y_axis/y_axis_model_group/rightarm:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-9.61724e-21, 3.31869e-20, 0.479459), Vector3(0, 0, 0)]
+"values": [Vector3(-0.71262, 0.536985, 0.0969235), Vector3(-0.228618, -0.2779, 1.69441)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kxpsa"]
 _data = {
 "RESET": SubResource("Animation_d8tn4"),
-"smt_death": SubResource("Animation_qg7pv"),
-"smt_shoot": SubResource("Animation_bk6ch")
+"attack_state": SubResource("Animation_dawew"),
+"enter_cloak_state": SubResource("Animation_nms6l")
 }
 
 [node name="assassin" type="CharacterBody3D" groups=["enemies"]]
@@ -205,6 +218,14 @@ radius = 2.0
 unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="chase"]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
+shape = SubResource("SphereShape3D_gupe6")
+
+[node name="melee" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="melee"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
@@ -252,6 +273,10 @@ transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08,
 [node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 
 [node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeleeKnife" parent="x_axis/y_axis/y_axis_model_group/rightarm" instance=ExtResource("3_lfcrg")]
+transform = Transform3D(-0.212132, -0.212132, -3.26579e-14, 0.212132, -0.212132, 0, -2.30926e-14, -2.30926e-14, 0.3, 1.3477, 4.3607, 8.0843)
 
 [node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
 unique_name_in_owner = true

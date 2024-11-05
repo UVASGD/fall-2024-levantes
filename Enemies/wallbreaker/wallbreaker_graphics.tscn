@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv4pfytbpntg"]
 
-[ext_resource type="PackedScene" uid="uid://drlk46n675ajm" path="res://Models/Enemies/wallbreaker/wallbreaker.glb" id="1_pkc2m"]
+[ext_resource type="PackedScene" uid="uid://drlk46n675ajm" path="res://Enemies/wallbreaker/wallbreaker.glb" id="1_pkc2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2xkd"]
 albedo_color = Color(0, 0, 0, 1)

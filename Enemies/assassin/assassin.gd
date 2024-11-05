@@ -7,15 +7,12 @@ extends CharacterBody3D
 @export var max_health: int = 100
 var health_hp: int
 @export var damage = 15
-@export var projectile_speed = 5
-@export var firing_speed_in_seconds = 2
 @export var visibility_range = 1000000
 
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
-@onready var x_axis_shield = %x_axis_shield
-@onready var y_axis_shield = %y_axis_shield
+
 
 @onready var Animation_Player = get_node("AnimationPlayer")
 
@@ -27,14 +24,14 @@ var is_firing = false
 var can_move_y_axis = false
 
 
-@onready var projectile_origin_spot = %projectile_origin_spot
-var projectile = preload("res://projectiles/enemy_projectile.tscn")
 var curr_state = "idle"
 var next_state = "idle"
 var prev_state
 var target
 var offset
 var target_pos
+
+var is_invis = false
 
 var is_dying = false
 
@@ -45,7 +42,6 @@ func _ready():
 	if set_next_state:
 		next_state = set_next_state
 	offset = add_rand_offset(2)
-	timer.wait_time = firing_speed_in_seconds
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
@@ -105,6 +101,9 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	if not is_invis:
+		is_invis = true
+		Animation_Player.play("enter_cloak_state")
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
 	face_target(delta)
@@ -114,8 +113,7 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
+
 	
 
 
@@ -128,45 +126,17 @@ func retreat(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
-	if can_enemy_see_player():
-		shoot(timer)
+
 
 func no_move_debug(delta):
 	target_pos = target.global_transform.origin
 	x_axis.face_point(target_pos, delta)
 	y_axis.face_point(target_pos, delta)
-	shoot(timer)
+
 
 func _on_chase_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
-		
-
-func shoot(tm):
-	if y_axis.is_facing_target(target_pos) and not is_firing and not is_dying:
-		tm.start()
-		is_firing = true
-		Animation_Player.queue("smt_shoot")
-		$AudioStreamPlayer3D2.play()
-		
-		var projectile_instance = projectile.instantiate()
-
-		projectile_instance.damage_amount = damage
-
-		
-		projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
-		var spawn_pos = projectile_origin_spot.global_transform.origin
-		spawn_pos.y += -1
-
-		var direction = (target_pos - Vector3(0,1.5,0) - spawn_pos).normalized()  
-		projectile_instance.velocity = direction * projectile_speed  
-
-
-		get_parent().add_child(projectile_instance)
-		
-
-
-
 
 func _on_chase_body_exited(body):
 	if body.is_in_group("Player"):
@@ -181,11 +151,11 @@ func take_damage(amount: int):
 func on_hit(damage_taken, collider):
 	if not is_dying and collider == hitbox:
 		$AudioStreamPlayer3D.play()
-		x_axis_shield.show()
-		y_axis_shield.show()
+
+
 		await get_tree().create_timer(.1).timeout
-		x_axis_shield.hide()
-		y_axis_shield.hide()
+
+
 		take_damage(damage_taken)
 	
 	pass
@@ -209,9 +179,6 @@ func can_enemy_see_player() -> bool:
 				return true
 	return false
 
-func _on_timer_timeout():
-	is_firing = false
-	pass # Replace with function body.
 	
 func _on_vision_timer_timeout():
 	vision_timer_done = true 
@@ -248,8 +215,8 @@ func _on_vision_body_exited(body):
 
 func death():
 	next_state = "idle"
-	Animation_Player.play("smt_death")
-	await Animation_Player.animation_finished
+	#Animation_Player.play("smt_death")
+	#await Animation_Player.animation_finished
 	$".".queue_free()
 	SignalBus.emit_signal("enemy_death")
 	pass

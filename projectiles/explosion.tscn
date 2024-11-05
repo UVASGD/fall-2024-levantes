@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cupay32y8612k"]
 
-[ext_resource type="Script" path="res://Models/Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
+[ext_resource type="Script" path="res://Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_uaaca"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="2_xc0mg"]
 

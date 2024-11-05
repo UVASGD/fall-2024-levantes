@@ -1,7 +1,5 @@
 [gd_scene load_steps=12 format=3 uid="uid://cwo61h7n01ib8"]
 
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="1_bag6i"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4moy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uoki7"]
@@ -36,13 +34,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uoki7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhnjr"]
-render_priority = 0
-shader = ExtResource("1_bag6i")
-shader_parameter/ColorParameter = Color(0.255, 2, 2, 1)
-shader_parameter/Strength = 2.0
-shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
-shader_parameter/FloatParameter = -1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd3ly"]
+emission_enabled = true
+emission = Color(0.807843, 0.00392157, 0.988235, 1)
+emission_energy_multiplier = 4.07
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53qde"]
+albedo_color = Color(0, 0.152941, 0.184314, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4em8b"]
 
@@ -127,10 +125,11 @@ transform = Transform3D(-4.05013, -1.5363e-06, -4.05013, 4.05013, 3.414e-07, -4.
 transform = Transform3D(-2.58405, 0, 0, 0, 0, -2.58405, 0, 2.58405, 0, 0.184733, -15.1538, 4.7719e-06)
 mesh = SubResource("ArrayMesh_h7wpj")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_yhnjr")
+surface_material_override/0 = SubResource("StandardMaterial3D_vd3ly")
 
 [node name="Torus_002" type="MeshInstance3D" parent="knife"]
 transform = Transform3D(2.48507, 8.02923e-08, 1.04065, -1.04065, 1.60585e-07, 2.48507, -8.02923e-08, -2.69416, 1.60585e-07, 0.176024, -15.0999, 0)
+material_override = SubResource("StandardMaterial3D_53qde")
 mesh = SubResource("ArrayMesh_ltt6c")
 skeleton = NodePath("")
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://b4exv62ao5bai"]
 
-[ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Models/Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
-[ext_resource type="Script" path="res://Models/Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
+[ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
+[ext_resource type="Script" path="res://Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_hwhgo"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5act7"]
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_ex7kl"]

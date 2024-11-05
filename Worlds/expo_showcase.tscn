@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="5_kl8cf"]
 [ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="6_djwbx"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_qxdc6"]
-[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="7_qo603"]
+[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Enemies/wallbreaker/wallbreaker.tscn" id="7_qo603"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="7_r8gvg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_f7tku"]
