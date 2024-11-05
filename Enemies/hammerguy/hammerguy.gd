@@ -152,6 +152,7 @@ func create_danger_ring():
 	if not ring_exists:
 		ring_exists = true
 		var instance = ring.instantiate()
+		instance.damage = self.damage
 		get_tree().root.add_child(instance)
 		instance.transform.origin = self.transform.origin
 	pass

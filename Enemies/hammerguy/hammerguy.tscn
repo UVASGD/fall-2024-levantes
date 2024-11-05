@@ -687,6 +687,7 @@ points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, 
 [node name="Hammerguy" type="CharacterBody3D"]
 script = ExtResource("1_3nxlu")
 SPEED = 3
+damage = 20
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0309163, 0.364565, -0.0255892)
@@ -829,7 +830,7 @@ skeleton = NodePath("")
 
 [node name="Vision" type="Area3D" parent="x_axis"]
 unique_name_in_owner = true
-transform = Transform3D(-1.67476e-06, 0, 38.3141, 0, 38.3141, 0, -38.3141, 0, -1.67476e-06, -0.050969, -53.1779, 8.69477)
+transform = Transform3D(-1.67476e-06, 0, 38.3141, 0, 38.3141, 0, -38.3141, 0, -1.67476e-06, -0.050969, -55.2925, 15.921)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/Vision"]
 transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)

@@ -4,6 +4,7 @@ extends Node3D
 @onready var outer = $outer
 @onready var donut = $donut
 @export var speed:float
+@export var damage:int
 @onready var animation_player = $AnimationPlayer
 var outerspeed
 # Called when the node enters the scene tree for the first time.
@@ -28,9 +29,8 @@ func _process(delta):
 func _on_outer_body_entered(body):
 	if body.is_in_group("Player") and body not in inner.get_overlapping_bodies():
 		if body.is_on_floor():
-			print("hit by shockwave")
+			SignalBus.emit_signal("player_hit", damage)
 			#apply force to player 
-			 # signal hit
 			pass
 
 func despawn():
