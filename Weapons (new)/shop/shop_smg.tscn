@@ -19,6 +19,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e5daw"]
+resource_local_to_scene = true
 resource_name = "smg_of_the_future_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1.56939, -2.57254, -4.92924, 2.90227, 57.0856, 9.26923),
@@ -55,6 +56,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oval2"]
+resource_local_to_scene = true
 resource_name = "smg_of_the_future_Cylinder_003"
 _surfaces = [{
 "aabb": AABB(-1.45827, 18.0239, -1.54709, 2.96365, 26.2576, 1.618),
@@ -94,6 +96,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tq0l5"]
+resource_local_to_scene = true
 resource_name = "smg_of_the_future_Cylinder_004"
 _surfaces = [{
 "aabb": AABB(-10.5473, -15.8781, -99.6556, 21.0947, 364.395, 68.3748),
@@ -130,6 +133,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kje0c"]
+resource_local_to_scene = true
 resource_name = "smg_of_the_future_Cylinder_006"
 _surfaces = [{
 "aabb": AABB(-2.69928, 37.1456, -2.35084, 1.60412, 0.73172, 1.09133),

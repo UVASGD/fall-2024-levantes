@@ -196,6 +196,7 @@ func drop_weapon():
 
 func buy():
 	if(shop_ray.get_collider().get_parent() is Shop_Weapon):
+		SignalBus.emit_signal("gun_purchase", shop_ray.get_collider().get_parent())
 		var player_position = $"../../..".global_transform.origin
 		print("buying")
 		var shop_weapon = shop_ray.get_collider().get_parent()
@@ -205,6 +206,8 @@ func buy():
 		var new_weapon = shop_weapon.sell()
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
+	else:
+		SignalBus.emit_signal("round_start")
 	return
 
 func go_in_debt():

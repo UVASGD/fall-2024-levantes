@@ -12,3 +12,7 @@ signal object_hit
 signal update_ammo(ammo_amount)
 
 signal shockwave_death
+
+signal round_start
+
+signal gun_purchase

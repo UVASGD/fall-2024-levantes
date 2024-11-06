@@ -22,6 +22,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6fpm8"]
+resource_local_to_scene = true
 resource_name = "burst_rifle_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-1.87739, -12.7037, -48.8329, 1.43614, 10.4062, 4.03657),
@@ -61,6 +62,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_udd7r"]
+resource_local_to_scene = true
 resource_name = "burst_rifle_Cylinder_003"
 _surfaces = [{
 "aabb": AABB(9.83338, -5.75885, -6.97398, 4.08513, 2.92666, 0.515491),
@@ -95,6 +97,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xvrci"]
+resource_local_to_scene = true
 resource_name = "burst_rifle_Cylinder_004"
 _surfaces = [{
 "aabb": AABB(0.112308, -3.29086, -0.445243, 1.94986, 7.38294, 2.99774),
@@ -132,6 +135,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fywdp"]
+resource_local_to_scene = true
 resource_name = "burst_rifle_Cylinder_005"
 _surfaces = [{
 "aabb": AABB(-0.387203, -47.6175, -6.40256, 3, 58.7515, 15.9644),

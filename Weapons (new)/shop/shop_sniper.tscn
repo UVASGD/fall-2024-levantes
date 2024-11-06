@@ -25,6 +25,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_trugv"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1.63817, -43.0448, -1.30172, 3.27637, 44.0763, 14.6893),
@@ -59,6 +60,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3knma"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-1, -2.71203, -1, 2, 5.01977, 2),
@@ -96,6 +98,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e3nai"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_002"
 _surfaces = [{
 "aabb": AABB(-1.2017, -57.1259, -1.73329, 2.4034, 35.9401, 2.93499),
@@ -133,6 +136,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_guwro"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_015"
 _surfaces = [{
 "aabb": AABB(-6.59004, -8.37306, -6.80027, 7.92365, 7.99394, 70.9804),
@@ -170,6 +174,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6v4sb"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_017"
 _surfaces = [{
 "aabb": AABB(-1.53497, -69.6288, -1.84266, 3.06968, 11.6688, 3.37751),
@@ -204,6 +209,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5tj1n"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_018"
 _surfaces = [{
 "aabb": AABB(-1.42089, -39.6934, 7.38665, 2.84179, 20.8679, 4.75974),
@@ -241,6 +247,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gnsuf"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_020"
 _surfaces = [{
 "aabb": AABB(-1.14479, -0.928419, -2.60093, 2.45783, 10.914, 4.3884),
@@ -275,6 +282,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ket5v"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_021"
 _surfaces = [{
 "aabb": AABB(-0.189802, -8.75996, 4.10597, 0.764479, 0.817397, 2.52094),
@@ -309,6 +317,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hvx68"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_005"
 _surfaces = [{
 "aabb": AABB(-1.42546, 0.639923, -0.999991, 2.85091, 27.8627, 11.0768),
@@ -343,6 +352,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8qogc"]
+resource_local_to_scene = true
 resource_name = "sniper_rifle_Cylinder_003"
 _surfaces = [{
 "aabb": AABB(-1, -36.663, 6.89371e-07, 2.00001, 19.8919, 2.49024),
