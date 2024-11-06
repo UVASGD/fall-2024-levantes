@@ -713,6 +713,7 @@ wait_time = 3.0
 
 [node name="chase" type="Area3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(5.815, 0, 0, 0, 5.815, 0, 0, 0, 5.815, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="chase"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
