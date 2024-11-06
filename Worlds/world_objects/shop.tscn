@@ -267,7 +267,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130837, -0.0955505, 0.7155
 shape = SubResource("BoxShape3D_ufknv")
 
 [node name="buttonstand" type="MeshInstance3D" parent="shop_model"]
-transform = Transform3D(0.334154, 0, 0, 0, 0.641445, 0, 0, 0, 0.458102, 0, -2.41415, 5.60874)
+transform = Transform3D(0.334154, 0, 0, 0, 1.24392, 0, 0, 0, 0.458102, 0, -2.99421, 5.60874)
 mesh = SubResource("BoxMesh_nsfx5")
 surface_material_override/0 = SubResource("StandardMaterial3D_es2lq")
 
