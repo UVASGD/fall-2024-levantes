@@ -10,6 +10,7 @@ resource_local_to_scene = true
 [sub_resource type="SphereMesh" id="SphereMesh_q586k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1r6t"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_uaaca")
 shader_parameter/ColorParameter = Color(0.38, 0.796, 5, 1)
