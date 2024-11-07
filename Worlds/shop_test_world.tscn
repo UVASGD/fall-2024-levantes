@@ -179,7 +179,6 @@ shape = SubResource("BoxShape3D_r3d81")
 transform = Transform3D(0.0555094, 0, -0.727886, 0, 0.73, 0, 0.727886, 0, 0.0555094, -15.6695, 2.15493, -0.931148)
 
 [node name="Shop" parent="." instance=ExtResource("10_3cety")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8033, 3.45824, -1.42471)
 
 [node name="shop_burst" parent="." instance=ExtResource("11_0svjh")]
 transform = Transform3D(-0.0608221, 0, 0.998149, 0, 1, 0, -0.998149, 0, -0.0608221, -12.5245, 2.08304, -1.52685)

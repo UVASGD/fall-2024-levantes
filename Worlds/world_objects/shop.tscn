@@ -102,46 +102,6 @@ emission_energy_multiplier = 3.84
 [sub_resource type="BoxShape3D" id="BoxShape3D_ba5m4"]
 size = Vector3(1.41364, 2.25281, 1.4563)
 
-[sub_resource type="Animation" id="Animation_wkobx"]
-resource_name = "open"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.14512, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shop_model/SpotLight3D:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 2.333]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shop_model/SpotLight3D2:light_energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 2.556]
-}
-
 [sub_resource type="Animation" id="Animation_x68ab"]
 length = 0.001
 tracks/0/type = "value"
@@ -184,6 +144,46 @@ tracks/1/keys = {
 "args": [],
 "method": &"despawn"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_wkobx"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.14512, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shop_model/SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.333]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shop_model/SpotLight3D2:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.556]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j76d0"]
@@ -277,7 +277,6 @@ mesh = SubResource("SphereMesh_0rswk")
 surface_material_override/0 = SubResource("StandardMaterial3D_7o0cq")
 
 [node name="button" type="StaticBody3D" parent="shop_model/buttonstand/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="shop_model/buttonstand/MeshInstance3D/button"]

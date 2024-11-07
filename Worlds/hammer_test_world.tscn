@@ -102,7 +102,6 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_2fce5")
 
 [node name="Shop" parent="Nav" instance=ExtResource("10_0gib3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8033, 3.45824, -1.42471)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
