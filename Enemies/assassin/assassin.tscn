@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=28 format=3 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
 [ext_resource type="Script" path="res://Weapons (new)/melee/melee_knife.gd" id="3_0ukys"]
+[ext_resource type="PackedScene" uid="uid://cn5mh01l81yep" path="res://Enemies/assassin/assassin_model.tscn" id="3_4h8is"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
 
@@ -412,6 +413,7 @@ shape = SubResource("CapsuleShape3D_je42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_ulsyh")
 mesh = SubResource("CapsuleMesh_leyqv")
 
@@ -455,6 +457,9 @@ shape = SubResource("ConvexPolygonShape3D_oasru")
 
 [node name="RayCast3D" type="RayCast3D" parent="x_axis/x_axis_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
+
+[node name="assassin" parent="x_axis/x_axis_model_group" instance=ExtResource("3_4h8is")]
+transform = Transform3D(1.19529, 0, -2.4869e-14, 0, 1.19529, 0, 2.4869e-14, 0, 1.19529, 0, -9.09584, 0)
 
 [node name="x_axis_shield" type="Node3D" parent="x_axis"]
 unique_name_in_owner = true
