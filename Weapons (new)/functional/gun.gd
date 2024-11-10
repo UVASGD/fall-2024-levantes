@@ -185,7 +185,7 @@ func _raycast(dmg, range):
 		
 func get_husk():
 	var husk = load(husk_weapon_path)
-	var new_husk = husk.instantiate()
+	var  new_husk = husk.instantiate()
 	new_husk.current_ammo = Curr_Mag_Ammo
 	new_husk.reserve_ammo = Reserve_Ammo
 	new_husk.name = Name

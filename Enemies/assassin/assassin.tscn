@@ -459,7 +459,7 @@ shape = SubResource("ConvexPolygonShape3D_oasru")
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
 [node name="assassin" parent="x_axis/x_axis_model_group" instance=ExtResource("3_4h8is")]
-transform = Transform3D(1.19529, 0, -2.4869e-14, 0, 1.19529, 0, 2.4869e-14, 0, 1.19529, 0, -9.09584, 0)
+transform = Transform3D(1.5, 0, -5.68434e-14, 0, 1.5, 0, 5.68434e-14, 0, 1.5, -1.90672, -12.8576, -8.33452e-08)
 
 [node name="x_axis_shield" type="Node3D" parent="x_axis"]
 unique_name_in_owner = true

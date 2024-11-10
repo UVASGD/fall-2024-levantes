@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbpgl8ul5tdqm"]
+
+[ext_resource type="PackedScene" uid="uid://d355b33sxy1bb" path="res://Weapons (new)/models/deagle.glb" id="1_ddeil"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bk3ra"]
+albedo_color = Color(0.207843, 0.207843, 0.207843, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7ru1"]
+albedo_color = Color(2, 0.431, 0.165, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbf0r"]
+albedo_color = Color(0.00784314, 0.262745, 0.305882, 1)
+
+[node name="deagle" instance=ExtResource("1_ddeil")]
+transform = Transform3D(-0.01, 0, 1.50996e-09, 0, 0.01, 0, -1.50996e-09, 0, -0.01, 0, 0, 0)
+
+[node name="Grip" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_bk3ra")
+
+[node name="Trigger" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_v7ru1")
+
+[node name="Slide" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_sbf0r")
+
+[node name="Barrel" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_v7ru1")
+
+[node name="Mag" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_v7ru1")
