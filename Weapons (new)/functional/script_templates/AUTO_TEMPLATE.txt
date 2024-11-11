@@ -1,22 +1,17 @@
-extends Gun
-
-
 func shoot(): #default shoot logic
-	if can_shoot:
-		can_shoot = false
+	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
-		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
-		_raycast(dmg, Projectile_Range)
 		await play_fire()
+		_raycast(dmg, Projectile_Range)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
+	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
 		if Curr_Mag_Ammo == 0:
 			if Reserve_Ammo > 0:
 				await reload()
 			else:
-				can_shoot = false
-				return
-		can_shoot = true
+				can_shoot = false #out of all ammo
+	pass
 
 func melee():
 	_raycast(melee_dmg, Melee_Range)
