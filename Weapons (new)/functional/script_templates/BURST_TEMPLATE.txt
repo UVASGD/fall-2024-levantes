@@ -1,6 +1,6 @@
-extends Node
+extends Gun
 
-@onready var marker = $burstModel/marker
+
 func shoot():
 	if can_shoot:
 		can_shoot = false

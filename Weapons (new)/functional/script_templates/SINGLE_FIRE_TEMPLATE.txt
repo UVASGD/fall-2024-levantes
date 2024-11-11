@@ -1,7 +1,7 @@
 extends Gun
 
 
-func shoot(): #default shoot logic
+func shoot(): 
 	if can_shoot:
 		can_shoot = false
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout

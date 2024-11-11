@@ -1,3 +1,5 @@
+extends Gun
+
 func shoot(): #default shoot logic
 	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
