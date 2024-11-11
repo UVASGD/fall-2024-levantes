@@ -6,5 +6,3 @@ extends Gun
 
 func melee():
 	_raycast(melee_dmg, Melee_Range)
-	pass
-	

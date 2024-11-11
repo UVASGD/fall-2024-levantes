@@ -221,13 +221,14 @@ Name = "DesertEagle"
 Display_Name = "Deagle"
 animation_player_treepath = "../AnimationPlayers2/DesertEagle"
 animation_library_path = "res://DesertEagle_animations.res"
+change_pitch_mult = 0.8
 Reset_Ani = "DesertEagle_animations/RESET"
-Equip_Ani = "DesertEagle_animations/equip"
-Fire_Ani = "DesertEagle_animations/fire"
-Reload_Ani = "DesertEagle_animations/reload"
-Dequip_Ani = "DesertEagle_animations/dequip"
-Melee_Ani = "DesertEagle_animations/melee"
-Fire_Sound = "res://audio/smg_sound_levantes.mp3"
+Equip_Ani = "DesertEagle_animations/DesertEagle_equip"
+Fire_Ani = "DesertEagle_animations/DesertEagle_fire"
+Reload_Ani = "DesertEagle_animations/DesertEagle_reload"
+Dequip_Ani = "DesertEagle_animations/DesertEagle_dequip"
+Melee_Ani = "DesertEagle_animations/DesertEagle_melee"
+Fire_Sound = "res://audio/509429__seanmorrissey96__desert_eagle.mp3"
 Curr_Mag_Ammo = 7
 Reserve_Ammo = 21
 Max_Mag_Capacity = 21
@@ -243,36 +244,42 @@ transform = Transform3D(-0.01, 0, 1.50996e-09, 0, 0.01, 0, -1.50996e-09, 0, -0.0
 
 [node name="Grip" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(1.89484, 0, 0, 0, 1.81242, -0.552782, 0, 0.552782, 1.81242, 0, 16.8071, -4.29893)
+layers = 2
 material_override = SubResource("StandardMaterial3D_bk3ra")
 mesh = SubResource("ArrayMesh_seimf")
 skeleton = NodePath("")
 
 [node name="Trigger" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(1.89484, 0, 0, 0, 1.89307, -0.0819501, 0, 0.0819501, 1.89307, 0, 10.3505, -10.7659)
+layers = 2
 material_override = SubResource("StandardMaterial3D_v7ru1")
 mesh = SubResource("ArrayMesh_02jul")
 skeleton = NodePath("")
 
 [node name="Slide" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(2.60183, 0, 0, 0, 1.81242, -0.552782, 0, 0.552782, 1.81242, 0, 16.8071, 5.61648)
+layers = 2
 material_override = SubResource("StandardMaterial3D_sbf0r")
 mesh = SubResource("ArrayMesh_ijfie")
 skeleton = NodePath("")
 
 [node name="Barrel" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(2.60183, 0, 0, 0, 1.81242, -0.552782, 0, 0.552782, 1.81242, 0, 16.8071, 7.36176)
+layers = 2
 material_override = SubResource("StandardMaterial3D_v7ru1")
 mesh = SubResource("ArrayMesh_018ue")
 skeleton = NodePath("")
 
 [node name="Mag" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(1.89484, 0, 0, 0, 1.81242, -0.552782, 0, 0.552782, 1.81242, 0, 16.8071, -4.29893)
+layers = 2
 material_override = SubResource("StandardMaterial3D_v7ru1")
 mesh = SubResource("ArrayMesh_ighoh")
 skeleton = NodePath("")
 
 [node name="Casing" type="MeshInstance3D" parent="deagle"]
 transform = Transform3D(0.907306, 0, 0, 0, 0, -0.907306, 0, 0.907306, 0, 6.85344e-07, 23.4333, -0.23936)
+layers = 2
 material_override = SubResource("StandardMaterial3D_c82jn")
 mesh = SubResource("ArrayMesh_147mk")
 skeleton = NodePath("")

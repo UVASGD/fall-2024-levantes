@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfde4dumfslig"]
+[gd_scene load_steps=24 format=3 uid="uid://cfde4dumfslig"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_r47ex"]
 [ext_resource type="PackedScene" uid="uid://w52k7iojvbpg" path="res://Weapons (new)/weapon_manager.tscn" id="3_ol2y5"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="7_4w6sm"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
 [ext_resource type="AnimationLibrary" uid="uid://cwlsi6dcs7741" path="res://Weapons (new)/animations/DesertEagle_animations.res" id="7_xb2cv"]
+[ext_resource type="PackedScene" uid="uid://d1cvdu7qtgcnd" path="res://Weapons (new)/functional/desert_eagle.tscn" id="9_dagto"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -324,26 +325,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../DesertEagle/deagle/Slide:position")
+tracks/2/path = NodePath("../DesertEagle/deagle/Slide:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 16.8071, 5.61648)]
+"values": [Vector3(0.296035, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../DesertEagle/deagle/Slide:rotation")
+tracks/3/path = NodePath("../DesertEagle/deagle/Slide:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.296035, 0, 0)]
+"values": [Vector3(0, 16.8071, 5.61648)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -527,6 +528,10 @@ libraries = {
 
 [node name="SMG" parent="Head/Camera3D/weapon manager" instance=ExtResource("6_o2npw")]
 visible = false
+
+[node name="DesertEagle" parent="Head/Camera3D/weapon manager" instance=ExtResource("9_dagto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166106, -0.306069, -0.398815)
+change_pitch_mult = 0.85
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)

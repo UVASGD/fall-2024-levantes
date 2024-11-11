@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://da21qcitqrhob"]
+
+[ext_resource type="Script" path="res://Weapons (new)/shop/shop_deagle.gd" id="1_31tl1"]
+[ext_resource type="PackedScene" uid="uid://bbpgl8ul5tdqm" path="res://Weapons (new)/models/deagle.tscn" id="2_hs1bs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55qgv"]
+size = Vector3(0.192627, 0.331879, 1.00391)
+
+[node name="ShopDeagle" type="Node3D"]
+script = ExtResource("1_31tl1")
+price = 2
+ammo = 7
+reserve = 21
+husk_weapon_path = "res://Weapons (new)/husk/husk_desert_eagle.tscn"
+
+[node name="model" parent="." instance=ExtResource("2_hs1bs")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.133731, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0.00572205, 0.0478516)
+shape = SubResource("BoxShape3D_55qgv")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.997813, -0.00304112, 0.0660297, -0.0660997, 0.0459075, -0.996756, 0, -0.998941, -0.0460081, 0.176657, -0.896547, 0.61356)
+light_color = Color(0.27451, 0.533333, 1, 1)
+light_energy = 5.889
+light_size = 0.889
+light_specular = 0.85
+light_cull_mask = 4294966288
+spot_range = 1.3211
+spot_angle = 89.99
+spot_angle_attenuation = 0.307786
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.997813, -0.00304112, 0.0660297, -0.0660997, 0.0459075, -0.996756, 0, -0.998941, -0.0460081, 0.0987456, -0.771897, -0.713281)
+light_color = Color(0.484709, 0.00039241, 0.545676, 1)
+light_energy = 5.889
+light_size = 0.889
+light_specular = 0.85
+light_cull_mask = 4294966288
+spot_range = 1.40121
+spot_angle = 89.99
+spot_angle_attenuation = 0.307786
