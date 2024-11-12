@@ -1,7 +1,8 @@
 extends Node
 var worlds = {
 	"dummyworld1":"res://Worlds/dummyworld1.tscn",
-	"dummyworld2":"res://Worlds/dummyworld2.tscn"
+	"dummyworld2":"res://Worlds/dummyworld2.tscn",
+	"space_world":"res://Worlds/space_world.tscn",
 }
 
 # Called when the node enters the scene tree for the first time.

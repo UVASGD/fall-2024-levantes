@@ -21,19 +21,19 @@ var health_hp: int
 @export var shield_regen_amount: float = 10
 @export var health_regen_amount: float = 5
 @export var look_sens: float = 0.006
-@export var jump_velocity := 6.0
+@export var jump_velocity := 9.0
 @export var bhop_on := true
-@export var walk_speed := 7.0
+@export var walk_speed := 9.0
 
 @export var HEADBOB_SWAY_AMOUNT = 0.05
 @export var HEADBOB_FREQ = 1
 var headbob_time = 0.0
 
-@export var air_cap := 0.85
-@export var air_accel := 880.0
-@export var air_move_speed := 550.0
+@export var air_cap := 5
+@export var air_accel := 20.0
+@export var air_move_speed := 300.0
 
-@export var dash_speed := 40.0  
+@export var dash_speed := 7000.0  
 
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
@@ -114,13 +114,18 @@ func _process(delta):
 	pass
 
 func _handle_air_physics(delta) -> void:
+	# Apply gravity
 	self.velocity.y -= PhysicsServer3D.area_get_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY) * delta
-	#self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	# self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	
+	# Normalize wish_dir to prevent faster diagonal movement
+
+	wish_dir = wish_dir.normalized()
+
 	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
-	
-	var max_speed = min((air_move_speed * wish_dir).length(), air_cap)
-	
+
+	var max_speed = min(air_move_speed, air_cap)
+
 	var add_speed_till_max = max_speed - cur_speed_in_wish_dir
 	if add_speed_till_max > 0:
 		var accel_speed = air_accel * air_move_speed * delta
