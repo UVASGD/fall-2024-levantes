@@ -246,7 +246,7 @@ func death():
 	#Animation_Player.play("smt_death")
 	#await Animation_Player.animation_finished
 	$".".queue_free()
-	#SignalBus.emit_signal("enemy_death")
+	SignalBus.emit_signal("enemy_death")
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
