@@ -27,7 +27,7 @@ func _process(delta):
 		contact_point = to_local(get_collision_point())
 		length = contact_point.y
 		if collider.is_in_group("Player"):
-			SignalBus.emit_signal("sniper_can_see_player")
+			#SignalBus.emit_signal("sniper_can_see_player")
 			length += -5
 		change_beam_length(length)
 	#else:

@@ -114,7 +114,8 @@ func _process(delta):
 	pass
 
 func _handle_air_physics(delta) -> void:
-	self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	self.velocity.y -= PhysicsServer3D.area_get_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY) * delta
+	#self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	
 	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
 	
