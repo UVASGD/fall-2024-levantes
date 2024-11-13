@@ -57,6 +57,7 @@ glow_enabled = true
 
 [node name="BishopTestWorld" type="Node3D"]
 script = ExtResource("1_o2371")
+world_name = "dummyworld2"
 
 [node name="Nav" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_2tm68")

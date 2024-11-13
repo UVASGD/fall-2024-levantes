@@ -44,7 +44,7 @@ var target_pos
 var is_dying = false
 
 var shot_count = 0
-
+var is_dead = false
 @onready var vision = %Vision
 @onready var hitbox = $"."
 
@@ -279,6 +279,9 @@ func _on_vision_body_exited(body):
 		can_move_y_axis = false
 
 func death():
+	if is_dead:
+		return
+	is_dead = true
 	print("dying smt")
 	spawn_reward()
 	next_state = "idle"
