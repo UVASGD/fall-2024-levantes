@@ -15,7 +15,6 @@ var health_hp: int
 @export var min_firing_speed_in_seconds = 1.5
 @export var max_firing_speed_in_seconds = 2.0
 @export var visibility_range = 1000000
-@export var shots_per_shoot_call = 3
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis

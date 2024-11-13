@@ -444,8 +444,10 @@ size = Vector3(2.92481, 2.45361, 3.20447)
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_2oixr")
 max_health_hp = 100
+look_sens = 0.002
 HEADBOB_SWAY_AMOUNT = 0.01
-dash_speed = 10.0
+air_cap = 2
+dash_speed = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -490,6 +492,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="GunCam" type="Camera3D" parent="Head/Camera3D/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79666, 0)
 cull_mask = 1047554
 

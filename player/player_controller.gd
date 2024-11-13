@@ -18,6 +18,9 @@ var shield_hp: int
 var health_hp: int
 
 
+@export var camera_fov: int = 90
+@export var gun_cam_fov: int = 75
+
 @export var shield_regen_amount: float = 10
 @export var health_regen_amount: float = 5
 @export var look_sens: float = 0.006
@@ -33,7 +36,7 @@ var headbob_time = 0.0
 @export var air_accel := 20.0
 @export var air_move_speed := 300.0
 
-@export var dash_speed := 7000.0  
+@export var dash_speed := 7000.0
 
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
@@ -85,6 +88,10 @@ func _ready():
 	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
 	dash_length_timer.connect("timeout", _on_dash_length_timeout)
 	dash_cooldown_timer.connect("timeout", _on_dash_cooldown_timeout)
+	
+	%Camera3D.fov = camera_fov
+	%GunCam.fov = gun_cam_fov
+	
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -172,7 +179,7 @@ func _on_player_hit(damage_amount):
 		shield_regen_timer.start()
 		if shield_hp <= 0:
 			health_regen_timer.start()
-		take_damage(damage_amount)	
+		take_damage(damage_amount)
 		hud.update_shield_and_health(shield_hp, health_hp)
 	
 func game_over():
@@ -237,7 +244,7 @@ func _start_dash():
 func _apply_dash():
 	var dash_direction := wish_dir
 	if dash_direction.length() == 0: # if the player is not pressing any movement key (WASD), dash forward
-		dash_direction = -global_transform.basis.z  
+		dash_direction = -global_transform.basis.z
 	
 	self.velocity = dash_direction.normalized() * dash_speed
 
