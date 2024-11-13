@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dssfcs6qgya2v"]
+[gd_scene load_steps=6 format=3 uid="uid://dssfcs6qgya2v"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_kroww"]
 [ext_resource type="FontFile" uid="uid://dn1ewphq0hlak" path="res://UI/Fonts/TitilliumWeb-SemiBold.ttf" id="1_xg4as"]
 [ext_resource type="Script" path="res://UI/hud_scripts/hud_updates.gd" id="2_bm6h5"]
+[ext_resource type="Script" path="res://UI/fps.gd" id="4_d1tgc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_72hqf"]
+font_size = 50
+font_color = Color(0.819608, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -260,3 +265,16 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_bm6h5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 76.0
+color = Color(0.630938, 0.746567, 0.836527, 1)
+script = ExtResource("4_d1tgc")
+
+[node name="fps_counter" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 76.0
+label_settings = SubResource("LabelSettings_72hqf")
