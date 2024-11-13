@@ -377,11 +377,11 @@ ammo = 4
 reserve = 8
 husk_weapon_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
 
-[node name="RigidBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.499218)
 collision_layer = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756836, 0.0525513, 0.146423)
 shape = SubResource("BoxShape3D_4m1aw")
 
