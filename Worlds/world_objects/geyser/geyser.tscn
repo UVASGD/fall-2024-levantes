@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu0kmmr7a5kyd"]
+
+[ext_resource type="Script" path="res://Worlds/world_objects/geyser/geyser.gd" id="1_k3whf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v8aen"]
+height = 19.5023
+radius = 5.46424
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rio4a"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.67
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3wl6c"]
+material = SubResource("StandardMaterial3D_rio4a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxefq"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.67
+
+[sub_resource type="PrismMesh" id="PrismMesh_2qc8m"]
+material = SubResource("StandardMaterial3D_oxefq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orvkd"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.67
+
+[sub_resource type="BoxMesh" id="BoxMesh_ck04c"]
+material = SubResource("StandardMaterial3D_orvkd")
+
+[node name="Geyser" type="Node3D"]
+script = ExtResource("1_k3whf")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.60106, 0)
+shape = SubResource("CylinderShape3D_v8aen")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(11.0265, 0, 0, 0, 9.87846, 0, 0, 0, 10.4224, 0, 0, 0)
+mesh = SubResource("CylinderMesh_3wl6c")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(0.693632, 0, 0, 0, 0.586015, 0, 0, 0, 0.246082, 0, 0.423861, 0)
+mesh = SubResource("PrismMesh_2qc8m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D/CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(0.268949, 0, 0, 0, 1, 0, 0, 0, 0.206349, 0, -0.368584, 0)
+mesh = SubResource("BoxMesh_ck04c")

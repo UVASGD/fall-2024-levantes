@@ -18,6 +18,9 @@ var shield_hp: int
 var health_hp: int
 
 
+@export var camera_fov: int = 90
+@export var gun_cam_fov: int = 75
+
 @export var shield_regen_amount: float = 10
 @export var health_regen_amount: float = 5
 @export var look_sens: float = 0.006
@@ -85,6 +88,10 @@ func _ready():
 	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
 	dash_length_timer.connect("timeout", _on_dash_length_timeout)
 	dash_cooldown_timer.connect("timeout", _on_dash_cooldown_timeout)
+	
+	%Camera3D.fov = camera_fov
+	%GunCam.fov = gun_cam_fov
+	
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
