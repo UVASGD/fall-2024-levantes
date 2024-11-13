@@ -1345,7 +1345,7 @@ _data = {
 script = ExtResource("1_erjey")
 SPEED = 50.0
 damage = 10
-projectile_speed = 40
+projectile_speed = 60
 min_firing_speed_in_seconds = 1.0
 max_firing_speed_in_seconds = 1.5
 
