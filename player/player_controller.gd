@@ -36,7 +36,7 @@ var headbob_time = 0.0
 @export var air_accel := 20.0
 @export var air_move_speed := 300.0
 
-@export var dash_speed := 7000.0  
+@export var dash_speed := 7000.0
 
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
@@ -176,7 +176,7 @@ func _on_player_hit(damage_amount):
 		shield_regen_timer.start()
 		if shield_hp <= 0:
 			health_regen_timer.start()
-		take_damage(damage_amount)	
+		take_damage(damage_amount)
 		hud.update_shield_and_health(shield_hp, health_hp)
 	
 func game_over():
@@ -241,7 +241,7 @@ func _start_dash():
 func _apply_dash():
 	var dash_direction := wish_dir
 	if dash_direction.length() == 0: # if the player is not pressing any movement key (WASD), dash forward
-		dash_direction = -global_transform.basis.z  
+		dash_direction = -global_transform.basis.z
 	
 	self.velocity = dash_direction.normalized() * dash_speed
 

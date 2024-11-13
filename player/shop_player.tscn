@@ -446,6 +446,7 @@ script = ExtResource("1_2oixr")
 max_health_hp = 100
 look_sens = 0.002
 HEADBOB_SWAY_AMOUNT = 0.01
+air_cap = 2
 dash_speed = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

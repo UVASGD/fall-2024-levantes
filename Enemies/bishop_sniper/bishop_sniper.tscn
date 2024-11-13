@@ -1722,6 +1722,7 @@ _data = {
 [node name="bishop_sniper" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_1oh2a")
 projectile_speed = 150
+wait_time_till_fire_seconds = 3
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
