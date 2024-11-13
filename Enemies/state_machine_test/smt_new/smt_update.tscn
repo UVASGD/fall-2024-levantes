@@ -1343,6 +1343,7 @@ _data = {
 
 [node name="smt_update" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_erjey")
+gun_path = "res://Weapons (new)/husk/husk_smg_future.tscn"
 SPEED = 50.0
 damage = 10
 projectile_speed = 40

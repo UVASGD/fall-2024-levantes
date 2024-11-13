@@ -56,6 +56,7 @@ func spawn_player():
 	$playerspawnpoint.add_child(newplayer)
 	player = newplayer
 	player_ready = true
+	PlayerManager.set_player(player)
 	return
 	
 func add_static_collisions(node): # recursively adds collisions to every mesh3d in  the scene, unless the nodes have children 

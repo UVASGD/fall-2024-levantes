@@ -229,6 +229,7 @@ Reload_Ani = "DesertEagle_animations/DesertEagle_reload"
 Dequip_Ani = "DesertEagle_animations/DesertEagle_dequip"
 Melee_Ani = "DesertEagle_animations/DesertEagle_melee"
 Fire_Sound = "res://audio/509429__seanmorrissey96__desert_eagle.mp3"
+Reward_Amount = 8
 Curr_Mag_Ammo = 7
 Reserve_Ammo = 21
 Max_Mag_Capacity = 21

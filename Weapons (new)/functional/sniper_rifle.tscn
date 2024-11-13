@@ -374,6 +374,7 @@ Reload_Ani = "sniper_animations/sniper_reload"
 Dequip_Ani = "sniper_animations/sniper_dequip"
 Melee_Ani = "sniper_animations/sniper_melee"
 Fire_Sound = "res://audio/levantes_sniper_sound_effect.mp3"
+Reward_Amount = 8
 Curr_Mag_Ammo = 4
 Reserve_Ammo = 8
 Max_Mag_Capacity = 4

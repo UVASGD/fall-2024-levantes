@@ -18,7 +18,7 @@ class_name Gun extends Node3D
 @export var Melee_Ani: String
 
 @export var Fire_Sound: String
-
+@export var Reward_Amount: int
 @export var Curr_Mag_Ammo: int
 @export var Reserve_Ammo: int
 @export var Max_Mag_Capacity: int
@@ -190,6 +190,9 @@ func get_husk():
 	new_husk.reserve_ammo = Reserve_Ammo
 	new_husk.name = Name
 	return new_husk
+	
+func get_reward_amount():
+	return Reward_Amount
 	
 func make_spark(impact_position: Vector3, raycast_angle: Vector3) -> void:
 	#emit_signal("hit", %Ray.get_collider())

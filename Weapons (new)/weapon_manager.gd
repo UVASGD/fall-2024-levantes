@@ -1,6 +1,7 @@
 extends Node3D
 var Shop_Weapon = "res://shop_weapon.gd"
 var throwable = "res://throwable.gd"
+var ammo = "res://ammo_drop.gd"
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
@@ -118,7 +119,14 @@ func pickup():
 	var new_weapon 
 	if nearby_weapon == null:
 		return
-	
+	if nearby_weapon is ammo:
+		if current_weapon and nearby_weapon.type == current_weapon.name:
+			current_weapon.Reserve_Ammo += nearby_weapon.amount 
+			nearby_weapon.despawn()
+		elif other_weapon and nearby_weapon.type == other_weapon.name:
+			other_weapon.Reserve_Ammo += nearby_weapon.amount 
+			nearby_weapon.despawn()
+		return
 	new_weapon = nearby_weapon.get_weapon()
 	if new_weapon is throwable:
 		if grenade != null and grenade.name == new_weapon.name:

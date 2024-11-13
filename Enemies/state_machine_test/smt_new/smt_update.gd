@@ -1,6 +1,7 @@
 extends CharacterBody3D
-@onready var nav_agent = $NavigationAgent3D
 
+@onready var nav_agent = $NavigationAgent3D
+@export var gun_path: String
 @export var set_next_state: String
 @export var SPEED = 5.0
 @export var shots_per_burst = 3
@@ -33,6 +34,7 @@ var is_anim_playing = false
 
 @onready var projectile_origin_spot = %projectile_origin_spot
 var projectile = preload("res://projectiles/enemy_projectile.tscn")
+var ammo_drop = preload("res://Weapons (new)/husk/ammo_drop.tscn")
 var curr_state = "idle"
 var next_state = "idle"
 var prev_state
@@ -278,12 +280,26 @@ func _on_vision_body_exited(body):
 		can_move_y_axis = false
 
 func death():
+	print("dying smt")
+	spawn_reward()
 	next_state = "idle"
 	Animation_Player.play("smt_death")
 	await Animation_Player.animation_finished
 	$".".queue_free()
 	SignalBus.emit_signal("enemy_death")
 	pass
+
+func spawn_reward():
+	var num = randi_range(0,9)
+	print("generated num: " + str(num))
+	var instance
+	if num == 9:
+		instance = load(gun_path).instantiate()
+	else:
+		instance = ammo_drop.instantiate()
+	get_tree().root.add_child(instance)
+	instance.position = self.position + Vector3(0,0,1)
+	return
 
 func _on_animation_player_animation_finished(anim_name):
 	is_anim_playing = false

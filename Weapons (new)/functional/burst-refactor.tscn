@@ -164,6 +164,7 @@ Reload_Ani = "burst_animations/burst_reload"
 Dequip_Ani = "burst_animations/burst_dequip"
 Melee_Ani = "burst_animations/burst_melee"
 Fire_Sound = "res://audio/gunshot_final_single_pitch_lower.mp3"
+Reward_Amount = 30
 Curr_Mag_Ammo = 30
 Reserve_Ammo = 30
 Max_Mag_Capacity = 30

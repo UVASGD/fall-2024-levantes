@@ -156,7 +156,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-
+func get_current_weapon():
+	return $"Head/Camera3D/weapon manager".current_weapon
+func get_other_weapon():
+	return $"Head/Camera3D/weapon manager".other_weapon
 	
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
