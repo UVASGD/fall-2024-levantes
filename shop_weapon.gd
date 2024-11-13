@@ -15,6 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$model.rotation_degrees = $model.rotation_degrees + Vector3(0,1,0)
+	$StaticBody3D.rotation_degrees = $StaticBody3D.rotation_degrees + Vector3(0,1,0)
 	pass
 
 func sell():
