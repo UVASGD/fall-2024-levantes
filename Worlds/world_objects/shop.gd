@@ -46,4 +46,3 @@ func despawn():
 	for gun in active_guns:
 		gun.queue_free()
 	queue_free()
-

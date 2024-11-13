@@ -208,7 +208,6 @@ environment = SubResource("Environment_c8p6g")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0727584, -0.309343, -0.948163, 0.0282737, -0.95094, 0.308079, -0.996949, -0.00439274, 0.0779352, 0, 0, 0)
 light_color = Color(1, 0.961576, 0.703775, 1)
-shadow_enabled = true
 shadow_blur = 10.0
 
 [node name="deathzone" parent="." instance=ExtResource("12_j8nve")]

@@ -46,7 +46,7 @@ func _ready():
 		print("please set up a spawnholder")
 	
 func spawn_player():
-	print("making player")
+
 	var newplayer
 	if not PlayerManager.get_player():
 		newplayer = load("res://player/shop_player.tscn").instantiate()
@@ -60,7 +60,7 @@ func spawn_player():
 	
 func add_static_collisions(node): # recursively adds collisions to every mesh3d in  the scene, unless the nodes have children 
 	for child in node.get_children():
-		print('hi')
+
 		if child is MeshInstance3D:
 			if child.get_child_count() > 0:
 				continue
@@ -81,14 +81,14 @@ func apply_difficulty():
 	return
 	
 func open_shop():
-	print("opening shop")
+
 	var shop_instance = shop.instantiate()
 	shop_spawn_point.add_child.call_deferred(shop_instance)
 	
 
 func enemy_death():
 	dead_enemies += 1
-	print("enemies left: " + str(level_dict[current_level][1] - dead_enemies)) 
+
 	if dead_enemies >= level_dict[current_level][1]:
 		dead_enemies = 0
 		on_wave_killed()
@@ -122,14 +122,14 @@ func _physics_process(delta):
 
 func on_round_start():
 	current_level += 1
-	print("level" + str(current_level))
+
 	spawn_enemies()
 	#play battle music
 
 func on_wave_killed():
-	print("wave over.")
+
 	dead_waves += 1
-	print("waves left: " + str(level_dict[current_level][0] - dead_waves))
+
 	if(dead_waves >= level_dict[current_level][0]): #round ended
 		dead_waves = 0
 		#play chill music
@@ -148,6 +148,6 @@ func change_world():
 	SignalBus.current_difficulty += 1
 	PlayerManager.set_player(player)
 	player.get_parent().remove_child(player)
-	print("changin world")
+
 	GameManager.next(world_name)
 	pass

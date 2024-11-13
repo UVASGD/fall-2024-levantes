@@ -13,4 +13,3 @@ func _process(delta):
 		dir = -dir
 	self.global_position += dir
 	pass
-

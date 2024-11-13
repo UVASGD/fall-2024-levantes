@@ -19,4 +19,3 @@ func _on_body_exited(body):
 	if (body.is_in_group("Player")):
 		print("gravity 12")
 		PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, 12)
-

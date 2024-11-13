@@ -24,4 +24,3 @@ func action():
 	await explosion_instance.animation_player.animation_finished
 	
 	
-

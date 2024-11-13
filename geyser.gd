@@ -1,0 +1,21 @@
+extends Node3D
+@onready var area = $Area3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	area.connect("body_entered", _on_body_entered)
+	area.connect("body_exited", _on_body_exited)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		body.jump_velocity = 27.0
+
+func _on_body_exited(body):
+	if body.is_in_group("Player"):
+		body.jump_velocity = 9.0
