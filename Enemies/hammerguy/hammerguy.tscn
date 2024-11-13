@@ -829,11 +829,11 @@ transform = Transform3D(1.504, 0, -1.16415e-10, 0, 3.17939, 0, 0, 0, 1.06771, 0.
 mesh = SubResource("ArrayMesh_6m0yc")
 skeleton = NodePath("")
 
-[node name="Vision" type="Area3D" parent="x_axis"]
+[node name="Vision" type="Area3D" parent="x_axis/x_axis_model_group"]
 unique_name_in_owner = true
-transform = Transform3D(-1.67476e-06, 0, 38.3141, 0, 38.3141, 0, -38.3141, 0, -1.67476e-06, -0.050969, -55.2925, 15.921)
+transform = Transform3D(38.3141, 0, -2.6148e-12, 0, 38.3141, 0, 2.6148e-12, 0, 38.3141, -15.921, -55.2925, -0.0509697)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/Vision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/Vision"]
 transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)
 shape = SubResource("ConvexPolygonShape3D_knvra")
 
@@ -849,5 +849,5 @@ volume_db = 5.818
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
 [connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
 [connection signal="body_entered" from="chill" to="." method="_on_chill_body_entered"]
-[connection signal="body_entered" from="x_axis/Vision" to="." method="_on_vision_body_entered"]
-[connection signal="body_exited" from="x_axis/Vision" to="." method="_on_vision_body_exited"]
+[connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
