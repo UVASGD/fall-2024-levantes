@@ -8,8 +8,8 @@ var player
 #the level is the key the amount of monsters is the value
 
 @onready var level_dict={ # key = level number. Value  = (num_waves, enemies_per_wave)
-	1:[1,10],
-	2:[2,10],
+	1:[1,3],
+	2:[2,5],
 	#3:[3,3],
 	#4:[3,5],
 	#5:[4,5],
