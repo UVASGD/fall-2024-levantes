@@ -59,4 +59,6 @@ func update_shield_and_health(new_shield_amount: int, new_health_amount: int):
 	$player_info/health/health_amount.text = n_h_amount
 	
 	
-	
+func _input(event):
+	if event.is_action_pressed("disable_hud"):
+		$".".visible = !$".".visible
