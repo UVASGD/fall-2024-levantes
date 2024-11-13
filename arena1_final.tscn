@@ -66,10 +66,18 @@ background_mode = 2
 sky = SubResource("Sky_igdcg")
 ambient_light_source = 3
 ambient_light_color = Color(0.411126, 0.493902, 0.790021, 1)
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.92
+ambient_light_energy = 11.71
+glow_enabled = true
+glow_intensity = 2.07
+glow_strength = 1.15
+glow_bloom = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0134
+adjustment_enabled = true
+adjustment_brightness = 1.29
+adjustment_contrast = 1.39
+adjustment_saturation = 0.9
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2tfnv"]
 height = 19.5023
@@ -107,6 +115,7 @@ material = SubResource("StandardMaterial3D_orvkd")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_uimwg")
+world_name = "colliseum"
 
 [node name="Nav" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_0fuc1")
