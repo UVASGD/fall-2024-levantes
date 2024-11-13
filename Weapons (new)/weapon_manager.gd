@@ -55,7 +55,6 @@ func _input(event):
 			call_hud_initialize()
 	if can_pickup and Input.is_action_just_pressed("pick_up_weapon"):
 		await pickup()
-		await switch()
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
