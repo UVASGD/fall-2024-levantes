@@ -32,6 +32,7 @@ func _ready():
 	add_to_group("level")
 	SignalBus.connect("enemy_death", enemy_death)
 	SignalBus.connect("round_start", on_round_start)
+	SignalBus.connect("wave_killed", _on_wave_killed)
 	apply_difficulty()
 	if not $playerspawnpoint:
 		print("please add a player spawnpoint")
@@ -92,7 +93,7 @@ func enemy_death():
 
 	if dead_enemies >= level_dict[current_level][1]:
 		dead_enemies = 0
-		on_wave_killed()
+		SignalBus.emit_signal("wave_killed")
 #
 func spawn_enemies(): #spawns 1 wave of enemies
 	for i in range(level_dict[current_level][1]):
@@ -127,8 +128,7 @@ func on_round_start():
 	spawn_enemies()
 	#play battle music
 
-func on_wave_killed():
-
+func _on_wave_killed():
 	dead_waves += 1
 
 	if(dead_waves >= level_dict[current_level][0]): #round ended

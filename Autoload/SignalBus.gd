@@ -17,6 +17,10 @@ signal round_start
 
 signal gun_purchase
 
-var current_difficulty = 5
+signal wave_killed 
+
+signal score_add 
+
+var current_difficulty = 1
 
 var player_save = null
