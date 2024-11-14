@@ -1350,9 +1350,11 @@ _data = {
 }
 
 [node name="smt_update" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.678088, 0)
 script = ExtResource("1_erjey")
 gun_path = "res://Weapons (new)/husk/husk_smg_future.tscn"
-SPEED = 50.0
+SPEED = 10
+RETREAT_SPEED = 2
 shots_per_burst = 5
 max_spread_deviaton_degs = 2.0
 damage = 10
@@ -1379,6 +1381,7 @@ mesh = SubResource("CapsuleMesh_leyqv")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 2.0
+keep_y_velocity = false
 
 [node name="chase" type="Area3D" parent="."]
 unique_name_in_owner = true

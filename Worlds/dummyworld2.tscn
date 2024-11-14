@@ -117,7 +117,7 @@ environment = SubResource("Environment_mdiys")
 [node name="SpawnHolder" type="Node3D" parent="."]
 
 [node name="Spawner1" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02882, -24.9453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211239, -24.9453)
 
 [node name="Spawner2" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7109, 1.00593, -29.0577)

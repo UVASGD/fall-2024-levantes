@@ -3,7 +3,8 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var gun_path: String
 @export var set_next_state: String
-@export var SPEED = 5.0
+@export var SPEED: int
+@export var RETREAT_SPEED: int
 @export var shots_per_burst = 3
 @export var time_between_each_shot = 0.1
 @export var max_spread_deviaton_degs: float = 1.2
@@ -132,7 +133,7 @@ func retreat(delta):
 	face_target(delta)
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
-	var new_velocity = (next_location - current_location).normalized() * SPEED
+	var new_velocity = (next_location - current_location).normalized() * RETREAT_SPEED
 
 	nav_agent.set_velocity(-new_velocity)
 	if can_enemy_see_player():
