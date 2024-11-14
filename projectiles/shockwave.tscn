@@ -234,7 +234,7 @@ _data = {
 [node name="shockwave" type="Node3D"]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, 0)
 script = ExtResource("1_765r2")
-speed = 0.04
+speed = 0.08
 damage = 20
 
 [node name="inner" type="Area3D" parent="."]

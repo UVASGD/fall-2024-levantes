@@ -1721,6 +1721,7 @@ _data = {
 
 [node name="bishop_sniper" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_1oh2a")
+gun_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
 projectile_speed = 150
 wait_time_till_fire_seconds = 3
 

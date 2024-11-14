@@ -3,7 +3,8 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var gun_path: String
 @export var set_next_state: String
-@export var SPEED = 5.0
+@export var SPEED: int
+@export var RETREAT_SPEED: int
 @export var shots_per_burst = 3
 @export var time_between_each_shot = 0.1
 @export var max_spread_deviaton_degs: float = 1.2
@@ -58,6 +59,8 @@ func _ready():
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
 	
@@ -132,7 +135,7 @@ func retreat(delta):
 	face_target(delta)
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
-	var new_velocity = (next_location - current_location).normalized() * SPEED
+	var new_velocity = (next_location - current_location).normalized() * RETREAT_SPEED
 
 	nav_agent.set_velocity(-new_velocity)
 	if can_enemy_see_player():
@@ -282,7 +285,6 @@ func death():
 	if is_dead:
 		return
 	is_dead = true
-	print("dying smt")
 	spawn_reward()
 	next_state = "idle"
 	Animation_Player.play("smt_death")
@@ -295,10 +297,12 @@ func spawn_reward():
 	var num = randi_range(0,9)
 	print("generated num: " + str(num))
 	var instance
-	if num == 9:
+	if num >= 8:
 		instance = load(gun_path).instantiate()
-	else:
+	elif num >= 4:
 		instance = ammo_drop.instantiate()
+	else: #better luck next time
+		return
 	get_tree().root.add_child(instance)
 	instance.position = self.position + Vector3(0,0,1)
 	return

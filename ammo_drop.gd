@@ -15,6 +15,9 @@ func _ready() -> void:
 		if wep2:
 			type = wep2.name
 			amount = wep2.get_reward_amount()
+		elif wep1:
+			type = wep1.name
+			amount = wep1.get_reward_amount()
 	pass # Replace with function body.
 
 

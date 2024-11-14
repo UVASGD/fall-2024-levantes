@@ -2,14 +2,14 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var set_next_state: String
 @export var SPEED = 10
-
+@export var gun_path: String
 @export var max_health: int = 100
 var health_hp: int
 @export var damage = 50
 @export var projectile_speed = 5
 @export var wait_time_till_fire_seconds = 4
 @export var visibility_range = 1000000
-
+var is_dead = false
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
@@ -27,6 +27,7 @@ var health_hp: int
 @onready var vision_timer = $VisionTimer
 
 var projectile = preload("res://projectiles/sniper_projectile.tscn")
+var ammo_drop = preload("res://Weapons (new)/husk/ammo_drop.tscn")
 @onready var projectile_origin_spot = %projectile_origin_spot
 var vision_timer_done = false
 var is_firing = false
@@ -62,6 +63,8 @@ func _ready():
 	#laser.player = get_tree().get_nodes_in_group("Player")[0]
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
 	
@@ -214,9 +217,34 @@ func shoot():
 func take_damage(amount: int):
 	health_hp -= amount
 	if health_hp <= 0:
-		$".".queue_free()
-		SignalBus.emit_signal("enemy_death")
+		death()
 
+func death():
+	if is_dead:
+		return
+	is_dead = true
+	spawn_reward()
+	next_state = "idle"
+	#Animation_Player.play("smt_death")
+	#await Animation_Player.animation_finished
+	$".".queue_free()
+	SignalBus.emit_signal("enemy_death")
+	pass
+	
+func spawn_reward():
+	var num = randi_range(0,9)
+	print("generated num: " + str(num))
+	var instance
+	if num >= 8:
+		instance = load(gun_path).instantiate()
+	elif num >= 4:
+		instance = ammo_drop.instantiate()
+	else: #better luck next time
+		return
+	get_tree().root.add_child(instance)
+	instance.position = self.position + Vector3(0,0,1)
+	return
+	
 func on_hit(damage_taken, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()

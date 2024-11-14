@@ -1,6 +1,6 @@
 extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
-
+@export var gun_path: String
 @export var set_next_state: String
 @export var SPEED:int
 @export var shots_per_burst = 3
@@ -16,19 +16,20 @@ var health_hp: int
 @export var visibility_range = 1000000
 @export var shots_per_shoot_call = 3
 
-@onready var x_axis = $x_axis
-@onready var y_axis = $x_axis/y_axis
+@onready var x_axis = %x_axis
+@onready var y_axis = %y_axis
 @onready var timer = $Timer
 @onready var Animation_Player = $AnimationPlayer
 
 
 @onready var vision_timer = $VisionTimer
 var ring = preload("res://projectiles/shockwave.tscn")
+var ammo_drop = preload("res://Weapons (new)/husk/ammo_drop.tscn")
 var vision_timer_done = false
 var is_firing = false
 var can_move_y_axis = false
 var is_anim_playing = false
-
+var is_dead = false
 
 var curr_state = "idle"
 var next_state = "idle"
@@ -41,7 +42,7 @@ var is_dying = false
 var ring_exists = false
 @onready var animtimer = $animtimer
 @onready var vision = %Vision
-@onready var hitbox = $hitbox
+@onready var hitbox = $"."
 
 func _ready():
 	if set_next_state:
@@ -54,9 +55,11 @@ func _ready():
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
-	
+	print(curr_state)
 	if not is_dying:
 		match curr_state:
 			"idle":
@@ -242,6 +245,10 @@ func _on_vision_body_exited(body):
 		can_move_y_axis = false
 
 func death():
+	if is_dead:
+		return
+	is_dead = true
+	spawn_reward()
 	next_state = "idle"
 	#Animation_Player.play("smt_death")
 	#await Animation_Player.animation_finished
@@ -249,6 +256,26 @@ func death():
 	SignalBus.emit_signal("enemy_death")
 	pass
 
+func spawn_reward():
+	var num = randi_range(0,9)
+	print("generated num: " + str(num))
+	var instance
+	if num >= 8:
+		instance = load(gun_path).instantiate()
+	elif num >= 4:
+		instance = ammo_drop.instantiate()
+	else: #better luck next time
+		return
+	get_tree().root.add_child(instance)
+	instance.position = self.position + Vector3(0,0,1)
+	return
+	
 func _on_animation_player_animation_finished(anim_name):
 	is_anim_playing = false
+	pass # Replace with function body.
+
+
+func _on_chase_again_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		next_state = "chase"
 	pass # Replace with function body.

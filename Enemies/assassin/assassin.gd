@@ -6,7 +6,8 @@ extends CharacterBody3D
 @export var speed_when_attacking = 10.0
 @export var retreat_speed = 10.0
 var chase_speed = SPEED
-
+var is_dead = false
+@export var gun_path: String
 @export var max_health: int = 100
 var health_hp: int
 @export var damage = 15
@@ -54,6 +55,8 @@ func _ready():
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
 	
@@ -236,6 +239,10 @@ func _on_vision_body_exited(body):
 		can_move_y_axis = false
 
 func death():
+	if is_dead:
+		return
+	is_dead = true
+	spawn_reward()
 	next_state = "idle"
 	#Animation_Player.play("smt_death")
 	#await Animation_Player.animation_finished
@@ -243,6 +250,18 @@ func death():
 	SignalBus.emit_signal("enemy_death")
 	pass
 
+func spawn_reward():
+	var num = randi_range(0,9)
+	print("generated num: " + str(num))
+	var instance
+	if num >= 7:
+		instance = load(gun_path).instantiate()
+	else: #better luck next time
+		return
+	get_tree().root.add_child(instance)
+	instance.position = self.position + Vector3(0,0,1)
+	return
+	
 func _on_animation_player_animation_finished(anim_name):
 	pass # Replace with function body.
 
