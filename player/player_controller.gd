@@ -17,7 +17,8 @@ enum PostDeath{DestroyNode, RestartScene}
 var shield_hp: int
 var health_hp: int
 
-
+var playing_shield_hurt = false
+var playing_health_hurt = false
 @export var camera_fov: int = 90
 @export var gun_cam_fov: int = 75
 
@@ -171,6 +172,7 @@ func get_other_weapon():
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
 	if not is_dashing:
+		
 		var shield_amount = int($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
 		var health_amount = int($Head/Camera3D/HUD/player_info/health/health_amount.text)
 		
@@ -178,9 +180,27 @@ func _on_player_hit(damage_amount):
 		can_regen_health = false
 		shield_regen_timer.start()
 		if shield_hp <= 0:
+			%hurt.play("health_hurt")
 			health_regen_timer.start()
+		else:
+			%hurt.play("shield_hurt")
 		take_damage(damage_amount)
 		hud.update_shield_and_health(shield_hp, health_hp)
+
+func playing_shield_hurt_on():
+	if not playing_health_hurt:
+		playing_shield_hurt = true
+func stop_shield_hurt():
+	playing_shield_hurt = false
+
+func playing_health_hurt_on():
+	if playing_shield_hurt:
+		%hurt.stop()
+		playing_shield_hurt = false
+		%hurt.play("health_hurt")
+	playing_health_hurt = true
+func stop_health_hurt():
+	playing_health_hurt = false
 	
 func game_over():
 	get_tree().reload_current_scene()
