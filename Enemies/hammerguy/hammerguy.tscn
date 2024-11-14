@@ -686,6 +686,7 @@ points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, 
 
 [node name="Hammerguy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_3nxlu")
+gun_path = "res://Weapons (new)/husk/husk_desert_eagle.tscn"
 SPEED = 6
 damage = 20
 

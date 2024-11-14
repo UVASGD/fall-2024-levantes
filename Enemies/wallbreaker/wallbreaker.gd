@@ -2,7 +2,7 @@ extends CharacterBody3D
 @export var set_next_state: String
 @onready var nav_agent = $NavigationAgent3D
 @export var SPEED = 5.0
-
+@export var gun_path: String
 @export var max_health: int = 100
 var health_hp: int
 @export var damage = 70
@@ -122,10 +122,22 @@ func explode():
 		hide()
 		await explosion_instance.animation_player.animation_finished
 		await $AudioStreamPlayer3D2.finished
+		spawn_reward()
 		SignalBus.emit_signal("enemy_death")
 		$".".queue_free()
 		pass
 
+func spawn_reward():
+	var num = randi_range(0,9)
+	print("generated num: " + str(num))
+	var instance
+	if num >= 7:
+		instance = load(gun_path).instantiate()
+	else: #better luck next time
+		return
+	get_tree().root.add_child(instance)
+	instance.position = self.position + Vector3(0,0,1)
+	return
 
 func take_damage(amount: int):
 	health_hp -= amount

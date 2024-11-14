@@ -5,7 +5,7 @@ var worlds = {
 	"space_world":"res://Worlds/space_world.tscn",
 	"colliseum":"res://arena1_final.tscn"
 }
-
+var current_difficulty = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

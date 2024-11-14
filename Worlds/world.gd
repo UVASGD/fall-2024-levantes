@@ -1,6 +1,6 @@
 class_name world extends Node3D
 
-@onready var difficulty = 1
+var difficulty
 var player
 @export var world_name: String
 #essentially just a counter
@@ -8,8 +8,8 @@ var player
 #the level is the key the amount of monsters is the value
 
 @onready var level_dict={ # key = level number. Value  = (num_waves, enemies_per_wave)
-	1:[1,2],
-	2:[2,5],
+	1:[1,3],
+	2:[2,3],
 	#3:[3,3],
 	#4:[3,5],
 	#5:[4,5],
@@ -28,7 +28,7 @@ var player
 @onready var shop_spawn_point = $shopspawnpoint
 var player_ready = false
 func _ready():
-	difficulty = SignalBus.current_difficulty
+	difficulty = GameManager.current_difficulty
 	add_to_group("level")
 	SignalBus.connect("enemy_death", enemy_death)
 	SignalBus.connect("round_start", on_round_start)
@@ -96,39 +96,39 @@ func enemy_death():
 		SignalBus.emit_signal("wave_killed")
 #
 func spawn_enemies(): #spawns 1 wave of enemies
-	#for i in range(level_dict[current_level][1]):
-		#var m
-		#var rand_monster_type_num = randi_range(1,5)
-		#match rand_monster_type_num:
-			#1:
-				#m = monster.instantiate()
-			#2:
-				#m = sniper.instantiate() 
-			#3:
-				#m = bomb_enemy.instantiate()
-			#4:
-				#m = assassin.instantiate()
-			#5:
-				#m = hammer.instantiate()
-		#m.set_next_state = "chase"
-		#var spawn_length = $SpawnHolder.get_child_count()-1
-		#var rand_num = rand.randi_range(0,spawn_length)
-		#var spawn_position = $SpawnHolder.get_child(rand_num)
-		#m.position = spawn_position.global_transform.origin
-		#add_child(m)
-	var ham = hammer.instantiate()
-	ham.set_next_state = "chase"
-	var spawn_length = $SpawnHolder.get_child_count()-1
-	var rand_num = rand.randi_range(0,spawn_length)
-	var spawn_position = $SpawnHolder.get_child(rand_num)
-	ham.position = spawn_position.global_transform.origin
-	add_child(ham)
-	var smt = monster.instantiate()
-	ham.set_next_state = "chase"
-	rand_num = rand.randi_range(0,spawn_length)
-	spawn_position = $SpawnHolder.get_child(rand_num)
-	smt.position = spawn_position.global_transform.origin
-	add_child(smt)
+	for i in range(level_dict[current_level][1]):
+		var m
+		var rand_monster_type_num = randi_range(1,5)
+		match rand_monster_type_num:
+			1:
+				m = monster.instantiate()
+			2:
+				m = sniper.instantiate() 
+			3:
+				m = bomb_enemy.instantiate()
+			4:
+				m = assassin.instantiate()
+			5:
+				m = hammer.instantiate()
+		m.set_next_state = "chase"
+		var spawn_length = $SpawnHolder.get_child_count()-1
+		var rand_num = rand.randi_range(0,spawn_length)
+		var spawn_position = $SpawnHolder.get_child(rand_num)
+		m.position = spawn_position.global_transform.origin
+		add_child(m)
+	#var ham = hammer.instantiate()
+	#ham.set_next_state = "chase"
+	#var spawn_length = $SpawnHolder.get_child_count()-1
+	#var rand_num = rand.randi_range(0,spawn_length)
+	#var spawn_position = $SpawnHolder.get_child(rand_num)
+	#ham.position = spawn_position.global_transform.origin
+	#add_child(ham)
+	#var smt = monster.instantiate()
+	#ham.set_next_state = "chase"
+	#rand_num = rand.randi_range(0,spawn_length)
+	#spawn_position = $SpawnHolder.get_child(rand_num)
+	#smt.position = spawn_position.global_transform.origin
+	#add_child(smt)
 
 func _physics_process(delta):
 	if player_ready:
@@ -158,7 +158,7 @@ func rand_music():
 	return
 
 func change_world():
-	SignalBus.current_difficulty += 1
+	GameManager.current_difficulty += 1
 	PlayerManager.set_player(player)
 	player.get_parent().remove_child(player)
 

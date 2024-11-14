@@ -283,7 +283,6 @@ func death():
 	if is_dead:
 		return
 	is_dead = true
-	print("dying smt")
 	spawn_reward()
 	next_state = "idle"
 	Animation_Player.play("smt_death")
@@ -296,10 +295,12 @@ func spawn_reward():
 	var num = randi_range(0,9)
 	print("generated num: " + str(num))
 	var instance
-	if num == 9:
+	if num >= 8:
 		instance = load(gun_path).instantiate()
-	else:
+	elif num >= 4:
 		instance = ammo_drop.instantiate()
+	else: #better luck next time
+		return
 	get_tree().root.add_child(instance)
 	instance.position = self.position + Vector3(0,0,1)
 	return
