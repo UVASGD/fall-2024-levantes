@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cothivuos13et"]
+
+[ext_resource type="Script" path="res://Weapons (new)/functional/grenade_launcher.gd" id="1_y4bl7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cp8km"]
+
+[node name="grenade_launcher" type="Node3D"]
+script = ExtResource("1_y4bl7")
+husk_weapon_path = "res://Weapons (new)/husk/husk_grenade_launcher.tscn"
+Name = "grenade_launcher"
+Display_Name = "GL"
+animation_player_treepath = "../AnimationPlayers2/GRENADE_LAUNCHER"
+animation_library_path = "res://Weapons (new)/animations/grenade_launcher_animations.res"
+Reset_Ani = "grenade_launcher/RESET"
+Equip_Ani = "grenade_launcher/equip"
+Fire_Ani = "grenade_launcher/fire"
+Reload_Ani = "grenade_launcher/reload"
+Dequip_Ani = "grenade_launcher/dequip"
+Reward_Amount = 3
+Curr_Mag_Ammo = 3
+Reserve_Ammo = 9
+Max_Mag_Capacity = 3
+Max_Ammo = 30
+Shoot_Cooldown_Ms = 3
+Burst_Count = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.13964, 0, 0, 0)
+mesh = SubResource("BoxMesh_cp8km")
