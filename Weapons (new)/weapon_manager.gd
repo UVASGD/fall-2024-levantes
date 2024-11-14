@@ -119,14 +119,6 @@ func pickup():
 	var new_weapon 
 	if nearby_weapon == null:
 		return
-	if nearby_weapon is ammo:
-		if current_weapon and nearby_weapon.type == current_weapon.name:
-			current_weapon.Reserve_Ammo += nearby_weapon.amount 
-			nearby_weapon.despawn()
-		elif other_weapon and nearby_weapon.type == other_weapon.name:
-			other_weapon.Reserve_Ammo += nearby_weapon.amount 
-			nearby_weapon.despawn()
-		return
 	new_weapon = nearby_weapon.get_weapon()
 	if new_weapon is throwable:
 		if grenade != null and grenade.name == new_weapon.name:
@@ -135,8 +127,12 @@ func pickup():
 		await pickup_throwable(new_weapon)
 		return
 	if current_weapon != null and new_weapon.Name == current_weapon.Name:
+		current_weapon.Reserve_Ammo += new_weapon.Reserve_Ammo
+		nearby_weapon.despawn()
 		return
 	if other_weapon != null and new_weapon.Name == other_weapon.Name:
+		other_weapon.Reserve_Ammo += new_weapon.Reserve_Ammo
+		nearby_weapon.despawn()
 		return
 	var nearby_weapon_save = nearby_weapon #creating a new husk will cause a signal to be sent and  the nearbyweapon to be updated. This variable keeps the current one so that it does not free the one it creates in this function
 	var nearby_weapon_save_curr_ammo = nearby_weapon.current_ammo
@@ -223,8 +219,17 @@ func go_in_debt():
 
 func _on_pickup_detection_body_entered(body):
 	nearby_weapon = body
-	can_pickup = true
-	print(nearby_weapon)
+	if nearby_weapon is ammo:
+		if current_weapon and nearby_weapon.type == current_weapon.name:
+			current_weapon.Reserve_Ammo += nearby_weapon.amount 
+			nearby_weapon.despawn()
+		elif other_weapon and nearby_weapon.type == other_weapon.name:
+			other_weapon.Reserve_Ammo += nearby_weapon.amount 
+			nearby_weapon.despawn()
+		return
+	else:
+		can_pickup = true
+		print(nearby_weapon)
 
 func _on_pickup_detection_body_exited(body):
 	nearby_weapon = null
