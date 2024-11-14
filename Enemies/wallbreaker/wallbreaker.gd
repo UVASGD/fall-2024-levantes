@@ -39,6 +39,8 @@ func _ready():
 	SignalBus.connect("enemy_hit", on_hit)
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
 	

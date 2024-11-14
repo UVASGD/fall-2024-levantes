@@ -117,19 +117,19 @@ environment = SubResource("Environment_mdiys")
 [node name="SpawnHolder" type="Node3D" parent="."]
 
 [node name="Spawner1" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211239, -24.9453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2571, -24.9453)
 
 [node name="Spawner2" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7109, 1.00593, -29.0577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7109, 9.82027, -29.0577)
 
 [node name="Spawner3" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8486, 1.2607, -21.6708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8486, 7.7463, -21.6708)
 
 [node name="Spawner4" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0726, 1.51772, -15.305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0726, 8.80874, -15.305)
 
 [node name="Spawner5" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0942, 1.01156, -8.88034)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0942, 6.13979, -8.88034)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_l0hc6")

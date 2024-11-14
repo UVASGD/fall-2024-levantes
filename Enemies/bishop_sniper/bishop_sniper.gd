@@ -63,6 +63,8 @@ func _ready():
 	#laser.player = get_tree().get_nodes_in_group("Player")[0]
 	
 func _physics_process(delta):
+	if not self.is_on_floor():
+		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
 	
