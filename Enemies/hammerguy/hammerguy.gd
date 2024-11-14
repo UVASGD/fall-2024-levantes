@@ -16,8 +16,8 @@ var health_hp: int
 @export var visibility_range = 1000000
 @export var shots_per_shoot_call = 3
 
-@onready var x_axis = $x_axis
-@onready var y_axis = $x_axis/y_axis
+@onready var x_axis = %x_axis
+@onready var y_axis = %y_axis
 @onready var timer = $Timer
 @onready var Animation_Player = $AnimationPlayer
 
@@ -41,7 +41,7 @@ var is_dying = false
 var ring_exists = false
 @onready var animtimer = $animtimer
 @onready var vision = %Vision
-@onready var hitbox = $hitbox
+@onready var hitbox = $"."
 
 func _ready():
 	if set_next_state:
@@ -56,7 +56,7 @@ func _ready():
 func _physics_process(delta):
 	prev_state = curr_state
 	curr_state = next_state
-	
+	print(curr_state)
 	if not is_dying:
 		match curr_state:
 			"idle":
@@ -251,4 +251,10 @@ func death():
 
 func _on_animation_player_animation_finished(anim_name):
 	is_anim_playing = false
+	pass # Replace with function body.
+
+
+func _on_chase_again_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		next_state = "chase"
 	pass # Replace with function body.
