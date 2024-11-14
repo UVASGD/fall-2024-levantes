@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cothivuos13et"]
+[gd_scene load_steps=4 format=3 uid="uid://cothivuos13et"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/grenade_launcher.gd" id="1_y4bl7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cp8km"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rm4b3"]
 
 [node name="grenade_launcher" type="Node3D"]
 script = ExtResource("1_y4bl7")
@@ -27,3 +29,10 @@ Burst_Count = 1
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.13964, 0, 0, 0)
 mesh = SubResource("BoxMesh_cp8km")
+
+[node name="projectile_spawn_point" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015185, -0.0124462, 1.13604)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1.25603, 0, 0, 0, 1.65081, 0, -0.06016, 0.330598)
+mesh = SubResource("SphereMesh_rm4b3")

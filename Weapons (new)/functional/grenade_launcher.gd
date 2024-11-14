@@ -21,5 +21,5 @@ func shoot():
 
 func create_projectile():
 	var projectile = load("res://projectiles/launch_grenade.tscn").instantiate()
-	add_child(projectile)
+	$MeshInstance3D/projectile_spawn_point.add_child(projectile)
 	projectile.get_child(0).throw()

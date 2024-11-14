@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=33 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="8_8v5i7"]
 [ext_resource type="Script" path="res://player/ShopRay.gd" id="8_58d3w"]
 [ext_resource type="AnimationLibrary" uid="uid://ckl0v5h8vmwdr" path="res://Weapons (new)/animations/grenade_launcher_animations.res" id="8_77fqt"]
+[ext_resource type="PackedScene" uid="uid://cothivuos13et" path="res://Weapons (new)/functional/grenade_launcher.tscn" id="8_pv57s"]
 [ext_resource type="Texture2D" uid="uid://caxp7w80k15pl" path="res://Textures/hurt_texture.png" id="9_amdiu"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
 
@@ -718,6 +719,11 @@ libraries = {
 "grenade_launcher": ExtResource("8_77fqt")
 }
 
+[node name="grenade_launcher" parent="Head/Camera3D/weapon manager" instance=ExtResource("8_pv57s")]
+
+[node name="MeshInstance3D" parent="Head/Camera3D/weapon manager/grenade_launcher" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.13964, 0, 0, 0)
+
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
 
@@ -785,3 +791,5 @@ one_shot = true
 [node name="shield_deplete_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8v5i7")
 volume_db = 5.0
+
+[editable path="Head/Camera3D/weapon manager/grenade_launcher"]
