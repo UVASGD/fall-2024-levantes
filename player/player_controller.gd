@@ -180,6 +180,7 @@ func _on_player_hit(damage_amount):
 		can_regen_health = false
 		shield_regen_timer.start()
 		if shield_hp <= 0:
+			%hurt.stop()
 			%hurt.play("health_hurt")
 			health_regen_timer.start()
 		else:
@@ -187,20 +188,6 @@ func _on_player_hit(damage_amount):
 		take_damage(damage_amount)
 		hud.update_shield_and_health(shield_hp, health_hp)
 
-func playing_shield_hurt_on():
-	if not playing_health_hurt:
-		playing_shield_hurt = true
-func stop_shield_hurt():
-	playing_shield_hurt = false
-
-func playing_health_hurt_on():
-	if playing_shield_hurt:
-		%hurt.stop()
-		playing_shield_hurt = false
-		%hurt.play("health_hurt")
-	playing_health_hurt = true
-func stop_health_hurt():
-	playing_health_hurt = false
 	
 func game_over():
 	get_tree().reload_current_scene()
