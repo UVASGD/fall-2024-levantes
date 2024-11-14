@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://57e7eyxblxtd"]
+
+[ext_resource type="Script" path="res://Weapons (new)/functional/void_launcher.gd" id="1_wvfuw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odor0"]
+albedo_color = Color(0.502627, 0.00153441, 0.698623, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cp8km"]
+material = SubResource("StandardMaterial3D_odor0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ty3x7"]
+albedo_color = Color(0.502627, 0.00153441, 0.698623, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rm4b3"]
+material = SubResource("StandardMaterial3D_ty3x7")
+
+[node name="void_launcher" type="Node3D"]
+script = ExtResource("1_wvfuw")
+husk_weapon_path = "res://Weapons (new)/husk/husk_void_launcher.tscn"
+Name = "void_launcher"
+Display_Name = "VL"
+animation_player_treepath = "../AnimationPlayers2/VOID_LAUNCHER"
+animation_library_path = "res://Weapons (new)/animations/void_launcher_animations.res"
+Reset_Ani = "void_launcher/RESET"
+Equip_Ani = "void_launcher/equip"
+Fire_Ani = "void_launcher/fire"
+Reload_Ani = "void_launcher/reload"
+Dequip_Ani = "void_launcher/dequip"
+Reward_Amount = 3
+Curr_Mag_Ammo = 3
+Reserve_Ammo = 9
+Max_Mag_Capacity = 3
+Max_Ammo = 30
+Shoot_Cooldown_Ms = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.13964, 0, 0, 0)
+mesh = SubResource("BoxMesh_cp8km")
+
+[node name="projectile_spawn_point" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015185, -0.0124462, 1.13604)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1.25603, 0, 0, 0, 1.65081, 0, -0.06016, 0.330598)
+mesh = SubResource("SphereMesh_rm4b3")

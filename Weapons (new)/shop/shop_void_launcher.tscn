@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck06fbrkikpyr"]
+
+[ext_resource type="Script" path="res://Weapons (new)/shop/shop_grenade_launcher.gd" id="1_jgpp3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3adfw"]
+albedo_color = Color(0.502627, 0.00153441, 0.698623, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jmqq"]
+material = SubResource("StandardMaterial3D_3adfw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yt8ay"]
+size = Vector3(0.241211, 0.696838, 1.98669)
+
+[node name="shop_grenade_launcher" type="Node3D"]
+script = ExtResource("1_jgpp3")
+price = 2
+ammo = 3
+reserve = 9
+husk_weapon_path = "res://Weapons (new)/husk/husk_void_launcher.tscn"
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="model"]
+transform = Transform3D(0.215965, 0, 0, 0, 0.767317, 0, 0, 0, 2.12074, 0, 0, -0.0730284)
+mesh = SubResource("BoxMesh_4jmqq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382604, 0, 0)
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376182, 0.0354919, -0.0381323)
+shape = SubResource("BoxShape3D_yt8ay")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.997813, -0.00304112, 0.0660297, -0.0660997, 0.0459075, -0.996756, 0, -0.998941, -0.0460081, -0.419368, -0.788825, 0.952211)
+light_color = Color(0.27451, 0.533333, 1, 1)
+light_energy = 5.889
+light_size = 0.889
+light_specular = 0.85
+light_cull_mask = 4294966288
+spot_range = 2.02331
+spot_angle = 73.7587
+spot_angle_attenuation = 0.307786
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.997101, -0.057635, 0.0496766, 0.0467929, -0.0503489, -0.997635, 0.0599998, 0.997067, -0.047506, -0.231123, -0.467057, -0.620851)
+light_color = Color(0.484709, 0.00039241, 0.545676, 1)
+light_energy = 5.889
+light_size = 0.889
+light_specular = 0.85
+light_cull_mask = 4294966288
+spot_range = 0.802172
+spot_angle = 89.6801
+spot_angle_attenuation = 0.307786
