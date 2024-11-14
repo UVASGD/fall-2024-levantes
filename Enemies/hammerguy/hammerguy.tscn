@@ -684,7 +684,7 @@ shadow_mesh = SubResource("ArrayMesh_46wc4")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_knvra"]
 points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, -4.905, -1.915, -1, -4.62, -2.78, -1, -4.16, -3.535, -1, -3.535, -4.16, -1, -2.78, -4.62, -1, -1.915, -4.905, -1, -0.975, -5, -1, 0, -4.905, -1, 0.975, -4.62, -1, 1.915, -4.16, -1, 2.775, -3.535, -1, 3.535, -2.78, -1, 4.155, -1.915, -1, 4.62, -0.975, -1, 4.905, 0, -1, 5, 0.975, -1, 4.905, 1.915, -1, 4.62, 2.775, -1, 4.155, 3.535, -1, 3.535, 4.155, -1, 2.775, 4.62, -1, 1.915, 4.905, -1, 0.975, 5, -1, 0, 4.905, -1, -0.975, 4.62, -1, -1.915, 4.155, -1, -2.78, 3.535, -1, -3.535, 2.775, -1, -4.16, 1.915, -1, -4.62)
 
-[node name="Hammerguy" type="CharacterBody3D"]
+[node name="Hammerguy" type="CharacterBody3D" groups=["enemies"]]
 axis_lock_linear_x = true
 script = ExtResource("1_3nxlu")
 SPEED = 3
@@ -697,7 +697,6 @@ shape = SubResource("CapsuleShape3D_660g2")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 2.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_point_size = 15.81
 

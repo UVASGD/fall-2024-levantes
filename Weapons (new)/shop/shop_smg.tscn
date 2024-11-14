@@ -156,8 +156,8 @@ size = Vector3(0.241211, 0.696838, 1.98669)
 [node name="shop_smg" type="Node3D"]
 script = ExtResource("1_sx6ls")
 price = 1
-ammo = 30
-reserve = 60
+ammo = 50
+reserve = 150
 husk_weapon_path = "res://Weapons (new)/husk/husk_smg_future.tscn"
 
 [node name="model" type="Node3D" parent="."]
