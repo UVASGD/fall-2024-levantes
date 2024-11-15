@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Pawn="*res://Autoload/pawn.gd"
-PlayerManager="*res://Autoload/player_manager.gd"
+PlayerManager="*res://player_manager.gd"
 SignalBus="*res://Autoload/SignalBus.gd"
 GameManager="*res://GameManager.gd"
 PersistentData="*res://PersistentData.gd"
@@ -27,8 +27,6 @@ PersistentData="*res://PersistentData.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
-window/size/always_on_top=true
 
 [filesystem]
 

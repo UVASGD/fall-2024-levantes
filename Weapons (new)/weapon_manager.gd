@@ -211,9 +211,11 @@ func buy():
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
 	elif(shop_ray.get_collider().get_parent() is Powerup):
+		SignalBus.emit_signal("gun_purchase", shop_ray.get_collider().get_parent())
 		shop_ray.get_collider().get_parent().apply()
 	else:
 		SignalBus.emit_signal("round_start")
+		
 	return
 
 func go_in_debt():
