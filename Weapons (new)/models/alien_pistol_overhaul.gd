@@ -51,14 +51,19 @@ func crit_shot():
 	print("crit")
 	await regular_shot()
 	animation_player.play("alien_pistol/overheat")
-	#create shockwave
 	return
 
 func create_projectile():
 	var projectile = load("res://projectiles/alien_pistol_projectile_overhaul.tscn").instantiate()
-	$MeshInstance3D/projectile_spawn_point.add_child(projectile)
-	projectile.get_child(0).throw()
+	%projectile_spawn.add_child(projectile)
+	projectile.throw()
 
+func create_shockwave():
+	print("make shock")
+	var shock = load("res://projectiles/nice_shockwave.tscn").instantiate()
+	get_node("../../../../").add_child(shock)
+	return
+	
 func shoot(): 
 	print("wrong shoot")
 	pass

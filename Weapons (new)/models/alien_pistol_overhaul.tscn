@@ -319,3 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0,
 mesh = SubResource("ArrayMesh_hjbfg")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
+
+[node name="projectile_spawn" type="Marker3D" parent="alien_pistol_overhaul"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.913321, 16.8819, 26.2769)

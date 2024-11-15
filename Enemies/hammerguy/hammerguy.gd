@@ -59,7 +59,6 @@ func _physics_process(delta):
 		self.velocity.y += get_gravity().y * delta
 	prev_state = curr_state
 	curr_state = next_state
-	print(curr_state)
 	if not is_dying:
 		match curr_state:
 			"idle":

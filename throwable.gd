@@ -7,6 +7,8 @@ class_name throwable extends RigidBody3D
 @export var cooldown:float
 @export var equip_ani:String
 @export var dequip_ani:String
+@export var does_collision_wait: bool
+@export var collision_wait_time: int
 var timer
 var collision
 var animation_player
@@ -18,7 +20,8 @@ func _ready():
 	sleeping = true
 	animation_player = get_child(3)
 	collision = get_child(1)
-	collision.disabled = true
+	if does_collision_wait:
+		collision.disabled = true
 	body_entered.connect(_on_body_entered)
 	timer = Timer.new()
 	timer.wait_time = cooldown
@@ -41,9 +44,8 @@ func throw():
 	self.position = spawnpos
 	reparent(get_tree().root)
 	apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
-	print("collision delaying")
-	await get_tree().create_timer(0.2).timeout
-	print("collision ready")
+	if does_collision_wait:
+		await get_tree().create_timer(collision_wait_time).timeout
 	collision.disabled = false
 	return
 

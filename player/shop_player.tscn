@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=39 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -573,11 +573,6 @@ _data = {
 "RESET": SubResource("Animation_ypx3h")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1l2cm"]
-resource_local_to_scene = true
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ee15"]
 size = Vector3(1, 2.2218, 1.83057)
 
@@ -841,22 +836,6 @@ libraries = {
 
 [node name="AlienPistolOverhaul" parent="Head/Camera3D/weapon manager" instance=ExtResource("11_7yqr5")]
 
-[node name="alien_pistol_overhaul" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul" index="0"]
-transform = Transform3D(-0.02, 0, -1.74846e-09, 0, 0.02, 0, 1.74846e-09, 0, -0.02, 0.154, -0.55, -0.236)
-
-[node name="Mag" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="3"]
-transform = Transform3D(1, 1.77636e-15, 7.10543e-15, 0, 0.956501, -0.29173, -7.10543e-15, 0.29173, 0.956501, 0, 19.1104, 0.375023)
-surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
-
-[node name="Pipes" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="4"]
-surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
-
-[node name="Connector" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
-
-[node name="Trigger" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="6"]
-surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
-
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
 
@@ -924,5 +903,3 @@ one_shot = true
 [node name="shield_deplete_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8v5i7")
 volume_db = 5.0
-
-[editable path="Head/Camera3D/weapon manager/AlienPistolOverhaul"]

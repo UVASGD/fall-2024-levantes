@@ -7,18 +7,7 @@ var explosion = preload("res://projectiles/explosion.tscn")
 func _process(delta):
 	pass
 
-func action():
-	var explosion_instance = explosion.instantiate()
 
-	explosion_instance.damage_amount = damage
-
-	explosion_instance.global_transform.origin = global_transform.origin
-	var spawn_pos = global_transform.origin
-	spawn_pos.y += -1
-
-	get_tree().root.add_child(explosion_instance)
-	explosion_instance.play_explode_animation()
-	hide()
-	
-	$".".queue_free()
-	await explosion_instance.animation_player.animation_finished
+func _on_body_entered(body):
+	SignalBus.emit_signal("enemy_hit", damage, body)
+	self.queue_free()

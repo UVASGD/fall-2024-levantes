@@ -1,20 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://uu5erqqfxsy7"]
+[gd_scene load_steps=6 format=3 uid="uid://uu5erqqfxsy7"]
 
 [ext_resource type="Script" path="res://alien_pistol_projectile_overhaul.gd" id="1_5th0a"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_d540f"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f6pcc"]
+rough = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wfgaq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoytq"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.85
+
+[sub_resource type="SphereMesh" id="SphereMesh_d540f"]
+material = SubResource("StandardMaterial3D_xoytq")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5apvj"]
+radius = 7.60583
 
 [node name="alien_pistol_projectile_overhaul" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60677, 0)
+mass = 0.075
+physics_material_override = SubResource("PhysicsMaterial_f6pcc")
+gravity_scale = -15.335
+center_of_mass_mode = 1
+inertia = Vector3(1000, 1000, 1000)
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp_mode = 1
+angular_damp = 100.0
 script = ExtResource("1_5th0a")
-force = 50
+force = 14
 damage = 20
+cooldown = 0.01
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, 0, 0, 0)
+transform = Transform3D(15.8395, 0, 0, 0, 15.1759, 0, 0, 0, 14.94, 0, 0, 0)
 mesh = SubResource("SphereMesh_d540f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0, 0)
-shape = SubResource("SphereShape3D_wfgaq")
+shape = SubResource("SphereShape3D_5apvj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
