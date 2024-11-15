@@ -11,7 +11,7 @@ var outerspeed
 func _ready():
 	donut.mesh.inner_radius = 0.839
 	donut.mesh.outer_radius = 0.708
-	outerspeed = speed #*0.99
+	outerspeed = speed * 3 #*0.99
 	animation_player.play("idle")
 	pass # Replace with function body.
 
@@ -27,11 +27,10 @@ func _process(delta):
 
 
 func _on_outer_body_entered(body):
-	if body.is_in_group("enemies") and body not in inner.get_overlapping_bodies():
-		if body.is_on_floor():
-			SignalBus.emit_signal("enemy_hit", damage, body)
-			#apply force to player 
-			pass
+	if body.is_in_group("enemies"):
+		SignalBus.emit_signal("enemy_hit", damage, 1, body, 1)
+		#apply force to player 
+		pass
 
 func despawn():
 	animation_player.play("disappear")
@@ -41,5 +40,6 @@ func despawn():
 
 
 func _on_life_timer_timeout():
+	animation_player.stop()
 	despawn()
 	pass # Replace with function body.

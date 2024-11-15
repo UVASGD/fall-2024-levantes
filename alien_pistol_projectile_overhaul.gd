@@ -9,5 +9,5 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	SignalBus.emit_signal("enemy_hit", damage, body)
+	SignalBus.emit_signal("enemy_hit", damage, 1, body, 1)
 	self.queue_free()

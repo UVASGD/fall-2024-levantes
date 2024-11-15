@@ -233,7 +233,7 @@ _data = {
 [node name="shockwave" type="Node3D"]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, 0)
 script = ExtResource("1_q3yps")
-speed = 0.08
+speed = 0.12
 damage = 60
 
 [node name="inner" type="Area3D" parent="."]
@@ -252,7 +252,7 @@ transform = Transform3D(0.600042, 0, 0, 0, 2.57392, 0, 0, 0, 0.587508, 0, 0, 0)
 mesh = SubResource("TorusMesh_donrd")
 
 [node name="life_timer" type="Timer" parent="."]
-wait_time = 2.967
+wait_time = 0.504
 one_shot = true
 autostart = true
 
@@ -260,6 +260,7 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_bpmu8")
 }
+speed_scale = 4.0
 
 [connection signal="area_entered" from="inner" to="." method="_on_inner_area_entered"]
 [connection signal="area_entered" from="outer" to="." method="_on_outer_area_entered"]
