@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=40 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -12,7 +12,9 @@
 [ext_resource type="AnimationLibrary" uid="uid://ckl0v5h8vmwdr" path="res://Weapons (new)/animations/grenade_launcher_animations.res" id="8_77fqt"]
 [ext_resource type="Texture2D" uid="uid://caxp7w80k15pl" path="res://Textures/hurt_texture.png" id="9_amdiu"]
 [ext_resource type="AnimationLibrary" uid="uid://c46shq4j0vlux" path="res://Weapons (new)/animations/void_launcher_animations.res" id="9_l7y2e"]
+[ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
+[ext_resource type="PackedScene" uid="uid://c6ykdnjfk4csj" path="res://Weapons (new)/models/alien_pistol_overhaul.tscn" id="11_7yqr5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -503,6 +505,79 @@ _data = {
 "RESET": SubResource("Animation_oq5il")
 }
 
+[sub_resource type="Animation" id="Animation_ypx3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AlienPistolOverhaul/alien_pistol_overhaul:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.154, -0.55, -0.236)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AlienPistolOverhaul/alien_pistol_overhaul:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AlienPistolOverhaul/alien_pistol_overhaul/Mag:surface_material_override/0:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AlienPistolOverhaul/alien_pistol_overhaul/Mag:surface_material_override/0:emission")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AlienPistolOverhaul/alien_pistol_overhaul/Mag:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 19.1104, 0.375023)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2lxos"]
+_data = {
+"RESET": SubResource("Animation_ypx3h")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1l2cm"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ee15"]
 size = Vector3(1, 2.2218, 1.83057)
 
@@ -758,6 +833,30 @@ libraries = {
 "void_launcher": ExtResource("9_l7y2e")
 }
 
+[node name="ALIENPISTOL" type="AnimationPlayer" parent="Head/Camera3D/weapon manager/AnimationPlayers2"]
+libraries = {
+"": SubResource("AnimationLibrary_2lxos"),
+"alien_pistol": ExtResource("10_j8nse")
+}
+
+[node name="AlienPistolOverhaul" parent="Head/Camera3D/weapon manager" instance=ExtResource("11_7yqr5")]
+
+[node name="alien_pistol_overhaul" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul" index="0"]
+transform = Transform3D(-0.02, 0, -1.74846e-09, 0, 0.02, 0, 1.74846e-09, 0, -0.02, 0.154, -0.55, -0.236)
+
+[node name="Mag" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="3"]
+transform = Transform3D(1, 1.77636e-15, 7.10543e-15, 0, 0.956501, -0.29173, -7.10543e-15, 0.29173, 0.956501, 0, 19.1104, 0.375023)
+surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
+
+[node name="Pipes" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
+
+[node name="Connector" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
+
+[node name="Trigger" parent="Head/Camera3D/weapon manager/AlienPistolOverhaul/alien_pistol_overhaul" index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1l2cm")
+
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
 
@@ -825,3 +924,5 @@ one_shot = true
 [node name="shield_deplete_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8v5i7")
 volume_db = 5.0
+
+[editable path="Head/Camera3D/weapon manager/AlienPistolOverhaul"]
