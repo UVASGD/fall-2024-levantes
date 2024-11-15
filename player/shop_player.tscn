@@ -14,7 +14,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c46shq4j0vlux" path="res://Weapons (new)/animations/void_launcher_animations.res" id="9_l7y2e"]
 [ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
-[ext_resource type="PackedScene" uid="uid://c6ykdnjfk4csj" path="res://Weapons (new)/models/alien_pistol_overhaul.tscn" id="11_7yqr5"]
+[ext_resource type="PackedScene" uid="uid://c6ykdnjfk4csj" path="res://Weapons (new)/functional/alien_pistol_overhaul.tscn" id="11_scuqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -834,7 +834,7 @@ libraries = {
 "alien_pistol": ExtResource("10_j8nse")
 }
 
-[node name="AlienPistolOverhaul" parent="Head/Camera3D/weapon manager" instance=ExtResource("11_7yqr5")]
+[node name="AlienPistolOverhaul" parent="Head/Camera3D/weapon manager" instance=ExtResource("11_scuqw")]
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)

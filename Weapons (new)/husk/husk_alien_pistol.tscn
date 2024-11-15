@@ -260,7 +260,7 @@ script = ExtResource("1_llkig")
 weapon_name = "alien_pistol"
 current_ammo = 9
 reserve_ammo = 27
-real_weapon_path = "res://Weapons (new)/models/alien_pistol_overhaul.tscn"
+real_weapon_path = "res://Weapons (new)/functional/alien_pistol_overhaul.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0244198, -0.0240555, 0.00362675)

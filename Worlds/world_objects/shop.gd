@@ -22,8 +22,8 @@ func _process(delta):
 	pass
 
 func add_guns():
-	#var gun_list = [smg,burst,sniper,deagle,gl, vl, ap]
-	var gun_list = [ap]
+	var gun_list = [smg,burst,sniper,deagle,gl, vl, ap]
+	#var gun_list = [ap]
 	for holder in $shop_model/gun_holders.get_children():
 		var gun = gun_list[randi_range(0,gun_list.size()-1)].instantiate()
 		gun.top_level = true
