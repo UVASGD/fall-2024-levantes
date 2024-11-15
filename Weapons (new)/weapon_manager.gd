@@ -220,6 +220,14 @@ func buy():
 
 func go_in_debt():
 	print("you are in debt")
+	var num = randi_range(0,1)
+	if num == 0:
+		PlayerManager.player.max_health_hp = PlayerManager.player.max_health_hp / 2
+		PlayerManager.player.health_hp = PlayerManager.player.health_hp / 2
+	elif num == 1:
+		PlayerManager.player.health_regen_timer.wait_time = PlayerManager.player.health_regen_timer.wait_time / 2
+		PlayerManager.player.shield_regen_timer.wait_time = PlayerManager.player.shield_regen_timer.wait_time / 2
+	
 	return
 
 func _on_pickup_detection_body_entered(body):

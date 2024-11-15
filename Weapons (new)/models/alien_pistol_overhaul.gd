@@ -20,12 +20,11 @@ func start_charging():
 	is_charging = true
 	animation_player.play("alien_pistol/charge")
 	charge_time = 0.0
-	print("Charging started")
+
 
 
 func release_shot():
-	print("charge released")
-	print(charge_time)
+
 	animation_player.stop()
 	is_charging = false
 	if charge_time >= crit_time and charge_time < 1.0:
@@ -35,7 +34,9 @@ func release_shot():
 	charge_time = 0.0
 
 func regular_shot():
-	for i in range(0,2):
+	for i in range(0,3):
+		if not can_shoot:
+			return
 		await play_fire()
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
@@ -48,7 +49,6 @@ func regular_shot():
 	return
 	
 func crit_shot():
-	print("crit")
 	await regular_shot()
 	animation_player.play("alien_pistol/overheat")
 	return
