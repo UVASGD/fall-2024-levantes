@@ -42,7 +42,9 @@ var is_dying = false
 var ring_exists = false
 @onready var animtimer = $animtimer
 @onready var vision = %Vision
-@onready var hitbox = $"."
+@onready var collider = $"."
+@onready var hitbox = %hitbox
+@onready var head_hitbox = $"../Area3D"
 
 func _ready():
 	if set_next_state:
@@ -179,13 +181,22 @@ func take_damage(amount: int):
 		is_dying = true
 		death()
 
-func on_hit(damage_taken, collider):
-	if not is_dying and collider == self:
+func on_hit(damage_taken, hs_mult, col, shape):
+	#if not is_dying and (collider == hitbox or collider == head_hitbox):
+	if not is_dying and col==collider and (shape == 1 or shape == 0):
 		$AudioStreamPlayer3D.play()
-		take_damage(damage_taken)
-		print(health_hp)
-	
-	pass
+		#x_axis_shield.show()
+		#y_axis_shield.show()
+		await get_tree().create_timer(.1).timeout
+		#x_axis_shield.hide()
+		#y_axis_shield.hide()
+		
+		var updated_dmg = damage_taken
+		#if collider == head_hitbox:
+		if shape == 0:
+			updated_dmg *= hs_mult
+		take_damage(updated_dmg)
+		
 
 func can_enemy_see_player() -> bool:
 	var overlaps = vision.get_overlapping_bodies()

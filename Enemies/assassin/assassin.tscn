@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=29 format=4 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
@@ -7,9 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3lgef"]
+radius = 0.297502
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999
-height = 2.11801
+height = 1.66598
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
 albedo_color = Color(0.427451, 1, 1, 1)
@@ -408,8 +411,12 @@ SPEED = 70.0
 retreat_speed = 100.0
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 
+[node name="head_hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.815, -0.382843)
+shape = SubResource("SphereShape3D_3lgef")
+
 [node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888809, 0)
 shape = SubResource("CapsuleShape3D_je42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

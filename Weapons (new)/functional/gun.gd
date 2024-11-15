@@ -17,8 +17,8 @@ class_name Gun extends Node3D
 @export var Wait_Ani: String
 @export var Melee_Ani: String
 
-@export var can_headshot: bool
-@export var headshot_multiplier: float
+@export var can_headshot: bool = false
+
 
 @export var Fire_Sound: String
 @export var Reward_Amount: int
@@ -35,7 +35,9 @@ class_name Gun extends Node3D
 @export_flags("HitScan","Projectile") var Type
 @export var Projectile_Range: float
 @export var Melee_Range: float = 4
+
 @export var dmg: int
+@export var headshot_multiplier: float = 1.0
 @export var melee_dmg: int
 
 @export var Weapon_Drop: PackedScene
@@ -81,7 +83,7 @@ func shoot(): #default shoot logic
 	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		await play_fire()
-		_raycast(dmg, Projectile_Range)
+		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
@@ -166,7 +168,7 @@ func call_melee_animation():
 	await animation_player.animation_finished
 	animation_player.queue(Melee_Ani)
 
-func _raycast(dmg, range):
+func _raycast(dmg, hs_mult, range):
 	var camera = get_parent().get_parent()
 	var space_state = camera.get_world_3d().direct_space_state
 	var screen_center = get_viewport().size / 2
@@ -178,7 +180,12 @@ func _raycast(dmg, range):
 	query.collide_with_areas = false
 	if not intersection.is_empty():
 		
-		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
+		#SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, intersection.get("collider"))
+		
+		var collider = intersection.get("collider")
+		if collider is CharacterBody3D and collider.is_in_group("enemies"):
+			SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, collider, intersection.get("shape"))
+
 		#print(intersection.get("collider"))
 		
 	else:

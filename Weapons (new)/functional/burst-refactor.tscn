@@ -174,6 +174,7 @@ Wait_Interval = 0.3
 Type = 1
 Projectile_Range = 1e+06
 dmg = 25
+headshot_multiplier = 2.0
 melee_dmg = 50
 
 [node name="burstModel" type="Node3D" parent="."]
