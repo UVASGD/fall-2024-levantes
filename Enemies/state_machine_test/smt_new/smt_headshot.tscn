@@ -1,10 +1,12 @@
-[gd_scene load_steps=104 format=4 uid="uid://bc67xpm0vv6rx"]
+[gd_scene load_steps=121 format=4 uid="uid://djo55mr5r4cts"]
 
-[ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/smt_update.gd" id="1_erjey"]
-[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_7c3xv"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="3_8xav0"]
-[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5iuv7"]
-[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_g4v2e"]
+[ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/smt_update.gd" id="1_63ilt"]
+[ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_qc3fo"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="3_5rubo"]
+[ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_olxo3"]
+[ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_ygh2p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ks3p"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5e5wr"]
 
@@ -13,8 +15,6 @@ albedo_color = Color(0.0628838, 0.00684975, 0.00212042, 1)
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 15.2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_6ks3p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyt8t"]
 height = 1.28489
@@ -63,10 +63,167 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_us75h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_03fcp"]
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_mlala"]
+default_input_values = [0, 0.0, 1, 0.1]
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_my3rd"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+expanded_output_ports = [0]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_gknvb"]
+parameter_name = "LightColor"
+default_value_enabled = true
+default_value = Color(5, 0.298, 0.236, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_udcvp"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_wk6vs"]
+parameter_name = "Strength"
+default_value_enabled = true
+default_value = 2.0
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_j0jws"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_egjrh"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_fvd7y"]
+function = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_fyt0d"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+default_value = Color(0.226707, 0.226707, 0.226707, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rqqha"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_namgt"]
+noise = SubResource("FastNoiseLite_rqqha")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_aax81"]
+expanded_output_ports = [0]
+texture = SubResource("NoiseTexture2D_namgt")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_fk2d8"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_x2000"]
+default_input_values = [1, -1.0, 2, 1.0, 3, 0.0, 4, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_dxmn6"]
+parameter_name = "FloatParameter"
+default_value_enabled = true
+default_value = -0.12
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_4yryr"]
+operator = 2
+
+[sub_resource type="VisualShader" id="VisualShader_wpbld"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 ColorParameter : source_color = vec4(0.226707, 0.226707, 0.226707, 1.000000);
+uniform sampler2D tex_frg_4;
+uniform float Strength = 2;
+uniform vec4 LightColor : source_color = vec4(5.000000, 0.298000, 0.236000, 1.000000);
+uniform float FloatParameter = -0.11999999731779;
+
+
+
+void fragment() {
+// ColorParameter:18
+	vec4 n_out18p0 = ColorParameter;
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_frg_4, UV);
+	float n_out4p1 = n_out4p0.r;
+
+
+// FloatParameter:14
+	float n_out14p0 = Strength;
+
+
+// VectorCompose:15
+	vec3 n_out15p0 = vec3(n_out14p0, n_out14p0, n_out14p0);
+
+
+// ColorParameter:12
+	vec4 n_out12p0 = LightColor;
+
+
+// FloatParameter:8
+	float n_out8p0 = FloatParameter;
+
+
+// FloatOp:10
+	float n_in10p1 = 0.10000;
+	float n_out10p0 = n_out8p0 + n_in10p1;
+
+
+// Mix:13
+	vec4 n_in13p0 = vec4(0.00000, 0.00000, 0.00000, 0.00000);
+	vec4 n_out13p0 = mix(n_in13p0, n_out12p0, vec4(n_out10p0));
+
+
+// Step:11
+	vec4 n_out11p0 = step(vec4(n_out4p1), n_out13p0);
+
+
+// VectorOp:16
+	vec3 n_out16p0 = n_out15p0 * vec3(n_out11p0.xyz);
+
+
+// Output:0
+	ALBEDO = vec3(n_out18p0.xyz);
+	ALPHA = n_out4p0.x;
+	EMISSION = n_out16p0;
+	ALPHA_SCISSOR_THRESHOLD = n_out8p0;
+
+
+}
+"
+modes/cull = 2
+nodes/fragment/0/position = Vector2(940, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_aax81")
+nodes/fragment/4/position = Vector2(-240, 20)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_fk2d8")
+nodes/fragment/5/position = Vector2(-1360, 940)
+nodes/fragment/7/node = SubResource("VisualShaderNodeRemap_x2000")
+nodes/fragment/7/position = Vector2(-540, 940)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_dxmn6")
+nodes/fragment/8/position = Vector2(-1320, 640)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_4yryr")
+nodes/fragment/9/position = Vector2(-940, 760)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_mlala")
+nodes/fragment/10/position = Vector2(-320, 340)
+nodes/fragment/11/node = SubResource("VisualShaderNodeStep_my3rd")
+nodes/fragment/11/position = Vector2(120, 400)
+nodes/fragment/12/node = SubResource("VisualShaderNodeColorParameter_gknvb")
+nodes/fragment/12/position = Vector2(-720, 280)
+nodes/fragment/13/node = SubResource("VisualShaderNodeMix_udcvp")
+nodes/fragment/13/position = Vector2(-140, 500)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatParameter_wk6vs")
+nodes/fragment/14/position = Vector2(160, 600)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorCompose_j0jws")
+nodes/fragment/15/position = Vector2(480, 520)
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_egjrh")
+nodes/fragment/16/position = Vector2(640, 280)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_fvd7y")
+nodes/fragment/17/position = Vector2(-760, 780)
+nodes/fragment/18/node = SubResource("VisualShaderNodeColorParameter_fyt0d")
+nodes/fragment/18/position = Vector2(345.116, -131.994)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 1, 8, 0, 9, 0, 5, 0, 9, 1, 4, 1, 11, 0, 12, 0, 13, 1, 10, 0, 13, 2, 13, 0, 11, 1, 14, 0, 15, 0, 14, 0, 15, 1, 14, 0, 15, 2, 15, 0, 16, 0, 11, 0, 16, 1, 16, 0, 0, 5, 9, 0, 17, 0, 17, 0, 7, 0, 8, 0, 10, 0, 8, 0, 0, 19, 18, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8jmn"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -106,10 +263,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vmsle")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2cfd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xitfj"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(5, 0.188, 0.16, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -147,10 +304,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_shu7a")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w570"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2ldi"]
 render_priority = 0
-shader = ExtResource("3_8xav0")
-shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
+shader = ExtResource("3_5rubo")
+shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
 shader_parameter/FloatParameter = -0.12
@@ -261,10 +418,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vkove")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtccx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np7ie"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -304,10 +461,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n05tn")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybf5b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnfpa"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(5, 0.188, 0.16, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -347,10 +504,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kggjl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fc2a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wytdf"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -390,10 +547,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c7aar")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_auwas"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6mxc"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -433,10 +590,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l8df0")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ees23"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8hcdc"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -476,10 +633,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ji82i")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxbc2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqpyq"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -519,10 +676,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j81tt")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_arwjn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rrc0"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0, 0, 0, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -668,10 +825,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xxah4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hf68"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfmha"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_8xav0")
+shader = SubResource("VisualShader_wpbld")
 shader_parameter/ColorParameter = Color(0.137255, 0.137255, 0.137255, 1)
 shader_parameter/Strength = 2.0
 shader_parameter/LightColor = Color(5, 0.298, 0.236, 1)
@@ -1362,9 +1519,18 @@ _data = {
 "smt_shoot": SubResource("Animation_bk6ch")
 }
 
-[node name="smt_update" type="CharacterBody3D" groups=["enemies"]]
+[node name="smt_headshot" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="head_hitbox" type="CollisionShape3D" parent="Area3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00399, 0)
+shape = SubResource("SphereShape3D_6ks3p")
+
+[node name="smt_update" type="CharacterBody3D" parent="." groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.678088, 0)
-script = ExtResource("1_erjey")
+script = ExtResource("1_63ilt")
 gun_path = "res://Weapons (new)/husk/husk_smg_future.tscn"
 SPEED = 10
 RETREAT_SPEED = 2
@@ -1375,285 +1541,280 @@ projectile_speed = 80
 min_firing_speed_in_seconds = 1.0
 max_firing_speed_in_seconds = 1.5
 
-[node name="indicator" type="MeshInstance3D" parent="."]
+[node name="indicator" type="MeshInstance3D" parent="smt_update"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.50131, 0)
 layers = 2
 mesh = SubResource("SphereMesh_5e5wr")
 surface_material_override/0 = SubResource("StandardMaterial3D_36y7c")
 
-[node name="head_hitbox" type="CollisionShape3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68208, 0)
-shape = SubResource("SphereShape3D_6ks3p")
-
-[node name="hitbox" type="CollisionShape3D" parent="." groups=["hitboxes"]]
+[node name="hitbox" type="CollisionShape3D" parent="smt_update" groups=["hitboxes"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000244141, 0.700247, -0.00366211)
 shape = SubResource("CapsuleShape3D_cyt8t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="smt_update"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_ulsyh")
 mesh = SubResource("CapsuleMesh_leyqv")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="smt_update"]
 avoidance_enabled = true
 radius = 2.0
 
-[node name="chase" type="Area3D" parent="."]
+[node name="chase" type="Area3D" parent="smt_update"]
 unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="chase"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smt_update/chase"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
-[node name="chill" type="Area3D" parent="."]
+[node name="chill" type="Area3D" parent="smt_update"]
 unique_name_in_owner = true
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="chill"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smt_update/chill"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_gupe6")
 
-[node name="x_axis" type="Node3D" parent="."]
+[node name="x_axis" type="Node3D" parent="smt_update"]
 unique_name_in_owner = true
 transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
-script = ExtResource("2_7c3xv")
+script = ExtResource("2_qc3fo")
 
-[node name="x_axis_model_group" type="Node3D" parent="x_axis"]
+[node name="x_axis_model_group" type="Node3D" parent="smt_update/x_axis"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Base" type="Node3D" parent="x_axis/x_axis_model_group"]
+[node name="Base" type="Node3D" parent="smt_update/x_axis/x_axis_model_group"]
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="smt_update/x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.904153, 0, -3.55271e-15, 0, 0.904153, 0, 3.55271e-15, 0, 0.904153, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ob8px")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_03fcp")
+surface_material_override/0 = SubResource("ShaderMaterial_v8jmn")
 
-[node name="Flame" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
+[node name="Flame" type="MeshInstance3D" parent="smt_update/x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.779612, 0, 0, 0, 0.779612, 0, 0, 0, 0.779612, 0, 0.0462801, 0)
 transparency = 0.5
 mesh = SubResource("ArrayMesh_gpuuw")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_u2cfd")
+surface_material_override/0 = SubResource("ShaderMaterial_xitfj")
 
-[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_model_group/Base"]
+[node name="BackPack" type="MeshInstance3D" parent="smt_update/x_axis/x_axis_model_group/Base"]
 transform = Transform3D(0.904153, 0, -3.55271e-15, 0, 0.904153, 0, 3.55271e-15, 0, 0.904153, 0, 0, 0)
 mesh = SubResource("ArrayMesh_125nh")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_6w570")
+surface_material_override/0 = SubResource("ShaderMaterial_r2ldi")
 
-[node name="Vision" type="Area3D" parent="x_axis/x_axis_model_group"]
+[node name="Vision" type="Area3D" parent="smt_update/x_axis/x_axis_model_group"]
 unique_name_in_owner = true
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/Vision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smt_update/x_axis/x_axis_model_group/Vision"]
 transform = Transform3D(-5.24536e-06, -120, 5.24537e-06, 0, -5.24537e-06, -120, 120, -5.24536e-06, 2.29282e-13, 2400, 1.494, 0)
 shape = SubResource("ConvexPolygonShape3D_oasru")
 
-[node name="RayCast3D" type="RayCast3D" parent="x_axis/x_axis_model_group"]
+[node name="RayCast3D" type="RayCast3D" parent="smt_update/x_axis/x_axis_model_group"]
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
-[node name="x_axis_shield" type="Node3D" parent="x_axis"]
+[node name="x_axis_shield" type="Node3D" parent="smt_update/x_axis"]
 unique_name_in_owner = true
 transform = Transform3D(-5.24536e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24536e-08, -1.31478e-09, -0.984708, -0.0300787)
 visible = false
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_shield"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="smt_update/x_axis/x_axis_shield"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0.116874, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_bx486")
 skeleton = NodePath("")
 
-[node name="BackPack" type="MeshInstance3D" parent="x_axis/x_axis_shield"]
+[node name="BackPack" type="MeshInstance3D" parent="smt_update/x_axis/x_axis_shield"]
 transform = Transform3D(0.904153, 0, 0, 0, 0.904153, 0, 0, 0, 0.904153, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_3e4t6")
 skeleton = NodePath("")
 
-[node name="y_axis" type="Node3D" parent="x_axis"]
+[node name="y_axis" type="Node3D" parent="smt_update/x_axis"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
-script = ExtResource("2_7c3xv")
+script = ExtResource("2_qc3fo")
 
-[node name="projectile_origin_spot" type="Marker3D" parent="x_axis/y_axis"]
+[node name="projectile_origin_spot" type="Marker3D" parent="smt_update/x_axis/y_axis"]
 unique_name_in_owner = true
 transform = Transform3D(2.12299e-14, 11.1111, -4.85682e-07, 4.85683e-07, -4.85682e-07, -11.1111, -11.1111, 0, -4.85683e-07, -2.89837, -1.84555, -18.7508)
 
-[node name="y_axis_model_group" type="Node3D" parent="x_axis/y_axis"]
+[node name="y_axis_model_group" type="Node3D" parent="smt_update/x_axis/y_axis"]
 transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08, -1, -1, 0, -4.37113e-08, -7.40497, 3.23681e-07, 0)
 
-[node name="enemy_head" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+[node name="enemy_head" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_model_group"]
 
-[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
+[node name="Head" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/enemy_head"]
 mesh = SubResource("ArrayMesh_pjpgm")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_xtccx")
+surface_material_override/0 = SubResource("ShaderMaterial_np7ie")
 
-[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
+[node name="Face" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/enemy_head"]
 mesh = SubResource("ArrayMesh_rj233")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_ybf5b")
+surface_material_override/0 = SubResource("ShaderMaterial_fnfpa")
 
-[node name="Mohawk" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/enemy_head"]
+[node name="Mohawk" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/enemy_head"]
 mesh = SubResource("ArrayMesh_ejswj")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_7fc2a")
+surface_material_override/0 = SubResource("ShaderMaterial_wytdf")
 
-[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+[node name="leftarm" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_model_group"]
 
-[node name="LeftForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
+[node name="LeftForearm" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 0.22331, 3.09609, -4.76425)
 mesh = SubResource("ArrayMesh_su664")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_auwas")
+surface_material_override/0 = SubResource("ShaderMaterial_x6mxc")
 
-[node name="LeftHand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/leftarm"]
+[node name="LeftHand" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/leftarm"]
 transform = Transform3D(-0.201213, -0.680015, 1.21238, 0.890429, -1.00375, -0.415214, 1.06744, 0.709117, 0.574895, 0.22331, 2.91627, -4.2082)
 mesh = SubResource("ArrayMesh_r48m8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_ees23")
+surface_material_override/0 = SubResource("ShaderMaterial_8hcdc")
 
-[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
+[node name="rightarm" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_model_group"]
 
-[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
+[node name="RightForearm" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.570999, 0.383809, 1.22451, 1.27296, 3.99603e-07, -0.593591, -0.162205, 1.3511, -0.347848, 0.318876, 5.35682, 5.56527)
 mesh = SubResource("ArrayMesh_6uar7")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_hxbc2")
+surface_material_override/0 = SubResource("ShaderMaterial_sqpyq")
 
-[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
+[node name="Righthand" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.355699, 0.11866, 1.35358, 1.35631, -0.115106, -0.346327, 0.0816698, 1.39479, -0.143734, -0.173245, 3.28212, 3.49625)
 mesh = SubResource("ArrayMesh_gvcge")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_arwjn")
+surface_material_override/0 = SubResource("ShaderMaterial_8rrc0")
 
-[node name="alien_pistol" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
+[node name="alien_pistol" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 11.4766, 2.75096, 2.84834)
 
-[node name="Empty" type="Node3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
+[node name="Empty" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
 transform = Transform3D(25.2239, 0, 0, 0, 0, -25.2239, 0, 1, 0, 0, 0, 0)
 
-[node name="Cylinder" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
+[node name="Cylinder" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -4.67317, 17.3517, 10)
 material_override = SubResource("StandardMaterial3D_h4u62")
 mesh = SubResource("ArrayMesh_pshd5")
 skeleton = NodePath("")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
 transform = Transform3D(0, -1.84563, 0, 1.84563, 0, 0, 0, 0, 1, -2.94923, 17.3517, 10)
 material_override = SubResource("StandardMaterial3D_h4u62")
 mesh = SubResource("ArrayMesh_586pr")
 skeleton = NodePath("")
 
-[node name="Cylinder_002" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
+[node name="Cylinder_002" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm/alien_pistol"]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -4.67317, 1.9459, 10)
 material_override = SubResource("StandardMaterial3D_qa660")
 mesh = SubResource("ArrayMesh_5gmfx")
 skeleton = NodePath("")
 
-[node name="RightWrist" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/rightarm"]
+[node name="RightWrist" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_model_group/rightarm"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -0.267176, 4.19144, 5.79651)
 mesh = SubResource("ArrayMesh_t4rfi")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_4hf68")
+surface_material_override/0 = SubResource("ShaderMaterial_kfmha")
 
-[node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
+[node name="y_axis_shield" type="Node3D" parent="smt_update/x_axis/y_axis"]
 unique_name_in_owner = true
 transform = Transform3D(5.21113e-15, 1.2, -5.24537e-08, 1.19217e-07, -5.24537e-08, -1.2, -1.2, 0, -1.19217e-07, -8.08735, 3.51658e-07, 0.0423657)
 visible = false
 
-[node name="enemy_head_shield" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+[node name="enemy_head_shield" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_shield"]
 
-[node name="Head" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
+[node name="Head" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(0.979937, 0, 0, 0, 1, 0, -3.55271e-15, 0, 1, -0.0646654, -0.984776, 0)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_qkemw")
 skeleton = NodePath("")
 
-[node name="Face" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
+[node name="Face" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(1.108, 0, 0, 0, 0.941883, 0, -7.10543e-15, 0, 1, -0.328974, -0.377965, 0.0405548)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_71r3l")
 skeleton = NodePath("")
 
-[node name="Mohawk" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/enemy_head_shield"]
+[node name="Mohawk" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/enemy_head_shield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430411, -1.61265, -6.66134e-16)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_03um6")
 skeleton = NodePath("")
 
-[node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+[node name="leftarm" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_shield"]
 
-[node name="LeftForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm"]
+[node name="LeftForearm" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/leftarm"]
 transform = Transform3D(-0.221799, -0.773681, 1.0677, 0.98153, -1.14201, -0.365663, 1.17666, 0.806792, 0.506288, 0.0993495, 3.57874, -4.14052)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_7s7tx")
 skeleton = NodePath("")
 
-[node name="LeftHand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/leftarm"]
+[node name="LeftHand" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/leftarm"]
 transform = Transform3D(-0.207271, -0.795632, 1.33402, 0.917237, -1.17441, -0.456874, 1.09958, 0.829682, 0.632577, -2.8603, 3.34839, -5.7896)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_3f6uq")
 skeleton = NodePath("")
 
-[node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_shield"]
+[node name="rightarm" type="Node3D" parent="smt_update/x_axis/y_axis/y_axis_shield"]
 
-[node name="RightForearm" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
+[node name="RightForearm" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.703721, 0.377625, 1.06655, 1.56884, 3.93164e-07, -0.51702, -0.199908, 1.32933, -0.302978, 0.183837, 5.31202, 4.84852)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_2r7ym")
 skeleton = NodePath("")
 
-[node name="Righthand" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
+[node name="Righthand" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.355699, 0.11866, 1.35358, 1.35631, -0.115106, -0.346327, 0.0816698, 1.39479, -0.143734, -1.93849, 3.60857, 3.00448)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_o2npx")
 skeleton = NodePath("")
 
-[node name="RightWrist" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_shield/rightarm"]
+[node name="RightWrist" type="MeshInstance3D" parent="smt_update/x_axis/y_axis/y_axis_shield/rightarm"]
 transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328266, -0.0572878, 1.33205, -0.44173, -0.267176, 4.19144, 5.79651)
 material_override = SubResource("StandardMaterial3D_s2dic")
 transparency = 0.99
 mesh = SubResource("ArrayMesh_wg12p")
 skeleton = NodePath("")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_5iuv7")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="smt_update"]
+stream = ExtResource("4_olxo3")
 volume_db = 5.818
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="smt_update"]
 libraries = {
 "": SubResource("AnimationLibrary_kxpsa")
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="smt_update"]
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_g4v2e")
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="smt_update"]
+stream = ExtResource("5_ygh2p")
 volume_db = -10.0
 
-[node name="VisionTimer" type="Timer" parent="."]
+[node name="VisionTimer" type="Timer" parent="smt_update"]
 wait_time = 3.0
 
-[node name="temp" type="Node3D" parent="."]
+[node name="temp" type="Node3D" parent="smt_update"]
 
-[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
-[connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
-[connection signal="body_entered" from="chill" to="." method="_on_chill_body_entered"]
-[connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
-[connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="smt_update/NavigationAgent3D" to="smt_update" method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_entered" from="smt_update/chase" to="smt_update" method="_on_chase_body_entered"]
+[connection signal="body_exited" from="smt_update/chase" to="smt_update" method="_on_chase_body_exited"]
+[connection signal="body_entered" from="smt_update/chill" to="smt_update" method="_on_chill_body_entered"]
+[connection signal="body_entered" from="smt_update/x_axis/x_axis_model_group/Vision" to="smt_update" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="smt_update/x_axis/x_axis_model_group/Vision" to="smt_update" method="_on_vision_body_exited"]
+[connection signal="animation_finished" from="smt_update/AnimationPlayer" to="smt_update" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="smt_update/Timer" to="smt_update" method="_on_timer_timeout"]

@@ -180,7 +180,7 @@ func take_damage(amount: int):
 		is_dying = true
 		death()
 
-func on_hit(damage_taken, collider):
+func on_hit(damage_taken, hs_mult, collider):
 	if not is_dying and collider == self:
 		$AudioStreamPlayer3D.play()
 		take_damage(damage_taken)

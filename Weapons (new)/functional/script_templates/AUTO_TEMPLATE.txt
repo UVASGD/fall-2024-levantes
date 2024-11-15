@@ -4,7 +4,7 @@ func shoot(): #default shoot logic
 	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		await play_fire()
-		_raycast(dmg, Projectile_Range)
+		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)

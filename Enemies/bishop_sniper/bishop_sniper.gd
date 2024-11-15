@@ -245,7 +245,7 @@ func spawn_reward():
 	instance.position = self.position + Vector3(0,0,1)
 	return
 	
-func on_hit(damage_taken, collider):
+func on_hit(damage_taken, hs_mult, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
 		x_axis_model_group.hide()

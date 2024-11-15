@@ -6,7 +6,7 @@ func shoot(): #default shoot logic
 		can_shoot = false
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
-		_raycast(dmg, Projectile_Range)
+		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 		await play_fire()
@@ -20,4 +20,4 @@ func shoot(): #default shoot logic
 		can_shoot = true
 
 func melee():
-	_raycast(melee_dmg, Melee_Range)
+	_raycast(melee_dmg, 1.0, Melee_Range)

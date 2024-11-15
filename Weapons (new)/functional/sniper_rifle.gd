@@ -6,7 +6,7 @@ func shoot(): #default shoot logic
 		can_shoot = false
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
-		_raycast(dmg, Projectile_Range)
+		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		await play_fire()
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
@@ -19,9 +19,9 @@ func shoot(): #default shoot logic
 		can_shoot = true
 
 func melee():
-	_raycast(melee_dmg, Melee_Range)
+	_raycast(melee_dmg, 1.0, Melee_Range)
 
-func _raycast(dmg, range):
+func _raycast(dmg, headshot_multiplier, range):
 	var camera = get_parent().get_parent()
 	var space_state = camera.get_world_3d().direct_space_state
 	var screen_center = get_viewport().size / 2
@@ -43,7 +43,7 @@ func _raycast(dmg, range):
 		if intersection.is_empty() or not intersection.get("collider").is_in_group("enemies"):
 			break  
 
-		SignalBus.emit_signal("enemy_hit", dmg, intersection.get("collider"))
+		SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, intersection.get("collider"))
 
 		# Update remaining range and start the next segment from the intersection point
 		var hit_position = intersection.get("position")

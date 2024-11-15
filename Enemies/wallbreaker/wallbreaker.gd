@@ -148,7 +148,7 @@ func take_damage(amount: int):
 		explode()
 		
 
-func on_hit(damage_taken, collider):
+func on_hit(damage_taken, hs_mult, collider):
 	if collider == hitbox:
 		$AudioStreamPlayer3D.play()
 		hit_animation_player.play("got_hit")

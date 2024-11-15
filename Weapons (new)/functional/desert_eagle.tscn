@@ -238,6 +238,7 @@ Type = 1
 Projectile_Range = 100000.0
 Melee_Range = 3.0
 dmg = 75
+headshot_multiplier = 2.0
 melee_dmg = 50
 
 [node name="deagle" type="Node3D" parent="."]
