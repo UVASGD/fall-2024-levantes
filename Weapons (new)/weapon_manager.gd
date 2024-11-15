@@ -2,6 +2,7 @@ extends Node3D
 var Shop_Weapon = "res://shop_weapon.gd"
 var throwable = "res://throwable.gd"
 var ammo = "res://ammo_drop.gd"
+var Powerup = "res://powerup.gd"
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
@@ -209,6 +210,8 @@ func buy():
 		var new_weapon = shop_weapon.sell()
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
+	elif(shop_ray.get_collider().get_parent() is Powerup):
+		shop_ray.get_collider().get_parent().apply()
 	else:
 		SignalBus.emit_signal("round_start")
 	return

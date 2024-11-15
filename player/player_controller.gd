@@ -12,7 +12,7 @@ enum PostDeath{DestroyNode, RestartScene}
 @export var post_death_action: PostDeath
 
 @export var max_shield_hp: int = 100
-@export var max_health_hp: int = 50
+@export var max_health_hp: int = 100
 
 var shield_hp: int
 var health_hp: int
