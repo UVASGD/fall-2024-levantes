@@ -125,7 +125,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-131.093, -59.6671)
 modes/cull = 2
 nodes/fragment/0/position = Vector2(940, 140)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_aax81")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://bc67xpm0vv6rx"]
+[gd_scene load_steps=104 format=4 uid="uid://bc67xpm0vv6rx"]
 
 [ext_resource type="Script" path="res://Enemies/state_machine_test/smt_new/smt_update.gd" id="1_erjey"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_7c3xv"]
@@ -14,9 +14,10 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 15.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
-radius = 0.623999
-height = 2.11801
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ks3p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyt8t"]
+height = 1.28489
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
 albedo_color = Color(0.427451, 1, 1, 1)
@@ -1368,9 +1369,15 @@ layers = 2
 mesh = SubResource("SphereMesh_5e5wr")
 surface_material_override/0 = SubResource("StandardMaterial3D_36y7c")
 
-[node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
-shape = SubResource("CapsuleShape3D_je42x")
+[node name="head_hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68208, 0)
+shape = SubResource("SphereShape3D_6ks3p")
+
+[node name="hitbox" type="CollisionShape3D" parent="." groups=["hitboxes"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000244141, 0.700247, -0.00366211)
+shape = SubResource("CapsuleShape3D_cyt8t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)

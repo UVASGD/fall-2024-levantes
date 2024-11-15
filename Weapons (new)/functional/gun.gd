@@ -17,7 +17,8 @@ class_name Gun extends Node3D
 @export var Wait_Ani: String
 @export var Melee_Ani: String
 
-@export var can_headshot: 
+@export var can_headshot: bool
+@export var headshot_multiplier: float
 
 @export var Fire_Sound: String
 @export var Reward_Amount: int
