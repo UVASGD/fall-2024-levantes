@@ -17,6 +17,8 @@ class_name Gun extends Node3D
 @export var Wait_Ani: String
 @export var Melee_Ani: String
 
+@export var can_headshot: 
+
 @export var Fire_Sound: String
 @export var Reward_Amount: int
 @export var Curr_Mag_Ammo: int
@@ -39,7 +41,6 @@ class_name Gun extends Node3D
 
 @export var ray_path: String
 @export var light_path: String
-
 
 
 signal hit(target)

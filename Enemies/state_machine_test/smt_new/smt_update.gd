@@ -48,6 +48,7 @@ var shot_count = 0
 var is_dead = false
 @onready var vision = %Vision
 @onready var hitbox = $"."
+@onready var head_hitbox = %head_hitbox
 
 func _ready():
 	if set_next_state:
@@ -215,6 +216,14 @@ func take_damage(amount: int):
 
 func on_hit(damage_taken, collider):
 	if not is_dying and collider == hitbox:
+		$AudioStreamPlayer3D.play()
+		x_axis_shield.show()
+		y_axis_shield.show()
+		await get_tree().create_timer(.1).timeout
+		x_axis_shield.hide()
+		y_axis_shield.hide()
+		take_damage(damage_taken)
+	elif not is_dying and collider == head_hitbox:
 		$AudioStreamPlayer3D.play()
 		x_axis_shield.show()
 		y_axis_shield.show()
