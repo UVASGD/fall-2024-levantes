@@ -32,8 +32,8 @@ func release_shot():
 	is_charging = false
 	if charge_time >= crit_time and charge_time < 1.0:
 		crit_shot()
-	#else:
-		#shoot()
+	else:
+		shoot()
 	charge_time = 0.0
 
 func shoot():
