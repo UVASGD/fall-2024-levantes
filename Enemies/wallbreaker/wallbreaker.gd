@@ -30,7 +30,8 @@ var state_lock_on = false
 var has_exploded = false
 
 @onready var vision = %Vision
-@onready var hitbox = $"."
+@onready var hitbox = %hitbox
+@onready var collider = $"."
 
 func _ready():
 	if set_next_state:
@@ -148,20 +149,18 @@ func take_damage(amount: int):
 		explode()
 		
 
-func on_hit(damage_taken, hs_mult, collider):
-	if collider == hitbox:
+func on_hit(damage_taken, hs_mult, col, shape):
+	#if not is_dying and (collider == hitbox or collider == head_hitbox):
+	if col==collider and (shape == 1 or shape == 0):
 		$AudioStreamPlayer3D.play()
-		hit_animation_player.play("got_hit")
-
-
+		$hit_animation_player.play("got_hit")
 		await get_tree().create_timer(.1).timeout
-
-
-		take_damage(damage_taken)
-	
-	pass
-
-
+		
+		var updated_dmg = damage_taken
+		#if collider == head_hitbox:
+		if shape == 0:
+			updated_dmg *= hs_mult
+		take_damage(updated_dmg)
 
 
 

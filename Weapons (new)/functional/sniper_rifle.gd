@@ -42,8 +42,10 @@ func _raycast(dmg, headshot_multiplier, range):
 		var intersection = space_state.intersect_ray(query)
 		if intersection.is_empty() or not intersection.get("collider").is_in_group("enemies"):
 			break  
-
-		SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, intersection.get("collider"))
+		
+		var collider = intersection.get("collider")
+		if collider is CharacterBody3D and collider.is_in_group("enemies"):
+			SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, collider, intersection.get("shape"))
 
 		# Update remaining range and start the next segment from the intersection point
 		var hit_position = intersection.get("position")

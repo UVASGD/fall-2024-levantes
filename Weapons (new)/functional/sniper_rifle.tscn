@@ -383,6 +383,7 @@ Type = 1
 Projectile_Range = 1e+06
 Melee_Range = 8.0
 dmg = 100
+headshot_multiplier = 2.0
 melee_dmg = 75
 
 [node name="sniper_rifle" type="Node3D" parent="."]

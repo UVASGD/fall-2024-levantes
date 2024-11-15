@@ -46,8 +46,10 @@ var is_dying = false
 
 var shot_count = 0
 var is_dead = false
-@onready var collider = $"."
+
 @onready var vision = %Vision
+
+@onready var collider = $"."
 @onready var hitbox = %hitbox
 @onready var head_hitbox = $"../Area3D"
 
@@ -231,9 +233,6 @@ func on_hit(damage_taken, hs_mult, col, shape):
 			updated_dmg *= hs_mult
 		take_damage(updated_dmg)
 		
-	print("this is the collider: " + str(collider))
-	print()
-	
 
 func can_enemy_see_player() -> bool:
 	var overlaps = vision.get_overlapping_bodies()

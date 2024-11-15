@@ -1,13 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=27 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
-[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="4_5v6kw"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_evsfr"]
 [ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="8_ukhhu"]
 [ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="8_wbfl7"]
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_xq5ue"]
 [ext_resource type="PackedScene" uid="uid://vbvy4uppo6py" path="res://Weapons (new)/husk/husk_sniper_rifle.tscn" id="9_ramk4"]
+[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="10_2ccum"]
+[ext_resource type="PackedScene" uid="uid://cb6lyhn01m8cn" path="res://Enemies/assassin/assassin.tscn" id="11_ymvqc"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -140,9 +141,6 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="sniper_rifle" parent="." instance=ExtResource("4_5v6kw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_evsfr")
 
@@ -153,7 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3324, 0.497864, -4.95767)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4009, 0, -21.6387)
 
 [node name="smt_update2" parent="." instance=ExtResource("8_wbfl7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0174, 0, -21.6387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0174, 0, -21.3483)
 
 [node name="smt_update3" parent="." instance=ExtResource("8_wbfl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6784, 0, -21.6387)
@@ -175,3 +173,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02663, 0.512262, 4.51722)
 
 [node name="playerspawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 1.82138, 2.50575, 0.873843)
+
+[node name="bishop_sniper" parent="." instance=ExtResource("10_2ccum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.82656, 0, -18.9212)
+
+[node name="assassin" parent="." instance=ExtResource("11_ymvqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4088, -9.53674e-07, -0.466227)
+
+[node name="smt_update6" parent="." instance=ExtResource("8_wbfl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7268, -0.678087, 14.3565)
+
+[node name="smt_update7" parent="." instance=ExtResource("8_wbfl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6561, -0.678087, 14.3565)
+
+[node name="smt_update8" parent="." instance=ExtResource("8_wbfl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9736, -0.678087, 14.3565)
+
+[node name="smt_update9" parent="." instance=ExtResource("8_wbfl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8577, -0.678087, 14.3565)
+
+[node name="smt_update10" parent="." instance=ExtResource("8_wbfl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.686, -0.678087, 14.3565)

@@ -32,7 +32,7 @@ func shoot():
 	pass
 
 func melee():
-	_raycast(melee_dmg, headshot_multiplier, Melee_Range)
+	_raycast(melee_dmg, 1.0, Melee_Range)
 
 func make_bullet_trail(target_pos: Vector3):
 	var bullet_dir = (target_pos - marker.global_position).normalized()

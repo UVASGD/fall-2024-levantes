@@ -7,6 +7,11 @@
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_ex7kl"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="5_6kyp3"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vqm7n"]
+resource_local_to_scene = true
+radius = 0.626365
+height = 1.56706
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2xkd"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -303,11 +308,6 @@ shader_parameter/Strength = 10.0
 shader_parameter/LightColor = Color(0.784314, 0.972549, 0.976471, 1)
 shader_parameter/FloatParameter = 0.6
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vqm7n"]
-resource_local_to_scene = true
-radius = 0.626365
-height = 1.56706
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_y7klq"]
 radius = 0.181508
 
@@ -379,6 +379,11 @@ SPEED = 50.0
 gun_path = "res://projectiles/husk_grenade.tscn"
 max_health = 70
 
+[node name="hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593332, 0)
+shape = SubResource("CapsuleShape3D_vqm7n")
+
 [node name="x_axis" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_hwhgo")
@@ -434,11 +439,6 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593332, 0)
 mesh = SubResource("CapsuleMesh_nsy43")
 surface_material_override/0 = SubResource("ShaderMaterial_gpra6")
-
-[node name="hitbox" type="CollisionShape3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593332, 0)
-shape = SubResource("CapsuleShape3D_vqm7n")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true

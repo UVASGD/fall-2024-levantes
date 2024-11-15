@@ -1,12 +1,14 @@
-[gd_scene load_steps=66 format=4 uid="uid://b15t3y58ec0li"]
+[gd_scene load_steps=67 format=4 uid="uid://b15t3y58ec0li"]
 
 [ext_resource type="Script" path="res://Enemies/hammerguy/hammerguy.gd" id="1_3nxlu"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="3_iq3mb"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_re83k"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_660g2"]
-radius = 1.2042
-height = 2.57631
+radius = 0.920298
+height = 2.08572
 
 [sub_resource type="Animation" id="Animation_0e7y8"]
 length = 0.001
@@ -688,10 +690,17 @@ points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, 
 script = ExtResource("1_3nxlu")
 gun_path = "res://Weapons (new)/husk/husk_desert_eagle.tscn"
 SPEED = 6
+max_health = 300
 damage = 20
 
+[node name="head_hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13372, 0)
+shape = SubResource("SphereShape3D_re83k")
+
 [node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0309163, 0.364565, -0.0255892)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0242375, -0.107306, -0.0255892)
 shape = SubResource("CapsuleShape3D_660g2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
