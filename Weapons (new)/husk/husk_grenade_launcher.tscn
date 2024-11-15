@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyqllsxnofeyj"]
+
+[ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_tl3ij"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxgiq"]
+size = Vector3(0.180664, 0.38147, 1.06348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2tdng"]
+
+[node name="husk_grenade_launcher" type="RigidBody3D"]
+can_sleep = false
+script = ExtResource("1_tl3ij")
+weapon_name = "grenade_launcher"
+current_ammo = 3
+reserve_ammo = 9
+real_weapon_path = "res://Weapons (new)/functional/grenade_launcher.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027832, -0.0515747, -0.0317383)
+shape = SubResource("BoxShape3D_uxgiq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.175686, 0, 0, 0, 0.315256, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_2tdng")

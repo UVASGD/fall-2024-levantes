@@ -174,6 +174,7 @@ Type = 1
 Projectile_Range = 10000.0
 Melee_Range = 5.0
 dmg = 15
+melee_dmg = 50
 
 [node name="smg_of_the_future" type="Node3D" parent="."]
 transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, -0.384714, 0, 0)

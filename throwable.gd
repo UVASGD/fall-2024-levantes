@@ -37,6 +37,8 @@ func throw():
 	gravity_scale = 1
 	print("throwing")
 	var playerRotation = get_parent().global_transform.basis.z.normalized()
+	var spawnpos = get_parent().position 
+	self.position = spawnpos
 	reparent(get_tree().root)
 	apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
 	print("collision delaying")

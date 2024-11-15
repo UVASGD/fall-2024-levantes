@@ -3,6 +3,8 @@ extends Node3D
 @onready var burst = preload("res://Weapons (new)/shop/shop_burst.tscn")
 @onready var sniper = preload("res://Weapons (new)/shop/shop_sniper.tscn")
 @onready var deagle = preload("res://Weapons (new)/shop/shop_deagle.tscn")
+@onready var gl = preload("res://Weapons (new)/shop/shop_grenade_launcher.tscn")
+@onready var vl = preload("res://Weapons (new)/shop/shop_void_launcher.tscn")
 var active_guns = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +21,7 @@ func _process(delta):
 	pass
 
 func add_guns():
-	var gun_list = [smg,burst,sniper,deagle]
+	var gun_list = [smg,burst,sniper,deagle,gl, vl]
 	for holder in $shop_model/gun_holders.get_children():
 		var gun = gun_list[randi_range(0,gun_list.size()-1)].instantiate()
 		gun.top_level = true

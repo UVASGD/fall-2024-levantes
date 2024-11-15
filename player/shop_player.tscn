@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=35 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -9,7 +9,9 @@
 [ext_resource type="AnimationLibrary" uid="uid://cwlsi6dcs7741" path="res://Weapons (new)/animations/DesertEagle_animations.res" id="7_wi51j"]
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="8_8v5i7"]
 [ext_resource type="Script" path="res://player/ShopRay.gd" id="8_58d3w"]
+[ext_resource type="AnimationLibrary" uid="uid://ckl0v5h8vmwdr" path="res://Weapons (new)/animations/grenade_launcher_animations.res" id="8_77fqt"]
 [ext_resource type="Texture2D" uid="uid://caxp7w80k15pl" path="res://Textures/hurt_texture.png" id="9_amdiu"]
+[ext_resource type="AnimationLibrary" uid="uid://c46shq4j0vlux" path="res://Weapons (new)/animations/void_launcher_animations.res" id="9_l7y2e"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -437,6 +439,70 @@ _data = {
 "RESET": SubResource("Animation_u3vhc")
 }
 
+[sub_resource type="Animation" id="Animation_rrl2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../grenade_launcher/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../grenade_launcher/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sao6o"]
+_data = {
+"RESET": SubResource("Animation_rrl2k")
+}
+
+[sub_resource type="Animation" id="Animation_oq5il"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../void_launcher/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../void_launcher/MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekukj"]
+_data = {
+"RESET": SubResource("Animation_oq5il")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ee15"]
 size = Vector3(1, 2.2218, 1.83057)
 
@@ -491,51 +557,6 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_bgojj"]
-resource_name = "shield_hurt"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shield_hurt_texture:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5, 1, 1.5, 2, 2.5, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1), Color(1, 1, 1, 0.4), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shield_hurt_texture:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%Head/..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"playing_shield_hurt_on"
-}, {
-"args": [],
-"method": &"stop_shield_hurt"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_ad0nn"]
 resource_name = "health_hurt"
 length = 7.0
@@ -578,6 +599,51 @@ tracks/2/keys = {
 }, {
 "args": [],
 "method": &"stop_health_hurt"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bgojj"]
+resource_name = "shield_hurt"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shield_hurt_texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 1, 1.5, 2, 2.5, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1), Color(1, 1, 1, 0.4), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shield_hurt_texture:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Head/..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"playing_shield_hurt_on"
+}, {
+"args": [],
+"method": &"stop_shield_hurt"
 }]
 }
 
@@ -677,6 +743,18 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_lo1cg"),
 "DesertEagle_animations": ExtResource("7_wi51j")
+}
+
+[node name="GRENADE_LAUNCHER" type="AnimationPlayer" parent="Head/Camera3D/weapon manager/AnimationPlayers2"]
+libraries = {
+"": SubResource("AnimationLibrary_sao6o"),
+"grenade_launcher": ExtResource("8_77fqt")
+}
+
+[node name="VOID_LAUNCHER" type="AnimationPlayer" parent="Head/Camera3D/weapon manager/AnimationPlayers2"]
+libraries = {
+"": SubResource("AnimationLibrary_ekukj"),
+"void_launcher": ExtResource("9_l7y2e")
 }
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
