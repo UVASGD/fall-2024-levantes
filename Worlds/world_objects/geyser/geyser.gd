@@ -5,6 +5,8 @@ extends Node3D
 func _ready() -> void:
 	area.connect("body_entered", _on_body_entered)
 	area.connect("body_exited", _on_body_exited)
+	$AnimationPlayer.connect("animation_finished", play_animation)
+	play_animation()
 	pass # Replace with function body.
 
 
@@ -19,3 +21,6 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
 		body.jump_velocity = 9.0
+
+func play_animation():
+	$AnimationPlayer.play("idle")
