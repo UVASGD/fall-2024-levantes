@@ -164,7 +164,7 @@ Reload_Ani = "smg_animations/smg_reload"
 Dequip_Ani = "smg_animations/smg_dequip"
 Melee_Ani = "smg_animations/smg_melee"
 Fire_Sound = "res://audio/smg_sound_levantes.mp3"
-Reward_Amount = 30
+Reward_Amount = 50
 Curr_Mag_Ammo = 50
 Reserve_Ammo = 150
 Max_Mag_Capacity = 50
@@ -173,7 +173,7 @@ Shoot_Cooldown_Ms = 100
 Type = 1
 Projectile_Range = 10000.0
 Melee_Range = 5.0
-dmg = 15
+dmg = 13
 melee_dmg = 50
 
 [node name="smg_of_the_future" type="Node3D" parent="."]

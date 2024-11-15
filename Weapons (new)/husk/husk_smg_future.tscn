@@ -155,8 +155,8 @@ collision_mask = 13
 can_sleep = false
 script = ExtResource("1_akowq")
 weapon_name = "SMG"
-current_ammo = 30
-reserve_ammo = 60
+current_ammo = 50
+reserve_ammo = 150
 real_weapon_path = "res://Weapons (new)/functional/smg_refactor.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
