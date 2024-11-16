@@ -276,51 +276,54 @@ Shoot_Cooldown_Ms = 1
 Burst_Count = 3
 Wait_Interval = 0.3
 
-[node name="alien_pistol_overhaul" type="Node3D" parent="."]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.153696, -0.255922, -0.136332)
+[node name="rotator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306708, 0.082404, -0.203021)
 
-[node name="Chase" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="alien_pistol_overhaul" type="Node3D" parent="rotator"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.153012, -0.338326, 0.0666889)
+
+[node name="projectile_spawn" type="Marker3D" parent="rotator/alien_pistol_overhaul"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.07287, 17.7941, 24.7918)
+
+[node name="Chase" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.0584, -3.12899)
 mesh = SubResource("ArrayMesh_02cfv")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_0cu7l")
 
-[node name="Grip" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Grip" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.0584, -3.12899)
 mesh = SubResource("ArrayMesh_0t5bu")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_x4vxi")
 
-[node name="Barrel" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Barrel" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.0584, -3.12899)
 mesh = SubResource("ArrayMesh_hhn8s")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lsejy")
 
-[node name="Mag" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Mag" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.1104, 0.375023)
 mesh = SubResource("ArrayMesh_ft5rq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
 
-[node name="Pipes" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Pipes" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(0.203504, 0, 0, 0, 0, -0.203504, 0, 0.203504, 0, 0, 23.6371, 5.46037)
 mesh = SubResource("ArrayMesh_3r3n3")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
 
-[node name="Connector" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Connector" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.0584, -3.12899)
 mesh = SubResource("ArrayMesh_pvy0c")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
 
-[node name="Trigger" type="MeshInstance3D" parent="alien_pistol_overhaul"]
+[node name="Trigger" type="MeshInstance3D" parent="rotator/alien_pistol_overhaul"]
 transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0, 19.4556, -3.45562)
 mesh = SubResource("ArrayMesh_hjbfg")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
-
-[node name="projectile_spawn" type="Marker3D" parent="alien_pistol_overhaul"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.913321, 16.8819, 26.2769)
