@@ -26,8 +26,11 @@ var is_dead = false
 @onready var fire_timer = $fire_timer
 @onready var vision_timer = $VisionTimer
 
+@onready var rig_animation_player : AnimationPlayer = $x_axis/x_axis_model_group/TankRig/AnimationPlayer
+
 var projectile = preload("res://projectiles/sniper_projectile.tscn")
 var ammo_drop = preload("res://Weapons (new)/husk/ammo_drop.tscn")
+var shot_sound = preload("res://audio/tank_arm_shot.mp3")
 @onready var projectile_origin_spot = %projectile_origin_spot
 var vision_timer_done = false
 var is_firing = false
@@ -139,6 +142,7 @@ func idle():
 
 func chase(delta):
 	target = get_tree().get_nodes_in_group("Player")[0]
+	rig_animation_player.play("Walking")
 	
 	
 	face_target(delta)
@@ -178,6 +182,7 @@ func retreat(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(-new_velocity)
+	rig_animation_player.play("Walking")
 
 
 func no_move_debug(delta):
@@ -193,18 +198,20 @@ func shoot():
 	if can_enemy_see_player():
 		#find player position
 		#play attack animation
-		var orbital_strike = load("res://Enemies/tank/orbital_strike.tscn").instantiate()
-		#spawn orbital strike
-		orbital_strike.set_global_position(PlayerManager.player.get_global_position())
-		orbital_strike.set_scale(Vector3(30,30,30))
-		get_tree().root.add_child(orbital_strike)
+		rig_animation_player.play("Shooting")
 		print("attack")
 	else:
 		state_lock_on = false
 	
-
-
-
+func launch_missile() -> void:
+	var orbital_strike = load("res://Enemies/tank/orbital_strike.tscn").instantiate()
+	#spawn orbital strike
+	orbital_strike.set_global_position(PlayerManager.player.get_global_position())
+	orbital_strike.set_scale(Vector3(30,30,30))
+	get_tree().root.add_child(orbital_strike)
+	$AudioStreamPlayer3D.stream = shot_sound
+	$AudioStreamPlayer3D.play()
+	print("IM SHOOTING HOLY SHIT WOOOOOOOOOOO")
 
 	
 
