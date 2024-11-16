@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://c6ykdnjfk4csj"]
 
-[ext_resource type="Script" path="res://Weapons (new)/models/alien_pistol_overhaul.gd" id="1_ivfeq"]
+[ext_resource type="Script" path="res://Weapons (new)/functional/alien_pistol_overhaul.gd" id="1_ivfeq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ejh"]
 
@@ -266,6 +266,7 @@ Equip_Ani = "alien_pistol/equip"
 Fire_Ani = "alien_pistol/fire"
 Reload_Ani = "alien_pistol/reload"
 Dequip_Ani = "alien_pistol/dequip"
+Fire_Sound = "res://audio/laser2.mp3"
 Reward_Amount = 3
 Curr_Mag_Ammo = 9
 Reserve_Ammo = 27
