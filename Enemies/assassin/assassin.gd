@@ -186,7 +186,8 @@ func on_hit(damage_taken, hs_mult, col, shape):
 		$AudioStreamPlayer3D.play()
 		#x_axis_shield.show()
 		#y_axis_shield.show()
-		await get_tree().create_timer(.1).timeout
+		Animation_Player.play("got_hit")
+		#await get_tree().create_timer(.1).timeout
 		#x_axis_shield.hide()
 		#y_axis_shield.hide()
 		
@@ -255,8 +256,8 @@ func death():
 	is_dead = true
 	spawn_reward()
 	next_state = "idle"
-	#Animation_Player.play("smt_death")
-	#await Animation_Player.animation_finished
+	Animation_Player.play("death")
+	await Animation_Player.animation_finished
 	$".".queue_free()
 	SignalBus.emit_signal("enemy_death")
 	pass
