@@ -11,6 +11,8 @@ signal object_hit
 
 signal update_ammo(ammo_amount)
 
+signal call_hud_initialize
+
 signal shockwave_death
 
 signal round_start

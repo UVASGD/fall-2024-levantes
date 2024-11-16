@@ -90,6 +90,7 @@ func shoot(): #default shoot logic
 		if Curr_Mag_Ammo == 0:
 			if Reserve_Ammo > 0:
 				await reload()
+				SignalBus.emit_signal("call_hud_initialize")
 			else:
 				can_shoot = false #out of all ammo
 	pass
@@ -116,11 +117,12 @@ func reload():
 	animation_player.play(Reload_Ani)
 	Curr_Mag_Ammo += refill_amount
 	await animation_player.animation_finished
-	
+	SignalBus.emit_signal("call_hud_initialize")
 	#hud.update_ammo(Curr_Mag_Ammo, Reserve_Ammo, Weapon_Indicator)
 	can_reload = true
 	can_shoot = true
 	can_dequip = true
+	
 	pass
 
 func dequip():

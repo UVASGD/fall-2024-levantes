@@ -13,6 +13,7 @@ var health_hp: int
 @export var damage = 15
 @export var visibility_range = 1000000
 
+@onready var assassin_animation_player : AnimationPlayer = $x_axis/x_axis_model_group/AssassinRig/AnimationPlayer
 
 @onready var x_axis = %x_axis
 @onready var y_axis = %y_axis
@@ -55,6 +56,7 @@ func _ready():
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
+	
 	
 func _physics_process(delta):
 	if not self.is_on_floor():
@@ -130,6 +132,7 @@ func chase(delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
+	assassin_animation_player.play("Floating")
 
 	nav_agent.set_velocity(new_velocity)
 
@@ -138,10 +141,12 @@ func melee(delta):
 	if not lock:
 		lock = true
 		Animation_Player.play("attack_state")
+		assassin_animation_player.play("Slash")
 		await Animation_Player.animation_finished
 		next_state = "retreat"
 		lock = false
 		knife.is_attacking = false
+		
 
 
 func retreat(delta):

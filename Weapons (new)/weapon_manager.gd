@@ -36,6 +36,7 @@ func _ready():
 	if other_weapon:
 		can_switch = true
 	SignalBus.connect("update_ammo", call_update_ammo)
+	SignalBus.connect("call_hud_initialize", call_hud_initialize)
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
@@ -72,7 +73,7 @@ func _input(event):
 		current_weapon.shoot()
 		
 	if event.is_action_pressed("Reload"):
-		if current_weapon == null or grenade_equipped:
+		if current_weapon == null or grenade_equipped or current_weapon.Curr_Mag_Ammo == current_weapon.Max_Mag_Capacity or current_weapon.Reserve_Ammo == 0:
 			return
 		can_switch = false
 		await current_weapon.reload()

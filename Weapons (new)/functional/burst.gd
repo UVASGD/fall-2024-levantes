@@ -20,6 +20,7 @@ func shoot():
 		if Curr_Mag_Ammo == 0:
 			if Reserve_Ammo > 0:
 				await reload()
+				
 			else:
 				can_shoot = false
 				return
