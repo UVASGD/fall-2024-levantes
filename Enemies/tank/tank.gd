@@ -192,11 +192,12 @@ func no_move_debug(delta):
 func shoot():
 	if can_enemy_see_player():
 		#find player position
-		var position = PlayerManager.player.global_position
 		#play attack animation
 		var orbital_strike = load("res://Enemies/tank/orbital_strike.tscn").instantiate()
 		#spawn orbital strike
-		orbital_strike.position = position
+		orbital_strike.set_global_position(PlayerManager.player.get_global_position())
+		orbital_strike.set_scale(Vector3(30,30,30))
+		get_tree().root.add_child(orbital_strike)
 		print("attack")
 	else:
 		state_lock_on = false
