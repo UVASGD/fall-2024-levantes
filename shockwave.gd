@@ -3,7 +3,7 @@ extends Node3D
 @onready var inner = $inner
 @onready var outer = $outer
 @onready var donut = $donut
-@export var speed:float
+@export var speed:float = 0.08
 @export var damage:int
 @onready var animation_player = $AnimationPlayer
 var outerspeed

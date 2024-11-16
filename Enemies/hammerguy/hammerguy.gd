@@ -117,7 +117,8 @@ func chase(delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
-
+	if not Animation_Player.current_animation == "attack":
+		Animation_Player.play("idle")
 	nav_agent.set_velocity(new_velocity)
 	if can_enemy_see_player():
 		attack()
