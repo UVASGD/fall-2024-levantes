@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	$"../model".rotation_degrees = $"../model".rotation_degrees + Vector3(0,1,0)
 	self.rotation_degrees = self.rotation_degrees + Vector3(0,1,0)
 	pass
@@ -30,4 +30,5 @@ func _process(delta: float) -> void:
 func despawn():
 	var collision = get_child(0)
 	collision.disabled = true
+	SignalBus.emit_signal("call_hud_initialize")
 	get_parent().queue_free()

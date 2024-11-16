@@ -1,8 +1,9 @@
-[gd_scene load_steps=75 format=4 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=79 format=4 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
 [ext_resource type="Script" path="res://Weapons (new)/melee/melee_knife.gd" id="3_0ukys"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="3_2g47c"]
 [ext_resource type="PackedScene" uid="uid://cn5mh01l81yep" path="res://Enemies/assassin/assassin_model.tscn" id="3_4h8is"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
@@ -104,6 +105,16 @@ shadow_mesh = SubResource("ArrayMesh_r5704")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tai5b"]
 albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_frxnu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74n2g"]
+render_priority = 0
+shader = ExtResource("3_2g47c")
+shader_parameter/ColorParameter = Color(0, 0, 0, 1)
+shader_parameter/Strength = 10.0
+shader_parameter/LightColor = Color(0.655509, 0.565807, 1, 1)
+shader_parameter/FloatParameter = 0.5
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3k1g"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n86tt"]
@@ -138,6 +149,8 @@ shadow_mesh = SubResource("ArrayMesh_n86tt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx4n2"]
 albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kcuuw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lim5"]
 
@@ -846,7 +859,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.47242, 0.547585, 8.03444)]
+"values": [Vector3(-0.086641, 3.59355, 8.2764)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -858,7 +871,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.77635e-14, 1.77635e-14, 2.35619)]
+"values": [Vector3(0, 1.0472, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1334,6 +1347,30 @@ tracks/19/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.086641, 3.59355, 8.2764)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.87143e-06, 1.0472, -2.23517e-06)]
+}
 
 [sub_resource type="Animation" id="Animation_nms6l"]
 resource_name = "enter_cloak_state"
@@ -1361,7 +1398,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.47242, 0.547585, 8.03444)]
+"values": [Vector3(-0.086641, 3.59355, 8.2764)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1373,7 +1410,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.77635e-14, 1.77635e-14, 2.35619)]
+"values": [Vector3(3.87143e-06, 1.0472, -2.23517e-06)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1870,6 +1907,11 @@ mesh = SubResource("ArrayMesh_0d7o8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_tai5b")
 
+[node name="shield_fx_head" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cylinder_002"]
+transform = Transform3D(3.5, 2.98023e-08, 0, -2.98023e-08, 3.5, -1.77636e-15, 0, 7.10543e-15, 3.5, 0.288095, -0.0322666, 2.23517e-08)
+mesh = SubResource("SphereMesh_frxnu")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
+
 [node name="left_hand" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
 transform = Transform3D(0.211984, 0.500234, 0.83954, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922168, 5.09106, 5.93612, -1.4436)
 bone_name = "left_hand"
@@ -1880,10 +1922,21 @@ mesh = SubResource("ArrayMesh_pxv3k")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qx4n2")
 
+[node name="shield_left_hand" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_hand"]
+transform = Transform3D(1.06093, -0.0691538, 0.556454, -0.548199, -0.378307, 0.998179, 0.117902, -1.13671, -0.366057, 0.0584698, 1.7977, -8.0979)
+mesh = SubResource("CapsuleMesh_kcuuw")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
+
 [node name="left_forearm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
 transform = Transform3D(0.211984, 0.500234, 0.83954, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922168, 5.09106, 5.93612, -1.4436)
 bone_name = "left_forearm"
 bone_idx = 10
+
+[node name="shield_left_forearm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_forearm"]
+transform = Transform3D(0.842142, -0.138038, 0.521289, -0.529879, -0.0323348, 0.847457, -0.100125, -0.989899, -0.100374, 0.096386, 2.03113, -6.50059)
+mesh = SubResource("CapsuleMesh_kcuuw")
+skeleton = NodePath("../../left_hand")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="left_forearm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_forearm"]
 mesh = SubResource("ArrayMesh_2uty4")
@@ -1895,6 +1948,12 @@ transform = Transform3D(0.0661936, 0.280547, 0.957555, -0.519706, -0.809519, 0.2
 bone_name = "upper_left_arm"
 bone_idx = 11
 
+[node name="shield_upper_left_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_left_arm"]
+transform = Transform3D(1.47708, 0.0197808, 0.65499, -0.818295, 0.543012, 1.13222, -0.164637, -2.52147, 0.248968, 0.344252, 1.88635, -4.02228)
+mesh = SubResource("CapsuleMesh_kcuuw")
+skeleton = NodePath("../../left_hand")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
+
 [node name="upper_left_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_left_arm"]
 mesh = SubResource("ArrayMesh_s5ray")
 skeleton = NodePath("")
@@ -1905,6 +1964,12 @@ transform = Transform3D(-0.44887, -0.281819, 0.847994, 0.122761, 0.920521, 0.370
 bone_name = "right_hand"
 bone_idx = 15
 
+[node name="shield_right_hand" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand"]
+transform = Transform3D(-1.18877, -0.00806031, -0.163556, 0.163657, -0.0171793, -1.18866, 0.00564283, -1.19985, 0.0181182, -0.0287726, 1.83649, 7.92788)
+mesh = SubResource("CapsuleMesh_kcuuw")
+skeleton = NodePath("../../left_hand")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
+
 [node name="right_hand" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand"]
 mesh = SubResource("ArrayMesh_h2nys")
 skeleton = NodePath("")
@@ -1912,7 +1977,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_orjsb")
 
 [node name="MeleeKnife" type="Node3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand"]
 unique_name_in_owner = true
-transform = Transform3D(-0.141421, -0.141422, 3.55271e-15, 0.141422, -0.141421, 3.55271e-15, -2.27005e-20, 5.0243e-15, 0.2, -1.47242, 0.547585, 8.03444)
+transform = Transform3D(0.1, 0, 0.173205, 0, 0.2, 0, -0.173205, 0, 0.1, -0.086641, 3.59355, 8.2764)
 script = ExtResource("3_0ukys")
 
 [node name="knife" type="Node3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife"]
@@ -1943,6 +2008,12 @@ transform = Transform3D(-0.44887, -0.281819, 0.847994, 0.122761, 0.920521, 0.370
 bone_name = "right_forearm"
 bone_idx = 16
 
+[node name="shield_right_forearm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_forearm"]
+transform = Transform3D(-1.18877, -0.0107728, -0.163556, 0.163657, -0.0229605, -1.18866, 0.00564283, -1.60363, 0.0181182, -0.00713287, 2.0617, 5.95537)
+mesh = SubResource("CapsuleMesh_kcuuw")
+skeleton = NodePath("../../left_hand")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
+
 [node name="right_forearm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_forearm"]
 mesh = SubResource("ArrayMesh_3ajw3")
 skeleton = NodePath("")
@@ -1952,6 +2023,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_orjsb")
 transform = Transform3D(0.297494, 0.407036, 0.863608, 0.208987, 0.854862, -0.474905, -0.93157, 0.321764, 0.169251, 0.992026, 2.0845, 1.64545)
 bone_name = "upper_right_arm"
 bone_idx = 17
+
+[node name="shield_upper_right_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_right_arm"]
+transform = Transform3D(-1.1947, 0.0397236, -0.108681, 0.110316, 0.0977466, -1.19268, -0.0229165, -1.60036, -0.0755439, 0.0757765, 1.92043, 3.87697)
+mesh = SubResource("CapsuleMesh_kcuuw")
+skeleton = NodePath("../../left_hand")
+surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="upper_right_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_right_arm"]
 mesh = SubResource("ArrayMesh_pche1")
