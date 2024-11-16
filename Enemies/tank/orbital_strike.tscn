@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=3 uid="uid://bgthciff800fo"]
+
+[ext_resource type="Script" path="res://Enemies/tank/orbital_strike.gd" id="1_c7jfn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x1nba"]
+height = 0.025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8osum"]
+blend_mode = 2
+albedo_color = Color(0, 0.183333, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_4nx1o"]
+inner_radius = 0.3
+outer_radius = 0.31
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2iiqq"]
+blend_mode = 3
+albedo_color = Color(52.15, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_8273s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lazer:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lazer:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_t4l3h"]
+resource_name = "circle_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lazer:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lazer:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs4gj"]
+_data = {
+"RESET": SubResource("Animation_8273s"),
+"circle_animation": SubResource("Animation_t4l3h")
+}
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g6lb6"]
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_po7ft"]
+blend_mode = 2
+albedo_color = Color(0, 1, 0.223529, 1)
+
+[sub_resource type="Animation" id="Animation_rtjou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("warning_circle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_5v1al"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("warning_circle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.06667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_playattack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cklub"]
+_data = {
+"RESET": SubResource("Animation_rtjou"),
+"attack": SubResource("Animation_5v1al")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kxg2k"]
+height = 5.08942
+radius = 0.302499
+
+[node name="OrbitalStrike" type="Node3D"]
+script = ExtResource("1_c7jfn")
+damage = 50
+
+[node name="warning_circle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.00983429, 0)
+mesh = SubResource("CylinderMesh_x1nba")
+surface_material_override/0 = SubResource("StandardMaterial3D_8osum")
+
+[node name="outer ring" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_4nx1o")
+surface_material_override/0 = SubResource("StandardMaterial3D_2iiqq")
+
+[node name="attack_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rs4gj")
+}
+
+[node name="lazer" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.921325, 0, 0, 0, 0.6, 0, 1.86249, 0)
+mesh = SubResource("CylinderMesh_g6lb6")
+surface_material_override/0 = SubResource("StandardMaterial3D_po7ft")
+
+[node name="telegraph_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cklub")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.50834, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_kxg2k")
+disabled = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
