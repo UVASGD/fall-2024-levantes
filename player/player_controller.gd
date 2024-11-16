@@ -190,7 +190,8 @@ func _on_player_hit(damage_amount):
 
 	
 func game_over():
-	get_tree().reload_current_scene()
+	SignalBus.emit_signal("player_death")
+	get_tree().change_scene_to_file("res://menuscene.tscn")
 
 func take_damage(amount: int):
 	if shield_hp <= 0:

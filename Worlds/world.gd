@@ -162,6 +162,6 @@ func change_world():
 	GameManager.current_difficulty += 1
 	PlayerManager.set_player(player)
 	player.get_parent().remove_child(player)
-
-	GameManager.next(world_name)
+	shop_spawn_point.queue_free()
+	GameManager.next(world_name, self)
 	pass

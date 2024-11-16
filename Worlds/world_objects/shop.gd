@@ -15,6 +15,7 @@ func _ready():
 	print("hello i am a shop")
 	SignalBus.connect("round_start", on_round_start)
 	SignalBus.connect("gun_purchase", on_gun_purchase)
+	SignalBus.connect("player_death", despawn)
 	add_guns()
 	$AnimationPlayer.play("open")
 	pass # Replace with function body.
