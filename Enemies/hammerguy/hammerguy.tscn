@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=4 uid="uid://b15t3y58ec0li"]
+[gd_scene load_steps=37 format=4 uid="uid://b15t3y58ec0li"]
 
 [ext_resource type="Script" path="res://Enemies/hammerguy/hammerguy.gd" id="1_3nxlu"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="3_iq3mb"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
+[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_2ot4v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_re83k"]
 radius = 0.455026
@@ -669,12 +670,274 @@ shadow_mesh = SubResource("ArrayMesh_bgd8k")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_knvra"]
 points = PackedVector3Array(0, 20, 0, 0.975, -1, -4.905, 0, -1, -5, -0.975, -1, -4.905, -1.915, -1, -4.62, -2.78, -1, -4.16, -3.535, -1, -3.535, -4.16, -1, -2.78, -4.62, -1, -1.915, -4.905, -1, -0.975, -5, -1, 0, -4.905, -1, 0.975, -4.62, -1, 1.915, -4.16, -1, 2.775, -3.535, -1, 3.535, -2.78, -1, 4.155, -1.915, -1, 4.62, -0.975, -1, 4.905, 0, -1, 5, 0.975, -1, 4.905, 1.915, -1, 4.62, 2.775, -1, 4.155, 3.535, -1, 3.535, 4.155, -1, 2.775, 4.62, -1, 1.915, 4.905, -1, 0.975, 5, -1, 0, 4.905, -1, -0.975, 4.62, -1, -1.915, 4.155, -1, -2.78, 3.535, -1, -3.535, 2.775, -1, -4.16, 1.915, -1, -4.62)
 
+[sub_resource type="SphereMesh" id="SphereMesh_216ca"]
+radius = 0.6
+height = 1.31
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8321"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_2ot4v")
+shader_parameter/ColorParameter = Color(3.6, 2.475, 0.285, 1)
+shader_parameter/Strength = 10.0
+shader_parameter/LightColor = Color(1, 1, 1, 1)
+shader_parameter/FloatParameter = 1.0
+
+[sub_resource type="Animation" id="Animation_cmqtl"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shield:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.4, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_4542c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shield:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/x_axis_model_group:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/star:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/antenna:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/right_arm:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/left_arm:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/gleebo_001:transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/Hammer/hammer staff:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/Hammer/hammer :transparency")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ur7la"]
+resource_name = "death"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/x_axis_model_group:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.202, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -4.71239, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -4.71239, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/star:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/antenna:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/right_arm:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/left_arm:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo/gleebo_001:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/Hammer/hammer staff:transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/x_axis_model_group/gleebo_the_destroyer_colored/Hammer/hammer :transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("shield:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1t6ee"]
+_data = {
+"RESET": SubResource("Animation_4542c"),
+"death": SubResource("Animation_ur7la"),
+"hit": SubResource("Animation_cmqtl")
+}
+
 [node name="Hammerguy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_3nxlu")
 gun_path = "res://Weapons (new)/husk/husk_desert_eagle.tscn"
 SPEED = 6
 max_health = 300
 damage = 20
+min_firing_speed_in_seconds = 1.0
+max_firing_speed_in_seconds = 3.0
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
@@ -691,7 +954,6 @@ avoidance_enabled = true
 radius = 2.0
 neighbor_distance = 5.0
 time_horizon_agents = 0.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_point_size = 15.81
 
@@ -750,7 +1012,7 @@ mesh = SubResource("ArrayMesh_jvnax")
 skeleton = NodePath("")
 
 [node name="right_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo"]
-transform = Transform3D(0.807599, -0.418531, 2.11366, 0.899755, 2.36337, -1.14726e-07, -1.85769, 0.962729, 0.918878, 1.83386, 6.16596, 0.595473)
+transform = Transform3D(0.8076, -0.418531, 2.11366, 0.899756, 2.36337, -1.14726e-07, -1.85769, 0.962729, 0.918879, 1.83386, 6.16596, 0.595473)
 mesh = SubResource("ArrayMesh_2x0nf")
 skeleton = NodePath("")
 
@@ -801,6 +1063,16 @@ transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="chase_again"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
 shape = SubResource("SphereShape3D_443cu")
+
+[node name="shield" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.00726432, 1.03339, 0)
+mesh = SubResource("SphereMesh_216ca")
+surface_material_override/0 = SubResource("ShaderMaterial_u8321")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1t6ee")
+}
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

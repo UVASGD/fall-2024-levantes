@@ -20,6 +20,7 @@ var health_hp: int
 @onready var y_axis = %y_axis
 @onready var timer = $Timer
 @onready var Animation_Player = $AnimationPlayer
+@onready var hurt_anim_player = $AnimationPlayer2
 
 
 @onready var vision_timer = $VisionTimer
@@ -188,7 +189,8 @@ func on_hit(damage_taken, hs_mult, col, shape):
 		$AudioStreamPlayer3D.play()
 		#x_axis_shield.show()
 		#y_axis_shield.show()
-		await get_tree().create_timer(.1).timeout
+		hurt_anim_player.play("hit")
+		#await get_tree().create_timer(.1).timeout
 		#x_axis_shield.hide()
 		#y_axis_shield.hide()
 		
@@ -263,6 +265,8 @@ func death():
 	next_state = "idle"
 	#Animation_Player.play("smt_death")
 	#await Animation_Player.animation_finished
+	hurt_anim_player.play("death")
+	await hurt_anim_player.animation_finished
 	$".".queue_free()
 	SignalBus.emit_signal("enemy_death")
 	pass
