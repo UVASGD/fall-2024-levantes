@@ -389,69 +389,59 @@ transform = Transform3D(0.00799997, 0, -2.26221e-05, 0, 0.008, 0, 2.26221e-05, 0
 
 [node name="Cylinder" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, -17.372)
-layers = 2
 mesh = SubResource("ArrayMesh_ok3li")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_03c7t")
 
 [node name="Ring_circle" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, -3.41048e-07, 3.41048e-07, 1.49077e-14, 7.80226, 0, -7.80226, 1.49077e-14, 0, 9.88816, -17.372)
-layers = 2
 mesh = SubResource("ArrayMesh_8bu0q")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_e7vh7")
 
 [node name="Ring" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(1.49077e-14, -3.41048e-07, 7.80226, -7.80226, -3.41048e-07, 0, 3.41048e-07, -7.80226, -3.41048e-07, 0, 9.88816, 29.0899)
-layers = 2
 mesh = SubResource("ArrayMesh_awnbf")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_e7vh7")
 
 [node name="Chase" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, 39.5526)
-layers = 2
 material_override = SubResource("StandardMaterial3D_1aafw")
 mesh = SubResource("ArrayMesh_xqqme")
 skeleton = NodePath("")
 
 [node name="Trigger" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, 39.5526)
-layers = 2
 mesh = SubResource("ArrayMesh_fcqt3")
 skeleton = NodePath("")
 
 [node name="Doohickey" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -4.07736, 8.64901, 27.6015)
-layers = 2
 mesh = SubResource("ArrayMesh_kr3ma")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_okx4v")
 
 [node name="Stock" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, 39.5526)
-layers = 2
 mesh = SubResource("ArrayMesh_8fbu8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_1llgs")
 
 [node name="Grip" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, 39.5526)
-layers = 2
 mesh = SubResource("ArrayMesh_cd6fb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_1llgs")
 
 [node name="Belt" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, -3.41048e-07, 7.80226, 0, -7.80226, -3.41048e-07, 0, 9.88816, 39.5526)
-layers = 2
 material_override = SubResource("StandardMaterial3D_qgv6l")
 mesh = SubResource("ArrayMesh_2dih4")
 skeleton = NodePath("")
 
 [node name="Mag" type="MeshInstance3D" parent="model/gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, -3.41048e-07, 7.80226, 0, -7.80226, -3.41048e-07, 0, 9.88816, 39.5526)
-layers = 2
 material_override = SubResource("StandardMaterial3D_vhm0b")
 mesh = SubResource("ArrayMesh_uy8q6")
 skeleton = NodePath("")

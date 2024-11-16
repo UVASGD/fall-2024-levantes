@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_04rjl"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxgiq"]
+size = Vector3(0.334778, 0.494934, 2.69775)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk0a2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qadd0"]
@@ -361,9 +364,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_45kpy")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uxgiq"]
-size = Vector3(0.180664, 0.38147, 1.06348)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpn6i"]
 albedo_color = Color(0.502627, 0.00153441, 0.698623, 1)
 
@@ -378,8 +378,12 @@ current_ammo = 3
 reserve_ammo = 9
 real_weapon_path = "res://Weapons (new)/functional/void_launcher.tscn"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0202942, 0.00515741, -0.0466304)
+shape = SubResource("BoxShape3D_uxgiq")
+
 [node name="gravity_gun" type="Node3D" parent="."]
-transform = Transform3D(0.00299999, 0, -8.48327e-06, 0, 0.003, 0, 8.48327e-06, 0, 0.00299999, 0.0111776, -0.0317447, 0.0447399)
+transform = Transform3D(0.00999996, 0, -2.82776e-05, 0, 0.01, 0, 2.82776e-05, 0, 0.00999996, 0.0111776, -0.0317447, 0.0447399)
 
 [node name="Cylinder" type="MeshInstance3D" parent="gravity_gun"]
 transform = Transform3D(7.80226, 0, 0, 0, 0, 7.80226, 0, -7.80226, 0, 0, 9.88816, -17.372)
@@ -439,10 +443,6 @@ transform = Transform3D(7.80226, 0, 0, 0, -3.41048e-07, 7.80226, 0, -7.80226, -3
 material_override = SubResource("StandardMaterial3D_b1a26")
 mesh = SubResource("ArrayMesh_atkir")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027832, -0.0515747, -0.0317383)
-shape = SubResource("BoxShape3D_uxgiq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.175686, 0, 0, 0, 0.315256, 0, 0, 0, 1, 0, 0, 0)
