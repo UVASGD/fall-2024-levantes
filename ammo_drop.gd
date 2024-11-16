@@ -4,6 +4,7 @@ var type
 var amount
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.connect("player_death", despawn)
 	var player = PlayerManager.player
 	var wep1 = player.get_current_weapon()
 	var wep2 = player.get_other_weapon()

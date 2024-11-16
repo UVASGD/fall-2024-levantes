@@ -16,6 +16,7 @@ func _process(delta):
 	pass
 
 func _ready():
+	SignalBus.connect("player_death", despawn)
 	initialize_collision_and_mask()
 
 func initialize_collision_and_mask():
