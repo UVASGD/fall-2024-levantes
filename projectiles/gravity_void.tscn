@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://jn6x45xou31s"]
 
 [ext_resource type="Script" path="res://projectiles/gravity_void.gd" id="1_q3db4"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_ya7vl"]
+[ext_resource type="Shader" uid="uid://x2u0hww0m8ge" path="res://void_shader.tres" id="2_5oau7"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="3_fyanj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8sfab"]
@@ -12,10 +12,10 @@ radius = 15.8533
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1r6t"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_ya7vl")
-shader_parameter/ColorParameter = Color(0.184314, 0.0862745, 0.254902, 1)
-shader_parameter/Strength = 1.5
-shader_parameter/LightColor = Color(0.947904, 0.000743909, 0.947898, 1)
+shader = ExtResource("2_5oau7")
+shader_parameter/ColorParameter = Color(0.051971, 0.051971, 0.051971, 1)
+shader_parameter/Strength = 10.0
+shader_parameter/LightColor = Color(0.941781, 0.858773, 1, 1)
 shader_parameter/FloatParameter = 0.0
 
 [sub_resource type="Animation" id="Animation_6lc70"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://dx3k3nehr35dh"]
+[gd_scene load_steps=96 format=4 uid="uid://dx3k3nehr35dh"]
 
 [ext_resource type="Script" path="res://Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
 [ext_resource type="Script" path="res://Enemies/test_enemy/f_t.gd" id="2_o3jtk"]
@@ -7,9 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_50s5u"]
 [ext_resource type="AudioStream" uid="uid://bmst1w3vgt3iv" path="res://audio/levantes_sniper_sound_effect.mp3" id="6_gv388"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
-radius = 1.2884
-height = 2.57681
+[sub_resource type="SphereShape3D" id="SphereShape3D_7eyte"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wao2r"]
+size = Vector3(2.04565, 1.08191, 1.82092)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
 albedo_color = Color(0.427451, 1, 1, 1)
@@ -1725,9 +1726,15 @@ gun_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
 projectile_speed = 150
 wait_time_till_fire_seconds = 3
 
+[node name="head_hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23121, 1.60416, 0)
+shape = SubResource("SphereShape3D_7eyte")
+
 [node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)
-shape = SubResource("CapsuleShape3D_je42x")
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.116394, 0.729903, 0.00861407)
+shape = SubResource("BoxShape3D_wao2r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06617, 0)

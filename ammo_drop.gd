@@ -7,10 +7,10 @@ func _ready() -> void:
 	var player = PlayerManager.player
 	var wep1 = player.get_current_weapon()
 	var wep2 = player.get_other_weapon()
-	if randi_range(0,10) % 2 == 0: # randomly chooses between giving ammo for current or other weapon
-		if wep1:
-			type = wep1.name
-			amount = wep1.get_reward_amount()
+	#if randi_range(0,10) % 2 == 0: # randomly chooses between giving ammo for current or other weapon
+	if wep1:
+		type = wep1.name
+		amount = wep1.get_reward_amount()
 	else:
 		if wep2:
 			type = wep2.name

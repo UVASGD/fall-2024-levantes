@@ -2,6 +2,7 @@ extends Node3D
 var Shop_Weapon = "res://shop_weapon.gd"
 var throwable = "res://throwable.gd"
 var ammo = "res://ammo_drop.gd"
+var Powerup = "res://powerup.gd"
 var current_weapon = null
 var other_weapon = null
 var can_pickup = false
@@ -209,12 +210,24 @@ func buy():
 		var new_weapon = shop_weapon.sell()
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
+	elif(shop_ray.get_collider().get_parent() is Powerup):
+		SignalBus.emit_signal("gun_purchase", shop_ray.get_collider().get_parent())
+		shop_ray.get_collider().get_parent().apply()
 	else:
 		SignalBus.emit_signal("round_start")
+		
 	return
 
 func go_in_debt():
 	print("you are in debt")
+	var num = randi_range(0,1)
+	if num == 0:
+		PlayerManager.player.max_health_hp = PlayerManager.player.max_health_hp / 2
+		PlayerManager.player.health_hp = PlayerManager.player.health_hp / 2
+	elif num == 1:
+		PlayerManager.player.health_regen_timer.wait_time = PlayerManager.player.health_regen_timer.wait_time / 2
+		PlayerManager.player.shield_regen_timer.wait_time = PlayerManager.player.shield_regen_timer.wait_time / 2
+	
 	return
 
 func _on_pickup_detection_body_entered(body):

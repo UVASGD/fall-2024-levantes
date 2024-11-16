@@ -136,7 +136,7 @@ func _physics_process(delta):
 
 func on_round_start():
 	current_level += 1
-
+	
 	spawn_enemies()
 	#play battle music
 
@@ -144,6 +144,7 @@ func _on_wave_killed():
 	dead_waves += 1
 
 	if(dead_waves >= level_dict[current_level][0]): #round ended
+		PlayerManager.clear_status_effects()
 		dead_waves = 0
 		#play chill music
 		if(current_level == level_dict.size()): # all levels complete
