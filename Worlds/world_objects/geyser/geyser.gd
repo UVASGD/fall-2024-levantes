@@ -1,11 +1,12 @@
 extends Node3D
 @onready var area = $Area3D
-
+@onready var animation_player = $AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame
 	area.connect("body_entered", _on_body_entered)
 	area.connect("body_exited", _on_body_exited)
-	$AnimationPlayer.connect("animation_finished", play_animation)
+	animation_player.connect("animation_finished", play_animation)
 	play_animation()
 	pass # Replace with function body.
 

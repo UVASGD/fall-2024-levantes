@@ -1,7 +1,7 @@
 extends Node
 
-var save_data = {"money":0, "high_score":0}
-
+var save_data = {"money":0, "high_score":0,}
+var first_game = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_save_file()
@@ -25,6 +25,7 @@ func load_save_file() -> void:
 			if typeof(data) == TYPE_DICTIONARY:
 				save_data["money"] = data.get("money", 0)
 				save_data["high_score"] = data.get("high_score", 0)
+			first_game = false
 		file.close()
 	else:
 		save_to_file()
@@ -45,6 +46,9 @@ func update_money(amount):
 	save_to_file()
 	return 1
 
+func is_first_game():
+	return first_game
+	
 func _on_score_add():
 	_update_high_score()
 	update_money(1)
