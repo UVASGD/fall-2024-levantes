@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=75 format=4 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
@@ -12,7 +12,7 @@ radius = 0.297502
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je42x"]
 radius = 0.623999
-height = 1.66598
+height = 2.1998
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
 albedo_color = Color(0.427451, 1, 1, 1)
@@ -318,43 +318,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hmmdt")
-
-[sub_resource type="Animation" id="Animation_rl78f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("knife/Torus_001:surface_material_override/0:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.0]
-}
-
-[sub_resource type="Animation" id="Animation_yf5wi"]
-resource_name = "shaderknifetest"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("knife/Torus_001:surface_material_override/0:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6k363"]
-_data = {
-"RESET": SubResource("Animation_rl78f"),
-"shaderknifetest": SubResource("Animation_yf5wi")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgpfw"]
 size = Vector3(9.87256, 56.7286, 2.6532)
@@ -883,7 +846,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.3477, 4.3607, 8.0843)]
+"values": [Vector3(-1.47242, 0.547585, 8.03444)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -895,7 +858,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.0886e-13, 2.35619)]
+"values": [Vector3(-1.77635e-14, 1.77635e-14, 2.35619)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -952,6 +915,174 @@ tracks/6/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleto
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Torso:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Poncho:transparency")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_thigh/right_thigh:transparency")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_shin/right_shin:transparency")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_thigh/left_thigh:transparency")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_right_arm/upper_right_arm:transparency")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_forearm/right_forearm:transparency")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/right_hand:transparency")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_left_arm/upper_left_arm:transparency")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_forearm/left_forearm:transparency")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_hand/left_hand:transparency")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cylinder_002/Cylinder_002:transparency")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cone/Cone:transparency")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_shin/left_shin:transparency")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1035,6 +1166,174 @@ tracks/5/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Torso:transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Poncho:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_thigh/right_thigh:transparency")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_shin/right_shin:transparency")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_thigh/left_thigh:transparency")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_shin/left_shin:transparency")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_right_arm/upper_right_arm:transparency")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_forearm/right_forearm:transparency")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/right_hand:transparency")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_left_arm/upper_left_arm:transparency")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_forearm/left_forearm:transparency")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_hand/left_hand:transparency")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cylinder_002/Cylinder_002:transparency")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cone/Cone:transparency")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.65, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_nms6l"]
 resource_name = "enter_cloak_state"
@@ -1059,10 +1358,10 @@ tracks/1/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleto
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.14, 0.15, 0.16, 0.2, 0.24, 0.25, 0.26, 0.27, 0.31, 0.35, 0.36),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.01058, 4.02357, 8.0843), Vector3(1.3477, 4.3607, 8.0843), Vector3(7.07527, 10.0883, 8.0843), Vector3(2.22352, 5.23651, 8.0843), Vector3(1.01058, 4.02357, 8.0843)]
+"values": [Vector3(-1.47242, 0.547585, 8.03444)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1071,10 +1370,10 @@ tracks/2/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleto
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.14, 0.15, 0.16, 0.2, 0.24, 0.25, 0.26, 0.27, 0.31, 0.35, 0.36),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699), Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699), Vector3(0, 0, -3.92699), Vector3(0, -1.0886e-13, 2.35619), Vector3(3.65559e-16, -8.74225e-08, -0.785398), Vector3(7.31118e-17, -1.74845e-08, -3.29867), Vector3(0, 0, -3.92699)]
+"values": [Vector3(-1.77635e-14, 1.77635e-14, 2.35619)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1124,6 +1423,174 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Torso:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Poncho:transparency")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_thigh/right_thigh:transparency")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_shin/right_shin:transparency")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_thigh/left_thigh:transparency")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_right_arm/upper_right_arm:transparency")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_forearm/right_forearm:transparency")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/right_hand:transparency")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/upper_left_arm/upper_left_arm:transparency")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_forearm/left_forearm:transparency")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_hand/left_hand:transparency")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cylinder_002/Cylinder_002:transparency")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/Cone/Cone:transparency")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/left_shin/left_shin:transparency")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kxpsa"]
 _data = {
@@ -1134,16 +1601,16 @@ _data = {
 
 [node name="assassin" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_cbyde")
-SPEED = 70.0
+SPEED = 120.0
 retreat_speed = 100.0
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.815, -0.382843)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70514, -0.382843)
 shape = SubResource("SphereShape3D_3lgef")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888809, 0)
+transform = Transform3D(1, 0, 0, 0, 0.136303, 0.990667, 0, -0.990667, 0.136303, 0, 1.133, 0.441521)
 shape = SubResource("CapsuleShape3D_je42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -1445,7 +1912,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_orjsb")
 
 [node name="MeleeKnife" type="Node3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand"]
 unique_name_in_owner = true
-transform = Transform3D(-0.141421, -0.141422, -2.1772e-14, 0.141422, -0.141421, 0, -1.53951e-14, -1.53952e-14, 0.2, 1.3477, 4.3607, 8.0843)
+transform = Transform3D(-0.141421, -0.141422, 3.55271e-15, 0.141422, -0.141421, 3.55271e-15, -2.27005e-20, 5.0243e-15, 0.2, -1.47242, 0.547585, 8.03444)
 script = ExtResource("3_0ukys")
 
 [node name="knife" type="Node3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife"]
@@ -1464,11 +1931,6 @@ transform = Transform3D(2.48507, 8.02923e-08, 1.04065, -1.04065, 1.60585e-07, 2.
 material_override = SubResource("StandardMaterial3D_53qde")
 mesh = SubResource("ArrayMesh_ltt6c")
 skeleton = NodePath("")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife"]
-libraries = {
-"": SubResource("AnimationLibrary_6k363")
-}
 
 [node name="hitbox" type="Area3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife"]
 
@@ -1577,7 +2039,6 @@ transform = Transform3D(1.91068e-15, 1, -4.37114e-08, 4.37113e-08, -4.37114e-08,
 [node name="leftarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
 
 [node name="rightarm" type="Node3D" parent="x_axis/y_axis/y_axis_model_group"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="y_axis_shield" type="Node3D" parent="x_axis/y_axis"]
 unique_name_in_owner = true
