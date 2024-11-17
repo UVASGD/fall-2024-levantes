@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=4 uid="uid://6ofcqwj26hhr"]
+[gd_scene load_steps=150 format=4 uid="uid://6ofcqwj26hhr"]
 
 [ext_resource type="Script" path="res://Enemies/tank/tank.gd" id="1_832vu"]
 [ext_resource type="Script" path="res://Enemies/test_enemy/f_t.gd" id="2_5be7m"]
@@ -10,7 +10,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7eyte"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wao2r"]
-size = Vector3(2.04565, 1.08191, 1.82092)
+size = Vector3(1.58142, 2.94818, 1.06976)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulsyh"]
 albedo_color = Color(0.427451, 1, 1, 1)
@@ -168,6 +168,21 @@ shadow_mesh = SubResource("ArrayMesh_cqovt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06mri"]
 albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.1
+emission = Color(0.211765, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_alp2k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kygj"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 9.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffaah"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0sa"]
 
@@ -201,8 +216,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cgpl4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptmn8"]
-albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxmku"]
+albedo_color = Color(0.16686, 0.258862, 0.411673, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvwvm"]
 
@@ -238,6 +256,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g6iwi")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptmn8"]
+albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arcto"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kkyn2"]
@@ -269,6 +290,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kkyn2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wo5a"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0s2r"]
 
@@ -336,6 +362,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t241x")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nmrg"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.34
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdf7r"]
 vertex_color_use_as_albedo = true
 
@@ -401,6 +432,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j63cx")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5qck"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 4.37
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctbrt"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yf6ar"]
@@ -432,6 +468,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yf6ar")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vrpy"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeim8"]
 
@@ -498,6 +539,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_46r8u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kcke"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6fdv"]
 
@@ -2504,12 +2550,12 @@ script = ExtResource("1_832vu")
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23121, 1.60416, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23121, 4.50686, 0)
 shape = SubResource("SphereShape3D_7eyte")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.116394, 0.729903, 0.00861407)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.580389, 1.66304, 0.0624327)
 shape = SubResource("BoxShape3D_wao2r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -2551,6 +2597,7 @@ unique_name_in_owner = true
 transform = Transform3D(1.19244e-08, 0, 1, 0, 1, 0, -1, 0, 1.19244e-08, 2.66974e-05, -6.5214, 7.37499)
 
 [node name="x_axis_model_base" type="Node3D" parent="x_axis/x_axis_model_group"]
+visible = false
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_model_base"]
 transform = Transform3D(0.904152, 0, -0.000694632, 0, 0.904153, 0, 0.000694632, 0, 0.904152, 3.19116, 0, -3.72694e-20)
@@ -2572,6 +2619,7 @@ skeleton = NodePath("")
 
 [node name="x_axis_shield" type="Node3D" parent="x_axis/x_axis_model_group"]
 unique_name_in_owner = true
+visible = false
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/x_axis_shield"]
 transform = Transform3D(0.904152, 0, -0.000694632, 0, 0.904153, 0, 0.000694632, 0, 0.904152, 3.19116, 0, -3.72694e-20)
@@ -2609,7 +2657,7 @@ shape = SubResource("ConvexPolygonShape3D_oasru")
 transform = Transform3D(11.1111, 0, 1.23358e-13, 0, 11.1111, 0, -1.23358e-13, 0, 11.1111, 0, -6.67116, 0)
 
 [node name="TankRig" type="Node3D" parent="x_axis/x_axis_model_group"]
-transform = Transform3D(-2.77778, 0, 2.42841e-07, 0, 2.77778, 0, -2.42841e-07, 0, -2.77778, 3.2326, -7.43349, -3.85002e-05)
+transform = Transform3D(-1.978, 0, 2.9867e-07, 0, 1.978, 0, -2.9867e-07, 0, -1.978, 3.2326, -7.43349, -3.85002e-05)
 
 [node name="Armature" type="Node3D" parent="x_axis/x_axis_model_group/TankRig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7918, 0)
@@ -2801,6 +2849,26 @@ mesh = SubResource("ArrayMesh_qxo84")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_06mri")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/head/head"]
+transform = Transform3D(0.604462, -2.3473e-07, -7.3556e-09, 2.69518e-07, 0.521027, 0.0328261, -1.93795e-08, -0.0753039, 0.227123, 3.45707e-06, 1.11584, 1.11695)
+mesh = SubResource("BoxMesh_alp2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1kygj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/head/head"]
+transform = Transform3D(0.604462, 9.34382e-07, -1.27287e-07, -1.07286e-06, 0.432763, -0.13067, -3.35284e-07, 0.29976, 0.188648, -0.141287, 1.27317, 0.988969)
+mesh = SubResource("BoxMesh_alp2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffaah")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/head/head"]
+transform = Transform3D(0.604461, 1.22666e-06, -1.19047e-06, -1.40845e-06, -0.349682, -0.171543, -3.13571e-06, 0.393524, -0.152432, -0.141295, 1.19648, -1.55415)
+mesh = SubResource("BoxMesh_alp2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffaah")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/head/head"]
+transform = Transform3D(0.604462, -2.3473e-07, -7.35542e-09, 2.69518e-07, 0.521027, 0.0328261, -1.93809e-08, -0.0753039, 0.227123, -4.52995e-06, 0.97164, -1.58711)
+mesh = SubResource("BoxMesh_alp2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1kygj")
+
 [node name="LeftHand" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.3003, 0, 6.54906e-08, 0, 1.28184, -0.755849, -2.78228, -9.55697)
 bone_name = "LeftHand"
@@ -2809,7 +2877,7 @@ bone_idx = 7
 [node name="LeftHand" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/LeftHand"]
 mesh = SubResource("ArrayMesh_uyjgx")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxmku")
 
 [node name="LeftArm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(1.55564, 0, -4.07453e-08, 0, 1.60001, 0, 4.94485e-08, 0, 1.28184, -1.517, 11.2247, 0.11623)
@@ -2829,7 +2897,7 @@ bone_idx = 9
 [node name="LeftShoulder" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/LeftShoulder"]
 mesh = SubResource("ArrayMesh_rpl0q")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wo5a")
 
 [node name="LeftFoot" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.60001, 0, 6.54906e-08, 0, 1.28184, -1.98113, 4.50757, 0.11623)
@@ -2849,7 +2917,7 @@ bone_idx = 13
 [node name="LeftThigh" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/LeftThigh"]
 mesh = SubResource("ArrayMesh_b4tb0")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_2nmrg")
 
 [node name="Main Gun Body" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 3.83584, -5.99377)
@@ -2861,6 +2929,14 @@ mesh = SubResource("ArrayMesh_hc42y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/Main Gun Body"]
+transform = Transform3D(3.43256, 5.56976e-07, -3.83386e-08, -4.31685e-08, 0.0297748, -3.43243, -5.56622e-07, 3.43243, 0.0297748, 0, 1.60133, -5.72205e-06)
+light_color = Color(1, 0.643137, 0.372549, 1)
+light_energy = 7.435
+light_specular = 1.81
+spot_range = 31.5131
+spot_angle = 22.2183
+
 [node name="RingsAroundGun" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 3.83584, -5.99377)
 bone_name = "RingsAroundGun"
@@ -2869,7 +2945,7 @@ bone_idx = 17
 [node name="RingsAroundGun" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/RingsAroundGun"]
 mesh = SubResource("ArrayMesh_3ltcb")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_l5qck")
 
 [node name="RightArm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(0.824565, 0, 0, 0, 0.824565, 0, 0, 0, 1.28813, -0.267532, 8.11377, -5.01239)
@@ -2879,7 +2955,7 @@ bone_idx = 18
 [node name="RightArm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/RightArm"]
 mesh = SubResource("ArrayMesh_07atm")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_6vrpy")
 
 [node name="RightFoot" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(2.06032, 0, 4.07453e-08, 0, 1.60001, 0, -6.54906e-08, 0, 1.28184, -1.98113, 4.50757, -6.19871)
@@ -2899,7 +2975,7 @@ bone_idx = 22
 [node name="RightThigh" type="MeshInstance3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/RightThigh"]
 mesh = SubResource("ArrayMesh_2vpnj")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_2kcke")
 
 [node name="main body" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
 transform = Transform3D(1.93662, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.3183, 11.2247, 0.116229)
@@ -2929,6 +3005,7 @@ libraries = {
 [node name="y_axis" type="Node3D" parent="x_axis"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.67029e-05, -6.5214, 7.37499)
+visible = false
 script = ExtResource("2_5be7m")
 current_turn_speed = 40
 normal_turn_speed = 40
