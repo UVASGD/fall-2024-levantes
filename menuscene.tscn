@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://dlvmkop584fmh"]
+[gd_scene load_steps=104 format=4 uid="uid://dlvmkop584fmh"]
 
 [ext_resource type="Script" path="res://menuscene.gd" id="1_3jq3n"]
 [ext_resource type="Texture2D" uid="uid://cw0ehblqamciv" path="res://Textures/star_texture.png" id="1_fdfse"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7jowsra7fbhv" path="res://Textures/logo.png" id="5_5kbve"]
 [ext_resource type="Texture2D" uid="uid://c0yttfbdl5usp" path="res://Textures/playbutton_clicked.png" id="5_c5oyr"]
 [ext_resource type="Texture2D" uid="uid://dcjua1xilegvo" path="res://Textures/playbutton_hovered.png" id="6_swkc8"]
+[ext_resource type="AudioStream" uid="uid://vc53vkt7inls" path="res://audio/creepy.mp3" id="8_gsn54"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wno7o"]
 blend_mode = 1
@@ -897,6 +898,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.0]
+}
 
 [sub_resource type="Animation" id="Animation_81w38"]
 resource_name = "fade"
@@ -936,6 +949,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4eoqn"]
@@ -1256,6 +1281,12 @@ libraries = {
 "": SubResource("AnimationLibrary_4eoqn")
 }
 speed_scale = 2.06
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gsn54")
+volume_db = -6.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="button_up" from="Camera3D/playbutton" to="." method="_on_playbutton_button_up"]
 [connection signal="button_up" from="Camera3D/TextureButton" to="." method="_on_texture_button_button_up"]

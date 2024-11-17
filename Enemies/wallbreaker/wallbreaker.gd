@@ -114,6 +114,7 @@ func chase(delta):
 func explode():
 	state_lock_on = true
 	if not has_exploded:
+		$run.stop()
 		has_exploded = true
 		Animation_Player.play("explode")
 		await Animation_Player.animation_finished

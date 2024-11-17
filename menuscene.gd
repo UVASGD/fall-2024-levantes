@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_texture_button_button_up() -> void:
+	fade_to_black()
+	await $fade.animation_finished
+	get_tree().change_scene_to_file("res://credits.tscn")
 	pass # Replace with function body.
 
 
