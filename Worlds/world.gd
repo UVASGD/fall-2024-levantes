@@ -94,8 +94,11 @@ func enemy_death():
 	if dead_enemies >= level_dict[current_level][1]:
 		dead_enemies = 0
 		SignalBus.emit_signal("wave_killed")
+	if level_dict[current_level][1] - dead_enemies == 5:
+		SignalBus.emit_signal("few_enemies")
 #
 func spawn_enemies(): #spawns 1 wave of enemies
+	
 	for i in range(level_dict[current_level][1]):
 		var m
 		var rand_monster_type_num = randi_range(1,5)
@@ -116,6 +119,9 @@ func spawn_enemies(): #spawns 1 wave of enemies
 		var spawn_position = $SpawnHolder.get_child(rand_num)
 		m.position = spawn_position.global_transform.origin
 		add_child(m)
+	if level_dict[current_level][1] <= 5:
+		print("few enemies")
+		SignalBus.emit_signal("few_enemies")
 	#var ham = hammer.instantiate()
 	#ham.set_next_state = "chase"
 	#var spawn_length = $SpawnHolder.get_child_count()-1

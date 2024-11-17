@@ -56,7 +56,8 @@ func _ready():
 	SignalBus.connect("enemy_hit", on_hit)
 	SignalBus.connect("shockwave_death", on_shockwave_death)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
-	
+	SignalBus.connect("few_enemies", show_indicator)
+
 func _physics_process(delta):
 	if not self.is_on_floor():
 		self.velocity.y += get_gravity().y * delta
@@ -70,7 +71,9 @@ func _physics_process(delta):
 				chase(delta)
 			"retreat":
 				retreat(delta)
-
+	
+func show_indicator():
+	%indicator.visible = true
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location

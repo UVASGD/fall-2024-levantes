@@ -38,6 +38,7 @@ func _ready():
 		next_state = set_next_state
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
+	SignalBus.connect("few_enemies", show_indicator)
 	
 func _physics_process(delta):
 	if not self.is_on_floor():
@@ -54,7 +55,9 @@ func _physics_process(delta):
 			"explode":
 				explode()
 	
-
+func show_indicator():
+	%indicator.visible = true
+	
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	
