@@ -38,11 +38,15 @@ func _ready():
 		can_switch = true
 	SignalBus.connect("update_ammo", call_update_ammo)
 	SignalBus.connect("call_hud_initialize", call_hud_initialize)
+	SignalBus.connect("wave_killed", reward_money)
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
 	shop_ray = $"../RayCast3D"
-	pass 
+	call_money_update(money, "")
+	pass
+	
+	 
 
 var has_printed_weapon_name = false  
 
@@ -225,8 +229,11 @@ func buy():
 		print("buying")
 		var shop_weapon = shop_ray.get_collider().get_parent()
 		money -= shop_weapon.price
+		
 		if money < 0:
 			go_in_debt()
+		else:
+			call_money_update(money, "")
 		var new_weapon = shop_weapon.sell()
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
@@ -242,12 +249,13 @@ func go_in_debt():
 	print("you are in debt")
 	var num = randi_range(0,1)
 	if num == 0:
+		call_money_update(money, "half health and shield")
 		PlayerManager.player.max_health_hp = PlayerManager.player.max_health_hp / 2
 		PlayerManager.player.health_hp = PlayerManager.player.health_hp / 2
 	elif num == 1:
 		PlayerManager.player.health_regen_timer.wait_time = PlayerManager.player.health_regen_timer.wait_time / 2
 		PlayerManager.player.shield_regen_timer.wait_time = PlayerManager.player.shield_regen_timer.wait_time / 2
-	
+		call_money_update(money, "slower regen")
 	return
 
 func _on_pickup_detection_body_entered(body):
@@ -277,3 +285,10 @@ func call_update_ammo(ammo):
 
 func call_update_shop_weapon_name(s_wep_name, price):
 	hud.update_shop_weapon_name(s_wep_name, price)
+
+func call_money_update(money, debt_effect):
+	hud.update_money(money, debt_effect)
+
+func reward_money():
+	money += 1
+	call_money_update(money, "")

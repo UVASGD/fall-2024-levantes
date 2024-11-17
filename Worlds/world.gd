@@ -55,6 +55,8 @@ func spawn_player():
 		newplayer = PlayerManager.get_player()
 	newplayer.add_to_group("Player", true)
 	$playerspawnpoint.add_child(newplayer)
+	newplayer.transform.origin = Vector3(0, 0, 0)
+	
 	player = newplayer
 	player_ready = true
 	PlayerManager.set_player(player)
@@ -96,6 +98,8 @@ func enemy_death():
 		SignalBus.emit_signal("wave_killed")
 #
 func spawn_enemies(): #spawns 1 wave of enemies
+	var enemy_count = level_dict[current_level][1]
+	SignalBus.emit_signal("update_num_enemies_left", enemy_count)
 	for i in range(level_dict[current_level][1]):
 		var m
 		var rand_monster_type_num = randi_range(1,5)

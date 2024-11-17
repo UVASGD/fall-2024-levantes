@@ -65,6 +65,14 @@ func update_shop_weapon_name(shop_wep_name: String, cost: int):
 	else:
 		$cost.text = ""
 	
+func update_money(money:int, debt_effect: String):
+	if money >= 0:
+		$Money/money_text.text = str(money)
+		$Money/debt.hide()
+		
+	if money < 0:
+		$Money/debt/debuff.text = debt_effect
+		$Money/debt.show()
 func _input(event):
 	if event.is_action_pressed("disable_hud"):
 		$".".visible = !$".".visible
