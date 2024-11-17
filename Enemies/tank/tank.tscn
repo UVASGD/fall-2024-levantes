@@ -1929,23 +1929,6 @@ _data = {
 "shoot_animation": SubResource("Animation_fipl1")
 }
 
-[sub_resource type="Animation" id="Animation_wwk8d"]
-resource_name = "hit"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/RightThigh/shield_right_thigh:material_override:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.5, 0.4, 0.5, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_5i0h8"]
 length = 0.001
 tracks/0/type = "value"
@@ -2290,6 +2273,23 @@ tracks/13/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_wwk8d"]
+resource_name = "hit"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D/RightThigh/shield_right_thigh:material_override:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.4, 0.5, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_by42n"]
 _data = {
 "RESET": SubResource("Animation_5i0h8"),
@@ -2302,7 +2302,7 @@ collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_832vu")
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
-max_health = 500
+max_health = 1000
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

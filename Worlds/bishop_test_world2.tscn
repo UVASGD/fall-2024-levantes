@@ -198,3 +198,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58952, 2.38419e-07, -12.641
 
 [node name="bishop_sniper" parent="." instance=ExtResource("14_3xc36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0473, 0, -22.7066)
+
+[node name="Tank" parent="." instance=ExtResource("14_3xc36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1113, -4.76837e-07, -27.7028)
+
+[node name="husk_alien_pistol2" parent="." instance=ExtResource("8_gqibf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95067, 0.895761, 10.2146)
