@@ -149,12 +149,14 @@ func on_round_start():
 	current_level += 1
 	
 	spawn_enemies()
+	$music.play("freaky")
 	#play battle music
 
 func _on_wave_killed():
 	dead_waves += 1
 
 	if(dead_waves >= level_dict[current_level][0]): #round ended
+		$music.play("demure")
 		PlayerManager.clear_status_effects()
 		dead_waves = 0
 		#play chill music

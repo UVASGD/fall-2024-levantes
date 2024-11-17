@@ -6,6 +6,7 @@ extends Node3D
 func _ready() -> void:
 	print("hi")
 	$telegraph_animation.play("attack")
+	SignalBus.connect("player_death", die)
 	pass # Replace with function body.
 
 func playattack():
