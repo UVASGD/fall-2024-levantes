@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_madj7")
 
 [node name="speedBoost" type="Node3D"]
 script = ExtResource("1_7g5b7")
+item_name = "Crackhead Speed"
+price = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 16

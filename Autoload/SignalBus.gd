@@ -5,6 +5,8 @@ signal player_hit(damage_taken)
 
 signal enemy_hit(damage_taken, headshot_multiplier, collider, shape)
 
+signal update_hud_shop_weapon_name(shop_weapon_name)
+
 signal enemy_death
 
 signal object_hit

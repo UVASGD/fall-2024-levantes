@@ -8,6 +8,7 @@ size = Vector3(0.192627, 0.331879, 1.00391)
 
 [node name="ShopDeagle" type="Node3D"]
 script = ExtResource("1_31tl1")
+item_name = "DE-50"
 price = 2
 ammo = 7
 reserve = 21

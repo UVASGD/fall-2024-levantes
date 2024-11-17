@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_madj7")
 
 [node name="fastRegen" type="Node3D"]
 script = ExtResource("1_usunh")
+item_name = "Faster Regen"
+price = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 16

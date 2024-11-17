@@ -168,54 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74161, 3.06648, -20.5835)
 [node name="spawnpoint19" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.84, 1.76882, -36.6446)
 
-[node name="spawnpoint20" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.86, 0.787656, -44.3677)
-
-[node name="spawnpoint21" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.834, 2.60968, -53.6197)
-
-[node name="spawnpoint22" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.727, 2.67539, -52.5073)
-
-[node name="spawnpoint23" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.907, 2.67539, -52.5073)
-
-[node name="spawnpoint24" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.345, 2.67539, -52.5073)
-
-[node name="spawnpoint25" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.2538, 2.67539, -52.5073)
-
-[node name="spawnpoint26" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.3739, 2.67539, -52.5073)
-
-[node name="spawnpoint27" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.3739, 2.67539, -42.6184)
-
-[node name="spawnpoint28" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.015, -2.20557, -42.6184)
-
-[node name="spawnpoint29" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.546, -1.86396, -36.9571)
-
-[node name="spawnpoint30" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.6887, -2.19975, -44.4808)
-
-[node name="spawnpoint31" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.262, -2.19975, -37.6538)
-
-[node name="spawnpoint32" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.2051, -3.10935, -32.4474)
-
-[node name="spawnpoint33" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.4635, 17.8145, -30.3261)
-
-[node name="spawnpoint34" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4134, 18.2317, -4.28466)
-
-[node name="spawnpoint35" type="Node3D" parent="SpawnHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5447, 18.1945, -3.75154)
-
 [node name="spawnpoint36" type="Node3D" parent="SpawnHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4757, 18.1574, -3.23371)
 

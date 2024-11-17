@@ -372,7 +372,8 @@ size = Vector3(0.241211, 0.696838, 1.98669)
 
 [node name="shop_grenade_launcher" type="Node3D"]
 script = ExtResource("1_jgpp3")
-price = 2
+item_name = "Experiment No:94"
+price = 3
 ammo = 3
 reserve = 9
 husk_weapon_path = "res://Weapons (new)/husk/husk_void_launcher.tscn"

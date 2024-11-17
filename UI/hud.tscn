@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dssfcs6qgya2v"]
+[gd_scene load_steps=8 format=3 uid="uid://dssfcs6qgya2v"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_kroww"]
 [ext_resource type="FontFile" uid="uid://dn1ewphq0hlak" path="res://UI/Fonts/TitilliumWeb-SemiBold.ttf" id="1_xg4as"]
 [ext_resource type="Script" path="res://UI/hud_scripts/hud_updates.gd" id="2_bm6h5"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="4_d1tgc"]
+[ext_resource type="FontFile" uid="uid://du7d3o4hfsfho" path="res://UI/Fonts/TitilliumWeb-SemiBoldItalic.ttf" id="4_edv4u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_efe13"]
+font = ExtResource("4_edv4u")
+font_color = Color(0, 0.951755, 0.955994, 1)
+outline_size = 10
+outline_color = Color(0.107363, 0.265774, 0.277621, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_72hqf"]
 font_size = 50
@@ -266,6 +273,40 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_bm6h5")
 crosshair_color = Color(1, 1, 1, 1)
+
+[node name="shop_weapon_name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -10.0
+offset_right = 79.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_efe13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = 21.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_efe13")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

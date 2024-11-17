@@ -155,6 +155,7 @@ size = Vector3(0.241211, 0.696838, 1.98669)
 
 [node name="shop_smg" type="Node3D"]
 script = ExtResource("1_sx6ls")
+item_name = "HF_SMG"
 price = 1
 ammo = 50
 reserve = 150

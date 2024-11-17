@@ -21,6 +21,7 @@ var grenade = null
 var grenade_count = 0
 var money = 0
 var shop_ray = null
+var curr_shop_ray_name = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var weapon_array = []
@@ -43,9 +44,27 @@ func _ready():
 	shop_ray = $"../RayCast3D"
 	pass 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var has_printed_weapon_name = false  
+
 func _process(delta):
-	pass
+	if not curr_shop_ray_name and shop_ray and shop_ray.is_colliding():
+		var collider = shop_ray.get_collider()
+		
+		# Ensure the collider and its parent exist, and check if it's a Shop_Weapon or Powerup
+		if collider and collider.get_parent() and (collider.get_parent() is Shop_Weapon or collider.get_parent() is Powerup):
+			var item = collider.get_parent()
+			curr_shop_ray_name = item.item_name
+			var price = item.price
+			
+			if not has_printed_weapon_name:
+				call_update_shop_weapon_name(curr_shop_ray_name, price)
+				has_printed_weapon_name = true
+	elif curr_shop_ray_name and (not shop_ray or not shop_ray.is_colliding()):
+		# Reset when ray is no longer colliding
+		curr_shop_ray_name = ""
+		call_update_shop_weapon_name(curr_shop_ray_name, 0)
+		has_printed_weapon_name = false
+
 
 func _input(event):
 	if event.is_action_pressed("debug_button"):
@@ -255,4 +274,6 @@ func call_hud_initialize():
 
 func call_update_ammo(ammo):
 	hud.update_ammo(ammo)
-	
+
+func call_update_shop_weapon_name(s_wep_name, price):
+	hud.update_shop_weapon_name(s_wep_name, price)

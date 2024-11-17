@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_in1bl")
 
 [node name="BonusHealth" type="Node3D"]
 script = ExtResource("1_y4gyy")
+item_name = "Bonus Health and Shield"
+price = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 16
