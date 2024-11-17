@@ -1362,6 +1362,8 @@ _data = {
 
 [node name="assassin" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_cbyde")
 SPEED = 120.0
 retreat_speed = 100.0

@@ -75,7 +75,7 @@ func add_static_collisions(node): # recursively adds collisions to every mesh3d 
 			static_body.add_child(collision_shape)
 			static_body.transform = child.transform
 			node.add_child(static_body)
-		elif child is Node3D:
+		elif child is Node3D and child != $Nav/enemypaths:
 			add_static_collisions(child)
 
 func apply_difficulty():
@@ -100,42 +100,42 @@ func enemy_death():
 #
 func spawn_enemies(): #spawns 1 wave of enemies
 	
-	#for i in range(level_dict[current_level][1]):
-		#var m
-		#var rand_monster_type_num = randi_range(1,5)
-		#match rand_monster_type_num:
-			#1:
-				#m = monster.instantiate()
-			#2:
-				#m = sniper.instantiate() 
-			#3:
-				#m = bomb_enemy.instantiate()
-			#4:
-				#m = assassin.instantiate()
-			#5:
-				#m = hammer.instantiate()
-		#m.set_next_state = "chase"
-		#var spawn_length = $SpawnHolder.get_child_count()-1
-		#var rand_num = rand.randi_range(0,spawn_length)
-		#var spawn_position = $SpawnHolder.get_child(rand_num)
-		#m.position = spawn_position.global_transform.origin
-		#add_child(m)
-	#if level_dict[current_level][1] <= 5:
-		#print("few enemies")
-		#SignalBus.emit_signal("few_enemies")
-	var ham = tank.instantiate()
-	ham.set_next_state = "chase"
-	var spawn_length = $SpawnHolder.get_child_count()-1
-	var rand_num = rand.randi_range(0,spawn_length)
-	var spawn_position = $SpawnHolder.get_child(rand_num)
-	ham.position = spawn_position.global_transform.origin
-	add_child(ham)
-	var smt = monster.instantiate()
-	ham.set_next_state = "chase"
-	rand_num = rand.randi_range(0,spawn_length)
-	spawn_position = $SpawnHolder.get_child(rand_num)
-	smt.position = spawn_position.global_transform.origin
-	add_child(smt)
+	for i in range(level_dict[current_level][1]):
+		var m
+		var rand_monster_type_num = randi_range(1,5)
+		match rand_monster_type_num:
+			1:
+				m = monster.instantiate()
+			2:
+				m = sniper.instantiate() 
+			3:
+				m = bomb_enemy.instantiate()
+			4:
+				m = assassin.instantiate()
+			5:
+				m = hammer.instantiate()
+		m.set_next_state = "chase"
+		var spawn_length = $SpawnHolder.get_child_count()-1
+		var rand_num = rand.randi_range(0,spawn_length)
+		var spawn_position = $SpawnHolder.get_child(rand_num)
+		m.position = spawn_position.global_transform.origin
+		add_child(m)
+	if level_dict[current_level][1] <= 5:
+		print("few enemies")
+		SignalBus.emit_signal("few_enemies")
+	#var ham = tank.instantiate()
+	#ham.set_next_state = "chase"
+	#var spawn_length = $SpawnHolder.get_child_count()-1
+	#var rand_num = rand.randi_range(0,spawn_length)
+	#var spawn_position = $SpawnHolder.get_child(rand_num)
+	#ham.position = spawn_position.global_transform.origin
+	#add_child(ham)
+	#var smt = monster.instantiate()
+	#ham.set_next_state = "chase"
+	#rand_num = rand.randi_range(0,spawn_length)
+	#spawn_position = $SpawnHolder.get_child(rand_num)
+	#smt.position = spawn_position.global_transform.origin
+	#add_child(smt)
 
 func _physics_process(delta):
 	if player_ready:

@@ -170,6 +170,8 @@ mesh = SubResource("BoxMesh_ssgjx")
 [node name="pr2" parent="Nav/arena2_fix_2" instance=ExtResource("2_8bwrh")]
 surface_material_override/0 = SubResource("StandardMaterial3D_k6fus")
 
+[node name="enemypaths" type="Node3D" parent="Nav"]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wsktt")
 

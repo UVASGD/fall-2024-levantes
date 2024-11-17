@@ -383,6 +383,8 @@ _data = {
 }
 
 [node name="Wallbreaker" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_w8434")
 SPEED = 50.0
 gun_path = "res://projectiles/husk_grenade.tscn"

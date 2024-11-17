@@ -97,10 +97,12 @@ max_contacts_reported = 10
 script = ExtResource("1_jb4av")
 force = -18
 upDirection = 3.6
-damage = 40
+damage = 200
 cooldown = 1.0
 equip_ani = "grenade_equip"
 dequip_ani = "grenade_dequip"
+does_collision_wait = true
+collision_wait_time = 0.1
 
 [node name="grenade_model" parent="." instance=ExtResource("2_82h83")]
 transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0, 0)

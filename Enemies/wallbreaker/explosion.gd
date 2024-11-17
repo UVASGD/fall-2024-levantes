@@ -29,7 +29,7 @@ func _on_body_entered(body):
 		#print("you got hit!!!!")
 		#print("ya_got_hit")	
 	if body.is_in_group("enemies"):
-		SignalBus.emit_signal("enemy_hit", damage_amount, body)
+		SignalBus.emit_signal("enemy_hit", damage_amount, 1, body, 1)
 
 
 

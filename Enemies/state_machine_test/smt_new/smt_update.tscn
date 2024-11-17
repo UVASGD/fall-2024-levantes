@@ -1498,6 +1498,8 @@ _data = {
 
 [node name="smt_update" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.678088, 0)
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_erjey")
 gun_path = "res://Weapons (new)/husk/husk_smg_future.tscn"
 SPEED = 10

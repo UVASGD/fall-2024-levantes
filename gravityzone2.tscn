@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://btvfeicu5pdfm"]
+[gd_scene load_steps=3 format=3 uid="uid://btvfeicu5pdfm"]
+
+[ext_resource type="Script" path="res://gravityzone2.gd" id="1_0g6xm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcl7n"]
 
 [node name="gravityzone2" type="Node3D"]
+script = ExtResource("1_0g6xm")
 
 [node name="Area3D" type="Area3D" parent="."]
 gravity_space_override = 3

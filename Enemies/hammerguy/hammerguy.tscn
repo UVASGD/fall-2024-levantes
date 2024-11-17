@@ -940,6 +940,8 @@ _data = {
 }
 
 [node name="Hammerguy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_3nxlu")
 gun_path = "res://Weapons (new)/husk/husk_desert_eagle.tscn"
 SPEED = 6
