@@ -56,6 +56,8 @@ func spawn_player():
 		newplayer = PlayerManager.get_player()
 	newplayer.add_to_group("Player", true)
 	$playerspawnpoint.add_child(newplayer)
+	newplayer.transform.origin = Vector3(0, 0, 0)
+	
 	player = newplayer
 	player_ready = true
 	PlayerManager.set_player(player)

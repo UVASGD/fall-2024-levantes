@@ -270,3 +270,4 @@ func _on_shield_regen_timer_timeout():
 
 func _on_health_regen_timer_timeout():
 	can_regen_health = true
+	
