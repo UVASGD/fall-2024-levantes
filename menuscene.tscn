@@ -908,7 +908,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-12.0]
+"values": [-6.0]
 }
 
 [sub_resource type="Animation" id="Animation_81w38"]
@@ -960,7 +960,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.96667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-12.0, -80.0]
+"values": [-6.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4eoqn"]
@@ -1284,8 +1284,9 @@ speed_scale = 2.06
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gsn54")
-volume_db = -12.0
+volume_db = -6.0
 autoplay = true
+parameters/looping = true
 
 [connection signal="button_up" from="Camera3D/playbutton" to="." method="_on_playbutton_button_up"]
 [connection signal="button_up" from="Camera3D/TextureButton" to="." method="_on_texture_button_button_up"]
