@@ -18,8 +18,7 @@ var is_dead = false
 @onready var x_axis_model_group = %x_axis_model_group
 @onready var y_axis_model_group = %y_axis_model_group
 
-@onready var x_axis_shield = %x_axis_shield
-@onready var y_axis_shield = %y_axis_shield
+
 
 @onready var Animation_Player = get_node("AnimationPlayer")
 
@@ -115,9 +114,9 @@ func face_target(delta):
 	x_axis.face_point(target_pos, delta)
 	
 	if can_move_y_axis:
-		show_laser()
+		#show_laser()
 		y_axis.face_point(target_pos, delta)
-	show_laser()
+	#show_laser()
 	#y_axis.face_point(target_pos, delta)
 		
 func update_turn_speed(new_speed):
@@ -158,7 +157,7 @@ func chase(delta):
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
 	nav_agent.set_velocity(new_velocity)
-	hide_laser()
+	#hide_laser()
 	
 
 func sight_on(delta):
@@ -177,7 +176,7 @@ func sight_on(delta):
 	# 	   enemy face the player and make them enter a shoot state
 	pass
 func retreat(delta):
-	hide_laser()
+	#hide_laser()
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	target_pos = target.global_transform.origin
@@ -236,6 +235,9 @@ func death():
 	next_state = "idle"
 	#Animation_Player.play("smt_death")
 	#await Animation_Player.animation_finished
+	$hit_animation_player.play("death")
+	await $hit_animation_player.animation_finished
+	
 	$".".queue_free()
 	SignalBus.emit_signal("enemy_death")
 	pass
@@ -258,15 +260,9 @@ func on_hit(damage_taken, hs_mult, col, shape):
 	#if not is_dying and (collider == hitbox or collider == head_hitbox):
 	if col==collider and (shape == 1 or shape == 0):
 		$AudioStreamPlayer3D.play()
-		x_axis_model_group.hide()
-		x_axis_shield.show()
-		y_axis_model_group.hide()
-		y_axis_shield.show()
-		await get_tree().create_timer(.1).timeout
-		x_axis_shield.hide()
-		x_axis_model_group.show()
-		y_axis_shield.hide()
-		y_axis_model_group.show()
+
+		$hit_animation_player.play("hit")
+
 		
 		var updated_dmg = damage_taken
 		#if collider == head_hitbox:
@@ -318,20 +314,13 @@ func is_player_visible(plr) -> bool:
 		return false
 
 
-func show_laser():
-	await get_tree().create_timer(0.1).timeout
-	laser.show()
-	#laser.laser_state = "active"
 
-func hide_laser():
-	laser.hide()
-	#laser.laser_state = "none"
 
 
 func _on_retreat_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "retreat"
-		hide_laser()
+		#hide_laser()
 		Animation_Player.play_backwards("enter_shoot_state")
 		
 
@@ -341,7 +330,7 @@ func _on_enter_body_entered(body):
 	if body.is_in_group("Player"):
 		next_state = "sight_on"
 		Animation_Player.queue("enter_shoot_state")
-		show_laser()
+		#show_laser()
 
 
 
@@ -350,13 +339,13 @@ func _on_retreat_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "sight_on"
 		Animation_Player.queue("enter_shoot_state")
-		show_laser()
+		#show_laser()
 
 
 func _on_enter_body_exited(body):
 	if body.is_in_group("Player"):
 		next_state = "chase"
-		hide_laser()
+		#hide_laser()
 		Animation_Player.play_backwards("enter_shoot_state")
 
 func _animation_player_finished(useless):

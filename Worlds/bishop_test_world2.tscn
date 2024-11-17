@@ -1,13 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=31 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_evsfr"]
+[ext_resource type="PackedScene" uid="uid://bml3ea0qmlf7x" path="res://Weapons (new)/husk/husk_alien_pistol.tscn" id="8_gqibf"]
 [ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="8_ukhhu"]
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_xq5ue"]
-[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="9_pue36"]
 [ext_resource type="PackedScene" uid="uid://vbvy4uppo6py" path="res://Weapons (new)/husk/husk_sniper_rifle.tscn" id="9_ramk4"]
+[ext_resource type="PackedScene" uid="uid://dyqllsxnofeyj" path="res://Weapons (new)/husk/husk_grenade_launcher.tscn" id="9_sy8sv"]
 [ext_resource type="PackedScene" uid="uid://b15t3y58ec0li" path="res://Enemies/hammerguy/hammerguy.tscn" id="10_6jo6c"]
+[ext_resource type="PackedScene" uid="uid://ca7q8qbcy5l2v" path="res://Weapons (new)/husk/husk_void_launcher.tscn" id="10_a4sgt"]
+[ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="11_j2l3d"]
+[ext_resource type="PackedScene" uid="uid://cb6lyhn01m8cn" path="res://Enemies/assassin/assassin.tscn" id="12_a5kio"]
+[ext_resource type="PackedScene" uid="uid://6ofcqwj26hhr" path="res://Enemies/tank/tank.tscn" id="14_3xc36"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -158,17 +163,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02663, 0.512262, 4.51722)
 [node name="playerspawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 1.82138, 2.50575, 0.873843)
 
+[node name="husk_alien_pistol" parent="." instance=ExtResource("8_gqibf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61706, 0, 10.7644)
+
+[node name="HuskBurstRifle2" parent="." instance=ExtResource("8_ukhhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27141, -4.76837e-07, 7.34796)
+
+[node name="HuskDesertEagle2" parent="." instance=ExtResource("20_6u05f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59571, -4.76837e-07, 9.21314)
+
+[node name="husk_grenade_launcher" parent="." instance=ExtResource("9_sy8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71708, -4.76837e-07, 5.03411)
+
+[node name="SmgOfTheFuture2" parent="." instance=ExtResource("8_xq5ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00567, 0, 14.0975)
+
+[node name="HuskSniperRifle2" parent="." instance=ExtResource("9_ramk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73384, 0, 13.1585)
+
+[node name="husk_void_launcher" parent="." instance=ExtResource("10_a4sgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32797, 0, 3.03227)
+
+[node name="husk_grenade_launcher2" parent="." instance=ExtResource("9_sy8sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53428, 1.17627, 17.791)
+
+[node name="smt_update" parent="." instance=ExtResource("11_j2l3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.43, 1.94975, 19.0312)
+
+[node name="assassin" parent="." instance=ExtResource("12_a5kio")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -1.10456, 0, -18.0294)
+
 [node name="Hammerguy" parent="." instance=ExtResource("10_6jo6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7121, 0, 16.3805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58952, 2.38419e-07, -12.6411)
 
-[node name="Hammerguy2" parent="." instance=ExtResource("10_6jo6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1384, 0, 25.3493)
-
-[node name="bishop_sniper" parent="." instance=ExtResource("9_pue36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5496, 0, 12.6703)
-
-[node name="bishop_sniper2" parent="." instance=ExtResource("9_pue36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5496, 0, 3.90979)
-
-[node name="bishop_sniper3" parent="." instance=ExtResource("9_pue36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5589, 0, 0.194688)
+[node name="bishop_sniper" parent="." instance=ExtResource("14_3xc36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0473, 0, -22.7066)
