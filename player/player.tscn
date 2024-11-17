@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="7_4w6sm"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
 [ext_resource type="AnimationLibrary" path="res://Weapons (new)/animations/DesertEagle_animations.res" id="7_xb2cv"]
-[ext_resource type="PackedScene" path="res://Weapons (new)/functional/desert_eagle.tscn" id="9_dagto"]
+[ext_resource type="PackedScene" uid="uid://r0bo5mfc7p1o" path="res://Weapons (new)/functional/desert_eagle.tscn" id="9_dagto"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
