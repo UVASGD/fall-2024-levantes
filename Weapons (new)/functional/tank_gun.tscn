@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://b6hg4q8sye2w3"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/tank_gun.gd" id="1_8vq36"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="1_n3q3l"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="1_n3q3l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h6tl"]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemies/test_enemy/f_t.gd" id="2_5be7m"]
 [ext_resource type="PackedScene" uid="uid://bqw7ui7f30tm7" path="res://Worlds/world_objects/cone.tscn" id="3_ryxq6"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="5_2tede"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="6_lmrpe"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="6_lmrpe"]
 [ext_resource type="AudioStream" uid="uid://bmst1w3vgt3iv" path="res://audio/levantes_sniper_sound_effect.mp3" id="6_pvld3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_31jlf"]

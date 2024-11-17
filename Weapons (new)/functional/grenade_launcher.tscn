@@ -227,7 +227,7 @@ Burst_Count = 1
 transform = Transform3D(1, 0, -6.82121e-13, 0, 1, 0, 0, 0, 3.13964, 0.0832733, 0.00802565, 1.57943)
 
 [node name="GLauncher" type="Node3D" parent="."]
-transform = Transform3D(-0.004, 0, 1.55766e-09, 0, 0.004, 0, -1.55766e-09, 0, -0.004, 0.0803218, -0.32871, 0.24428)
+transform = Transform3D(0.004, 0, -1.90735e-09, 0, 0.004, 0, 1.90735e-09, 0, 0.004, 0.0803218, -0.32871, 0.24428)
 
 [node name="Stock" type="MeshInstance3D" parent="GLauncher"]
 transform = Transform3D(3.22811, 0, 0, 0, 0, 2.32908, 0, -2.32908, 0, 0, 5.60322, 160.569)

@@ -28,19 +28,32 @@ func _process(delta):
 
 func add_guns():
 	var gun_list = [smg, burst, sniper, deagle, gl, vl, ap, bh, fr, sb]
+	var starter_list = [smg, burst]
 	for holder in $shop_model/gun_holders.get_children():
-		var gun = gun_list[randi_range(0,gun_list.size()-1)].instantiate()
-		gun.top_level = true
-		get_tree().root.add_child(gun)
-		active_guns.append(gun)
-		#holder.add_child(gun)
-		
-		var remote = RemoteTransform3D.new()
-		remote.update_scale = false
-		holder.add_child(remote)
-		remote.global_transform.origin += Vector3(0,0.6,0)
-		remote.remote_path = remote.get_path_to(gun)
-		
+		if holder.get_index() == 1:
+			var starter_gun =  starter_list[randi_range(0,starter_list.size()-1)].instantiate()
+			starter_gun.top_level = true
+			get_tree().root.add_child(starter_gun)
+			active_guns.append(starter_gun)
+			#holder.add_child(gun)
+			var remote = RemoteTransform3D.new()
+			remote.update_scale = false
+			holder.add_child(remote)
+			remote.global_transform.origin += Vector3(0,0.6,0)
+			remote.remote_path = remote.get_path_to(starter_gun)
+		else:
+			var gun = gun_list[randi_range(0,gun_list.size()-1)].instantiate()
+			gun.top_level = true
+			get_tree().root.add_child(gun)
+			active_guns.append(gun)
+			#holder.add_child(gun)
+			
+			var remote = RemoteTransform3D.new()
+			remote.update_scale = false
+			holder.add_child(remote)
+			remote.global_transform.origin += Vector3(0,0.6,0)
+			remote.remote_path = remote.get_path_to(gun)
+			
 
 	pass
 
