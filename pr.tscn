@@ -88,6 +88,28 @@ emission_enabled = true
 emission = Color(0.631043, 0, 0.0522439, 1)
 emission_energy_multiplier = 7.11
 
+[sub_resource type="Animation" id="Animation_mjpw7"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.00133852, 0.00127145, 0.000692993)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.5]
+}
+
 [sub_resource type="Animation" id="Animation_3ie2n"]
 resource_name = "idle"
 length = 4.0
@@ -110,28 +132,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [2.5, 0.0, 2.5, 0.0, 2.5]
-}
-
-[sub_resource type="Animation" id="Animation_mjpw7"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.00133852, 0.00127145, 0.000692993)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OmniLight3D:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8o82"]

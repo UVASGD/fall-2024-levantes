@@ -1,6 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://6ku7wgg075k1"]
+[gd_scene load_steps=23 format=4 uid="uid://6ku7wgg075k1"]
 
 [ext_resource type="Script" path="res://Worlds/world_objects/shop.gd" id="1_dt4gv"]
+[ext_resource type="AudioStream" uid="uid://dohth4a03ab7g" path="res://audio/buy.mp3" id="2_hvaqu"]
+[ext_resource type="AudioStream" uid="uid://3xo8mfknevlo" path="res://audio/start_button.mp3" id="3_3egi6"]
+[ext_resource type="AudioStream" uid="uid://bok5tf7qkyu0t" path="res://audio/shop_spawn.mp3" id="4_e2cov"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp7c4"]
 
@@ -287,3 +290,12 @@ shape = SubResource("BoxShape3D_ba5m4")
 libraries = {
 "": SubResource("AnimationLibrary_j76d0")
 }
+
+[node name="buy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_hvaqu")
+
+[node name="start" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3egi6")
+
+[node name="spawn" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_e2cov")

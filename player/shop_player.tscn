@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=39 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -14,6 +14,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c46shq4j0vlux" path="res://Weapons (new)/animations/void_launcher_animations.res" id="9_l7y2e"]
 [ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
+[ext_resource type="AudioStream" uid="uid://pqlba0crpchk" path="res://585257__lesaucisson__swoosh-1.mp3" id="15_1d4ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -1564,3 +1565,6 @@ one_shot = true
 [node name="shield_deplete_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8v5i7")
 volume_db = 5.0
+
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_1d4ng")

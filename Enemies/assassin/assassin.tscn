@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=82 format=4 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cn5mh01l81yep" path="res://Enemies/assassin/assassin_model.tscn" id="3_4h8is"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_lo5vc"]
 [ext_resource type="AudioStream" uid="uid://dfjxwdev73odn" path="res://audio/laser2.mp3" id="5_5oame"]
+[ext_resource type="AudioStream" uid="uid://qcoirnur7nw8" path="res://audio/assassinappear.mp3" id="7_n0m2g"]
+[ext_resource type="AudioStream" uid="uid://cdrey5fx1fc8o" path="res://audio/assassindeath.mp3" id="9_brht0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3lgef"]
 radius = 0.297502
@@ -1901,6 +1903,12 @@ volume_db = -10.0
 wait_time = 3.0
 
 [node name="temp" type="Node3D" parent="."]
+
+[node name="death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_brht0")
+
+[node name="attack" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_n0m2g")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
