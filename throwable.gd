@@ -8,7 +8,7 @@ class_name throwable extends RigidBody3D
 @export var equip_ani:String
 @export var dequip_ani:String
 @export var does_collision_wait: bool
-@export var collision_wait_time: int
+@export var collision_wait_time: float
 var timer
 var collision
 var animation_player

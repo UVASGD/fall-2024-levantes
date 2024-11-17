@@ -1730,6 +1730,8 @@ _data = {
 }
 
 [node name="bishop_sniper" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_1oh2a")
 gun_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
 projectile_speed = 150

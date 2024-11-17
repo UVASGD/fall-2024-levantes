@@ -99,8 +99,8 @@ max_contacts_reported = 10
 script = ExtResource("1_beiuo")
 force = 50
 upDirection = 5.0
-damage = 40
-cooldown = 1.0
+damage = 200
+cooldown = 0.1
 equip_ani = "grenade_equip"
 dequip_ani = "grenade_dequip"
 

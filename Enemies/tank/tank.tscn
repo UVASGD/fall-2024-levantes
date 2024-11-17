@@ -2545,7 +2545,9 @@ _data = {
 "shoot_animation": SubResource("Animation_fipl1")
 }
 
-[node name="Tank" type="CharacterBody3D" groups=["enemies"]]
+[node name="bishop_sniper" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_832vu")
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 

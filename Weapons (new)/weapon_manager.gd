@@ -84,17 +84,17 @@ func _input(event):
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
-		if shop_ray and shop_ray.is_colliding():
-			print("buy")
-			buy()
-			return
 		if grenade_equipped:
 				throw()
 				return
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
-		
+	if event.is_action_pressed("buy"):
+		if shop_ray and shop_ray.is_colliding():
+			print("buy")
+			buy()
+			return
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped or current_weapon.Curr_Mag_Ammo == current_weapon.Max_Mag_Capacity or current_weapon.Reserve_Ammo == 0:
 			return
