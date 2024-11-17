@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=26 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_evsfr"]
 [ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="8_ukhhu"]
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_xq5ue"]
+[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="9_pue36"]
 [ext_resource type="PackedScene" uid="uid://vbvy4uppo6py" path="res://Weapons (new)/husk/husk_sniper_rifle.tscn" id="9_ramk4"]
 [ext_resource type="PackedScene" uid="uid://b15t3y58ec0li" path="res://Enemies/hammerguy/hammerguy.tscn" id="10_6jo6c"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
@@ -162,3 +163,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7121, 0, 16.3805)
 
 [node name="Hammerguy2" parent="." instance=ExtResource("10_6jo6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1384, 0, 25.3493)
+
+[node name="bishop_sniper" parent="." instance=ExtResource("9_pue36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5496, 0, 12.6703)
+
+[node name="bishop_sniper2" parent="." instance=ExtResource("9_pue36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5496, 0, 3.90979)
+
+[node name="bishop_sniper3" parent="." instance=ExtResource("9_pue36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5589, 0, 0.194688)

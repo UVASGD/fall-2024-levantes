@@ -855,7 +855,7 @@ tracks/11/keys = PackedFloat32Array(0, 1, 0, -1.58933e-08, 0, 1, 0.0333333, 1, 0
 tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("%x_axis/..")
+tracks/12/path = NodePath("../../..")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -2549,6 +2549,7 @@ _data = {
 collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_832vu")
+gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
@@ -3239,14 +3240,12 @@ stream = ExtResource("5_2tede")
 volume_db = 5.818
 
 [node name="fire_timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_pvld3")
 volume_db = 70.0
 
 [node name="VisionTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

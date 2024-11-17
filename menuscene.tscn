@@ -965,8 +965,8 @@ stretch_mode = 0
 
 [node name="TextureButton" type="TextureButton" parent="Camera3D"]
 material = SubResource("CanvasItemMaterial_wno7o")
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1000.0
+offset_bottom = 350.0
 scale = Vector2(0.655, 0.655)
 texture_normal = ExtResource("5_5kbve")
 stretch_mode = 0

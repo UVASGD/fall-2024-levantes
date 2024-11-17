@@ -71,6 +71,7 @@ func update_money(money:int, debt_effect: String):
 		$Money/debt.hide()
 		
 	if money < 0:
+		$Money/money_text.text = str(money)
 		$Money/debt/debuff.text = debt_effect
 		$Money/debt.show()
 func _input(event):
