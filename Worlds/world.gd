@@ -104,7 +104,7 @@ func spawn_enemies(): #spawns 1 wave of enemies
 	
 	for i in range(level_dict[current_level][1]):
 		var m
-		var rand_monster_type_num = randi_range(1,5)
+		var rand_monster_type_num = randi_range(1,6)
 		match rand_monster_type_num:
 			1:
 				m = monster.instantiate()
@@ -116,6 +116,8 @@ func spawn_enemies(): #spawns 1 wave of enemies
 				m = assassin.instantiate()
 			5:
 				m = hammer.instantiate()
+			6:
+				m = tank.instantiate()
 		m.set_next_state = "chase"
 		var spawn_length = $SpawnHolder.get_child_count()-1
 		var rand_num = rand.randi_range(0,spawn_length)

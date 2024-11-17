@@ -1,9 +1,11 @@
-[gd_scene load_steps=39 format=4 uid="uid://b15t3y58ec0li"]
+[gd_scene load_steps=41 format=4 uid="uid://b15t3y58ec0li"]
 
 [ext_resource type="Script" path="res://Enemies/hammerguy/hammerguy.gd" id="1_3nxlu"]
+[ext_resource type="AudioStream" uid="uid://cqg2lc87cbro8" path="res://audio/hammer.mp3" id="2_yya1k"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="3_iq3mb"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_2ot4v"]
+[ext_resource type="AudioStream" uid="uid://scv3air6aft2" path="res://audio/gleebodeath.mp3" id="6_7snda"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_re83k"]
 radius = 0.455026
@@ -273,6 +275,21 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, -2.13163e-14, 0), Vector3(-0.365996, -6.20093e-09, 3.35061e-08), Vector3(-0.856066, -4.59631e-08, 1.00743e-07), Vector3(-0.247786, -2.97369e-07, -6.37387e-08), Vector3(1.43485, -5.5764e-07, -6.39112e-07), Vector3(-0.365996, -6.20094e-09, 3.35061e-08), Vector3(0, -2.13163e-14, 0)]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("hit")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_yya1k")
+}],
+"times": PackedFloat32Array(0.9)
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_bl2cw"]
 resource_name = "idle"
@@ -1092,6 +1109,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_u8321")
 libraries = {
 "": SubResource("AnimationLibrary_1t6ee")
 }
+
+[node name="hit" type="AudioStreamPlayer3D" parent="."]
+
+[node name="death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_7snda")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

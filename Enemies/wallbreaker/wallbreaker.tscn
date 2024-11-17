@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://b4exv62ao5bai"]
+[gd_scene load_steps=31 format=4 uid="uid://b4exv62ao5bai"]
 
 [ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
 [ext_resource type="Script" path="res://Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="4_5act7"]
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_ex7kl"]
 [ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="5_6kyp3"]
+[ext_resource type="AudioStream" uid="uid://bk2vcrhw8bxie" path="res://audio/walllbreaker_run.mp3" id="7_tgoq0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vqm7n"]
 resource_local_to_scene = true
@@ -483,6 +484,9 @@ volume_db = 19.048
 libraries = {
 "": SubResource("AnimationLibrary_tvjqd")
 }
+
+[node name="run" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_tgoq0")
 
 [connection signal="animation_finished" from="x_axis/graphics/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

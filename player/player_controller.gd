@@ -227,6 +227,7 @@ func regen_health(amount: int):
 
 func _handle_dash_logic():
 	if Input.is_action_just_pressed("Dash") and can_dash:
+		$dash.play()
 		_start_dash()
 	if is_dashing:
 		_apply_dash()

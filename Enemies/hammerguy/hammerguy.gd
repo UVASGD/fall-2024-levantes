@@ -263,6 +263,7 @@ func _on_vision_body_exited(body):
 func death():
 	if is_dead:
 		return
+	$death.play()
 	is_dead = true
 	spawn_reward()
 	next_state = "idle"

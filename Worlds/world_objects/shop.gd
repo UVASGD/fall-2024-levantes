@@ -17,6 +17,7 @@ func _ready():
 	SignalBus.connect("gun_purchase", on_gun_purchase)
 	SignalBus.connect("player_death", despawn)
 	add_guns()
+	$spawn.play()
 	$AnimationPlayer.play("open")
 	pass # Replace with function body.
 
@@ -44,9 +45,13 @@ func add_guns():
 	pass
 
 func on_round_start():
+	$start.play()
+	await $start.finished
+	$spawn.play()
 	$AnimationPlayer.play("close")
 
 func on_gun_purchase(gun):
+	$buy.play()
 	active_guns.remove_at(active_guns.find(gun))
 
 func despawn():

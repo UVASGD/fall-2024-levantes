@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bgthciff800fo"]
 
 [ext_resource type="Script" path="res://Enemies/tank/orbital_strike.gd" id="1_c7jfn"]
-[ext_resource type="AudioStream" uid="uid://xvuumv7q3ywv" path="res://audio/train_whistle.mp3" id="2_gf3tt"]
-[ext_resource type="AudioStream" uid="uid://cxgx1w44rw14p" path="res://audio/glass_break.mp3" id="2_wtfhh"]
+[ext_resource type="AudioStream" uid="uid://cy5rhmtyvqj5x" path="res://audio/orbitalstrike.mp3" id="2_gb100"]
+[ext_resource type="AudioStream" uid="uid://dj1tmiwe0xtiw" path="res://audio/orbital_charge.mp3" id="3_vhm7j"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x1nba"]
 resource_local_to_scene = true
@@ -175,9 +175,9 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("2_wtfhh")
+"stream": ExtResource("2_gb100")
 }],
-"times": PackedFloat32Array(0.366667)
+"times": PackedFloat32Array(0.0666667)
 }
 tracks/6/use_blend = true
 
@@ -339,10 +339,9 @@ disabled = true
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.0125, 0, 0, 0, 0.0125, 0, 0, 0, 0.0125, 0, 0, 0)
-autoplay = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_gf3tt")
+stream = ExtResource("3_vhm7j")
 autoplay = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

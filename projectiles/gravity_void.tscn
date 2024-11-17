@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://projectiles/gravity_void.gd" id="1_q3db4"]
 [ext_resource type="Shader" uid="uid://x2u0hww0m8ge" path="res://void_shader.tres" id="2_5oau7"]
-[ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="3_fyanj"]
+[ext_resource type="AudioStream" uid="uid://bibvqdljd2n0k" path="res://audio/void.mp3" id="3_1msc4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8sfab"]
 radius = 15.8533
@@ -63,6 +63,18 @@ tracks/3/path = NodePath("Area3D/CollisionShape3D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -135,6 +147,18 @@ tracks/4/keys = {
 "method": &"_on_explosion_animation_player_animation_finished"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwust"]
 _data = {
@@ -167,5 +191,4 @@ libraries = {
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582662, 0)
-stream = ExtResource("3_fyanj")
-volume_db = 19.048
+stream = ExtResource("3_1msc4")

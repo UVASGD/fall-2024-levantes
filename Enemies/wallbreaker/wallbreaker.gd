@@ -25,7 +25,7 @@ var prev_state
 var target
 var offset
 var target_pos
-
+var playing_run_sound =  false
 var state_lock_on = false
 var has_exploded = false
 
@@ -39,6 +39,7 @@ func _ready():
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	SignalBus.connect("few_enemies", show_indicator)
+	$run.connect("finished", on_run_sound_finished)
 	
 func _physics_process(delta):
 	if not self.is_on_floor():
@@ -54,7 +55,9 @@ func _physics_process(delta):
 				chase(delta)
 			"explode":
 				explode()
-	
+
+func on_run_sound_finished():
+	playing_run_sound = false
 func show_indicator():
 	%indicator.visible = true
 	
@@ -94,6 +97,9 @@ func idle():
 	move_and_slide()
 
 func chase(delta):
+	if not playing_run_sound:
+		playing_run_sound = true
+		$run.play()
 	Animation_Player.play("ArmatureAction")
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
