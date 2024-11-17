@@ -38,11 +38,10 @@ var headbob_time = 0.0
 @export var air_move_speed := 300.0
 
 @export var dash_speed := 7000.0
-
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
 
-#@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
+#@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
 
@@ -72,7 +71,6 @@ func get_move_speed() -> float:
 	return walk_speed
 
 func _ready():
-	
 	shield_hp = max_shield_hp
 	health_hp = max_health_hp
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):

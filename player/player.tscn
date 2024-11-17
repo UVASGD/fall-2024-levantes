@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://w52k7iojvbpg" path="res://Weapons (new)/weapon_manager.tscn" id="3_ol2y5"]
 [ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="4_8tra1"]
 [ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="5_y6phs"]
-[ext_resource type="AnimationLibrary" uid="uid://d1f0g8pi4pjpi" path="res://Weapons (new)/animations/sniper_animations.res" id="6_kljxs"]
+[ext_resource type="AnimationLibrary" path="res://Weapons (new)/animations/sniper_animations.res" id="6_kljxs"]
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="6_o2npw"]
 [ext_resource type="AudioStream" uid="uid://73m5nujdykm1" path="res://audio/shield_deplete_sound.wav" id="7_4w6sm"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="7_nsd04"]
-[ext_resource type="AnimationLibrary" uid="uid://cwlsi6dcs7741" path="res://Weapons (new)/animations/DesertEagle_animations.res" id="7_xb2cv"]
-[ext_resource type="PackedScene" uid="uid://d1cvdu7qtgcnd" path="res://Weapons (new)/functional/desert_eagle.tscn" id="9_dagto"]
+[ext_resource type="AnimationLibrary" path="res://Weapons (new)/animations/DesertEagle_animations.res" id="7_xb2cv"]
+[ext_resource type="PackedScene" uid="uid://r0bo5mfc7p1o" path="res://Weapons (new)/functional/desert_eagle.tscn" id="9_dagto"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
 
@@ -444,7 +444,6 @@ size = Vector3(2.92481, 2.45361, 3.20447)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_r47ex")
-max_health_hp = 100
 HEADBOB_SWAY_AMOUNT = 0.01
 dash_speed = 10.0
 

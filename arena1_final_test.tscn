@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://chlwrlkgb2c5r"]
+[gd_scene load_steps=25 format=4 uid="uid://c6u4w4iqcx82x"]
 
 [ext_resource type="Script" path="res://Worlds/world.gd" id="1_wxtad"]
 [ext_resource type="Texture2D" uid="uid://cw0ehblqamciv" path="res://Textures/star_texture.png" id="2_uge8u"]
