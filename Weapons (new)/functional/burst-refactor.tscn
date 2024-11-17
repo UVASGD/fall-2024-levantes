@@ -178,7 +178,7 @@ headshot_multiplier = 2.0
 melee_dmg = 50
 
 [node name="burstModel" type="Node3D" parent="."]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -1.60943, 0)
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
 
 [node name="Empty" type="Node3D" parent="burstModel"]
 transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, 0, 0, 0)

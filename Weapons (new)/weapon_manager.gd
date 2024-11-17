@@ -21,6 +21,15 @@ var grenade = null
 var grenade_count = 0
 var money = 0
 var shop_ray = null
+
+#sway
+var mouse_input
+var weapon_sway_amount : float = 5
+var weapon_rotation_amount : float = 1
+
+
+var def_weapon_holder_pos : Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var weapon_array = []
@@ -47,7 +56,23 @@ func _ready():
 func _process(delta):
 	pass
 
+func _physics_process(delta):
+	if current_weapon:
+		def_weapon_holder_pos = current_weapon.position
+	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var velocity : Vector3
+	if direction:
+		velocity.x = direction.x * 9
+		velocity.z = direction.z * 9
+	weapon_tilt(input_dir.x, delta)
+	weapon_sway(delta)
+	weapon_bob(velocity.length(), delta)
+	
+
 func _input(event):
+	if event is InputEventMouseMotion:
+		mouse_input = event.relative
 	if event.is_action_pressed("debug_button"):
 		hide_weapon(current_weapon)
 	if event.is_action_pressed("Weapon_Switch"):
@@ -256,3 +281,24 @@ func call_hud_initialize():
 func call_update_ammo(ammo):
 	hud.update_ammo(ammo)
 	
+func weapon_tilt(input_x, delta):
+	if current_weapon:
+		current_weapon.rotation.z = lerp(current_weapon.rotation.z, -input_x * weapon_rotation_amount * 0.2, 10 * delta)
+		
+func weapon_sway(delta):
+	if current_weapon:
+		mouse_input = lerp(mouse_input, Vector2.ZERO, 10*delta)
+		#current_weapon.rotation.y = clamp(current_weapon.rotation.y, -0.263, 0.263)
+		current_weapon.rotation.x = lerp(current_weapon.rotation.x, mouse_input.y * weapon_rotation_amount * 0.005, 10 * delta)
+		current_weapon.rotation.y = lerp(current_weapon.rotation.y, mouse_input.x * weapon_rotation_amount * 0.005, 10 * delta)
+		
+func weapon_bob(vel : float, delta):
+	if current_weapon:
+		if vel > 0:
+			var bob_amount : float = 0.01
+			var bob_freq : float = 0.01
+			current_weapon.position.y = lerp(current_weapon.position.y, def_weapon_holder_pos.y + sin(Time.get_ticks_msec() * bob_freq) * bob_amount, 10 * delta)
+			current_weapon.position.x = lerp(current_weapon.position.x, def_weapon_holder_pos.x + sin(Time.get_ticks_msec() * bob_freq * 0.5) * bob_amount, 10 * delta)
+		else:
+			current_weapon.position.y = lerp(current_weapon.position.y, def_weapon_holder_pos.y, 10 * delta)
+			current_weapon.position.x = lerp(current_weapon.position.x, def_weapon_holder_pos.x, 10 * delta)

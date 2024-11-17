@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_re83k"]
+radius = 0.455026
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_660g2"]
 radius = 0.920298
@@ -28,6 +29,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7rdqu"]
 resource_name = "attack"
 length = 1.5
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
