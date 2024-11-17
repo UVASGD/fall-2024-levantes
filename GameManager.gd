@@ -1,9 +1,8 @@
 extends Node
 var worlds = {
-	"dummyworld1":"res://Worlds/dummyworld1.tscn",
-	"dummyworld2":"res://Worlds/dummyworld2.tscn",
 	"space_world":"res://Worlds/space_world.tscn",
-	"colliseum":"res://arena1_final.tscn"
+	"colliseum":"res://arena1_final.tscn",
+	"observatory":"res://observatory.tscn"
 }
 var important_nodes = [PlayerManager, SignalBus, self, PersistentData]
 var current_difficulty = 1
