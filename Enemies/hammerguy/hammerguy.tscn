@@ -683,22 +683,6 @@ shader_parameter/Strength = 10.0
 shader_parameter/LightColor = Color(1, 1, 1, 1)
 shader_parameter/FloatParameter = 1.0
 
-[sub_resource type="Animation" id="Animation_cmqtl"]
-resource_name = "hit"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shield:surface_material_override/0:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.0, 0.4, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_4542c"]
 length = 0.001
 tracks/0/type = "value"
@@ -923,6 +907,22 @@ tracks/8/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_cmqtl"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shield:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.4, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1t6ee"]
 _data = {
 "RESET": SubResource("Animation_4542c"),
@@ -993,7 +993,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.9
 script = ExtResource("3_iq3mb")
 
 [node name="x_axis_model_group" type="Node3D" parent="x_axis"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
 
 [node name="gleebo_the_destroyer_colored" type="Node3D" parent="x_axis/x_axis_model_group"]
 transform = Transform3D(9.04375e-08, 0, 0.689655, 0, 0.689655, 0, -0.689655, 0, 9.04375e-08, -7.58629e-08, 0, 1.73554)
@@ -1012,7 +1012,7 @@ mesh = SubResource("ArrayMesh_jvnax")
 skeleton = NodePath("")
 
 [node name="right_arm" type="MeshInstance3D" parent="x_axis/x_axis_model_group/gleebo_the_destroyer_colored/gleebo"]
-transform = Transform3D(0.8076, -0.418531, 2.11366, 0.899756, 2.36337, -1.14726e-07, -1.85769, 0.962729, 0.918879, 1.83386, 6.16596, 0.595473)
+transform = Transform3D(0.807601, -0.418531, 2.11366, 0.899756, 2.36337, -1.14726e-07, -1.85769, 0.962729, 0.91888, 1.83386, 6.16596, 0.595473)
 mesh = SubResource("ArrayMesh_2x0nf")
 skeleton = NodePath("")
 

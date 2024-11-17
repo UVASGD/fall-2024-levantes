@@ -265,6 +265,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_bm6h5")
+crosshair_color = Color(1, 1, 1, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
