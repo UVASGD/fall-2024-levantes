@@ -517,10 +517,12 @@ libraries = {
 stream = ExtResource("7_hbwpr")
 volume_db = -15.0
 autoplay = true
+parameters/looping = true
 
 [node name="freaky" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("8_k1sa2")
 volume_db = -80.0
 autoplay = true
+parameters/looping = true
 
 [editable path="Nav/arena2_fix_2"]

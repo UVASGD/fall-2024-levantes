@@ -247,6 +247,7 @@ libraries = {
 
 [node name="demure" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("7_5b3lp")
+volume_db = -15.0
 autoplay = true
 
 [node name="freaky" type="AudioStreamPlayer" parent="music"]
