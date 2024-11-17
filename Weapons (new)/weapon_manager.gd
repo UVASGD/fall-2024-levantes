@@ -21,6 +21,7 @@ var grenade = null
 var grenade_count = 0
 var money = 0
 var shop_ray = null
+var curr_shop_ray_name = ""
 
 #sway
 var mouse_input
@@ -46,16 +47,37 @@ func _ready():
 		can_switch = true
 	SignalBus.connect("update_ammo", call_update_ammo)
 	SignalBus.connect("call_hud_initialize", call_hud_initialize)
+	SignalBus.connect("wave_killed", reward_money)
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
 	shop_ray = $"../RayCast3D"
-	pass 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+	call_money_update(money, "")
 	pass
+	
+	 
 
+var has_printed_weapon_name = false  
+
+func _process(delta):
+	if not curr_shop_ray_name and shop_ray and shop_ray.is_colliding():
+		var collider = shop_ray.get_collider()
+		
+		# Ensure the collider and its parent exist, and check if it's a Shop_Weapon or Powerup
+		if collider and collider.get_parent() and (collider.get_parent() is Shop_Weapon or collider.get_parent() is Powerup):
+			var item = collider.get_parent()
+			curr_shop_ray_name = item.item_name
+			var price = item.price
+			
+			if not has_printed_weapon_name:
+				call_update_shop_weapon_name(curr_shop_ray_name, price)
+				has_printed_weapon_name = true
+	elif curr_shop_ray_name and (not shop_ray or not shop_ray.is_colliding()):
+		# Reset when ray is no longer colliding
+		curr_shop_ray_name = ""
+		call_update_shop_weapon_name(curr_shop_ray_name, 0)
+		has_printed_weapon_name = false
+		
 func _physics_process(delta):
 	if current_weapon:
 		def_weapon_holder_pos = current_weapon.position
@@ -65,10 +87,13 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * 9
 		velocity.z = direction.z * 9
-	weapon_tilt(input_dir.x, delta)
-	weapon_sway(delta)
-	weapon_bob(velocity.length(), delta)
-	
+	if current_weapon:
+		if current_weapon.Name == "burst":
+			weapon_tilt(input_dir.x, delta)
+		else:
+			weapon_tilt(input_dir.x, delta)
+			weapon_sway(delta)
+			weapon_bob(velocity.length(), delta)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -86,17 +111,17 @@ func _input(event):
 		call_hud_initialize()
 		
 	if event.is_action_pressed("Shoot"):
-		if shop_ray and shop_ray.is_colliding():
-			print("buy")
-			buy()
-			return
 		if grenade_equipped:
 				throw()
 				return
 		if current_weapon == null:
 			return
 		current_weapon.shoot()
-		
+	if event.is_action_pressed("buy"):
+		if shop_ray and shop_ray.is_colliding():
+			print("buy")
+			buy()
+			return
 	if event.is_action_pressed("Reload"):
 		if current_weapon == null or grenade_equipped or current_weapon.Curr_Mag_Ammo == current_weapon.Max_Mag_Capacity or current_weapon.Reserve_Ammo == 0:
 			return
@@ -231,8 +256,11 @@ func buy():
 		print("buying")
 		var shop_weapon = shop_ray.get_collider().get_parent()
 		money -= shop_weapon.price
+		
 		if money < 0:
 			go_in_debt()
+		else:
+			call_money_update(money, "")
 		var new_weapon = shop_weapon.sell()
 		get_tree().root.get_child(3).add_child(new_weapon) # hardcoded 3 because bishoptestworld  is the third child of root. May change later
 		new_weapon.position = player_position + Vector3(0, 3, 3)
@@ -248,12 +276,13 @@ func go_in_debt():
 	print("you are in debt")
 	var num = randi_range(0,1)
 	if num == 0:
+		call_money_update(money, "half health and shield")
 		PlayerManager.player.max_health_hp = PlayerManager.player.max_health_hp / 2
 		PlayerManager.player.health_hp = PlayerManager.player.health_hp / 2
 	elif num == 1:
 		PlayerManager.player.health_regen_timer.wait_time = PlayerManager.player.health_regen_timer.wait_time / 2
 		PlayerManager.player.shield_regen_timer.wait_time = PlayerManager.player.shield_regen_timer.wait_time / 2
-	
+		call_money_update(money, "slower regen")
 	return
 
 func _on_pickup_detection_body_entered(body):
@@ -280,7 +309,17 @@ func call_hud_initialize():
 
 func call_update_ammo(ammo):
 	hud.update_ammo(ammo)
-	
+
+func call_update_shop_weapon_name(s_wep_name, price):
+	hud.update_shop_weapon_name(s_wep_name, price)
+
+func call_money_update(money, debt_effect):
+	hud.update_money(money, debt_effect)
+
+func reward_money():
+	money += 1
+	call_money_update(money, "")
+
 func weapon_tilt(input_x, delta):
 	if current_weapon:
 		current_weapon.rotation.z = lerp(current_weapon.rotation.z, -input_x * weapon_rotation_amount * 0.2, 10 * delta)
