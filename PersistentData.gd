@@ -16,8 +16,8 @@ func _process(delta: float) -> void:
 	pass
 
 func load_save_file() -> void:
-	if FileAccess.file_exists("res://user/save.dat"):
-		var file = FileAccess.open("res://user/save.dat", FileAccess.READ)
+	if FileAccess.file_exists("user://save.dat"):
+		var file = FileAccess.open("user://save.dat", FileAccess.READ)
 		var json = JSON.new()
 		var error = json.parse(file.get_as_text())
 		if error == OK:
@@ -31,7 +31,7 @@ func load_save_file() -> void:
 		save_to_file()
 
 func save_to_file() -> void:
-	var file = FileAccess.open("res://user/save.dat", FileAccess.WRITE)
+	var file = FileAccess.open("user://save.dat", FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 
 func _update_high_score():

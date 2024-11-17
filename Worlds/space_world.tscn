@@ -435,8 +435,10 @@ libraries = {
 stream = ExtResource("14_ewtoo")
 volume_db = -15.0
 autoplay = true
+parameters/looping = true
 
 [node name="freaky" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("15_lqgls")
 volume_db = -80.0
 autoplay = true
+parameters/looping = true
