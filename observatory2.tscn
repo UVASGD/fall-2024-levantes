@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://1awjuwu41x2a"]
+[gd_scene load_steps=29 format=3 uid="uid://1awjuwu41x2a"]
 
 [ext_resource type="Script" path="res://Worlds/world.gd" id="1_ynjkm"]
 [ext_resource type="PackedScene" uid="uid://b1mbho3aly6y7" path="res://pr.tscn" id="2_8bwrh"]
@@ -74,6 +74,8 @@ material = SubResource("StandardMaterial3D_c1el6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6fus"]
 albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0lli"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3khjo"]
 panorama = ExtResource("3_by2fy")
@@ -259,6 +261,46 @@ mesh = SubResource("BoxMesh_ssgjx")
 
 [node name="pr2" parent="Nav/arena2_fix_2" instance=ExtResource("2_8bwrh")]
 surface_material_override/0 = SubResource("StandardMaterial3D_k6fus")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(1.81098, -0.0603882, 0.541837, 0.266511, 0.831046, 0, -1.83369, 0.0611454, 0.535126, 20.4821, -0.728309, 17.156)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(2.46563, -0.0603882, 0.227419, 0.235125, 0.831046, -0.0368805, -0.760565, 0.0611455, 0.725857, 19.8227, -0.791191, 17.3594)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(2.58378, -0.0603882, 0.0134329, 0.190102, 0.831046, -0.054901, -0.0319588, 0.0611455, 0.759443, 17.7887, -0.963936, 17.6984)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(2.58378, -0.0603882, 0.0134329, 0.190102, 0.831046, -0.054901, -0.0319588, 0.0611455, 0.759443, 15.8622, -1.10568, 17.7223)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(2.37319, -0.0603882, -0.300603, 0.0962773, 0.831046, -0.0730438, 1.03527, 0.0611455, 0.695881, 14.4537, -1.11241, 17.4378)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(2.37319, -0.0603882, -0.300603, 0.0962773, 0.831046, -0.0730438, 1.03527, 0.0611455, 0.695881, 12.4513, -1.19365, 16.5643)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(1.78443, -0.0603882, -0.549393, -0.00854804, 0.831046, -0.0782935, 1.87851, 0.0611454, 0.521522, 12.2415, -1.19265, 16.3434)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(1.33678, -0.0599573, 0.650063, 0.259299, 0.831059, 0.0176198, -2.20428, 0.0614001, 0.396302, 21.5516, -0.570916, 16.073)
+mesh = SubResource("BoxMesh_i0lli")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
 
 [node name="enemypaths" type="Node3D" parent="Nav"]
 
