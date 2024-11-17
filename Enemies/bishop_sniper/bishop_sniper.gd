@@ -66,7 +66,8 @@ func _ready():
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	Animation_Player.connect("animation_finished", _animation_player_finished)
 	#laser.player = get_tree().get_nodes_in_group("Player")[0]
-	
+	SignalBus.connect("few_enemies", show_indicator)
+
 func _physics_process(delta):
 	if not self.is_on_floor():
 		self.velocity.y += get_gravity().y * delta
@@ -90,6 +91,9 @@ func _physics_process(delta):
 				sight_on(delta)
 			"shoot":
 				shoot()
+	
+func show_indicator():
+	%indicator.visible = true
 		
 func stop_and_reset_fire_timer():
 	fire_timer.stop()

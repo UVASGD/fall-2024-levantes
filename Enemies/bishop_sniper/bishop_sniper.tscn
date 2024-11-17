@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://dx3k3nehr35dh"]
+[gd_scene load_steps=98 format=4 uid="uid://dx3k3nehr35dh"]
 
 [ext_resource type="Script" path="res://Enemies/bishop_sniper/bishop_sniper.gd" id="1_1oh2a"]
 [ext_resource type="Script" path="res://Enemies/test_enemy/f_t.gd" id="2_o3jtk"]
@@ -805,6 +805,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tmfqs")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xw1rn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7w5t"]
+no_depth_test = true
+albedo_color = Color(0.0628838, 0.00684975, 0.00212042, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 15.2
 
 [sub_resource type="Animation" id="Animation_fakjd"]
 length = 0.001
@@ -2053,6 +2062,14 @@ transform = Transform3D(0.327098, 0.442596, 1.29224, 1.36474, -0.0501647, -0.328
 material_override = SubResource("StandardMaterial3D_4vt5v")
 mesh = SubResource("ArrayMesh_00w01")
 skeleton = NodePath("")
+
+[node name="indicator" type="MeshInstance3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(4.44444, 0, 0, 0, 4.44444, 0, 0, 0, 4.44444, 0, 21.1212, 0)
+visible = false
+mesh = SubResource("SphereMesh_xw1rn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_l7w5t")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_50s5u")

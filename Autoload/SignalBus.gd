@@ -26,6 +26,9 @@ signal wave_killed
 signal score_add 
 
 signal player_death 
+
+signal few_enemies
+
 var current_difficulty = 1
 
 var player_save = null

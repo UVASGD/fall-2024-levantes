@@ -61,6 +61,7 @@ func _ready():
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
+	SignalBus.connect("few_enemies", show_indicator)
 	
 func _physics_process(delta):
 	if not self.is_on_floor():
@@ -79,7 +80,9 @@ func _physics_process(delta):
 			"no_move_debug":
 				no_move_debug(delta)
 	
-
+func show_indicator():
+	%indicator.visible = true
+	
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	

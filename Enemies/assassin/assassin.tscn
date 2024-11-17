@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cb6lyhn01m8cn"]
+[gd_scene load_steps=80 format=4 uid="uid://cb6lyhn01m8cn"]
 
 [ext_resource type="Script" path="res://Enemies/assassin/assassin.gd" id="1_cbyde"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_dwvr6"]
@@ -886,6 +886,15 @@ _data = {
 "RESET": SubResource("Animation_aet05"),
 "Slash": SubResource("Animation_bcata")
 }
+
+[sub_resource type="SphereMesh" id="SphereMesh_6lp1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_neg0r"]
+no_depth_test = true
+albedo_color = Color(0.0628838, 0.00684975, 0.00212042, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 15.2
 
 [sub_resource type="Animation" id="Animation_d8tn4"]
 length = 0.001
@@ -1861,6 +1870,14 @@ visible = false
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.40497, 0)
 script = ExtResource("2_dwvr6")
+
+[node name="indicator" type="MeshInstance3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(4.44444, 0, 0, 0, 4.44444, 0, 0, 0, 4.44444, 0, 21.1212, 0)
+visible = false
+mesh = SubResource("SphereMesh_6lp1e")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_neg0r")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_lo5vc")

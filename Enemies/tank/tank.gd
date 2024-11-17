@@ -63,13 +63,18 @@ func _ready():
 	wait_time_till_fire_seconds = wait_time_till_fire_seconds + randf_range(-.5,.5)
 	offset = add_rand_offset(2)
 	fire_timer.wait_time = wait_time_till_fire_seconds
+	print(fire_timer.wait_time)
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	fire_timer.connect("timeout", _on_fire_timer_timeout)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	Animation_Player.connect("animation_finished", _animation_player_finished)
 	#laser.player = get_tree().get_nodes_in_group("Player")[0]
-	
+	SignalBus.connect("few_enemies", show_indicator)
+
+func show_indicator():
+	%indicator.visible = true
+
 func _physics_process(delta):
 	if not self.is_on_floor():
 		self.velocity.y += get_gravity().y * delta
@@ -157,7 +162,9 @@ func chase(delta):
 	
 
 func sight_on(delta):
+	#print("sight on")
 	if fire_timer.is_stopped():
+		print("start tmer")
 		fire_timer.start()
 	target = get_tree().get_nodes_in_group("Player")[0]
 	#_i_can_see()
@@ -201,6 +208,7 @@ func shoot():
 		rig_animation_player.play("Shooting")
 		print("attack")
 	else:
+		print("cant see")
 		state_lock_on = false
 	
 func launch_missile() -> void:

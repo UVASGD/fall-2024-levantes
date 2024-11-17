@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b4exv62ao5bai"]
+[gd_scene load_steps=30 format=4 uid="uid://b4exv62ao5bai"]
 
 [ext_resource type="Texture2D" uid="uid://bwbetwqlhjsju" path="res://Enemies/wallbreaker/wallbreaker_Body Base Color.png" id="1_v2r82"]
 [ext_resource type="Script" path="res://Enemies/wallbreaker/wallbreaker.gd" id="1_w8434"]
@@ -308,6 +308,15 @@ shader_parameter/Strength = 10.0
 shader_parameter/LightColor = Color(0.784314, 0.972549, 0.976471, 1)
 shader_parameter/FloatParameter = 0.6
 
+[sub_resource type="SphereMesh" id="SphereMesh_ym3pr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44kxs"]
+no_depth_test = true
+albedo_color = Color(0.0628838, 0.00684975, 0.00212042, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 15.2
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_y7klq"]
 radius = 0.181508
 
@@ -439,6 +448,14 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593332, 0)
 mesh = SubResource("CapsuleMesh_nsy43")
 surface_material_override/0 = SubResource("ShaderMaterial_gpra6")
+
+[node name="indicator" type="MeshInstance3D" parent="x_axis"]
+unique_name_in_owner = true
+transform = Transform3D(0.504, 0, 0, 0, 0.504, 0, 0, 0, 0.504, 0, 2.0672, 0)
+visible = false
+mesh = SubResource("SphereMesh_ym3pr")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_44kxs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
