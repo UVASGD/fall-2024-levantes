@@ -1,0 +1,417 @@
+[gd_scene load_steps=22 format=3 uid="uid://1awjuwu41x2a"]
+
+[ext_resource type="Script" path="res://Worlds/world.gd" id="1_ynjkm"]
+[ext_resource type="PackedScene" uid="uid://b1mbho3aly6y7" path="res://pr.tscn" id="2_8bwrh"]
+[ext_resource type="PackedScene" uid="uid://ncrbla78ckbi" path="res://Models/arena2_fix_2.gltf" id="2_nbvk1"]
+[ext_resource type="Texture2D" uid="uid://cw0ehblqamciv" path="res://Textures/star_texture.png" id="3_by2fy"]
+[ext_resource type="PackedScene" uid="uid://bgi2kt00807f1" path="res://Worlds/world_objects/geyser.tscn" id="4_pva2y"]
+[ext_resource type="PackedScene" uid="uid://bel23wcn7oqje" path="res://death_zone.tscn" id="5_d3e1e"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xg7br"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0etj"]
+albedo_color = Color(1, 0.584314, 1, 1)
+metallic = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.737255, 0, 1, 1)
+emission_energy_multiplier = 3.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mw611"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.497175, 0.776953, 0.144964, 1)
+emission_energy_multiplier = 4.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypgnj"]
+albedo_color = Color(0, 0.869678, 0.53313, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+emission = Color(0.332881, 0.332881, 0.332881, 1)
+emission_energy_multiplier = 0.0
+rim_tint = 0.54
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw0uj"]
+albedo_color = Color(0.269625, 0.828144, 0.674409, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+refraction_scale = -0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7plt"]
+albedo_color = Color(0.683615, 0.755556, 0.534377, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.8
+refraction_scale = -0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbdh7"]
+albedo_color = Color(0.12796, 0.187521, 0.127888, 1)
+metallic = 0.25
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qesuw"]
+albedo_color = Color(0.532892, 0.733791, 0.436121, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1el6"]
+albedo_color = Color(0.12796, 0.187521, 0.127888, 1)
+metallic = 0.25
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="BoxMesh_ssgjx"]
+material = SubResource("StandardMaterial3D_c1el6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6fus"]
+albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3khjo"]
+panorama = ExtResource("3_by2fy")
+energy_multiplier = 23.05
+
+[sub_resource type="Sky" id="Sky_igdcg"]
+sky_material = SubResource("PanoramaSkyMaterial_3khjo")
+
+[sub_resource type="Environment" id="Environment_wsktt"]
+background_mode = 2
+sky = SubResource("Sky_igdcg")
+ambient_light_color = Color(0.411126, 0.493902, 0.790021, 1)
+ambient_light_sky_contribution = 0.92
+ambient_light_energy = 11.71
+glow_enabled = true
+glow_intensity = 2.07
+glow_strength = 1.15
+glow_bloom = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0134
+adjustment_enabled = true
+adjustment_brightness = 1.29
+adjustment_contrast = 1.39
+adjustment_saturation = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7g5w"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ynjkm")
+
+[node name="Nav" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_xg7br")
+
+[node name="arena2_fix_2" parent="Nav" instance=ExtResource("2_nbvk1")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="diamond" parent="Nav/arena2_fix_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_i0etj")
+
+[node name="plant" parent="Nav/arena2_fix_2" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mw611")
+
+[node name="metal" parent="Nav/arena2_fix_2" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ypgnj")
+
+[node name="glass" parent="Nav/arena2_fix_2" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lw0uj")
+
+[node name="other" parent="Nav/arena2_fix_2" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_x7plt")
+
+[node name="pr" parent="Nav/arena2_fix_2" index="5"]
+visible = false
+
+[node name="pr_eyes" parent="Nav/arena2_fix_2" index="6"]
+visible = false
+
+[node name="norm" parent="Nav/arena2_fix_2" index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdh7")
+
+[node name="rails" parent="Nav/arena2_fix_2" index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qesuw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(0.999998, 0, 0, 0, 13.8888, 0, 0, 0, 16.4411, 32.6287, 0, 14.4354)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(-4.37113e-08, 0, 16.4411, 0, 13.8888, 0, -0.999997, 0, -7.18662e-07, 38.7445, 0, 11.3478)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(-4.37113e-08, 0, 16.4411, 0, 16.9068, 0, -0.999997, 0, -7.18662e-07, 3.49084, 0, 21.8932)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(0.999997, 0, 0, 0, 16.9068, 0, 0, 0, 16.4411, 1.2513, 0, 28.6575)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(0.999997, 0, 0, 0, 16.9068, 0, 0, 0, 16.4411, -7.90826, 0, 14.6513)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(0.999997, 0, 0, 0, 16.9068, 0, 0, 0, 16.4411, -7.90826, 0, -1.44564)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(-4.37113e-08, -13.8888, 0, 0.999998, -6.07099e-07, 0, 0, 0, 16.4411, 32.6287, -1.53774, 14.4354)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Nav/arena2_fix_2"]
+transform = Transform3D(-4.37113e-08, -13.8888, 0, 0.999998, -6.07099e-07, 0, 0, 0, 16.4411, 32.6287, 7.41116, 14.4354)
+mesh = SubResource("BoxMesh_ssgjx")
+
+[node name="pr2" parent="Nav/arena2_fix_2" instance=ExtResource("2_8bwrh")]
+surface_material_override/0 = SubResource("StandardMaterial3D_k6fus")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wsktt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.631096, 0.775705, 0, -0.775705, 0.631096, 28.6007, 58.1034, -41.6738)
+light_color = Color(0.18616, 0.595004, 0.85018, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 0.304
+shadow_enabled = true
+
+[node name="playerspawnpoint" type="Node3D" parent="."]
+transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 96.5375, 2.65544, 141.837)
+
+[node name="shopspawnpoint" type="Node3D" parent="."]
+transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 23.1374, -10.1309, -2.10673)
+
+[node name="SpawnHolder" type="Node3D" parent="."]
+
+[node name="spawner" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8854, -2.20572, 25.1596)
+
+[node name="spawner2" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8854, -2.20572, 44.078)
+
+[node name="spawner3" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9858, -2.20572, 44.078)
+
+[node name="spawner4" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6167, -2.20572, 44.078)
+
+[node name="spawner5" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6167, -2.20572, 27.4505)
+
+[node name="spawner6" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6167, -2.20572, 54.8801)
+
+[node name="spawner7" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16728, -2.20572, 54.8801)
+
+[node name="spawner8" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8776, -2.20572, 54.8801)
+
+[node name="spawner9" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7765, -2.20572, 54.8801)
+
+[node name="spawner10" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7765, -2.20572, 37.5969)
+
+[node name="spawner11" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7163, -2.20572, 37.5969)
+
+[node name="spawner12" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3948, -2.20572, 49.2074)
+
+[node name="spawner13" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3948, 3.55004, 78.7032)
+
+[node name="spawner14" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.0339, 7.05309, 61.4919)
+
+[node name="spawner15" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.0339, 7.05309, 39.5322)
+
+[node name="spawner16" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.5941, 7.05309, 31.6919)
+
+[node name="spawner17" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6868, 7.05309, 31.6919)
+
+[node name="spawner18" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4579, 7.05309, 31.6919)
+
+[node name="spawner19" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67082, 7.05309, 31.6919)
+
+[node name="spawner20" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9329, 7.05309, 31.6919)
+
+[node name="spawner21" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9387, 7.05309, 15.9414)
+
+[node name="spawner22" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.8061, -2.54526, 19.066)
+
+[node name="spawner23" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2191, -2.54526, 19.066)
+
+[node name="spawner24" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2191, -2.54526, 33.692)
+
+[node name="spawner25" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.294, 1.37166, 30.4449)
+
+[node name="spawner26" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.7958, 1.37166, 11.015)
+
+[node name="spawner27" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 44.6195)
+
+[node name="spawner28" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 60.1431)
+
+[node name="spawner29" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 73.0197)
+
+[node name="spawner30" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 98.3439)
+
+[node name="spawner31" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 115.138)
+
+[node name="spawner32" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.916, 1.37166, 125.334)
+
+[node name="spawner33" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.8737, 1.37166, 125.334)
+
+[node name="spawner34" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.8737, 1.37166, 103.397)
+
+[node name="spawner35" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.252, 1.37166, 103.397)
+
+[node name="spawner36" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.7535, 1.37166, 103.397)
+
+[node name="spawner37" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5559, 1.37166, 103.397)
+
+[node name="spawner38" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2299, 1.37166, 103.397)
+
+[node name="spawner39" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1229, 1.37166, 120.267)
+
+[node name="spawner40" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.73, 1.37166, 149.536)
+
+[node name="spawner41" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.2305, 1.37166, 166.319)
+
+[node name="spawner42" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.2354, 6.05886, 149.899)
+
+[node name="spawner43" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.533, 6.05886, 149.899)
+
+[node name="spawner44" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.3221, 6.05886, 158.489)
+
+[node name="geyser4" parent="." instance=ExtResource("4_pva2y")]
+transform = Transform3D(0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, 0.120778, 14.525, -0.583949, 55.0402)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, 26.2178, 31.1919, 10.4993)
+light_color = Color(0.501961, 1, 1, 1)
+light_energy = 16.0
+light_specular = 0.879
+spot_range = 114.274
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, -13.5295, 28.9905, 57.5875)
+light_color = Color(0.501961, 1, 1, 1)
+light_energy = 16.0
+light_specular = 0.879
+spot_range = 114.274
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, 101.44, 28.9905, 57.5875)
+light_color = Color(0.501961, 1, 1, 1)
+light_energy = 16.0
+light_specular = 0.879
+shadow_enabled = true
+spot_range = 114.274
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, 98.9977, 28.9905, 135.692)
+light_color = Color(0.501961, 1, 1, 1)
+light_energy = 16.0
+light_specular = 0.879
+shadow_enabled = true
+spot_range = 114.274
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, -2.22574, 5.21444, 33.8425)
+light_color = Color(0.588235, 0, 0.611765, 1)
+light_energy = 16.0
+light_specular = 2.618
+spot_range = 15.675
+spot_angle = 73.2195
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00701617, 0.999975, 0, -0.999975, -0.00701617, -28.3472, 5.21444, 33.8425)
+light_color = Color(0.588235, 0, 0.611765, 1)
+light_energy = 16.0
+light_specular = 2.104
+spot_range = 15.675
+spot_angle = 73.2195
+
+[node name="deathzone" parent="." instance=ExtResource("5_d3e1e")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[node name="deathzone2" parent="." instance=ExtResource("5_d3e1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58.9289, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone2"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[node name="deathzone3" parent="." instance=ExtResource("5_d3e1e")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 123.987, 58.9289, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone3"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[node name="deathzone4" parent="." instance=ExtResource("5_d3e1e")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -45.8873, 58.9289, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone4"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[node name="deathzone5" parent="." instance=ExtResource("5_d3e1e")]
+transform = Transform3D(1.12909e-10, 0.00258307, 0.999997, 1, -4.37114e-08, 0, 4.37112e-08, 0.999997, -0.00258307, -45.8873, 58.9289, -3.39602)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone5"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[node name="deathzone6" parent="." instance=ExtResource("5_d3e1e")]
+transform = Transform3D(1.12909e-10, 0.00258307, 0.999997, 1, -4.37114e-08, 0, 4.37112e-08, 0.999997, -0.00258307, -45.8873, 58.9289, 198.591)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deathzone6"]
+transform = Transform3D(337.671, 0, 0, 0, 1, 0, 0, 0, 357.641, 35.9227, -13.996, 64.91)
+visible = false
+mesh = SubResource("BoxMesh_l7g5w")
+
+[editable path="Nav/arena2_fix_2"]
