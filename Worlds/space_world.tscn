@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://csmiuhuhia2ln"]
+[gd_scene load_steps=27 format=3 uid="uid://csmiuhuhia2ln"]
 
 [ext_resource type="Script" path="res://Worlds/world.gd" id="1_vpsvi"]
 [ext_resource type="PackedScene" uid="uid://cdxbjqtb18e3s" path="res://Models/world objects/rock1.glb" id="2_482uh"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ko5qifvhwgso" path="res://Models/world objects/center_rock.glb" id="8_s65hu"]
 [ext_resource type="PackedScene" uid="uid://btvfeicu5pdfm" path="res://gravityzone2.tscn" id="9_75poi"]
 [ext_resource type="Texture2D" uid="uid://cw0ehblqamciv" path="res://Textures/star_texture.png" id="11_m853c"]
-[ext_resource type="PackedScene" uid="uid://bel23wcn7oqje" path="res://death_zone.tscn" id="12_j8nve"]
+[ext_resource type="Script" path="res://death_zone.gd" id="12_tk3a1"]
 [ext_resource type="PackedScene" uid="uid://bgi2kt00807f1" path="res://Worlds/world_objects/geyser.tscn" id="13_gxjyw"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="14_ewtoo"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="15_lqgls"]
@@ -39,6 +39,9 @@ ambient_light_color = Color(0.43134, 0.431341, 0.431339, 1)
 ambient_light_energy = 0.0
 tonemap_mode = 2
 fog_light_energy = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icx8p"]
+size = Vector3(7.27296, 1283.19, 11.3337)
 
 [sub_resource type="Animation" id="Animation_l4qjm"]
 length = 0.001
@@ -417,8 +420,15 @@ transform = Transform3D(-0.0727584, -0.309343, -0.948163, 0.0282737, -0.95094, 0
 light_color = Color(1, 0.961576, 0.703775, 1)
 shadow_blur = 10.0
 
-[node name="deathzone" parent="." instance=ExtResource("12_j8nve")]
+[node name="deathzone" type="Node3D" parent="."]
 transform = Transform3D(534.94, 0, 0, 0, 1, 0, 0, 0, 447.596, 0, -33.2825, 0)
+script = ExtResource("12_tk3a1")
+
+[node name="Area3D" type="Area3D" parent="deathzone"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="deathzone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.701073, -641.094, 0.00775928)
+shape = SubResource("BoxShape3D_icx8p")
 
 [node name="geyser" parent="." instance=ExtResource("13_gxjyw")]
 transform = Transform3D(0.120778, 0, -0.99268, 0, 0.385545, 0, 0.99268, 0, 0.120778, 6.08487, 3.12251, -51.1397)

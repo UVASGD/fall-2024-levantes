@@ -311,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0311, 18.5275, -69.4034)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2479, 19.0593, -58.6285)
 
 [node name="shopspawnpoint" type="Node3D" parent="."]
-transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 75.0137, -6.688, -104.631)
+transform = Transform3D(1.49875, 0, 0, 0, 1.49875, 1.42109e-14, 0, -1.42109e-14, 1.49875, 75.0137, -6.688, -116.803)
 
 [node name="deathzone" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.4249, -37.4966, -77.4451)

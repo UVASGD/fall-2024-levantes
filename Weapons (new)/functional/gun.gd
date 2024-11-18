@@ -62,7 +62,7 @@ var last_shot_time = 0
 func _ready():
 	var model = get_child(0)
 	animation_player = get_node(animation_player_treepath)
-	print(animation_player)
+	#print(animation_player)
 	audio_player = AudioStreamPlayer.new()
 	audio_player.max_polyphony = max_pol
 	audio_player.pitch_scale = change_pitch_mult
@@ -132,10 +132,10 @@ func dequip():
 	can_shoot = false
 	can_reload = false
 	can_dequip = false
-	print("playing $Name dequip")
+	#print("playing $Name dequip")
 	animation_player.play(Dequip_Ani)
 	await animation_player.animation_finished
-	print("finished $Name dequip")
+	#print("finished $Name dequip")
 	hide()
 	
 	can_equip = true
@@ -150,10 +150,10 @@ func equip():
 	can_equip = false
 	
 	show()
-	print("playing $Name equip")
+	#print("playing $Name equip")
 	animation_player.play(Equip_Ani)
 	await animation_player.animation_finished
-	print("finished $Name equip")
+	#print("finished $Name equip")
 	if(Curr_Mag_Ammo > 0):
 		can_shoot = true
 	can_reload = true

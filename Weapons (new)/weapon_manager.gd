@@ -22,6 +22,7 @@ var grenade_count = 0
 var money = 0
 var shop_ray = null
 var curr_shop_ray_name = ""
+var in_buy_phase = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var weapon_array = []
@@ -39,6 +40,7 @@ func _ready():
 	SignalBus.connect("update_ammo", call_update_ammo)
 	SignalBus.connect("call_hud_initialize", call_hud_initialize)
 	SignalBus.connect("wave_killed", reward_money)
+	SignalBus.connect("wave_killed", turn_on_in_buy_phase)
 	pickup_detection = %pickup_detection
 	pickup_detection.body_entered.connect(_on_pickup_detection_body_entered)
 	pickup_detection.body_exited.connect(_on_pickup_detection_body_exited)
@@ -47,6 +49,7 @@ func _ready():
 	pass
 	
 	 
+
 
 var has_printed_weapon_name = false  
 
@@ -91,8 +94,8 @@ func _input(event):
 			return
 		current_weapon.shoot()
 	if event.is_action_pressed("buy"):
-		if shop_ray and shop_ray.is_colliding():
-			print("buy")
+		if shop_ray and shop_ray.is_colliding() and in_buy_phase:
+			#print("buy")
 			buy()
 			return
 	if event.is_action_pressed("Reload"):
@@ -222,11 +225,14 @@ func drop_weapon():
 	current_weapon = null
 	pass
 
+func turn_on_in_buy_phase():
+	in_buy_phase = true
+
 func buy():
 	if(shop_ray.get_collider().get_parent() is Shop_Weapon):
 		SignalBus.emit_signal("gun_purchase", shop_ray.get_collider().get_parent())
 		var player_position = $"../../..".global_transform.origin
-		print("buying")
+		#print("buying")
 		var shop_weapon = shop_ray.get_collider().get_parent()
 		money -= shop_weapon.price
 		
@@ -241,12 +247,13 @@ func buy():
 		SignalBus.emit_signal("gun_purchase", shop_ray.get_collider().get_parent())
 		shop_ray.get_collider().get_parent().apply()
 	else:
+		in_buy_phase = false
 		SignalBus.emit_signal("round_start")
 		
 	return
 
 func go_in_debt():
-	print("you are in debt")
+	#print("you are in debt")
 	var num = randi_range(0,1)
 	if num == 0:
 		call_money_update(money, "half health and shield")
@@ -270,7 +277,7 @@ func _on_pickup_detection_body_entered(body):
 		return
 	else:
 		can_pickup = true
-		print(nearby_weapon)
+		#print(nearby_weapon)
 
 func _on_pickup_detection_body_exited(body):
 	nearby_weapon = null

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cupay32y8612k"]
+[gd_scene load_steps=9 format=3 uid="uid://cupay32y8612k"]
 
 [ext_resource type="Script" path="res://Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
 [ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_uaaca"]
-[ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="2_xc0mg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
 resource_local_to_scene = true
@@ -16,7 +15,7 @@ shader = ExtResource("2_uaaca")
 shader_parameter/ColorParameter = Color(0.38, 0.796, 5, 1)
 shader_parameter/Strength = 5.0
 shader_parameter/LightColor = Color(0.94902, 1, 0.996078, 1)
-shader_parameter/FloatParameter = 1.0
+shader_parameter/FloatParameter = 0.0
 
 [sub_resource type="Animation" id="Animation_6lc70"]
 length = 0.001
@@ -129,7 +128,7 @@ _data = {
 }
 
 [node name="explosion" type="Area3D"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.582662, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.582662, 0)
 script = ExtResource("1_dabnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -147,7 +146,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_xc0mg")
 volume_db = 19.048
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
