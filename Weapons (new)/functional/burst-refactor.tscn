@@ -150,12 +150,12 @@ shadow_mesh = SubResource("ArrayMesh_5uumt")
 albedo_color = Color(0.145098, 0.231373, 0.258824, 1)
 
 [node name="BURST" type="Node3D"]
-transform = Transform3D(-0.999998, 0, 0.00202456, 0, 1, 0, -0.00202456, 0, -0.999998, 0.6, -0.2, -0.1)
+transform = Transform3D(-1.0023, 0, 0.00202923, 0, 1.00231, 0, -0.00202923, 0, -1.0023, 0.6, -0.2, -0.1)
 script = ExtResource("1_i6xhm")
 husk_weapon_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 model_path = "res://Models/Weapons/burst_rifle/burst_rifle.glb"
 Name = "burst"
-Display_Name = "burst"
+Display_Name = "BRR-30"
 animation_player_treepath = "../AnimationPlayers2/BURST"
 animation_library_path = "res://burst_animations.res"
 Equip_Ani = "burst_animations/burst_equip"
@@ -163,7 +163,7 @@ Fire_Ani = "burst_animations/burst_fire"
 Reload_Ani = "burst_animations/burst_reload"
 Dequip_Ani = "burst_animations/burst_dequip"
 Melee_Ani = "burst_animations/burst_melee"
-Fire_Sound = "res://audio/gunshot_final_single_pitch_lower.mp3"
+Fire_Sound = "res://audio/burst_rifle_sfx_levantes.mp3"
 Reward_Amount = 30
 Curr_Mag_Ammo = 30
 Reserve_Ammo = 30

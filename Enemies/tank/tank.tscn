@@ -2306,7 +2306,7 @@ max_health = 1000
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23121, 4.59567, -0.0032959)
+transform = Transform3D(1, 0, 4.54747e-13, 0, 1, 0, -4.54747e-13, 0, 1, -0.666231, 4.59567, -0.00329591)
 shape = SubResource("BoxShape3D_31jlf")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
@@ -2423,7 +2423,7 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0, 0)
+bones/0/position = Vector3(0, 0.451966, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
@@ -2596,7 +2596,7 @@ bones/24/rotation = Quaternion(1, 0, 0, -1.62921e-07)
 bones/24/scale = Vector3(2.66145, 1.54497, 2.58618)
 
 [node name="head" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(1.51707, 0, 0, 0, 1.89029, 0, 0, 0, 1.25006, -1.517, 12.8584, 0.157307)
+transform = Transform3D(1.51707, 0, 0, 0, 1.89029, 0, 0, 0, 1.25006, -1.517, 13.3104, 0.157307)
 bone_name = "head"
 bone_idx = 3
 
@@ -2632,7 +2632,7 @@ mesh = SubResource("BoxMesh_alp2k")
 surface_material_override/0 = SubResource("StandardMaterial3D_1kygj")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.3003, 0, 6.54906e-08, 0, 1.28184, -0.755849, -2.78228, -9.55697)
+transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.3003, 0, 6.54906e-08, 0, 1.28184, -0.755849, -2.33031, -9.55697)
 bone_name = "LeftHand"
 bone_idx = 7
 
@@ -2648,7 +2648,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxmku")
 
 [node name="LeftArm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(1.55564, 0, -4.07453e-08, 0, 1.60001, 0, 4.94485e-08, 0, 1.28184, -1.517, 11.2247, 0.11623)
+transform = Transform3D(1.55564, 0, -4.07453e-08, 0, 1.60001, 0, 4.94485e-08, 0, 1.28184, -1.517, 11.6766, 0.11623)
 bone_name = "LeftArm"
 bone_idx = 8
 
@@ -2664,7 +2664,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
 
 [node name="LeftShoulder" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(0.824565, 0, 0, 0, 0.824565, 0, 0, 0, 1.28813, -0.267532, 8.11377, 7.05391)
+transform = Transform3D(0.824565, 0, 0, 0, 0.824565, 0, 0, 0, 1.28813, -0.267532, 8.56574, 7.05391)
 bone_name = "LeftShoulder"
 bone_idx = 9
 
@@ -2680,7 +2680,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_3wo5a")
 
 [node name="LeftFoot" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.60001, 0, 6.54906e-08, 0, 1.28184, -1.98113, 4.50757, 0.11623)
+transform = Transform3D(2.06032, 0, -4.07453e-08, 0, 1.60001, 0, 6.54906e-08, 0, 1.28184, -1.98113, 4.95954, 0.11623)
 bone_name = "LeftFoot"
 bone_idx = 12
 
@@ -2696,7 +2696,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
 
 [node name="LeftThigh" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.06032, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.10931, 11.2246, 0.11623)
+transform = Transform3D(2.06032, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.10931, 11.6766, 0.11623)
 bone_name = "LeftThigh"
 bone_idx = 13
 
@@ -2712,7 +2712,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2nmrg")
 
 [node name="Main Gun Body" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 3.83584, -5.99377)
+transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 4.2878, -5.99377)
 bone_name = "Main Gun Body"
 bone_idx = 16
 
@@ -2736,7 +2736,7 @@ spot_range = 31.5131
 spot_angle = 22.2183
 
 [node name="RingsAroundGun" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 3.83584, -5.99377)
+transform = Transform3D(1.23552e-07, -1.63649, -4.61703e-07, -1.63649, -1.23552e-07, 1.43066e-07, -1.43066e-07, 4.61703e-07, -1.63649, -6.34517, 4.2878, -5.99377)
 bone_name = "RingsAroundGun"
 bone_idx = 17
 
@@ -2746,7 +2746,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_l5qck")
 
 [node name="RightArm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(0.824565, 0, 0, 0, 0.824565, 0, 0, 0, 1.28813, -0.267532, 8.11377, -5.01239)
+transform = Transform3D(0.824565, 0, 0, 0, 0.824565, 0, 0, 0, 1.28813, -0.267532, 8.56574, -5.01239)
 bone_name = "RightArm"
 bone_idx = 18
 
@@ -2762,7 +2762,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6vrpy")
 
 [node name="RightFoot" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.06032, 0, 4.07453e-08, 0, 1.60001, 0, -6.54906e-08, 0, 1.28184, -1.98113, 4.50757, -6.19871)
+transform = Transform3D(2.06032, 0, 4.07453e-08, 0, 1.60001, 0, -6.54906e-08, 0, 1.28184, -1.98113, 4.95954, -6.19871)
 bone_name = "RightFoot"
 bone_idx = 21
 
@@ -2778,7 +2778,7 @@ mesh = SubResource("ArrayMesh_pd0di")
 skeleton = NodePath("")
 
 [node name="RightThigh" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.06032, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.10931, 11.2246, -6.19871)
+transform = Transform3D(2.06032, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.10931, 11.6766, -6.19871)
 bone_name = "RightThigh"
 bone_idx = 22
 
@@ -2794,7 +2794,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2kcke")
 
 [node name="main body" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(1.93662, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.3183, 11.2247, 0.116229)
+transform = Transform3D(1.93662, 0, 0, 0, 1.60001, 0, 0, 0, 1.28184, -2.3183, 11.6766, 0.116229)
 bone_name = "main body"
 bone_idx = 23
 
@@ -2810,7 +2810,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptmn8")
 
 [node name="waist connector" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/TankRig/Armature/Skeleton3D"]
-transform = Transform3D(2.66145, 0, 0, 0, -1.54497, 8.42686e-07, 0, -5.03416e-07, -2.58618, -0.310845, -4.29692, 2.1693)
+transform = Transform3D(2.66145, 0, 0, 0, -1.54497, 8.42686e-07, 0, -5.03416e-07, -2.58618, -0.310845, -3.84495, 2.1693)
 bone_name = "waist connector"
 bone_idx = 24
 

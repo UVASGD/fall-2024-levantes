@@ -106,7 +106,7 @@ func enemy_death():
 func spawn_enemies(): #spawns 1 wave of enemies
 	
 	for i in range(level_dict[current_level][1]):
-		await get_tree().create_timer(.1).timeout
+		await get_tree().create_timer(.5).timeout
 		var m
 		var rand_monster_type_num = randi_range(1,6)
 		match rand_monster_type_num:
