@@ -36,16 +36,20 @@ func _ready():
 	SignalBus.connect("wave_killed", _on_wave_killed)
 	apply_difficulty()
 	if not $playerspawnpoint:
-		print("please add a player spawnpoint")
+		#print("please add a player spawnpoint")
+		pass
 	spawn_player()
 	open_shop()
 	if not $Nav:
-		print("please set up a navmesh and make all world objects children of it ")
+		#print("please set up a navmesh and make all world objects children of it ")
+		pass
 	add_static_collisions($Nav)
 	if not shop_spawn_point:
-		print("please set up a shop spawn point")
+		#print("please set up a shop spawn point")
+		pass
 	if not $SpawnHolder:
-		print("please set up a spawnholder")
+		#print("please set up a spawnholder")
+		pass
 	
 func spawn_player():
 
@@ -69,7 +73,7 @@ func add_static_collisions(node): # recursively adds collisions to every mesh3d 
 		if child is MeshInstance3D:
 			if child.get_child_count() > 0:
 				continue
-			print(child)
+			#print(child)
 			var static_body = StaticBody3D.new()
 			var collision_shape = CollisionShape3D.new()
 			var shape = child.mesh.create_trimesh_shape()
@@ -86,7 +90,6 @@ func apply_difficulty():
 	return
 	
 func open_shop():
-
 	var shop_instance = shop.instantiate()
 	shop_spawn_point.add_child.call_deferred(shop_instance)
 	
@@ -103,6 +106,7 @@ func enemy_death():
 func spawn_enemies(): #spawns 1 wave of enemies
 	
 	for i in range(level_dict[current_level][1]):
+		await get_tree().create_timer(.5).timeout
 		var m
 		var rand_monster_type_num = randi_range(1,6)
 		match rand_monster_type_num:
@@ -125,7 +129,7 @@ func spawn_enemies(): #spawns 1 wave of enemies
 		m.position = spawn_position.global_transform.origin
 		add_child(m)
 	if level_dict[current_level][1] <= 5:
-		print("few enemies")
+		#print("few enemies")
 		SignalBus.emit_signal("few_enemies")
 	#var ham = tank.instantiate()
 	#ham.set_next_state = "chase"

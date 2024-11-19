@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dssfcs6qgya2v"]
+[gd_scene load_steps=11 format=3 uid="uid://dssfcs6qgya2v"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_kroww"]
 [ext_resource type="FontFile" uid="uid://dn1ewphq0hlak" path="res://UI/Fonts/TitilliumWeb-SemiBold.ttf" id="1_xg4as"]
@@ -11,6 +11,10 @@ font = ExtResource("4_edv4u")
 font_color = Color(0, 0.951755, 0.955994, 1)
 outline_size = 10
 outline_color = Color(0.107363, 0.265774, 0.277621, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgi28"]
+outline_size = 4
+outline_color = Color(0.594766, 0.974056, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_72hqf"]
 font_size = 30
@@ -329,16 +333,19 @@ vertical_alignment = 1
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
+offset_top = 61.0
 offset_right = 92.0
-offset_bottom = 76.0
-color = Color(0.630938, 0.746567, 0.836527, 1)
+offset_bottom = 137.0
+color = Color(0.156863, 0.556863, 0.6, 1)
 script = ExtResource("4_d1tgc")
 
 [node name="fps_counter" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_right = 92.0
 offset_bottom = 76.0
-label_settings = SubResource("LabelSettings_72hqf")
+label_settings = SubResource("LabelSettings_wgi28")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Money" type="ColorRect" parent="."]
 layout_mode = 0

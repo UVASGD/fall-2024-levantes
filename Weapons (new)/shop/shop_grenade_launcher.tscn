@@ -73,16 +73,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_trb6o")
 
-[sub_resource type="Gradient" id="Gradient_snxtb"]
+[sub_resource type="Gradient" id="Gradient_rcrju"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_07nut"]
-gradient = SubResource("Gradient_snxtb")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t08sw"]
+gradient = SubResource("Gradient_rcrju")
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnms7"]
-albedo_color = Color(0.470911, 0.30616, 0.287557, 1)
-albedo_texture = SubResource("GradientTexture2D_07nut")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7a45d"]
+albedo_color = Color(0.992774, 0.984818, 0.983754, 1)
+albedo_texture = SubResource("GradientTexture2D_t08sw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1deu1"]
 
@@ -227,7 +227,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_biir8")
 [node name="Tube" type="MeshInstance3D" parent="model/GLauncher"]
 mesh = SubResource("ArrayMesh_t6hdq")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_nnms7")
+surface_material_override/0 = SubResource("StandardMaterial3D_7a45d")
 
 [node name="Bolt" type="MeshInstance3D" parent="model/GLauncher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.6228)

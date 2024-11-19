@@ -22,12 +22,12 @@ func start_charging():
 	is_charging = true
 	animation_player.play("alien_pistol/charge")
 	charge_time = 0.0
-	print("Charging started")
+	#print("Charging started")
 
 
 func release_shot():
-	print("charge released")
-	print(charge_time)
+	#print("charge released")
+	#print(charge_time)
 	animation_player.stop()
 	is_charging = false
 	if charge_time >= crit_time and charge_time < 1.0:
@@ -79,7 +79,7 @@ func shoot():
 		#can_shoot = true
 		#
 func crit_shot():
-	print("crit")
+	#print("crit")
 	await shoot()
 	animation_player.play("alien_pistol/overheat")
 	return
@@ -90,7 +90,7 @@ func create_projectile():
 	projectile.throw()
 
 func create_shockwave():
-	print("make shock")
+	#print("make shock")
 	var shock = load("res://projectiles/nice_shockwave.tscn").instantiate()
 	get_node("../../../../").add_child(shock)
 	return
@@ -105,10 +105,10 @@ func equip():
 	can_equip = false
 	
 	show()
-	print("playing $Name equip")
+	#print("playing $Name equip")
 	animation_player.play(Equip_Ani)
 	await animation_player.animation_finished
-	print("finished $Name equip")
+	#print("finished $Name equip")
 	if(Curr_Mag_Ammo > 0):
 		can_shoot = true
 	can_reload = true
@@ -122,10 +122,10 @@ func dequip():
 	can_shoot = false
 	can_reload = false
 	can_dequip = false
-	print("playing $Name dequip")
+	#print("playing $Name dequip")
 	animation_player.play(Dequip_Ani)
 	await animation_player.animation_finished
-	print("finished $Name dequip")
+	#print("finished $Name dequip")
 	hide()
 	
 	can_equip = true

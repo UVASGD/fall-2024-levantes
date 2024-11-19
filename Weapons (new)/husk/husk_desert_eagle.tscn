@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dg4kkobo7fb35"]
+[gd_scene load_steps=25 format=4 uid="uid://dg4kkobo7fb35"]
 
 [ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_fwvad"]
 
@@ -214,6 +214,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mgj5x")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c82jn"]
+albedo_color = Color(3, 2, 0.176, 1)
+
 [node name="HuskDesertEagle" type="RigidBody3D"]
 can_sleep = false
 script = ExtResource("1_fwvad")
@@ -265,3 +268,4 @@ skeleton = NodePath("")
 transform = Transform3D(0.907306, 0, 0, 0, 0, -0.907306, 0, 0.907306, 0, 0, 23.4333, -4.77819)
 mesh = SubResource("ArrayMesh_147mk")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_c82jn")

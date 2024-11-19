@@ -1354,7 +1354,7 @@ size = Vector3(2.92481, 2.45361, 3.20447)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_2oixr")
-look_sens = 0.002
+look_sens = 0.001
 HEADBOB_SWAY_AMOUNT = 0.01
 air_cap = 2
 dash_speed = 15.0

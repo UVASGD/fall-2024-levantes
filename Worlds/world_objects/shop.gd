@@ -56,7 +56,6 @@ func add_guns():
 			
 
 	pass
-
 func on_round_start():
 	$start.play()
 	await $start.finished

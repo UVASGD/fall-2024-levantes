@@ -188,7 +188,7 @@ func on_hit(damage_taken, hs_mult, col, shape):
 	if not is_dying and col==collider and (shape == 1 or shape == 0):
 		$AudioStreamPlayer3D.play()
 		#x_axis_shield.show()
-		#y_axis_shield.show()
+		#y_axis_shield.show()c
 		Animation_Player.play("got_hit")
 		#await get_tree().create_timer(.1).timeout
 		#x_axis_shield.hide()

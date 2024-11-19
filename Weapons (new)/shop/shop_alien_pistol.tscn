@@ -257,7 +257,7 @@ shadow_mesh = SubResource("ArrayMesh_b3y11")
 
 [node name="shop_alien_pistol" type="Node3D"]
 script = ExtResource("1_hpo4k")
-item_name = "HeatPistol"
+item_name = "Charger Pistol"
 price = 1
 ammo = 9
 reserve = 30

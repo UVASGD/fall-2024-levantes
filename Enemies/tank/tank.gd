@@ -259,7 +259,7 @@ func spawn_reward():
 func on_hit(damage_taken, hs_mult, col, shape):
 	#if not is_dying and (collider == hitbox or collider == head_hitbox):
 	if col==collider and (shape == 1 or shape == 0):
-		$AudioStreamPlayer3D.play()
+		#$AudioStreamPlayer3D.play()
 
 		$hit_animation_player.play("hit")
 
