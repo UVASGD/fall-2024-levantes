@@ -60,6 +60,25 @@ func _ready():
 var has_printed_weapon_name = false  
 
 func _process(delta):
+	if not curr_shop_ray_name and shop_ray and shop_ray.is_colliding():
+		var collider = shop_ray.get_collider()
+		
+		# Ensure the collider and its parent exist, and check if it's a Shop_Weapon or Powerup
+		if collider and collider.get_parent() and (collider.get_parent() is Shop_Weapon or collider.get_parent() is Powerup):
+			var item = collider.get_parent()
+			curr_shop_ray_name = item.item_name
+			var price = item.price
+			
+			if not has_printed_weapon_name:
+				call_update_shop_weapon_name(curr_shop_ray_name, price)
+				has_printed_weapon_name = true
+	elif curr_shop_ray_name and (not shop_ray or not shop_ray.is_colliding()):
+		# Reset when ray is no longer colliding
+		curr_shop_ray_name = ""
+		call_update_shop_weapon_name(curr_shop_ray_name, 0)
+		has_printed_weapon_name = false
+		
+func _physics_process(delta):
 	if current_weapon:
 		def_weapon_holder_pos = current_weapon.position
 	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
