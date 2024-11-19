@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=45 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -15,7 +15,6 @@
 [ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="11_ly66i"]
-[ext_resource type="PackedScene" uid="uid://r0bo5mfc7p1o" path="res://Weapons (new)/functional/desert_eagle.tscn" id="12_cqo1h"]
 [ext_resource type="AudioStream" uid="uid://pqlba0crpchk" path="res://585257__lesaucisson__swoosh-1.mp3" id="15_1d4ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -315,7 +314,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.217635, -0.356313, -0.617963)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -412,30 +411,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../DesertEagle:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.166106, -0.306069, -0.398815)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../DesertEagle:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lo1cg"]
@@ -1490,9 +1465,6 @@ libraries = {
 
 [node name="BURST" parent="Head/Camera3D/weapon manager" instance=ExtResource("11_ly66i")]
 visible = false
-
-[node name="DesertEagle" parent="Head/Camera3D/weapon manager" instance=ExtResource("12_cqo1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166106, -0.306069, -0.398815)
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
