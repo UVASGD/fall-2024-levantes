@@ -1,0 +1,384 @@
+[gd_scene load_steps=40 format=3 uid="uid://r8h30hfhf6mv"]
+
+[ext_resource type="PackedScene" uid="uid://cfde4dumfslig" path="res://player/player.tscn" id="1_raj47"]
+[ext_resource type="Script" path="res://Worlds/expo_showcase.gd" id="1_xs2rq"]
+[ext_resource type="PackedScene" uid="uid://fvoyks1slpb" path="res://Weapons (new)/husk/husk_burst_rifle.tscn" id="2_huhnu"]
+[ext_resource type="PackedScene" uid="uid://d1d10pso3mj0p" path="res://Weapons (new)/husk/husk_smg.tscn" id="3_uktco"]
+[ext_resource type="PackedScene" uid="uid://b1dmbc5ccwkec" path="res://projectiles/husk_grenade.tscn" id="4_mc336"]
+[ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="5_kl8cf"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="6_djwbx"]
+[ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_qxdc6"]
+[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Enemies/wallbreaker/wallbreaker.tscn" id="7_qo603"]
+[ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="7_r8gvg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f7tku"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7jkc"]
+seamless = true
+noise = SubResource("FastNoiseLite_f7tku")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2arcb"]
+seed = 3
+frequency = 0.0118
+offset = Vector3(758.62, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6dwi3"]
+in_3d_space = true
+as_normal_map = true
+bump_strength = 20.8
+noise = SubResource("FastNoiseLite_2arcb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyr4a"]
+albedo_color = Color(0.172251, 0.236513, 0.279292, 1)
+albedo_texture = SubResource("NoiseTexture2D_w7jkc")
+metallic = 1.0
+metallic_specular = 0.61
+metallic_texture = SubResource("NoiseTexture2D_6dwi3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8rah"]
+material = SubResource("StandardMaterial3D_jyr4a")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_np8sd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2u3t1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_me8bk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s2y8k"]
+seamless = true
+noise = SubResource("FastNoiseLite_me8bk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cs0jw"]
+seed = 3
+frequency = 0.0118
+offset = Vector3(758.62, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u8irw"]
+in_3d_space = true
+as_normal_map = true
+bump_strength = 20.8
+noise = SubResource("FastNoiseLite_cs0jw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6nqx"]
+albedo_color = Color(0.5032, 0.576867, 0.68, 1)
+albedo_texture = SubResource("NoiseTexture2D_s2y8k")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = SubResource("NoiseTexture2D_u8irw")
+roughness = 0.38
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffjoh"]
+material = SubResource("StandardMaterial3D_j6nqx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke7qn"]
+albedo_color = Color(0.5032, 0.576867, 0.68, 1)
+albedo_texture = SubResource("NoiseTexture2D_s2y8k")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = SubResource("NoiseTexture2D_u8irw")
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0pyx"]
+material = SubResource("StandardMaterial3D_ke7qn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwsp8"]
+albedo_color = Color(0.5032, 0.576867, 0.68, 1)
+albedo_texture = SubResource("NoiseTexture2D_s2y8k")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = SubResource("NoiseTexture2D_u8irw")
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_nm17k"]
+material = SubResource("StandardMaterial3D_lwsp8")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_34qsx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y4r2e"]
+seamless = true
+noise = SubResource("FastNoiseLite_34qsx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6bg44"]
+seed = 3
+frequency = 0.0118
+offset = Vector3(758.62, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bajda"]
+in_3d_space = true
+as_normal_map = true
+bump_strength = 20.8
+noise = SubResource("FastNoiseLite_6bg44")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njuua"]
+albedo_color = Color(0.28677, 0.191702, 0.259815, 1)
+albedo_texture = SubResource("NoiseTexture2D_y4r2e")
+metallic = 0.23
+metallic_specular = 0.0
+metallic_texture = SubResource("NoiseTexture2D_bajda")
+emission = Color(1, 0.223529, 0, 1)
+emission_energy_multiplier = 0.03
+clearcoat_roughness = 0.0
+uv1_scale = Vector3(0.97, 0.97, 0.97)
+uv2_scale = Vector3(21, 21, 21)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehetb"]
+material = SubResource("StandardMaterial3D_njuua")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_obfa6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sqc2e"]
+sky_top_color = Color(0.568627, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 8.65199
+sky_energy_multiplier = 2.72
+ground_bottom_color = Color(0.0959762, 0.077467, 0.0559647, 1)
+ground_horizon_color = Color(0.866667, 0, 0, 1)
+ground_energy_multiplier = 56.7
+sun_angle_max = 10.0
+sun_curve = 0.0724453
+
+[sub_resource type="Sky" id="Sky_cu0x5"]
+sky_material = SubResource("ProceduralSkyMaterial_sqc2e")
+
+[sub_resource type="Environment" id="Environment_u6a10"]
+background_mode = 2
+sky = SubResource("Sky_cu0x5")
+ambient_light_color = Color(0.863436, 5.31845e-06, 7.70092e-07, 1)
+ambient_light_sky_contribution = 0.65
+ambient_light_energy = 0.0
+reflected_light_source = 2
+tonemap_exposure = 2.51
+ssr_fade_in = 0.243676
+ssao_enabled = true
+ssao_radius = 3.59
+ssao_intensity = 6.35
+ssao_power = 10.0907
+ssao_detail = 2.12
+ssao_horizon = 0.0
+ssao_sharpness = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_length = 69.19
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wstu1"]
+size = Vector3(50.3825, 4.68542, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xs2rq")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_raj47")]
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
+transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/BURST/burstModel" index="1"]
+transform = Transform3D(-1, 2.76639e-06, 0, -2.53518e-06, -1.0912, 0, 0, 0, 1.09119, 8.8872, -9.15356, 31.2051)
+
+[node name="HuskBurstRifle" parent="." instance=ExtResource("2_huhnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71873, -5.67464)
+
+[node name="husk_weapon" parent="." instance=ExtResource("3_uktco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.974317, -10.8166)
+
+[node name="husk_grenade" parent="." instance=ExtResource("4_mc336")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79834, 3.44995, -9.99247)
+
+[node name="terrain" type="Node" parent="."]
+
+[node name="bottom ground" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(73.7899, 0, 0, 0, 1, 0, 0, 0, 329.849, 0.0554913, -0.776481, 0.369312)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/bottom ground"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/bottom ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 1" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(2.14063, 0, 0, 0, 1.90675, 0, 0, 0, 2.14467, 6.14949, 0.125227, -6.88228)
+mesh = SubResource("BoxMesh_ffjoh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/step 1"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/step 1/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 2" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(2.14063, 0, 0, 0, 1.90675, 0, 0, 0, 2.14467, 6.14949, 1.42843, -12.377)
+mesh = SubResource("BoxMesh_u0pyx")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/step 2"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/step 2/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 3" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(2.14063, 0, 0, 0, 1.90675, 0, 0, 0, 2.14467, 6.14949, 2.23734, -16.3684)
+mesh = SubResource("BoxMesh_nm17k")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/step 3"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/step 3/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="enemy_platform" type="Node" parent="terrain"]
+
+[node name="ground" type="MeshInstance3D" parent="terrain/enemy_platform"]
+transform = Transform3D(72.7843, 0, 0, 0, 1.90675, 0, 0, 0, 105.717, 2.80548, 2.23734, -76.8513)
+mesh = SubResource("BoxMesh_ehetb")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/enemy_platform/ground"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/enemy_platform/ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="terrain/enemy_platform/ground"]
+navigation_mesh = SubResource("NavigationMesh_obfa6")
+
+[node name="step 4" type="MeshInstance3D" parent="terrain/enemy_platform"]
+transform = Transform3D(4.66562, 0, 0, 0, 7.75259, 0, 0, 0, 4.86173, -2.81843, 7.16937, -41.0368)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/enemy_platform/step 4"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/enemy_platform/step 4/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 5" type="MeshInstance3D" parent="terrain/enemy_platform"]
+transform = Transform3D(6.22868, 0, 0, 0, 12.3528, 0, 0, 0, 6.80991, -8.3193, 9.24652, -76.9009)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/enemy_platform/step 5"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/enemy_platform/step 5/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 6" type="MeshInstance3D" parent="terrain/enemy_platform"]
+transform = Transform3D(6.22868, 0, 0, 0, 12.3528, 0, 0, 0, 6.80991, 26.4801, 8.79012, -60.0707)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/enemy_platform/step 6"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/enemy_platform/step 6/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="step 7" type="MeshInstance3D" parent="terrain/enemy_platform"]
+transform = Transform3D(13.8898, 0, 0, 0, 1.84347, 0, 0, 0, 19.0473, 7.69765, 3.66416, -60.0707)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/enemy_platform/step 7"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/enemy_platform/step 7/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="walls" type="Node" parent="terrain"]
+
+[node name="wall tuah" type="MeshInstance3D" parent="terrain/walls"]
+transform = Transform3D(7.55729e-08, 4.56754e-06, 193.716, 0, 52.2466, -1.69352e-05, 1.72891, -1.99654e-13, -8.46759e-06, -33.2068, 25.3127, 66.7639)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/walls/wall tuah"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/walls/wall tuah/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="huge aah wall" type="MeshInstance3D" parent="terrain/walls"]
+transform = Transform3D(-1.72891, 0, 0, 0, 52.2466, 0, 0, 0, 193.716, 37.7943, 25.3127, -30.0193)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/walls/huge aah wall"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/walls/huge aah wall/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="huge aah wall2" type="MeshInstance3D" parent="terrain/walls"]
+transform = Transform3D(-1.72891, 0, 0, 0, 52.2466, 0, 0, 0, 193.716, -33.2068, 25.3127, -30.0193)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/walls/huge aah wall2"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/walls/huge aah wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="huge aah wall3" type="MeshInstance3D" parent="terrain/walls"]
+transform = Transform3D(7.55729e-08, 4.56754e-06, 193.716, 0, 52.2466, -1.69352e-05, 1.72891, -1.99654e-13, -8.46759e-06, -33.2068, 25.3127, -126.677)
+mesh = SubResource("BoxMesh_x8rah")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain/walls/huge aah wall3"]
+physics_material_override = SubResource("PhysicsMaterial_np8sd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/walls/huge aah wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_2u3t1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u6a10")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9715, 18.4376, -60.0348)
+light_color = Color(0.270806, 0.593698, 0.603345, 1)
+light_energy = 80.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 2.551
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 1.126
+shadow_blur = 2.923
+omni_range = 27.91
+
+[node name="combatmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qxdc6")
+autoplay = true
+
+[node name="normalmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_r8gvg")
+autoplay = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11648, 3.28475, -31.8129)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2213, 1.84271, 0)
+shape = SubResource("BoxShape3D_wstu1")
+
+[node name="bishop_sniper" parent="." instance=ExtResource("5_kl8cf")]
+transform = Transform3D(0.402779, 0, -0.915297, 0, 1, 0, 0.915297, 0, 0.402779, 12.0524, 4.5859, -53.0105)
+
+[node name="Smt" parent="." instance=ExtResource("6_djwbx")]
+transform = Transform3D(-0.932928, 0, -0.360062, 0, 1, 0, 0.360062, 0, -0.932928, 4.83523, 4.5859, -50.9266)
+
+[node name="Wallbreaker" parent="." instance=ExtResource("7_qo603")]
+transform = Transform3D(0.966313, 0, 0.257369, 0, 1, 0, -0.257369, 0, 0.966313, 7.32695, 3.19072, -47.0314)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="CharacterBody3D"]

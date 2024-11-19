@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w52k7iojvbpg"]
+
+[ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="1_wiay8"]
+
+[node name="weapon manager" type="Node3D"]
+script = ExtResource("1_wiay8")

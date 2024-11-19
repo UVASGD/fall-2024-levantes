@@ -1,0 +1,263 @@
+[gd_scene load_steps=32 format=3 uid="uid://b635bnbwtoi4v"]
+
+[ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_oov6h"]
+[ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="2_iclxk"]
+[ext_resource type="Script" path="res://player/player_controller.gd" id="3_5ogod"]
+[ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="4_2gbcm"]
+[ext_resource type="PackedScene" uid="uid://w1j3noycv2xt" path="res://Weapons (new)/husk/OLD_husk_sniper.tscn" id="4_f4yv7"]
+[ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="5_7v6ir"]
+[ext_resource type="Script" path="res://Weapons (new)/weapon_manager.gd" id="5_wimf1"]
+[ext_resource type="AnimationLibrary" uid="uid://dcps320651o5x" path="res://Weapons (new)/animations/smg_animations.res" id="6_hb0dv"]
+[ext_resource type="AnimationLibrary" uid="uid://cih2thjfjib17" path="res://Weapons (new)/animations/burst_animations.res" id="7_sdbnm"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="7_tpwuw"]
+[ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="8_eh5ec"]
+[ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="9_5w6wb"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
+vertices = PackedVector3Array(-90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -90.3186, 0.451325, -7.23399, -2.3186, 0.451325, -9.23399, -0.0686035, 0.451325, -9.48399, -0.0686035, 0.451325, -129.984, -90.3186, 0.451325, -129.984, 16.9314, 0.451325, -0.983994, 17.1814, 0.451325, 0.266006, 18.6814, 0.451325, 0.266006, 18.6814, 0.451325, -5.73399, 2.1814, 0.451325, -9.23399, 18.6814, 0.451325, -5.73399, 19.9314, 0.451325, -5.98399, 19.9314, 0.451325, -129.984, -0.0686035, 0.451325, -129.984, 1.6814, 0.451325, -4.98399, 5.9314, 0.451325, -0.483994, 6.1814, 0.451325, -0.983994, 2.1814, 0.451325, -5.23399, -0.0686035, 0.451325, -129.984, -0.0686035, 0.451325, -9.48399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -9.23399, 2.1814, 0.451325, -5.23399, 6.1814, 0.451325, -0.983994, 16.9314, 0.451325, -0.983994, 18.6814, 0.451325, -5.73399, 20.9314, 0.451325, -5.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, -3.73399, 19.9314, 0.451325, -5.98399, 20.9314, 0.451325, -5.73399, 90.4314, 0.451325, -3.73399, 90.4314, 0.451325, -129.984, 19.9314, 0.451325, -129.984, -1.3186, 1.95132, -8.48399, -1.3186, 1.95132, -5.98399, 1.1814, 1.95132, -5.98399, 1.1814, 1.95132, -8.48399, 18.6814, 0.451325, 0.266006, 17.1814, 0.451325, 0.266006, 16.9314, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, 5.9314, 0.451325, -0.483994, 1.6814, 0.451325, -4.98399, -2.0686, 0.451325, -4.98399, 19.6814, 0.451325, 16.266, 18.6814, 0.451325, 16.016, -90.3186, 0.451325, -7.23399, -90.3186, 0.451325, 130.016, 19.6814, 0.451325, 130.016, -2.0686, 0.451325, -4.98399, -2.3186, 0.451325, -7.23399, -90.3186, 0.451325, -7.23399, 18.6814, 0.451325, 16.016, 16.9314, 0.451325, 1.26601, 6.1814, 0.451325, 1.26601, 18.6814, 0.451325, 16.016, 6.1814, 0.451325, 1.26601, -2.0686, 0.451325, -4.98399, -90.3186, 0.451325, -7.23399, 20.9314, 0.451325, 14.016, 90.4314, 0.451325, 14.016, 90.4314, 0.451325, -3.73399, 20.9314, 0.451325, -3.73399, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 90.4314, 0.451325, 14.016, 20.9314, 0.451325, 16.016, 19.6814, 0.451325, 16.266, 19.6814, 0.451325, 130.016, 90.4314, 0.451325, 130.016)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 16), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 28), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 36), PackedInt32Array(34, 36, 35), PackedInt32Array(40, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 53), PackedInt32Array(51, 53, 52), PackedInt32Array(56, 55, 54), PackedInt32Array(59, 58, 57), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(70, 69, 68), PackedInt32Array(72, 71, 73), PackedInt32Array(73, 71, 74), PackedInt32Array(74, 71, 75)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7ngi"]
+albedo_texture = ExtResource("2_iclxk")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v37cu"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gf8jg"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjhjp"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rue08"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lr1o4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfr55"]
+albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ln3ly"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fce5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gk5ws"]
+albedo_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpevm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jugvo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1c20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3v36"]
+size = Vector3(2.92481, 2.45361, 3.20447)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x83sr"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.278431, 0.0313726, 0.0705882, 1)
+sky_curve = 0.041609
+ground_bottom_color = Color(0.054902, 0.0392157, 0.027451, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_mm45y"]
+sky_material = SubResource("ProceduralSkyMaterial_x83sr")
+
+[sub_resource type="Environment" id="Environment_mdiys"]
+background_mode = 2
+sky = SubResource("Sky_mm45y")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="BishopTestWorld" type="Node3D"]
+script = ExtResource("1_oov6h")
+
+[node name="Nav" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_2tm68")
+
+[node name="Ground" type="MeshInstance3D" parent="Nav"]
+transform = Transform3D(90.8186, 0, 0, 0, 10, 0, 0, 0, 130.484, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_d7ngi")
+mesh = SubResource("PlaneMesh_v37cu")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gf8jg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nav/Ground"]
+transform = Transform3D(0.11011, 0, 0, 0, 0.5, 0, 0, 0, 0.00766378, 0.125888, 0.25, 0.00117256)
+material_override = SubResource("StandardMaterial3D_bjhjp")
+mesh = SubResource("BoxMesh_rue08")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_lr1o4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Nav/Ground"]
+transform = Transform3D(0.011011, 0, 0, 0, 0.6, 0, 0, 0, 0.161399, 0.218083, 0.3, 0.0400739)
+material_override = SubResource("StandardMaterial3D_tfr55")
+mesh = SubResource("BoxMesh_ln3ly")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_2fce5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nav/Ground"]
+transform = Transform3D(0.036171, 0, 0, 0, 0.3285, 0, 0, 0, 0.0251755, 0, -0.0156175, -0.055776)
+material_override = SubResource("StandardMaterial3D_gk5ws")
+mesh = SubResource("BoxMesh_gpevm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/Ground/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/Ground/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_jugvo")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3891)
+script = ExtResource("3_5ogod")
+max_health_hp = 100
+HEADBOB_SWAY_AMOUNT = 0.01
+dash_speed = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j86j8")
+
+[node name="WorldModel" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0138981, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/WorldModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_u1c20")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+unique_name_in_owner = true
+cull_mask = 1048573
+current = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79666, 0)
+cull_mask = 1047554
+
+[node name="HUD" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("4_2gbcm")]
+scale = Vector2(1.00143, 1)
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="weapon manager" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+script = ExtResource("5_wimf1")
+
+[node name="AnimationPlayers" type="Node" parent="CharacterBody3D/Head/Camera3D/weapon manager"]
+
+[node name="SMG" type="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/weapon manager/AnimationPlayers"]
+libraries = {
+"smg_animations": ExtResource("6_hb0dv")
+}
+
+[node name="BURST" type="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/weapon manager/AnimationPlayers"]
+libraries = {
+"burst_animations": ExtResource("7_sdbnm")
+}
+
+[node name="BURST" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("8_eh5ec")]
+Reserve_Ammo = 210
+
+[node name="SMG" parent="CharacterBody3D/Head/Camera3D/weapon manager" instance=ExtResource("9_5w6wb")]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0.640837, -0.348657, -1.04741)
+
+[node name="pickup_detection" type="Area3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/pickup_detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.015, 0)
+shape = SubResource("BoxShape3D_v3v36")
+
+[node name="shield_regen_timer" type="Timer" parent="CharacterBody3D"]
+wait_time = 3.0
+
+[node name="health_regen_timer" type="Timer" parent="CharacterBody3D"]
+wait_time = 6.0
+
+[node name="Timers" type="Node" parent="CharacterBody3D"]
+
+[node name="DashLength" type="Timer" parent="CharacterBody3D/Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="CharacterBody3D/Timers"]
+one_shot = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.26269, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mdiys")
+
+[node name="SpawnHolder" type="Node3D" parent="."]
+
+[node name="Spawner1" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.105)
+
+[node name="Spawner2" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4923, 0, -116.787)
+
+[node name="Spawner3" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.337, 0, -92.4726)
+
+[node name="Spawner4" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0726, 0, -58.2814)
+
+[node name="Spawner5" type="Node3D" parent="SpawnHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.281, 0, -62.852)
+
+[node name="InBetweenWaves" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="sniper_rifle" parent="." instance=ExtResource("4_f4yv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26603, 0.291384, 17.4752)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7v6ir")
+autoplay = true
+
+[node name="Smt" parent="." instance=ExtResource("7_tpwuw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81218, 0.35138, -3.96307)

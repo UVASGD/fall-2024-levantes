@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5i4430psnw2e"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_0jbxo"]
+[ext_resource type="VideoStream" path="res://vidos/creditsfinal.ogv" id="2_4wg3a"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0jbxo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Camera2D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -358.0
+offset_right = 598.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stream = ExtResource("2_4wg3a")
+autoplay = true
+expand = true

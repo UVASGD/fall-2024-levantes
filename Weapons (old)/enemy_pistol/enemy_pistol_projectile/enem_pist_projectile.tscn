@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://jnut1j6uyh8j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jmvp"]
+albedo_color = Color(37.279, 0.107, 0.072, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uuyk2"]
+
+[node name="EnemPistProjectile" type="Node2D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, -1.21802e-08, -0.08, 0, 0.278651, -3.49691e-09, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_8jmvp")
+mesh = SubResource("CapsuleMesh_uuyk2")

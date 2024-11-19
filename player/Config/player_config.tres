@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="player_config_resource" load_steps=2 format=3 uid="uid://b5rawa4r2mns5"]
+
+[ext_resource type="Script" path="res://player/Config/player_config_resource.gd" id="1_ltoi5"]
+
+[resource]
+script = ExtResource("1_ltoi5")
+shield_hp = 100
+health_hp = 50
+jump_height = 0
+speed = 0
