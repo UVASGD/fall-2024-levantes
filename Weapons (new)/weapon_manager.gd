@@ -60,6 +60,18 @@ func _ready():
 var has_printed_weapon_name = false  
 
 func _process(delta):
+	if current_weapon:
+		def_weapon_holder_pos = current_weapon.position
+	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var velocity : Vector3
+	if direction:
+		velocity.x = direction.x * 9
+		velocity.z = direction.z * 9
+	weapon_tilt(input_dir.x, delta)
+	weapon_sway(delta)
+	weapon_bob(velocity.length(), delta)
+	
 	if not curr_shop_ray_name and shop_ray and shop_ray.is_colliding():
 		var collider = shop_ray.get_collider()
 		
@@ -78,19 +90,6 @@ func _process(delta):
 		call_update_shop_weapon_name(curr_shop_ray_name, 0)
 		has_printed_weapon_name = false
 
-
-func _physics_process(delta):
-	if current_weapon:
-		def_weapon_holder_pos = current_weapon.position
-	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var velocity : Vector3
-	if direction:
-		velocity.x = direction.x * 9
-		velocity.z = direction.z * 9
-	weapon_tilt(input_dir.x, delta)
-	weapon_sway(delta)
-	weapon_bob(velocity.length(), delta)
 	
 
 func _input(event):

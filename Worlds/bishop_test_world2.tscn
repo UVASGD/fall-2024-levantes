@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=27 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
@@ -8,11 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bi170mgn206nk" path="res://Weapons (new)/husk/husk_smg_future.tscn" id="8_xq5ue"]
 [ext_resource type="PackedScene" uid="uid://vbvy4uppo6py" path="res://Weapons (new)/husk/husk_sniper_rifle.tscn" id="9_ramk4"]
 [ext_resource type="PackedScene" uid="uid://dyqllsxnofeyj" path="res://Weapons (new)/husk/husk_grenade_launcher.tscn" id="9_sy8sv"]
-[ext_resource type="PackedScene" uid="uid://b15t3y58ec0li" path="res://Enemies/hammerguy/hammerguy.tscn" id="10_6jo6c"]
 [ext_resource type="PackedScene" uid="uid://ca7q8qbcy5l2v" path="res://Weapons (new)/husk/husk_void_launcher.tscn" id="10_a4sgt"]
-[ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="11_j2l3d"]
-[ext_resource type="PackedScene" uid="uid://cb6lyhn01m8cn" path="res://Enemies/assassin/assassin.tscn" id="12_a5kio"]
-[ext_resource type="PackedScene" uid="uid://6ofcqwj26hhr" path="res://Enemies/tank/tank.tscn" id="14_3xc36"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -186,21 +182,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32797, 0, 3.03227)
 
 [node name="husk_grenade_launcher2" parent="." instance=ExtResource("9_sy8sv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53428, 1.17627, 17.791)
-
-[node name="smt_update" parent="." instance=ExtResource("11_j2l3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.43, 1.94975, 19.0312)
-
-[node name="assassin" parent="." instance=ExtResource("12_a5kio")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -1.10456, 0, -18.0294)
-
-[node name="Hammerguy" parent="." instance=ExtResource("10_6jo6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58952, 2.38419e-07, -12.6411)
-
-[node name="bishop_sniper" parent="." instance=ExtResource("14_3xc36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0473, 0, -22.7066)
-
-[node name="Tank" parent="." instance=ExtResource("14_3xc36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1113, -4.76837e-07, -27.7028)
 
 [node name="husk_alien_pistol2" parent="." instance=ExtResource("8_gqibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95067, 0.895761, 10.2146)
