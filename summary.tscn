@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkw0386o8o6k5"]
+[gd_scene load_steps=8 format=3 uid="uid://bkw0386o8o6k5"]
 
 [ext_resource type="Script" path="res://summary.gd" id="1_0mu45"]
+[ext_resource type="AudioStream" uid="uid://d1gh0fhmsxmtv" path="res://audio/summary.mp3" id="2_rjgg3"]
 
 [sub_resource type="Gradient" id="Gradient_kiij1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -148,6 +149,21 @@ tracks/5/keys = {
 "method": &"end"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_rjgg3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lutmt"]
 _data = {
@@ -221,3 +237,5 @@ offset_right = -123.0
 offset_bottom = -110.0
 scale = Vector2(7.835, 7.915)
 color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -291,11 +291,14 @@ libraries = {
 "": SubResource("AnimationLibrary_j76d0")
 }
 
-[node name="buy" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_hvaqu")
-
 [node name="start" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_3egi6")
+volume_db = -25.0
+unit_size = 100.0
 
 [node name="spawn" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_e2cov")
+
+[node name="buy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hvaqu")
+volume_db = -12.0

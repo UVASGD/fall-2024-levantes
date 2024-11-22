@@ -1911,6 +1911,7 @@ wait_time = 3.0
 
 [node name="death" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_brht0")
+unit_size = 100.0
 
 [node name="attack" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_n0m2g")

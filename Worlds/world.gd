@@ -50,7 +50,7 @@ func _ready():
 	if not $SpawnHolder:
 		#print("please set up a spawnholder")
 		pass
-	
+	$music.play("start")
 func spawn_player():
 
 	var newplayer

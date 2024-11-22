@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://cqg2lc87cbro8" path="res://audio/hammer.mp3" id="2_yya1k"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="3_iq3mb"]
 [ext_resource type="AudioStream" uid="uid://b6favttq7wnm" path="res://audio/enemy_hit_harder.mp3" id="3_my570"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="4_2ot4v"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="4_2ot4v"]
 [ext_resource type="AudioStream" uid="uid://scv3air6aft2" path="res://audio/gleebodeath.mp3" id="6_7snda"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_re83k"]
@@ -1114,6 +1114,8 @@ libraries = {
 
 [node name="death" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_7snda")
+volume_db = 20.0
+unit_size = 119.3
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
