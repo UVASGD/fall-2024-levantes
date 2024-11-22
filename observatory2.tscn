@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://1awjuwu41x2a"]
+[gd_scene load_steps=32 format=3 uid="uid://1awjuwu41x2a"]
 
 [ext_resource type="Script" path="res://Worlds/world.gd" id="1_ynjkm"]
 [ext_resource type="PackedScene" uid="uid://c73b8583qerj8" path="res://pr.tscn" id="2_8bwrh"]
@@ -158,7 +158,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-80.0, -15.0]
+"values": [-80.0, -25.0]
 }
 
 [sub_resource type="Animation" id="Animation_ehoik"]
@@ -185,14 +185,30 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.0333333, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-15.0, -80.0]
+"values": [-25.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_if8ge"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("music/demure:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -25.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0ukv"]
 _data = {
 "RESET": SubResource("Animation_l4qjm"),
 "demure": SubResource("Animation_50ktk"),
-"freaky": SubResource("Animation_ehoik")
+"freaky": SubResource("Animation_ehoik"),
+"start": SubResource("Animation_if8ge")
 }
 
 [node name="Node3D" type="Node3D"]
@@ -591,6 +607,7 @@ mesh = SubResource("BoxMesh_l7g5w")
 libraries = {
 "": SubResource("AnimationLibrary_g0ukv")
 }
+speed_scale = 0.75
 
 [node name="demure" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("7_hbwpr")
@@ -600,7 +617,7 @@ parameters/looping = true
 
 [node name="freaky" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("8_k1sa2")
-volume_db = -15.0
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 

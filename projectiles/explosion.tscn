@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cupay32y8612k"]
 
 [ext_resource type="Script" path="res://Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_uaaca"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="2_uaaca"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
 resource_local_to_scene = true

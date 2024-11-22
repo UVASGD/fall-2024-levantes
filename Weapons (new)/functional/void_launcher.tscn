@@ -380,7 +380,6 @@ Name = "void_launcher"
 Display_Name = "E_No:94"
 animation_player_treepath = "../AnimationPlayers2/VOID_LAUNCHER"
 animation_library_path = "res://Weapons (new)/animations/void_launcher_animations.res"
-volume_db_increase = 5
 change_pitch_mult = 0.9
 Reset_Ani = "void_launcher/RESET"
 Equip_Ani = "void_launcher/equip"

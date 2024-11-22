@@ -487,7 +487,8 @@ libraries = {
 
 [node name="run" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_tgoq0")
-volume_db = -26.781
+volume_db = -35.0
+unit_size = 46.7
 pitch_scale = 0.53
 
 [connection signal="animation_finished" from="x_axis/graphics/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

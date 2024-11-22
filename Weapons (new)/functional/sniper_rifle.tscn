@@ -367,7 +367,6 @@ Name = "sniper"
 Display_Name = "LRSR-100"
 animation_player_treepath = "../AnimationPlayers2/SNIPER"
 animation_library_path = "res://sniper_animations.res"
-volume_db_increase = 10
 Equip_Ani = "sniper_animations/sniper_equip"
 Fire_Ani = "sniper_animations/sniper_fire"
 Reload_Ani = "sniper_animations/sniper_reload"
