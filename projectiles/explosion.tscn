@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cupay32y8612k"]
+[gd_scene load_steps=10 format=3 uid="uid://cupay32y8612k"]
 
 [ext_resource type="Script" path="res://Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
-[ext_resource type="Shader" uid="uid://dex665rrbtq0g" path="res://visual_shader_test.tres" id="2_uaaca"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="2_uaaca"]
+[ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="3_vdcwc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
 resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_q586k"]
+resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1r6t"]
 resource_local_to_scene = true
@@ -115,10 +117,10 @@ tracks/3/path = NodePath("explosion/CollisionShape3D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwust"]
@@ -128,7 +130,7 @@ _data = {
 }
 
 [node name="explosion" type="Area3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.582662, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.582662, 0)
 script = ExtResource("1_dabnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -146,7 +148,8 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-volume_db = 19.048
+stream = ExtResource("3_vdcwc")
+volume_db = 10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="explosion_animation_player" to="." method="_on_explosion_animation_player_animation_finished"]

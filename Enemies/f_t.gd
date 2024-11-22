@@ -4,6 +4,7 @@ extends Node3D
 @export var current_turn_speed = 60
 @export var normal_turn_speed = 60
 @export var retreat_turn_speed = 40
+@export var melee_turn_speed = 100
 @export var x_axis_angle_threshold = 30.0
 
 

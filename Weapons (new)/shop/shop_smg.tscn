@@ -157,6 +157,7 @@ size = Vector3(0.241211, 0.696838, 1.98669)
 script = ExtResource("1_sx6ls")
 item_name = "HF-SMG"
 price = 1
+tip = "Who needs aim?"
 ammo = 50
 reserve = 150
 husk_weapon_path = "res://Weapons (new)/husk/husk_smg_future.tscn"

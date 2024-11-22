@@ -2,6 +2,8 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 
 @export var set_next_state: String
+@export var Default_Speed: int = 100
+@export var speed_when_closer: int = 20
 @export var SPEED = 5.0
 @export var speed_when_attacking = 10.0
 @export var retreat_speed = 10.0
@@ -52,12 +54,13 @@ var is_dying = false
 func _ready():
 	if set_next_state:
 		next_state = set_next_state
-	offset = add_rand_offset(2)
+	offset = add_rand_offset(0)
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	vision_timer.connect("timeout", _on_vision_timer_timeout)
 	SignalBus.connect("few_enemies", show_indicator)
-	
+	SPEED = Default_Speed
+	$NavigationAgent3D.max_speed = Default_Speed
 func _physics_process(delta):
 	if not self.is_on_floor():
 		self.velocity.y += get_gravity().y * delta
@@ -139,9 +142,12 @@ func chase(delta):
 	nav_agent.set_velocity(new_velocity)
 
 func melee(delta):
+	update_turn_speed(y_axis.melee_turn_speed)
 	face_target(delta)
 	if not lock:
 		lock = true
+		SPEED = speed_when_attacking
+		$NavigationAgent3D.max_speed = SPEED
 		$attack.play()
 		Animation_Player.play("attack_state")
 		assassin_animation_player.play("Slash")
@@ -153,6 +159,8 @@ func melee(delta):
 
 
 func retreat(delta):
+	SPEED = Default_Speed
+	$NavigationAgent3D.max_speed = SPEED
 	target = get_tree().get_nodes_in_group("Player")[0]
 	offset = add_rand_offset(randf_range(-5, 5))
 	face_target(delta)

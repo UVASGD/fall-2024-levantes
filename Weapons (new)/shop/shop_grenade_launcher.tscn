@@ -209,6 +209,7 @@ size = Vector3(0.241211, 0.696838, 1.98669)
 script = ExtResource("1_kblg2")
 item_name = "GLauncher"
 price = 3
+tip = "Perfect for a one-eyed, drunk scotsman"
 ammo = 3
 reserve = 9
 husk_weapon_path = "res://Weapons (new)/husk/husk_grenade_launcher.tscn"

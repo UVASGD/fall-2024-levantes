@@ -324,7 +324,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hmmdt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgpfw"]
-size = Vector3(9.87256, 56.7286, 2.6532)
+size = Vector3(43.561, 64.2353, 30.7244)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcgvm"]
 
@@ -1368,7 +1368,8 @@ transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_cbyde")
-SPEED = 120.0
+Default_Speed = 200
+speed_when_attacking = 5.0
 retreat_speed = 100.0
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 max_health = 200
@@ -1410,6 +1411,9 @@ shape = SubResource("SphereShape3D_gupe6")
 unique_name_in_owner = true
 transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.600404, 0)
 script = ExtResource("2_dwvr6")
+current_turn_speed = 100
+normal_turn_speed = 100
+retreat_turn_speed = 60
 
 [node name="x_axis_model_group" type="Node3D" parent="x_axis"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -1722,7 +1726,7 @@ script = ExtResource("3_0ukys")
 transform = Transform3D(-4.05013, -1.5363e-06, -4.05013, 4.05013, 3.414e-07, -4.05013, 1.5363e-06, -5.72774, 3.414e-07, 0, 0, 4.17213)
 
 [node name="Torus_001" type="MeshInstance3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife/knife"]
-transform = Transform3D(-2.58405, 0, 0, 0, 0, -2.58405, 0, 2.58405, 0, 0.184733, -15.1538, 4.7719e-06)
+transform = Transform3D(-2.58405, 0, 0, 0, 0, -5.91187, 0, 2.58405, 0, 0.184733, -31.3208, 3.53973e-06)
 mesh = SubResource("ArrayMesh_h7wpj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_vd3ly")
@@ -1736,7 +1740,7 @@ skeleton = NodePath("")
 [node name="hitbox" type="Area3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D/right_hand/MeleeKnife/hitbox"]
-transform = Transform3D(0.999998, -2.98023e-08, -2.98023e-08, -2.08616e-07, 1, -2.98023e-08, 4.47035e-08, 4.84288e-08, 1, 0.116446, 25.3936, -0.0620804)
+transform = Transform3D(0.999985, -1.51992e-06, 3.12924e-07, -3.12924e-06, 0.99999, 1.49012e-07, -2.25008e-06, 2.17557e-06, 1, 0.324629, 29.1469, -0.315517)
 shape = SubResource("BoxShape3D_tgpfw")
 
 [node name="right_forearm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
