@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://c6ykdnjfk4csj"]
+[gd_scene load_steps=28 format=4 uid="uid://c6ykdnjfk4csj"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/alien_pistol_overhaul.gd" id="1_ivfeq"]
+[ext_resource type="AudioStream" uid="uid://nkfj6paropy6" path="res://audio/749789__rescopicsound__cinematic-energy-impact-pure-power.mp3" id="2_0pome"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ejh"]
 
@@ -257,24 +258,24 @@ shadow_mesh = SubResource("ArrayMesh_obn5p")
 [node name="AlienPistolOverhaul" type="Node3D"]
 script = ExtResource("1_ivfeq")
 husk_weapon_path = "res://Weapons (new)/husk/husk_alien_pistol.tscn"
-Name = "alien_pistol"
-Display_Name = "Charger Pistol"
+Name = "Overcharger"
+Display_Name = "Overcharger"
 animation_player_treepath = "../AnimationPlayers2/ALIENPISTOL"
 animation_library_path = "res://Weapons (new)/animations/alien_pistol_animations.res"
+volume_db_increase = -10
 Reset_Ani = "alien_pistol/RESET"
 Equip_Ani = "alien_pistol/equip"
 Fire_Ani = "alien_pistol/fire"
 Reload_Ani = "alien_pistol/reload"
 Dequip_Ani = "alien_pistol/dequip"
 Fire_Sound = "res://audio/laser2.mp3"
-Reward_Amount = 3
-Curr_Mag_Ammo = 9
-Reserve_Ammo = 27
-Max_Mag_Capacity = 9
-Max_Ammo = 300
-Shoot_Cooldown_Ms = 1
+Reward_Amount = 12
+Curr_Mag_Ammo = 12
+Reserve_Ammo = 60
+Max_Mag_Capacity = 12
+Max_Ammo = 99
 Burst_Count = 3
-Wait_Interval = 0.3
+Wait_Interval = 0.2
 
 [node name="rotator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306708, 0.082404, -0.203021)
@@ -327,3 +328,7 @@ transform = Transform3D(1, 0, 0, 0, 0.956501, -0.29173, 0, 0.29173, 0.956501, 0,
 mesh = SubResource("ArrayMesh_hjbfg")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qtj4")
+
+[node name="Overheat" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_0pome")
+volume_db = 10.0

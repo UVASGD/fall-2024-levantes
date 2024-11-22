@@ -58,8 +58,9 @@ func update_shield_and_health(new_shield_amount: int, new_health_amount: int):
 	$player_info/shield/shield_amount.text = n_s_amount
 	$player_info/health/health_amount.text = n_h_amount
 	
-func update_shop_weapon_name(shop_wep_name: String, cost: int):
+func update_shop_weapon_name(shop_wep_name: String, cost: int, tip: String):
 	$shop_weapon_name.text = shop_wep_name
+	$tip.text = tip
 	if cost != 0:
 		$cost.text = "Price: " + str(cost)
 	else:

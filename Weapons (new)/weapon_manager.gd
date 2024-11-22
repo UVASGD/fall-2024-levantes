@@ -71,14 +71,15 @@ func _process(delta):
 			var item = collider.get_parent()
 			curr_shop_ray_name = item.item_name
 			var price = item.price
+			var tip = item.tip
 			
 			if not has_printed_weapon_name:
-				call_update_shop_weapon_name(curr_shop_ray_name, price)
+				call_update_shop_weapon_name(curr_shop_ray_name, price, tip)
 				has_printed_weapon_name = true
 	elif curr_shop_ray_name and (not shop_ray or not shop_ray.is_colliding()):
 		# Reset when ray is no longer colliding
 		curr_shop_ray_name = ""
-		call_update_shop_weapon_name(curr_shop_ray_name, 0)
+		call_update_shop_weapon_name(curr_shop_ray_name, 0, "")
 		has_printed_weapon_name = false
 		
 func _physics_process(delta):
@@ -102,14 +103,14 @@ func _physics_process(delta):
 			var item = collider.get_parent()
 			curr_shop_ray_name = item.item_name
 			var price = item.price
-			
+			var tip = item.tip
 			if not has_printed_weapon_name:
-				call_update_shop_weapon_name(curr_shop_ray_name, price)
+				call_update_shop_weapon_name(curr_shop_ray_name, price, tip)
 				has_printed_weapon_name = true
 	elif curr_shop_ray_name and (not shop_ray or not shop_ray.is_colliding()):
 		# Reset when ray is no longer colliding
 		curr_shop_ray_name = ""
-		call_update_shop_weapon_name(curr_shop_ray_name, 0)
+		call_update_shop_weapon_name(curr_shop_ray_name, 0, "")
 		has_printed_weapon_name = false
 
 	
@@ -333,8 +334,8 @@ func call_hud_initialize():
 func call_update_ammo(ammo):
 	hud.update_ammo(ammo)
 
-func call_update_shop_weapon_name(s_wep_name, price):
-	hud.update_shop_weapon_name(s_wep_name, price)
+func call_update_shop_weapon_name(s_wep_name, price, tip):
+	hud.update_shop_weapon_name(s_wep_name, price, tip)
 
 func call_money_update(money, debt_effect):
 	hud.update_money(money, debt_effect)

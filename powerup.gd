@@ -1,6 +1,7 @@
 class_name Powerup extends Node3D
 @export var item_name:String
 @export var price:int
+@export var tip:String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

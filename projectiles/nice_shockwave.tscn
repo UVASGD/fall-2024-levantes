@@ -234,7 +234,7 @@ _data = {
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, 0)
 script = ExtResource("1_q3yps")
 speed = 0.12
-damage = 60
+damage = 100
 
 [node name="inner" type="Area3D" parent="."]
 transform = Transform3D(0.845, 0, 0, 0, 0.845, 0, 0, 0, 0.845, 0, 0, 0)

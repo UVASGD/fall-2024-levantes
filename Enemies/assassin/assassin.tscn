@@ -1371,6 +1371,7 @@ script = ExtResource("1_cbyde")
 SPEED = 120.0
 retreat_speed = 100.0
 gun_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
+max_health = 200
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70514, -0.382843)

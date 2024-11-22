@@ -2,6 +2,7 @@ class_name Shop_Weapon extends Node3D
 
 @export var item_name: String
 @export var price: int
+@export var tip: String
 @export var ammo:int
 @export var reserve:int
 @export var husk_weapon_path:String

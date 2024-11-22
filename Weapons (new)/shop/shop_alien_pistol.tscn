@@ -259,8 +259,9 @@ shadow_mesh = SubResource("ArrayMesh_b3y11")
 script = ExtResource("1_hpo4k")
 item_name = "Charger Pistol"
 price = 1
-ammo = 9
-reserve = 30
+tip = "Right click to charge a shockwave. Time it right to release it!"
+ammo = 12
+reserve = 60
 husk_weapon_path = "res://Weapons (new)/husk/husk_alien_pistol.tscn"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

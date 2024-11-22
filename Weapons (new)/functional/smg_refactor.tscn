@@ -173,7 +173,7 @@ Shoot_Cooldown_Ms = 100
 Type = 1
 Projectile_Range = 10000.0
 Melee_Range = 5.0
-dmg = 13
+dmg = 15
 melee_dmg = 50
 
 [node name="smg_of_the_future" type="Node3D" parent="."]

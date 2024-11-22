@@ -258,8 +258,8 @@ shadow_mesh = SubResource("ArrayMesh_guijk")
 [node name="husk_alien_pistol" type="RigidBody3D"]
 script = ExtResource("1_llkig")
 weapon_name = "alien_pistol"
-current_ammo = 9
-reserve_ammo = 27
+current_ammo = 12
+reserve_ammo = 60
 real_weapon_path = "res://Weapons (new)/functional/alien_pistol_overhaul.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
