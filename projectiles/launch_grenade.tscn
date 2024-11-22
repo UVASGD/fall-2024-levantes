@@ -97,6 +97,7 @@ continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_beiuo")
+sound = ExtResource("3_u8y1t")
 force = 50
 upDirection = 5.0
 damage = 200
