@@ -327,6 +327,7 @@ Reset_Ani = "shotgun/reset"
 Equip_Ani = "shotgun/equip"
 Fire_Ani = "shotgun/fire"
 Dequip_Ani = "shotgun/dequip"
+Fire_Sound = "res://audio/louder shotgun.mp3"
 Curr_Mag_Ammo = 5
 Reserve_Ammo = 10
 Max_Mag_Capacity = 5

@@ -1,15 +1,19 @@
 extends Gun
 
+var local_is_reloading:bool = true
+
 func shoot():
-	if can_shoot:
+	if can_shoot and Curr_Mag_Ammo > 0:
 		can_shoot = false
+		
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
+		local_is_reloading = false
 		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 		await play_fire()
-		
+		local_is_reloading = true
 		if Curr_Mag_Ammo == 0:
 			if Reserve_Ammo > 0:
 				await reload()
@@ -33,8 +37,10 @@ func reload():
 		Reserve_Ammo -= refill_amount	
 	animation_player.play("shotgun/reload")	
 	await animation_player.animation_finished
-
+	local_is_reloading = true
 	for i in range(0, refill_amount):
+		if !local_is_reloading:
+			return
 		animation_player.play("shotgun/reload_shells")
 		await animation_player.animation_finished
 		Curr_Mag_Ammo += 1

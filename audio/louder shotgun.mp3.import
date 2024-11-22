@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chbq2o1cgupcc"
+path="res://.godot/imported/louder shotgun.mp3-6398d9aae25aecb1651123c98b039078.mp3str"
+
+[deps]
+
+source_file="res://audio/louder shotgun.mp3"
+dest_files=["res://.godot/imported/louder shotgun.mp3-6398d9aae25aecb1651123c98b039078.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
