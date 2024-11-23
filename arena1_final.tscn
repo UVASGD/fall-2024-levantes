@@ -369,6 +369,6 @@ parameters/looping = true
 
 [node name="freaky" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("6_dw84i")
-volume_db = -80.0
+volume_db = -15.0
 autoplay = true
 parameters/looping = true

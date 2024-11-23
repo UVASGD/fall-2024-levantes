@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=30 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dyqllsxnofeyj" path="res://Weapons (new)/husk/husk_grenade_launcher.tscn" id="9_sy8sv"]
 [ext_resource type="PackedScene" uid="uid://ca7q8qbcy5l2v" path="res://Weapons (new)/husk/husk_void_launcher.tscn" id="10_a4sgt"]
 [ext_resource type="PackedScene" uid="uid://cb6lyhn01m8cn" path="res://Enemies/assassin/assassin.tscn" id="11_p40i6"]
+[ext_resource type="PackedScene" uid="uid://d4lc8k337g8bj" path="res://Weapons (new)/husk/husk_shotgun.tscn" id="12_mx77o"]
+[ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="13_58t5l"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -189,3 +191,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95067, 0.895761, 10.2146)
 
 [node name="assassin" parent="." instance=ExtResource("11_p40i6")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -29.384, 0, 22.2949)
+
+[node name="HuskShotgun" parent="." instance=ExtResource("12_mx77o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2052, 0.799134, -0.993693)
+
+[node name="smt_update" parent="." instance=ExtResource("13_58t5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, -20.9241)
+
+[node name="smt_update2" parent="." instance=ExtResource("13_58t5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, -9.97397)
+
+[node name="smt_update3" parent="." instance=ExtResource("13_58t5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, 5.49521)
+
+[node name="smt_update4" parent="." instance=ExtResource("13_58t5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, 16.5447)
+
+[node name="smt_update5" parent="." instance=ExtResource("13_58t5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, 27.2538)

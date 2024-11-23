@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://shop_alien_pistol.gd" id="1_hpo4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_su27s"]
-size = Vector3(0.250488, 0.493774, 0.911591)
+size = Vector3(0.889465, 0.493774, 0.911591)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ejh"]
 
@@ -269,7 +269,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.499218)
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756836, 0.0525513, -0.438767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00680542, 0.0525513, -0.438767)
 shape = SubResource("BoxShape3D_su27s")
 
 [node name="model" type="Node3D" parent="."]

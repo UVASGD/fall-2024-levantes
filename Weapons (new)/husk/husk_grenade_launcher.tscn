@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Weapons (new)/husk/husk_weapon.gd" id="1_tl3ij"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxgiq"]
-size = Vector3(0.230957, 0.38147, 1.42667)
+size = Vector3(0.364868, 0.38147, 2.11253)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l27ed"]
 
@@ -215,11 +215,11 @@ reserve_ammo = 9
 real_weapon_path = "res://Weapons (new)/functional/grenade_launcher.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529785, -0.0515747, 0.0081623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0518188, -0.0515747, -0.0205352)
 shape = SubResource("BoxShape3D_uxgiq")
 
 [node name="GLauncher" type="Node3D" parent="."]
-transform = Transform3D(-0.002, 0, 7.78829e-10, 0, 0.002, 0, -7.78829e-10, 0, -0.002, -0.052866, -0.121832, 0.0302326)
+transform = Transform3D(-0.003, 0, 1.16824e-09, 0, 0.003, 0, -1.16824e-09, 0, -0.003, -0.052866, -0.121832, 0.0302326)
 
 [node name="Stock" type="MeshInstance3D" parent="GLauncher"]
 transform = Transform3D(3.22811, 0, 0, 0, 0, 2.32908, 0, -2.32908, 0, 0, 5.60322, 160.569)

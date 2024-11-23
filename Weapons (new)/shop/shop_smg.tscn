@@ -151,7 +151,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k7jux")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew58l"]
-size = Vector3(0.241211, 0.696838, 1.98669)
+size = Vector3(1.05151, 0.696838, 1.98669)
 
 [node name="shop_smg" type="Node3D"]
 script = ExtResource("1_sx6ls")
@@ -204,7 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382604, 0, 0)
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376182, 0.0354919, -0.0381323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382408, 0.0354919, -0.0381323)
 shape = SubResource("BoxShape3D_ew58l")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]

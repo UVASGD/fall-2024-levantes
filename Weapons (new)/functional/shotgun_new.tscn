@@ -322,22 +322,25 @@ shadow_mesh = SubResource("ArrayMesh_xyigr")
 [node name="SHOTGUN" type="Node3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 script = ExtResource("1_d80qc")
+spread_angle_degs = 25
 husk_weapon_path = "res://Weapons (new)/husk/husk_shotgun.tscn"
 Name = "Shotgun"
 Display_Name = "RH-12"
 animation_player_treepath = "../AnimationPlayers2/SHOTGUN"
 animation_library_path = "res://Weapons (new)/animations/shotgun.res"
+volume_db_increase = -10
 Reset_Ani = "shotgun/reset"
 Equip_Ani = "shotgun/equip"
 Fire_Ani = "shotgun/fire"
 Dequip_Ani = "shotgun/dequip"
 Fire_Sound = "res://audio/louder shotgun.mp3"
+Reward_Amount = 3
 Curr_Mag_Ammo = 5
 Reserve_Ammo = 10
 Max_Mag_Capacity = 5
 Max_Ammo = 20
 Projectile_Range = 100000.0
-dmg = 30
+dmg = 33
 
 [node name="ShotgunWShell" type="Node3D" parent="."]
 
@@ -356,7 +359,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_l87fd")
 
 [node name="Pump" type="MeshInstance3D" parent="ShotgunWShell"]
-transform = Transform3D(3.1128, 0, 0, 0, -1.4843e-06, -3.1128, 0, 3.1128, -1.4843e-06, 0, 19.3421, 40.5864)
+transform = Transform3D(3.3, 0, 0, 0, -1.36074e-07, -3.113, 0, 3.113, -1.36074e-07, 0, 19.3421, 40.5864)
 layers = 2
 mesh = SubResource("ArrayMesh_4kwtf")
 skeleton = NodePath("")
@@ -409,10 +412,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nwjqj")
 [node name="shotgun_pump_back" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_xfndk")
+volume_db = -5.0
 
 [node name="shotgun_pump_forward" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_ns87c")
+volume_db = -5.0
 
 [node name="shotgun_shell_load" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true

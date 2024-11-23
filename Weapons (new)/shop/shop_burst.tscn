@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://shop_burst.gd" id="1_6hoc4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_55qgv"]
-size = Vector3(0.192627, 0.331879, 1.66016)
+size = Vector3(1.22801, 0.331879, 2.85034)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgwv0"]
 
@@ -169,11 +169,11 @@ husk_weapon_path = "res://Weapons (new)/husk/husk_burst_rifle.tscn"
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0.00572205, -0.280272)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00498201, 0.00572205, 0.0528317)
 shape = SubResource("BoxShape3D_55qgv")
 
 [node name="model" type="Node3D" parent="."]
-transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.268828, 0, 0)
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.11914, 0, 0)
 
 [node name="Empty" type="Node3D" parent="model"]
 transform = Transform3D(0, 1, 0, 0, 0, -12.09, -12.09, 0, 0, -6.98934, -2.96577, -4.72964)

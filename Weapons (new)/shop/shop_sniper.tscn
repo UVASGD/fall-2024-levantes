@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Weapons (new)/shop/shop_sniper.gd" id="1_xdp7s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4m1aw"]
-size = Vector3(0.250488, 0.493774, 3.27234)
+size = Vector3(0.800476, 0.493774, 3.27234)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gma5s"]
 albedo_color = Color(0.027451, 0.0784314, 0.203922, 1)
@@ -384,7 +384,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.499218)
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756836, 0.0525513, 0.146423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000457734, 0.0525513, 0.146423)
 shape = SubResource("BoxShape3D_4m1aw")
 
 [node name="model" type="Node3D" parent="."]

@@ -350,7 +350,10 @@ func weapon_tilt(input_x, delta):
 		
 func weapon_sway(delta):
 	if current_weapon:
-		mouse_input = lerp(mouse_input, Vector2.ZERO, 10*delta)
+		if mouse_input == Vector2.ZERO or typeof(mouse_input) != TYPE_VECTOR2:
+			mouse_input = Vector2.ZERO
+		else:
+			mouse_input = lerp(mouse_input, Vector2.ZERO, 10*delta)
 		var sway_clamp = clamp(1.0 / (mouse_input.length() * 0.08 + 1.0), 0.7, 1.0)
 		current_weapon.rotation.x = lerp(current_weapon.rotation.x, mouse_input.y * weapon_rotation_amount * 0.005 * sway_clamp, 10 * delta)
 		current_weapon.rotation.y = lerp(current_weapon.rotation.y, mouse_input.x * weapon_rotation_amount * 0.005 * sway_clamp, 10 * delta)

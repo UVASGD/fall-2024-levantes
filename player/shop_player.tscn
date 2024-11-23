@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=47 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -15,7 +15,6 @@
 [ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
 [ext_resource type="AnimationLibrary" uid="uid://ck0blvgx8adaf" path="res://Weapons (new)/animations/shotgun.res" id="11_m1snb"]
-[ext_resource type="PackedScene" uid="uid://dxe2m7ehh3vdc" path="res://Weapons (new)/functional/shotgun_new.tscn" id="12_j2byd"]
 [ext_resource type="AudioStream" uid="uid://pqlba0crpchk" path="res://585257__lesaucisson__swoosh-1.mp3" id="15_1d4ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -1585,8 +1584,6 @@ libraries = {
 "": SubResource("AnimationLibrary_fu0qo"),
 "shotgun": ExtResource("11_m1snb")
 }
-
-[node name="SHOTGUN" parent="Head/Camera3D/weapon manager" instance=ExtResource("12_j2byd")]
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)
