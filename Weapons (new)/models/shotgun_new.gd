@@ -1,6 +1,35 @@
 extends Gun
 
+@export var spread_angle_degs:int = 15
 var local_is_reloading:bool = true
+
+func _raycast(dmg, hs_mult, range):
+	var camera = get_parent().get_parent()
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_center = get_viewport().size / 2
+	var origin = camera.project_ray_origin(screen_center)
+	var pellets_hit = []
+	
+	for x in range(-1,2):
+		for y in range(-1,2):
+			var offset = Vector2i(x,y) * spread_angle_degs
+			var direction = camera.project_ray_normal(screen_center + offset).normalized()
+			var endpoint = origin + direction * Projectile_Range
+			
+			var query = PhysicsRayQueryParameters3D.create(origin, endpoint)
+			query.collide_with_bodies = true
+			query.collide_with_areas = false
+			var intersection = space_state.intersect_ray(query)
+			
+			if not intersection.is_empty():
+				var collider = intersection.get("collider")
+				if collider is CharacterBody3D and collider.is_in_group("enemies"):
+					SignalBus.emit_signal("enemy_hit", dmg, hs_mult, collider, intersection.get("shape"))
+					pellets_hit.append(collider)
+	
+	print("Pellets hit: ", pellets_hit)
+		#print("nothing")
+		
 
 func shoot():
 	if can_shoot and Curr_Mag_Ammo > 0:
@@ -41,8 +70,10 @@ func reload():
 	for i in range(0, refill_amount):
 		if !local_is_reloading:
 			return
+		can_shoot = false
 		animation_player.play("shotgun/reload_shells")
 		await animation_player.animation_finished
+		can_shoot = true
 		Curr_Mag_Ammo += 1
 		SignalBus.emit_signal("call_hud_initialize")
 	animation_player.play("shotgun/reload_pump")
@@ -60,3 +91,12 @@ func reload():
 	can_dequip = true
 	
 	pass
+	
+func play_pump_back_audio():
+	%shotgun_pump_back.play()
+	
+func play_pump_forward_audio():
+	%shotgun_pump_forward.play()
+
+func play_shell_load_audio():
+	%shotgun_shell_load.play()
