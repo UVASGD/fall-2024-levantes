@@ -1648,7 +1648,7 @@ bones/25/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 bones/25/scale = Vector3(0.3, 0.3, 0.3)
 
 [node name="Cone" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(-0.0839784, -0.749847, -4.40536e-13, 0.749847, -0.0839784, 8.52651e-14, -1.13687e-13, -4.17478e-13, 0.754535, 5.36433, 4.21248, -4.39578e-13)
+transform = Transform3D(-0.0839784, -0.749847, -4.47642e-13, 0.749847, -0.0839784, 8.52651e-14, -1.13687e-13, -4.282e-13, 0.754535, 5.36433, 4.21248, -4.33011e-13)
 bone_name = "Cone"
 bone_idx = 4
 
@@ -1658,7 +1658,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lm25m")
 
 [node name="Cylinder_002" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.993787, -0.111298, 5.25802e-13, 0.111298, 0.993787, 3.01981e-14, -5.40012e-13, 2.84272e-14, 1, 5.63785, 4.55323, -7.10543e-14)
+transform = Transform3D(0.993787, -0.111298, 5.25802e-13, 0.111298, 0.993787, 4.44089e-14, -5.25802e-13, 3.55327e-14, 1, 5.63785, 4.55323, -6.39488e-14)
 bone_name = "Cylinder.002"
 bone_idx = 5
 
@@ -1674,7 +1674,7 @@ mesh = SubResource("SphereMesh_frxnu")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="left_hand" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.211984, 0.500234, 0.83954, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922168, 5.09106, 5.93612, -1.4436)
+transform = Transform3D(0.211984, 0.500234, 0.839541, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922169, 5.09106, 5.93612, -1.4436)
 bone_name = "left_hand"
 bone_idx = 9
 
@@ -1690,7 +1690,7 @@ mesh = SubResource("CapsuleMesh_kcuuw")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="left_forearm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.211984, 0.500234, 0.83954, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922168, 5.09106, 5.93612, -1.4436)
+transform = Transform3D(0.211984, 0.500234, 0.839541, -0.479101, -0.695553, 0.535414, 0.851777, -0.515724, 0.0922169, 5.09107, 5.93612, -1.4436)
 bone_name = "left_forearm"
 bone_idx = 10
 
@@ -1707,7 +1707,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="upper_left_arm" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.0661936, 0.280547, 0.957555, -0.519706, -0.809519, 0.273101, 0.851777, -0.515724, 0.0922169, 6.12196, 4.7907, -1.4436)
+transform = Transform3D(0.0661936, 0.280547, 0.957555, -0.519706, -0.80952, 0.273101, 0.851777, -0.515724, 0.0922169, 6.12196, 4.7907, -1.4436)
 bone_name = "upper_left_arm"
 bone_idx = 11
 
@@ -1820,7 +1820,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="left_thigh" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.231077, -0.010976, -0.191005, -0.187196, 0.0488806, -0.229278, 0.03951, 0.295787, 0.0308018, -1.62353, -1.90258, 0.304143)
+transform = Transform3D(0.231077, -0.010976, -0.191005, -0.187196, 0.0488807, -0.229278, 0.03951, 0.295787, 0.0308018, -1.62353, -1.90258, 0.304143)
 bone_name = "left_thigh"
 bone_idx = 21
 
@@ -1837,7 +1837,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="right_shin" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(-0.0182111, 1.1424e-08, -0.299447, -0.299447, 3.10323e-08, 0.0182111, 3.16686e-08, 0.3, 9.51919e-09, -1.95759, -2.08081, 1.19209e-07)
+transform = Transform3D(-0.0182111, 3.77596e-09, -0.299447, -0.299447, 2.64017e-08, 0.0182111, 3.16686e-08, 0.3, 9.51919e-09, -1.95759, -2.08081, 1.19209e-07)
 bone_name = "right_shin"
 bone_idx = 24
 
@@ -1854,7 +1854,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_74n2g")
 
 [node name="right_thigh" type="BoneAttachment3D" parent="x_axis/x_axis_model_group/AssassinRig/Armature/Skeleton3D"]
-transform = Transform3D(0.229897, 0, 0.192736, 0.192736, 0, -0.229897, 0, 0.3, 0, 2.62776, -2.17996, 0)
+transform = Transform3D(0.229897, -7.64808e-09, 0.192736, 0.192736, -4.63066e-09, -0.229897, 0, 0.3, 0, 2.62776, -2.17996, 0)
 bone_name = "right_thigh"
 bone_idx = 25
 

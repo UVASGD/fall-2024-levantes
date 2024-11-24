@@ -1511,7 +1511,7 @@ projectile_speed = 80
 min_firing_speed_in_seconds = 1.0
 max_firing_speed_in_seconds = 1.5
 
-[node name="head_hitbox" type="CollisionShape3D" parent="."]
+[node name="head_hitbox" type="CollisionShape3D" parent="." groups=["hitboxes"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68208, 0)
 shape = SubResource("SphereShape3D_6ks3p")

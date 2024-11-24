@@ -22,6 +22,7 @@ var player
 @onready var assassin = preload("res://Enemies/assassin/assassin.tscn")
 @onready var hammer = preload("res://Enemies/hammerguy/hammerguy.tscn")
 @onready var tank = preload("res://Enemies/tank/tank.tscn")
+@onready var spaceman = preload("res://Enemies/spaceman/space_man.tscn")
 #A random number generator to spawn from alternating spawn points
 @onready var rand = RandomNumberGenerator.new()
 @onready var dead_enemies = 0
@@ -108,7 +109,7 @@ func spawn_enemies(): #spawns 1 wave of enemies
 	for i in range(level_dict[current_level][1]):
 		await get_tree().create_timer(.5).timeout
 		var m
-		var rand_monster_type_num = randi_range(1,6)
+		var rand_monster_type_num = randi_range(1,7)
 		match rand_monster_type_num:
 			1:
 				m = monster.instantiate()
@@ -122,6 +123,8 @@ func spawn_enemies(): #spawns 1 wave of enemies
 				m = hammer.instantiate()
 			6:
 				m = tank.instantiate()
+			7:
+				m = spaceman.instantiate()
 		m.set_next_state = "chase"
 		var spawn_length = $SpawnHolder.get_child_count()-1
 		var rand_num = rand.randi_range(0,spawn_length)

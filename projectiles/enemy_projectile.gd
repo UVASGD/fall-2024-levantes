@@ -3,7 +3,7 @@ extends Area3D
 signal ya_got_hit
 
 var damage_amount = 50
-@export var time_to_despawn_in_seconds = 2
+@export var time_to_despawn_in_seconds = 5
 @onready var timer = $Timer
 
 
