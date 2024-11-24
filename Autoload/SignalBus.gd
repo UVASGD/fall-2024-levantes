@@ -29,6 +29,10 @@ signal player_death
 
 signal few_enemies
 
+signal disable_music
+
+#signal kill_projectile
+
 var current_difficulty = 1
 
 var player_save = null

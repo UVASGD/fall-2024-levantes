@@ -1440,7 +1440,7 @@ mesh = SubResource("SphereMesh_fye2j")
 surface_material_override/0 = SubResource("ShaderMaterial_kn1fp")
 
 [node name="hitbox" type="CollisionShape3D" parent="." groups=["hitboxes"]]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0817262, 1.13574, -0.204721)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0817262, 1.13574, -0.0872737)
 shape = SubResource("CapsuleShape3D_riwog")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="hitbox"]

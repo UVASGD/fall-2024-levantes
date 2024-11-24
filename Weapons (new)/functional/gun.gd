@@ -184,7 +184,7 @@ func _raycast(dmg, hs_mult, range):
 	if not intersection.is_empty():
 		
 		#SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, intersection.get("collider"))
-		
+		SignalBus.emit_signal("kill_projectile")
 		var collider = intersection.get("collider")
 		if collider is CharacterBody3D and collider.is_in_group("enemies"):
 			SignalBus.emit_signal("enemy_hit", dmg, headshot_multiplier, collider, intersection.get("shape"))

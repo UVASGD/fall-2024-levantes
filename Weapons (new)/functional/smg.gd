@@ -3,7 +3,7 @@ extends Gun
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var projectile = preload("res://projectiles/hitscan_projectile.tscn")
+var projectile = preload("res://projectiles/smg_projectile.tscn")
 
 func melee():
 	_raycast(melee_dmg, 1.0, Melee_Range)
@@ -36,6 +36,11 @@ func create_projectile(flip:int):
 		var spawn_pos = %marker.global_transform.origin
 		var direction = (%marker.global_transform.basis.z * -1).normalized()  
 
+		#var random_angle = randf_range(-0.5, 0.5) # Random angle in degrees
+		#var axis = Vector3.UP # Rotate around the UP axis
+		#var rotation_matrix = Basis(axis, deg_to_rad(random_angle))
+		#var deviated_direction = rotation_matrix * direction
+		
 		var speed = 300
 		projectile_instance.velocity = direction * speed  
 

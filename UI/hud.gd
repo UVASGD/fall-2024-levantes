@@ -78,3 +78,5 @@ func update_money(money:int, debt_effect: String):
 func _input(event):
 	if event.is_action_pressed("disable_hud"):
 		$".".visible = !$".".visible
+	if event.is_action_pressed("disable_music"):
+		SignalBus.emit_signal("disable_music")

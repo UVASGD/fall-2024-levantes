@@ -29,12 +29,15 @@ var player
 @onready var dead_waves = 0
 @onready var shop_spawn_point = $shopspawnpoint
 var player_ready = false
+var freaky_or_demure:int = 1
+var is_music_off:int = 0
 func _ready():
 	difficulty = GameManager.current_difficulty
 	add_to_group("level")
 	SignalBus.connect("enemy_death", enemy_death)
 	SignalBus.connect("round_start", on_round_start)
 	SignalBus.connect("wave_killed", _on_wave_killed)
+	SignalBus.connect("disable_music", disable_music)
 	apply_difficulty()
 	if not $playerspawnpoint:
 		#print("please add a player spawnpoint")
@@ -156,14 +159,16 @@ func on_round_start():
 	current_level += 1
 	
 	spawn_enemies()
-	$music.play("freaky")
+	if !is_music_off:
+		$music.play("freaky")
 	#play battle music
 
 func _on_wave_killed():
 	dead_waves += 1
 
 	if(dead_waves >= level_dict[current_level][0]): #round ended
-		$music.play("demure")
+		if !is_music_off:
+			$music.play("demure")
 		PlayerManager.clear_status_effects()
 		dead_waves = 0
 		#play chill music
@@ -185,3 +190,14 @@ func change_world():
 	shop_spawn_point.queue_free()
 	GameManager.next(world_name, self)
 	pass
+
+func disable_music():
+	if !is_music_off:
+		$music.play("no_music")
+	else:
+		match freaky_or_demure:
+			0:
+				$music.play("freaky")
+			1:
+				$music.play("demure")
+	is_music_off = !is_music_off

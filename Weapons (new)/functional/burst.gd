@@ -8,7 +8,7 @@ extends Gun
 	#pass
 @onready var marker = $burstModel/marker
 
-var projectile = preload("res://projectiles/hitscan_projectile.tscn")
+var projectile = preload("res://projectiles/smg_projectile.tscn")
 func shoot():
 	if can_shoot:
 		can_shoot = false

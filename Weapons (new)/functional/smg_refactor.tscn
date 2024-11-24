@@ -212,4 +212,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hmel3")
 
 [node name="marker" type="Node3D" parent="smg_of_the_future"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.37196, -346.507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.37196, -405.784)

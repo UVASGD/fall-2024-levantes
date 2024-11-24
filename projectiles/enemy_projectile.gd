@@ -3,7 +3,7 @@ extends Area3D
 signal ya_got_hit
 
 var damage_amount = 50
-@export var time_to_despawn_in_seconds = 5
+@export var time_to_despawn_in_seconds = .5
 @onready var timer = $Timer
 
 
@@ -13,6 +13,7 @@ func _ready():
 	timer.wait_time = time_to_despawn_in_seconds
 	timer.start()
 	pass # Replace with function body.
+	#SignalBus.connect("kill_projectile", despawn)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,14 +24,19 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body is StaticBody3D:
-		$".".queue_free()
+	#if body is StaticBody3D:
+	$".".queue_free()
 	pass # Replace with function body.
 
 
 
 
 func _on_timer_timeout():
+	print("freeing projectile!")
 	$".".queue_free()
 	#print("freed!!!!" + str(timer.wait_time))
 	pass # Replace with function body.
+	
+#func despawn():
+	#print("killing projectile")
+	#$".".queue_free()
