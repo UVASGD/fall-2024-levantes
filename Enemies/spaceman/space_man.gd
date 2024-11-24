@@ -5,9 +5,7 @@ extends CharacterBody3D
 @export var set_next_state: String
 @export var SPEED: int
 @export var RETREAT_SPEED: int
-@export var shots_per_burst = 3
 @export var time_between_each_shot = 0.1
-@export var max_spread_deviaton_degs: float = 1.2
 
 @export var max_health: int = 100
 var health_hp: int
@@ -168,10 +166,10 @@ func _on_chase_body_entered(body):
 func shoot(tm):
 	if y_axis.is_facing_target(target_pos) and not is_firing and not is_dying:
 		is_firing = true
-		fire_burst()
+		fire()
 
 var can_fire: bool = true
-func fire_burst():
+func fire():
 	
 	if is_dying or !can_fire:
 		return

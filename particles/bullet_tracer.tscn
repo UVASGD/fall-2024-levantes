@@ -20,17 +20,17 @@ func _physics_process(delta: float) -> void:
 		self.queue_free()
 "
 
-[sub_resource type="Gradient" id="Gradient_8d0jy"]
+[sub_resource type="Gradient" id="Gradient_sbwlu"]
 offsets = PackedFloat32Array(0, 0.104478, 0.868159, 1)
-colors = PackedColorArray(0.823529, 0.447059, 0, 0, 0.823529, 0.447059, 0, 1, 1, 0.592157, 0.776471, 1, 1, 0.592157, 0.776471, 0)
+colors = PackedColorArray(0.823529, 0.447059, 0, 0, 3.296, 0.447, 0, 1, 1, 0.592157, 0.776471, 1, 1, 0.592157, 0.776471, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rwi5d"]
-gradient = SubResource("Gradient_8d0jy")
+gradient = SubResource("Gradient_sbwlu")
 height = 256
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jl35"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xijn"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("GradientTexture2D_rwi5d")
@@ -38,7 +38,7 @@ emission_enabled = true
 emission_texture = SubResource("GradientTexture2D_rwi5d")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_k1em7"]
-material = SubResource("StandardMaterial3D_0jl35")
+material = SubResource("StandardMaterial3D_5xijn")
 size = 0.04
 sections = 2
 section_length = 0.5
@@ -48,5 +48,5 @@ section_segments = 1
 script = SubResource("GDScript_fjhcq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 0, -0.514231)
+transform = Transform3D(1, 0, 0, 0, -4.37112e-08, -1, 0, 1, -4.37112e-08, 0, 0, -0.514231)
 mesh = SubResource("RibbonTrailMesh_k1em7")

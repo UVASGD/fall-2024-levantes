@@ -170,6 +170,7 @@ func call_melee_animation():
 	await animation_player.animation_finished
 	animation_player.queue(Melee_Ani)
 
+
 func _raycast(dmg, hs_mult, range):
 	var camera = get_parent().get_parent()
 	var space_state = camera.get_world_3d().direct_space_state

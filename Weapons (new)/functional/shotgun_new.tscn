@@ -322,7 +322,6 @@ shadow_mesh = SubResource("ArrayMesh_xyigr")
 [node name="SHOTGUN" type="Node3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 script = ExtResource("1_d80qc")
-spread_angle_degs = 25
 husk_weapon_path = "res://Weapons (new)/husk/husk_shotgun.tscn"
 Name = "Shotgun"
 Display_Name = "RH-12"

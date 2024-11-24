@@ -7,6 +7,8 @@ extends Gun
 	##print(hidden)
 	#pass
 @onready var marker = $burstModel/marker
+
+var projectile = preload("res://projectiles/hitscan_projectile.tscn")
 func shoot():
 	if can_shoot:
 		can_shoot = false
@@ -14,6 +16,7 @@ func shoot():
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
 		for i in min(Burst_Count, Curr_Ammo_Loop):
 			_raycast(dmg, headshot_multiplier, Projectile_Range)
+			create_projectile()
 			await play_fire()
 			Curr_Mag_Ammo -= 1
 			SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
@@ -44,5 +47,15 @@ func make_bullet_trail(target_pos: Vector3):
 		tracer.global_position = start_pos
 		tracer.look_at(target_pos + Vector3(0,1,0))
 		
+func create_projectile():
+	var projectile_instance = projectile.instantiate()
+	get_parent().add_child(projectile_instance)
+	
+	projectile_instance.global_transform.origin = %marker.global_transform.origin
+	var spawn_pos = %marker.global_transform.origin
+	var direction = (%marker.global_transform.basis.z * -1).normalized()  
+
+	var speed = 400
+	projectile_instance.velocity = direction * speed  
 
 	

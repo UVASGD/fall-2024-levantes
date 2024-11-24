@@ -209,4 +209,5 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_c7rc4")
 
 [node name="marker" type="Node3D" parent="burstModel"]
-transform = Transform3D(1, 0, -1.62981e-09, 0, 0.999999, 0, 1.62981e-09, 0, 1, 9.99017, 2.88677, 38.0683)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.62981e-09, 0, 0.999999, 0, 1.62981e-09, 0, 1, -0.151083, 2.88677, -51.5403)
