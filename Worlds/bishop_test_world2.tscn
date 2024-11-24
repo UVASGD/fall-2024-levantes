@@ -213,3 +213,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6272, 0.625594, 27.2538)
 
 [node name="SpaceMan" parent="." instance=ExtResource("14_3aqhu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9111, 4.38495, 52.5609)
+
+[node name="SpaceMan2" parent="." instance=ExtResource("14_3aqhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82755, 4.38495, 52.5609)
+
+[node name="SpaceMan3" parent="." instance=ExtResource("14_3aqhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09691, 4.38495, 52.5609)

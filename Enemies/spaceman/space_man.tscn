@@ -1,9 +1,12 @@
-[gd_scene load_steps=90 format=4 uid="uid://br0uko1ev52xi"]
+[gd_scene load_steps=93 format=4 uid="uid://br0uko1ev52xi"]
 
 [ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="1_f6cr7"]
 [ext_resource type="Shader" uid="uid://l5tybqr0pb7d" path="res://spaceman_shader.tres" id="1_jdl2t"]
 [ext_resource type="Script" path="res://Enemies/spaceman/space_man.gd" id="1_w0dxm"]
 [ext_resource type="Script" path="res://Enemies/f_t.gd" id="2_cyyjc"]
+[ext_resource type="AudioStream" uid="uid://drancl0yvxunb" path="res://audio/shotgun_pump_forward_sfx.mp3" id="4_8alfu"]
+[ext_resource type="AudioStream" uid="uid://fhibxserefe5" path="res://audio/shotgun_pump_back_sfx.mp3" id="5_h516e"]
+[ext_resource type="AudioStream" uid="uid://chbq2o1cgupcc" path="res://audio/louder shotgun.mp3" id="6_f3mkc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ullm6"]
 radius = 0.518099
@@ -63,6 +66,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sr0yp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srnf1"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_jdl2t")
 shader_parameter/ColorParameter = Color(0.464309, 0.363875, 0.198197, 1)
@@ -690,6 +694,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p7al6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7suc7"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_f6cr7")
 shader_parameter/ColorParameter = Color(0.415903, 0.204471, 0.265797, 1)
@@ -698,6 +703,7 @@ shader_parameter/LightColor = Color(1.2, 1.2, 1, 1)
 shader_parameter/FloatParameter = -0.12
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aemb"]
+resource_local_to_scene = true
 albedo_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phjcy"]
@@ -717,6 +723,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6iq56"]
+resource_local_to_scene = true
 resource_name = "space_enemy_Icosphere_001"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -751,6 +758,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dvjbv"]
+resource_local_to_scene = true
 resource_name = "space_enemy_Icosphere_002"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -894,6 +902,26 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1.28328, -3.06855, -3.07498), Vector3(1.31772, -3.3266, 3.03513), Vector3(1.28328, -3.06855, -3.07498), Vector3(1.43082, -2.99804, -3.00588), Vector3(1.23719, -2.4488, -2.40572), Vector3(1.23719, -2.4488, -2.40572), Vector3(1.43082, -2.99804, -3.00588), Vector3(1.28328, -3.06855, -3.07498)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.05, 0.55, 0.73),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_shotgun_fire"
+}, {
+"args": [],
+"method": &"play_pump_forward_audio"
+}, {
+"args": [],
+"method": &"play_pump_back_audio"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_gxm7n"]
@@ -1398,7 +1426,7 @@ gun_path = "res://Weapons (new)/husk/husk_shotgun.tscn"
 SPEED = 20
 max_health = 200
 damage = 7
-projectile_speed = 50
+projectile_speed = 70
 
 [node name="head_hitbox" type="CollisionShape3D" parent="." groups=["hitboxes"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0866301, 2.15845, -0.0822116)
@@ -1419,7 +1447,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_kn1fp")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-debug_enabled = true
+radius = 2.0
 
 [node name="x_axis" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -1495,6 +1523,18 @@ mesh = SubResource("ArrayMesh_4kwtf")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nwjqj")
 
+[node name="shotgun_pump_forward" type="AudioStreamPlayer3D" parent="x_axis/y_axis/y_axis_model_group/SR/UpperRightJoint/FR/ShotgunWShell/Pump"]
+unique_name_in_owner = true
+transform = Transform3D(33.6535, 1.92492e-05, -1.05584, 1.11926, -4.15336e-06, 35.6751, 1.096e-05, -35.6926, -1.1374e-05, 0.785109, -22.887, 2.52618)
+stream = ExtResource("4_8alfu")
+volume_db = -5.0
+
+[node name="shotgun_pump_back" type="AudioStreamPlayer3D" parent="x_axis/y_axis/y_axis_model_group/SR/UpperRightJoint/FR/ShotgunWShell/Pump"]
+unique_name_in_owner = true
+transform = Transform3D(33.6535, 1.92492e-05, -1.05584, 1.11926, -4.15336e-06, 35.6751, 1.096e-05, -35.6926, -1.1374e-05, 0.785109, -22.887, 2.52618)
+stream = ExtResource("5_h516e")
+volume_db = -5.0
+
 [node name="LowerBarrel" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/SR/UpperRightJoint/FR/ShotgunWShell"]
 transform = Transform3D(3.1128, 0, 0, 0, -1.4843e-06, -3.1128, 0, 3.1128, -1.4843e-06, 0, 19.3421, 36.6122)
 mesh = SubResource("ArrayMesh_aiood")
@@ -1532,6 +1572,12 @@ transform = Transform3D(2.49443, 1.83423e-08, 0.285981, 0.285981, 4.24758e-09, -
 mesh = SubResource("ArrayMesh_c0t8t")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nwjqj")
+
+[node name="shotgun_sound" type="AudioStreamPlayer3D" parent="x_axis/y_axis/y_axis_model_group/SR/UpperRightJoint/FR/ShotgunWShell"]
+unique_name_in_owner = true
+transform = Transform3D(111.056, 6.35224e-05, -3.48428, -3.42708e-05, 111.111, 3.05529e-05, 3.48427, -8.0726e-06, 111.057, 0.276459, 13.3076, -122.332)
+stream = ExtResource("6_f3mkc")
+volume_db = -5.0
 
 [node name="SL" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group"]
 transform = Transform3D(-0.128287, 0.250381, 0.413342, -0.171738, -0.423363, 0.203149, 0.451717, -0.0898502, 0.194624, -0.15503, 0.871847, -2.14319)

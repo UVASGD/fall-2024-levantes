@@ -170,10 +170,12 @@ func shoot(tm):
 		is_firing = true
 		fire_burst()
 
+var can_fire: bool = true
 func fire_burst():
-	if is_dying:
+	
+	if is_dying or !can_fire:
 		return
-		
+	can_fire = false
 	Animation_Player.play("shoot")
 #a		$AudioStreamPlayer3D2.play()
 	spawn_projectile()
@@ -183,6 +185,7 @@ func fire_burst():
 	timer.start()
 	await timer.timeout
 	is_firing = false
+	can_fire = true
 #func spawn_projectile():
 	#var projectile_instance = projectile.instantiate()
 	#projectile_instance.damage_amount = damage
@@ -353,3 +356,12 @@ func spawn_reward():
 func _on_animation_player_animation_finished(anim_name):
 	is_anim_playing = false
 	pass # Replace with function body.
+	
+func play_pump_back_audio():
+	%shotgun_pump_back.play()
+	
+func play_pump_forward_audio():
+	%shotgun_pump_forward.play()
+
+func play_shotgun_fire():
+	%shotgun_sound.play()
