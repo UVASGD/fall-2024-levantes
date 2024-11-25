@@ -206,7 +206,7 @@ func fire():
 		#
 func spawn_projectile():
 	var grid_size = 3 # Number of projectiles per row/column in the grid
-	var grid_spacing = 0.5 # Distance between projectiles in the grid
+	var grid_spacing = 0.05 # Distance between projectiles in the grid
 	var half_grid_size = (grid_size - 1) * 0.5 # Offset to center the grid
 
 	for x in range(grid_size):

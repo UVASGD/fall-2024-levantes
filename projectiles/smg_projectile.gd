@@ -24,8 +24,6 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
-		SignalBus.emit_signal("player_hit", damage_amount)
 	if body is StaticBody3D:
 		$".".queue_free()
 	pass # Replace with function body.
