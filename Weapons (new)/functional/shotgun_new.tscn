@@ -373,7 +373,7 @@ Reserve_Ammo = 10
 Max_Mag_Capacity = 5
 Max_Ammo = 20
 Projectile_Range = 100000.0
-dmg = 33
+dmg = 30
 
 [node name="ShotgunWShell" type="Node3D" parent="."]
 

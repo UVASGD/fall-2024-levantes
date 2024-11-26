@@ -1627,7 +1627,6 @@ volume_db = -20.0
 
 [node name="LowerBarrel_001" type="MeshInstance3D" parent="x_axis/y_axis/y_axis_model_group/SR/UpperRightJoint/FR/ShotgunWShell"]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 19.1034, 42.8714)
-layers = 2
 mesh = SubResource("ArrayMesh_2lxjx")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ndt3h")
