@@ -31,6 +31,8 @@ signal few_enemies
 
 signal disable_music
 
+signal weapon_fire_recoil(recoil_amount, snap_amount, recoil_speed)
+
 #signal kill_projectile
 
 var current_difficulty = 1

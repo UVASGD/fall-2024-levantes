@@ -17,6 +17,10 @@ class_name Gun extends Node3D
 @export var Wait_Ani: String
 @export var Melee_Ani: String
 
+@export var recoil_amount: Vector3
+@export var snap_amount: float
+@export var recoil_speed: float
+
 @export var can_headshot: bool = false
 
 
@@ -44,6 +48,7 @@ class_name Gun extends Node3D
 
 @export var ray_path: String
 @export var light_path: String
+
 
 
 signal hit(target)
@@ -82,6 +87,7 @@ func _process(delta):
 func shoot(): #default shoot logic
 	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
+		SignalBus.emit_signal("weapon_fire_recoil", recoil_amount, snap_amount, recoil_speed)
 		await play_fire()
 		_raycast(dmg, headshot_multiplier, Projectile_Range)
 		Curr_Mag_Ammo -= 1

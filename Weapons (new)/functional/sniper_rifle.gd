@@ -6,7 +6,9 @@ func shoot(): #default shoot logic
 		can_shoot = false
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
+		
 		_raycast(dmg, headshot_multiplier, Projectile_Range)
+		SignalBus.emit_signal("weapon_fire_recoil", recoil_amount, snap_amount, recoil_speed)
 		await play_fire()
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)

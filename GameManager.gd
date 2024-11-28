@@ -2,7 +2,7 @@ extends Node
 var worlds = {
 	"space_world":"res://Worlds/space_world.tscn",
 	"colliseum":"res://arena1_final.tscn",
-	"observatory":"res://observatory2.tscn"
+	"observatory":"res://Models/optimized_observatory2/optimized_observatory2.tscn"
 }
 var important_nodes = [PlayerManager, SignalBus, self, PersistentData]
 var current_difficulty = 1

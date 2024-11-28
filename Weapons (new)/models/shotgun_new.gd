@@ -1,6 +1,10 @@
 extends Gun
 
 @export var spread_angle_degs:int = 15
+@export var reload_recoil_amount: Vector3 = Vector3(-0.02, 0, 0)
+@export var reload_snap_amount: float = 8
+@export var reload_recoil_speed: float = 4
+
 var local_is_reloading:bool = true
 
 func _raycast(dmg, hs_mult, range):
@@ -38,7 +42,9 @@ func shoot():
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		var Curr_Ammo_Loop = Curr_Mag_Ammo #loop safe variable
 		local_is_reloading = false
+		
 		_raycast(dmg, headshot_multiplier, Projectile_Range)
+		SignalBus.emit_signal("weapon_fire_recoil", recoil_amount, snap_amount, recoil_speed)
 		Curr_Mag_Ammo -= 1
 		SignalBus.emit_signal("update_ammo", Curr_Mag_Ammo)
 		await play_fire()
@@ -100,3 +106,6 @@ func play_pump_forward_audio():
 
 func play_shell_load_audio():
 	%shotgun_shell_load.play()
+	
+func downward_reload_recoil():
+	SignalBus.emit_signal("weapon_fire_recoil", reload_recoil_amount, reload_snap_amount, reload_recoil_speed)

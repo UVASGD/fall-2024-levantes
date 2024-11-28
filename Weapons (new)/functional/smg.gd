@@ -1,7 +1,5 @@
 extends Gun
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var projectile = preload("res://projectiles/smg_projectile.tscn")
 
@@ -12,7 +10,9 @@ var flip:int = 0
 func shoot(): #default shoot logic
 	while Input.is_action_pressed("Shoot") and can_shoot:
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
+		
 		await play_fire()
+		SignalBus.emit_signal("weapon_fire_recoil", recoil_amount, snap_amount, recoil_speed)
 		flip = !flip
 		create_projectile(flip)
 		_raycast(dmg, headshot_multiplier, Projectile_Range)
