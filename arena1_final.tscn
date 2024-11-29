@@ -384,6 +384,15 @@ transform = Transform3D(0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, 0.120778, 10
 [node name="geyser5" parent="." instance=ExtResource("4_ve1aa")]
 transform = Transform3D(0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, 0.120778, 38.0197, 1.4396, -66.2533)
 
+[node name="geyser7" parent="." instance=ExtResource("4_ve1aa")]
+transform = Transform3D(0.0966224, 0, -0.794144, 0, 0.8, 0, 0.794144, 0, 0.0966224, 25.2354, 40.5607, -28.644)
+
+[node name="geyser8" parent="." instance=ExtResource("4_ve1aa")]
+transform = Transform3D(0.0966224, 0, -0.794144, 0, 0.8, 0, 0.794144, 0, 0.0966224, 121.887, 40.5607, -123.605)
+
+[node name="geyser10" parent="." instance=ExtResource("4_ve1aa")]
+transform = Transform3D(0.0966224, 0, -0.794144, 0, 0.8, 0, 0.794144, 0, 0.0966224, 25.302, 40.5607, -123.724)
+
 [node name="music" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_g0ukv")

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1hl8ewty8ehd"
 path.s3tc="res://.godot/imported/lev_demo_wall_2.png-6c6bc53d409a2ae5045c47355db63fba.s3tc.ctex"
+path.etc2="res://.godot/imported/lev_demo_wall_2.png-6c6bc53d409a2ae5045c47355db63fba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/lev_demo_wall_2.png"
-dest_files=["res://.godot/imported/lev_demo_wall_2.png-6c6bc53d409a2ae5045c47355db63fba.s3tc.ctex"]
+dest_files=["res://.godot/imported/lev_demo_wall_2.png-6c6bc53d409a2ae5045c47355db63fba.s3tc.ctex", "res://.godot/imported/lev_demo_wall_2.png-6c6bc53d409a2ae5045c47355db63fba.etc2.ctex"]
 
 [params]
 

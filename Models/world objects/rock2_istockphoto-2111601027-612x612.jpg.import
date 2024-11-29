@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch2828hlxv5y7"
 path.s3tc="res://.godot/imported/rock2_istockphoto-2111601027-612x612.jpg-88a392ae20b430d4e4444604554b58bf.s3tc.ctex"
+path.etc2="res://.godot/imported/rock2_istockphoto-2111601027-612x612.jpg-88a392ae20b430d4e4444604554b58bf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/world objects/rock2_istockphoto-2111601027-612x612.jpg"
-dest_files=["res://.godot/imported/rock2_istockphoto-2111601027-612x612.jpg-88a392ae20b430d4e4444604554b58bf.s3tc.ctex"]
+dest_files=["res://.godot/imported/rock2_istockphoto-2111601027-612x612.jpg-88a392ae20b430d4e4444604554b58bf.s3tc.ctex", "res://.godot/imported/rock2_istockphoto-2111601027-612x612.jpg-88a392ae20b430d4e4444604554b58bf.etc2.ctex"]
 
 [params]
 

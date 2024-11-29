@@ -1,4 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://ca8y1e04bjmvt"]
+[gd_scene load_steps=38 format=4 uid="uid://ca8y1e04bjmvt"]
+
+[ext_resource type="Script" path="res://Weapons (new)/functional/alien_lmg.gd" id="1_nox27"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbtq0"]
 
@@ -72,7 +74,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x584h")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od4wx"]
-albedo_color = Color(0.477618, 0.456299, 0.23026, 1)
+albedo_color = Color(0.277539, 0.179016, 0.334249, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g34vc"]
 
@@ -109,10 +111,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2u2tc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i21xe"]
-albedo_color = Color(0.359215, 0.367743, 0.289108, 1)
+albedo_color = Color(0.15137, 0.155786, 0.11457, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnbis"]
-albedo_color = Color(1, 1.2, 1, 1)
+albedo_color = Color(0.755785, 0.391038, 0.185054, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmgr3"]
 
@@ -184,6 +186,9 @@ shadow_mesh = SubResource("ArrayMesh_05yfq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ek77"]
 albedo_color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcf8q"]
+albedo_color = Color(0.1, 1.6, 0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gwxr"]
 
@@ -321,9 +326,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fsmyl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcf8q"]
-albedo_color = Color(1, 4, 1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0qjc"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kxmd1"]
@@ -359,66 +361,101 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kxmd1")
 
 [node name="ALIEN_LMG" type="Node3D"]
+script = ExtResource("1_nox27")
+Name = "alien_lmg"
+Display_Name = "Hound Dog"
+animation_player_treepath = "../AnimationPlayers2/ALIEN_LMG"
+animation_library_path = "res://Weapons (new)/animations/alien_lmg.res"
+Reset_Ani = "alien_lmg/RESET"
+Equip_Ani = "alien_lmg/equip"
+Fire_Ani = "alien_lmg/fire"
+Reload_Ani = "alien_lmg/reload"
+Dequip_Ani = "alien_lmg/dequip"
+recoil_amount = Vector3(0.1, 0.02, 0)
+snap_amount = 14.0
+recoil_speed = 6.0
+Fire_Sound = "res://audio/machine_gun_laser.mp3"
+Reward_Amount = 20
+Curr_Mag_Ammo = 75
+Reserve_Ammo = 75
+Max_Mag_Capacity = 75
+Max_Ammo = 150
+Projectile_Range = 1e+06
+dmg = 40
 
 [node name="enemy_lmg" type="Node3D" parent="."]
-transform = Transform3D(0.012, 0, 0, 0, 0.012, 0, 0, 0, 0.012, 0, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 
 [node name="Stock" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, 0, 14.1845, 101.821)
+layers = 2
 mesh = SubResource("ArrayMesh_qxaje")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_alcp0")
 
 [node name="Base" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, 0, 14.1845, 101.821)
+layers = 2
 mesh = SubResource("ArrayMesh_n5qnq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_od4wx")
 
 [node name="Barrel" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(3.22781, 0, 0, 0, 0, -3.22781, 0, 3.22781, 0, 0, 18.308, 64.528)
+layers = 2
 mesh = SubResource("ArrayMesh_sf7q4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_i21xe")
 
 [node name="Ring" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(3.22781, 0, 0, 0, 0, -3.22781, 0, 3.22781, 0, 0, 18.308, 64.528)
+layers = 2
 material_override = SubResource("StandardMaterial3D_xnbis")
 mesh = SubResource("ArrayMesh_1auy1")
 skeleton = NodePath("")
 
 [node name="Base2" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, 0.191524, 14.1845, 101.821)
+layers = 2
 mesh = SubResource("ArrayMesh_olhs4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ek77")
 
 [node name="Mag" type="MeshInstance3D" parent="enemy_lmg"]
-transform = Transform3D(3.22781, 0, 0, 0, 0, -3.22781, 0, 3.22781, 0, 0, 18.308, 64.528)
-material_override = SubResource("StandardMaterial3D_xnbis")
+transform = Transform3D(3.22781, 0, 0, 0, -1.41092e-07, -3.22781, 0, 3.22781, -1.41092e-07, 0, 18.308, 64.528)
+layers = 2
+material_override = SubResource("StandardMaterial3D_lcf8q")
 mesh = SubResource("ArrayMesh_yh0hv")
 skeleton = NodePath("")
 
 [node name="Grip" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, 0, 15.6727, 101.821)
+layers = 2
 material_override = SubResource("StandardMaterial3D_alcp0")
 mesh = SubResource("ArrayMesh_e6ovb")
 skeleton = NodePath("")
 
 [node name="Trigger" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, 0, 15.6727, 101.821)
-material_override = SubResource("StandardMaterial3D_xnbis")
+layers = 2
+material_override = SubResource("StandardMaterial3D_lcf8q")
 mesh = SubResource("ArrayMesh_ycdmq")
 skeleton = NodePath("")
 
 [node name="Nozzle" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(3.22781, 0, 0, 0, 0, -3.22781, 0, 3.22781, 0, 0, 18.308, 64.528)
+layers = 2
 material_override = SubResource("StandardMaterial3D_od4wx")
 mesh = SubResource("ArrayMesh_yie0u")
 skeleton = NodePath("")
 
 [node name="Bolt" type="MeshInstance3D" parent="enemy_lmg"]
 transform = Transform3D(1.89389, 0, 0, 0, -0.0871556, 0.996195, 0, -0.996195, -0.0871556, -0.00247608, 14.1845, 101.816)
+layers = 2
 material_override = SubResource("StandardMaterial3D_lcf8q")
 mesh = SubResource("ArrayMesh_ydmnu")
 skeleton = NodePath("")
+
+[node name="projectile_spawn" type="Marker3D" parent="enemy_lmg"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 10.3583, -180.091, -261.531)

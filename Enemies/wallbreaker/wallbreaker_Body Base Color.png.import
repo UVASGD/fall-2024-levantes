@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwbetwqlhjsju"
 path.s3tc="res://.godot/imported/wallbreaker_Body Base Color.png-5bc19775e5267acfed797b77a53763f3.s3tc.ctex"
+path.etc2="res://.godot/imported/wallbreaker_Body Base Color.png-5bc19775e5267acfed797b77a53763f3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Enemies/wallbreaker/wallbreaker_Body Base Color.png"
-dest_files=["res://.godot/imported/wallbreaker_Body Base Color.png-5bc19775e5267acfed797b77a53763f3.s3tc.ctex"]
+dest_files=["res://.godot/imported/wallbreaker_Body Base Color.png-5bc19775e5267acfed797b77a53763f3.s3tc.ctex", "res://.godot/imported/wallbreaker_Body Base Color.png-5bc19775e5267acfed797b77a53763f3.etc2.ctex"]
 
 [params]
 

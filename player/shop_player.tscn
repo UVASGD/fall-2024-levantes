@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dpq8sesvlcf7a"]
+[gd_scene load_steps=51 format=3 uid="uid://dpq8sesvlcf7a"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_2oixr"]
 [ext_resource type="PackedScene" uid="uid://dssfcs6qgya2v" path="res://UI/hud.tscn" id="2_g8pih"]
@@ -16,7 +16,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c4lu1ld4iauqq" path="res://Weapons (new)/animations/alien_pistol_animations.res" id="10_j8nse"]
 [ext_resource type="Texture2D" uid="uid://bg8h6clkagjjs" path="res://Textures/shield_hurt.png" id="10_naatr"]
 [ext_resource type="AnimationLibrary" uid="uid://ck0blvgx8adaf" path="res://Weapons (new)/animations/shotgun.res" id="11_m1snb"]
-[ext_resource type="PackedScene" uid="uid://dxe2m7ehh3vdc" path="res://Weapons (new)/functional/shotgun_new.tscn" id="13_cpuoa"]
+[ext_resource type="AnimationLibrary" uid="uid://bo7432563taie" path="res://Weapons (new)/animations/alien_lmg.res" id="13_tc4ga"]
 [ext_resource type="AudioStream" uid="uid://pqlba0crpchk" path="res://585257__lesaucisson__swoosh-1.mp3" id="15_1d4ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86j8"]
@@ -1315,6 +1315,146 @@ _data = {
 "RESET": SubResource("Animation_3u3yb")
 }
 
+[sub_resource type="Animation" id="Animation_uw2cs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ALIEN_LMG/enemy_lmg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.253688, -0.366489, -1.09356)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ALIEN_LMG/enemy_lmg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ALIEN_LMG/enemy_lmg/Mag:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 18.308, 64.528)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ALIEN_LMG/enemy_lmg/Mag:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ALIEN_LMG/enemy_lmg/Bolt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00247608, 14.1845, 101.816)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ALIEN_LMG/enemy_lmg/Bolt:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.65806, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ALIEN_LMG/enemy_lmg/Ring:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 18.308, 64.528)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ALIEN_LMG/enemy_lmg/Ring:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ALIEN_LMG/enemy_lmg/Ring:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.755785, 0.391038, 0.185054, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../ALIEN_LMG/enemy_lmg/Mag:material_override:albedo_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.1, 2, 0.5, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ALIEN_LMG/enemy_lmg/Mag:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06t46"]
+_data = {
+"RESET": SubResource("Animation_uw2cs")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ee15"]
 size = Vector3(1, 2.2218, 1.83057)
 
@@ -1515,6 +1655,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="Head/Camera3D/SubViewportContainer"]
+unique_name_in_owner = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
@@ -1588,7 +1729,11 @@ libraries = {
 "shotgun": ExtResource("11_m1snb")
 }
 
-[node name="SHOTGUN" parent="Head/Camera3D/weapon manager" instance=ExtResource("13_cpuoa")]
+[node name="ALIEN_LMG" type="AnimationPlayer" parent="Head/Camera3D/weapon manager/AnimationPlayers2"]
+libraries = {
+"": SubResource("AnimationLibrary_06t46"),
+"alien_lmg": ExtResource("13_tc4ga")
+}
 
 [node name="Melee" type="Area3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277078, -0.954888)

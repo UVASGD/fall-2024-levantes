@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cylav1rq0nc0k"
 path.s3tc="res://.godot/imported/ARENA_arenaground_nmap.png-f157a7db91c19d10ad4101317be0c14f.s3tc.ctex"
+path.etc2="res://.godot/imported/ARENA_arenaground_nmap.png-f157a7db91c19d10ad4101317be0c14f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/ARENA_arenaground_nmap.png"
-dest_files=["res://.godot/imported/ARENA_arenaground_nmap.png-f157a7db91c19d10ad4101317be0c14f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ARENA_arenaground_nmap.png-f157a7db91c19d10ad4101317be0c14f.s3tc.ctex", "res://.godot/imported/ARENA_arenaground_nmap.png-f157a7db91c19d10ad4101317be0c14f.etc2.ctex"]
 
 [params]
 
