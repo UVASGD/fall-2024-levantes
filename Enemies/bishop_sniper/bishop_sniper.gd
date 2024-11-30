@@ -1,13 +1,13 @@
 extends CharacterBody3D
-@onready var nav_agent = $NavigationAgent3D
+@onready var nav_agent:NavigationAgent3D = $NavigationAgent3D
 @export var set_next_state: String
-@export var SPEED = 10
+@export var SPEED:int = 10
 @export var gun_path: String
 @export var max_health: int = 100
 var health_hp: int
-@export var damage = 50
-@export var projectile_speed = 5
-@export var wait_time_till_fire_seconds = 4
+@export var damage:int = 50
+@export var projectile_speed:float = 200
+@export var wait_time_till_fire_seconds:float = 4
 @export var visibility_range = 1000000
 var is_dead = false
 

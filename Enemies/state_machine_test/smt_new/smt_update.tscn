@@ -1502,12 +1502,11 @@ collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_erjey")
 gun_path = "res://Weapons (new)/husk/husk_alien_pistol.tscn"
-SPEED = 10
+SPEED = 20
 RETREAT_SPEED = 2
 shots_per_burst = 5
 max_spread_deviaton_degs = 2.0
 damage = 10
-projectile_speed = 80
 min_firing_speed_in_seconds = 1.0
 max_firing_speed_in_seconds = 1.5
 

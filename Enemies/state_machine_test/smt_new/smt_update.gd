@@ -5,49 +5,49 @@ extends CharacterBody3D
 @export var set_next_state: String
 @export var SPEED: int
 @export var RETREAT_SPEED: int
-@export var shots_per_burst = 3
-@export var time_between_each_shot = 0.1
+@export var shots_per_burst:int = 3
+@export var time_between_each_shot:float = 0.1
 @export var max_spread_deviaton_degs: float = 1.2
 
 @export var max_health: int = 100
 var health_hp: int
-@export var damage = 15
-@export var projectile_speed = 5
-@export var min_firing_speed_in_seconds = 1.5
-@export var max_firing_speed_in_seconds = 2.0
-@export var visibility_range = 1000000
+@export var damage:int = 15
+@export var projectile_speed:float = 60
+@export var min_firing_speed_in_seconds:float = 1.5
+@export var max_firing_speed_in_seconds:float = 2.0
+@export var visibility_range:int = 1000000
 
-@onready var x_axis = %x_axis
-@onready var y_axis = %y_axis
-@onready var x_axis_shield = %x_axis_shield
-@onready var y_axis_shield = %y_axis_shield
+@onready var x_axis:Node3D = %x_axis
+@onready var y_axis:Node3D = %y_axis
+@onready var x_axis_shield:Node3D = %x_axis_shield
+@onready var y_axis_shield:Node3D = %y_axis_shield
 
-@onready var Animation_Player = get_node("AnimationPlayer")
+@onready var Animation_Player:AnimationPlayer = get_node("AnimationPlayer")
 
-@onready var timer = $Timer
-@onready var vision_timer = $VisionTimer
+@onready var timer:Timer = $Timer
+@onready var vision_timer:Timer = $VisionTimer
 
-var vision_timer_done = false
-var is_firing = false
-var can_move_y_axis = false
-var is_anim_playing = false
+var vision_timer_done:bool = false
+var is_firing:bool = false
+var can_move_y_axis:bool = false
+var is_anim_playing:bool = false
 
-@onready var projectile_origin_spot = %projectile_origin_spot
+@onready var projectile_origin_spot:Marker3D = %projectile_origin_spot
 var projectile = preload("res://projectiles/enemy_projectile.tscn")
 var ammo_drop = preload("res://Weapons (new)/husk/ammo_drop.tscn")
-var curr_state = "idle"
-var next_state = "idle"
-var prev_state
+var curr_state:String = "idle"
+var next_state:String = "idle"
+var prev_state:String
 var target
 var offset
 var target_pos
 
-var is_dying = false
+var is_dying:bool = false
 
-var shot_count = 0
-var is_dead = false
+var shot_count:int = 0
+var is_dead:bool = false
 
-@onready var vision = %Vision
+@onready var vision:Area3D = %Vision
 
 @onready var collider = $"."
 @onready var hitbox = %hitbox
