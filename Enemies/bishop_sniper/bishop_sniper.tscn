@@ -1734,8 +1734,8 @@ collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_1oh2a")
 gun_path = "res://Weapons (new)/husk/husk_sniper_rifle.tscn"
-projectile_speed = 150
-wait_time_till_fire_seconds = 2
+projectile_speed = 300
+wait_time_till_fire_seconds = 3
 
 [node name="head_hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
@@ -2082,7 +2082,8 @@ wait_time = 2.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_gv388")
-volume_db = 70.0
+volume_db = 80.0
+unit_size = 100.0
 
 [node name="VisionTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -2100,4 +2101,5 @@ autoplay = "RESET"
 [connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
 [connection signal="body_entered" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="x_axis/x_axis_model_group/Vision" to="." method="_on_vision_body_exited"]
+[connection signal="timeout" from="fire_timer" to="." method="_on_fire_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

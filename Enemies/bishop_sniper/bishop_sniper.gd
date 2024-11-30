@@ -60,6 +60,7 @@ func _ready():
 	wait_time_till_fire_seconds = wait_time_till_fire_seconds + randf_range(-.5,.5)
 	offset = add_rand_offset(2)
 	fire_timer.wait_time = wait_time_till_fire_seconds
+	wait_time_till_fire_seconds = fire_timer.time_left
 	health_hp = max_health
 	SignalBus.connect("enemy_hit", on_hit)
 	fire_timer.connect("timeout", _on_fire_timer_timeout)
@@ -156,19 +157,29 @@ func chase(delta):
 	hide_laser()
 	
 
+#func sight_on(delta):
+	#if fire_timer.is_stopped():
+		#fire_timer.start()
+	#target = get_tree().get_nodes_in_group("Player")[0]
+	##_i_can_see()
+	#target_pos = target.global_transform.origin
+	#
+	#face_target(delta)
+	#update_turn_speed(y_axis.normal_turn_speed - 20)
+#
+	##TODO: Use x_axis.face_point and y_axis.face_point to make the 
+	## 	   enemy face the player and make them enter a shoot state
+	#pass
+	
 func sight_on(delta):
-	if fire_timer.is_stopped():
+	if fire_timer.time_left == wait_time_till_fire_seconds:
 		fire_timer.start()
 	target = get_tree().get_nodes_in_group("Player")[0]
-	#_i_can_see()
 	target_pos = target.global_transform.origin
-	
+
 	face_target(delta)
 	update_turn_speed(y_axis.normal_turn_speed - 20)
 
-	#TODO: Use x_axis.face_point and y_axis.face_point to make the 
-	# 	   enemy face the player and make them enter a shoot state
-	pass
 func retreat(delta):
 	hide_laser()
 	target = get_tree().get_nodes_in_group("Player")[0]
@@ -193,13 +204,40 @@ func no_move_debug(delta):
 		
 # TODO: Make the enemy shoot a laser beam from the muzzle to the player instead of just a enemy projectile
 #		This probably involves making a new projectile, look at enemy_projectile scene and gd script file for that
+#func shoot():
+	#if can_enemy_see_player():
+		#Animation_Player.play("shoot_animation")
+		#$AudioStreamPlayer3D2.play()
+#
+		#var projectile_instance = projectile.instantiate()
+		#
+		#projectile_instance.damage_amount = damage
+		#get_tree().root.add_child(projectile_instance)
+#
+		#projectile_instance.global_transform.origin = projectile_origin_spot.global_transform.origin
+		#var spawn_pos = projectile_origin_spot.global_transform.origin
+		#spawn_pos.y += -1.5
+#
+		#var direction = (target_pos - Vector3(0,1.8,0) - spawn_pos).normalized()  
+		#
+		#projectile_instance.look_at(target_pos)
+		#projectile_instance.velocity = direction * projectile_speed  
+#
+		##get_parent().add_child(projectile_instance)
+		#await Animation_Player.animation_finished
+	#else:
+		#state_lock_on = false
 func shoot():
+	if is_firing:
+		return  # Prevent shooting if already firing
+
 	if can_enemy_see_player():
+		is_firing = true  # Lock firing state
+		fire_timer.stop()  # Stop the timer to prevent overlapping shots
 		Animation_Player.play("shoot_animation")
 		$AudioStreamPlayer3D2.play()
 
 		var projectile_instance = projectile.instantiate()
-		
 		projectile_instance.damage_amount = damage
 		get_tree().root.add_child(projectile_instance)
 
@@ -207,16 +245,16 @@ func shoot():
 		var spawn_pos = projectile_origin_spot.global_transform.origin
 		spawn_pos.y += -1.5
 
-		var direction = (target_pos - Vector3(0,1.8,0) - spawn_pos).normalized()  
-		
+		var direction = (target_pos - Vector3(0, 1.8, 0) - spawn_pos).normalized()
 		projectile_instance.look_at(target_pos)
 		projectile_instance.velocity = direction * projectile_speed  
 
-		#get_parent().add_child(projectile_instance)
 		await Animation_Player.animation_finished
+		is_firing = false  # Reset firing state
+		fire_timer.start()  # Restart the timer for the next shot
 	else:
 		state_lock_on = false
-	
+
 
 
 
@@ -278,7 +316,8 @@ func can_enemy_see_player() -> bool:
 	var overlaps = vision.get_overlapping_bodies()
 	if overlaps.size() > 0:
 		for overlap in overlaps:
-			if overlap.is_in_group("Player") and vision_timer_done:
+			if overlap.is_in_group("Player"):
+			#if overlap.is_in_group("Player") and vision_timer_done:
 				match is_player_visible(overlap):
 					true:
 						update_turn_speed(y_axis.normal_turn_speed)
@@ -286,37 +325,61 @@ func can_enemy_see_player() -> bool:
 					false:
 						update_turn_speed(y_axis.current_turn_speed + 100)
 						return false
-			elif overlap.is_in_group("Player") and is_player_visible(overlap):
-				vision_timer.start()
-				update_turn_speed(y_axis.normal_turn_speed)
-				return true
+			#elif overlap.is_in_group("Player") and is_player_visible(overlap):
+				#vision_timer.start()
+				#update_turn_speed(y_axis.normal_turn_speed)
+				#return true
 	return false
 
+#func _on_fire_timer_timeout():
+	#state_lock_on = true
+	#shoot()
+	
 func _on_fire_timer_timeout():
-	state_lock_on = true
-	shoot()
+	if curr_state != "shoot" and not is_firing and y_axis.is_facing_target(target_pos):  # Only fire if in the shoot state and not already firing
+		shoot()
+
 	
 func _on_vision_timer_timeout():
 	vision_timer_done = true 
 
+#func is_player_visible(plr) -> bool:
+	#var cone_angle = deg_to_rad(45)  # 45 degree cone angle (adjust as needed)
+	#var num_rays = 10  # Number of rays for simulating the cone
+	#
+	#
+	#var space_state = get_world_3d().direct_space_state
+	#var from = $".".global_position
+	#var to = plr.global_position
+	#var query = PhysicsRayQueryParameters3D.create(from, to, 1, [self])
+	#var result = space_state.intersect_ray(query)
+	#if result:
+		#if result.collider is Player:
+			#return true
+		#else:
+			#return false
+	#else:
+		#return false
 func is_player_visible(plr) -> bool:
-	var cone_angle = deg_to_rad(45)  # 45 degree cone angle (adjust as needed)
-	var num_rays = 10  # Number of rays for simulating the cone
-	
-	
-	var space_state = get_world_3d().direct_space_state
-	var from = $".".global_position
-	var to = plr.global_position
-	var query = PhysicsRayQueryParameters3D.create(from, to, 1, [self])
-	var result = space_state.intersect_ray(query)
-	if result:
-		if result.collider is Player:
-			return true
-		else:
-			return false
-	else:
-		return false
+	var projectile_origin = %projectile_origin_spot.global_transform.origin  # Get the position of the origin
+	var range = 1000000.0  # Set the ray's maximum range
 
+	# Get the direction towards the player
+	var direction = (plr.global_transform.origin - projectile_origin).normalized()
+
+	# Create the raycast endpoint by projecting along that direction
+	var endpoint = projectile_origin + direction * range
+
+	# Set up the ray query
+	var query = PhysicsRayQueryParameters3D.create(projectile_origin, endpoint)
+
+	# Perform the raycast
+	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
+
+	# Check if the ray hit the player
+	if intersection and intersection.collider.is_in_group("Player"):
+		return true  # Player is visible
+	return false  # Player is not visible
 
 func show_laser():
 	await get_tree().create_timer(0.1).timeout
