@@ -23,7 +23,13 @@ func shoot(): #default shoot logic
 		#await get_tree().create_timer(Shoot_Cooldown_Ms).timeout
 		
 		SignalBus.emit_signal("weapon_fire_recoil", recoil_amount, snap_amount, recoil_speed)
-		create_projectile()
+		var dir = _proj_raycast_check(Projectile_Range)[0]
+		var endpoint = _proj_raycast_check(Projectile_Range)[1]
+		print("Direction vector: ", dir)
+		create_projectile(dir)
+		
+		#create_projectile()
+		
 		if player and not player.is_on_floor():
 		# Calculate knockback direction (opposite to the gun's forward direction)
 			var knockback_direction = global_transform.basis.z.normalized()
@@ -43,8 +49,35 @@ func shoot(): #default shoot logic
 				can_shoot = false #out of all ammo
 	pass
 
-func create_projectile():
+#func create_projectile(direction: Vector3):
+	#var projectile = load("res://projectiles/alien_lmg_projectile.tscn").instantiate()
+	#projectile.damage = dmg
+	#projectile.global_transform.origin = %projectile_spawn.global_transform.origin
+	#projectile.new_throw(direction)
+	#get_parent().add_child(projectile)
+	#
+	
+func create_projectile(dir):
 	var projectile = load("res://projectiles/alien_lmg_projectile.tscn").instantiate()
 	%projectile_spawn.add_child(projectile)
-	projectile.change_dmg(dmg)
+	projectile.look_at(dir, Vector3.UP)
 	projectile.throw()
+
+func _proj_raycast_check(range):
+	var camera = get_parent().get_parent()
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_center = get_viewport().size / 2
+	var origin = camera.project_ray_origin(screen_center)
+	var endpoint = origin + camera.project_ray_normal(screen_center) * range
+	var query = PhysicsRayQueryParameters3D.create(origin, endpoint)
+	var intersection = get_world_3d().direct_space_state.intersect_ray(query)
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+	
+	if not intersection.is_empty():
+		var collision_point = intersection.get("position")
+		var direction = (collision_point - origin).normalized()
+		return [direction, collision_point]
+	else:
+		# Default forward direction if no collision
+		return [camera.project_ray_normal(screen_center).normalized(), endpoint]

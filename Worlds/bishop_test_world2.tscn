@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bdt81pl1nm71x"]
+[gd_scene load_steps=32 format=3 uid="uid://bdt81pl1nm71x"]
 
 [ext_resource type="Script" path="res://Worlds/state_machine_test_world.gd" id="1_txt4c"]
 [ext_resource type="Texture2D" uid="uid://ddtqgsohwmmv6" path="res://Textures/ARENA_arenaground2.png" id="3_g4yma"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d4lc8k337g8bj" path="res://Weapons (new)/husk/husk_shotgun.tscn" id="12_mx77o"]
 [ext_resource type="PackedScene" uid="uid://bc67xpm0vv6rx" path="res://Enemies/state_machine_test/smt_new/smt_update.tscn" id="13_58t5l"]
 [ext_resource type="PackedScene" uid="uid://br0uko1ev52xi" path="res://Enemies/spaceman/space_man.tscn" id="14_3aqhu"]
+[ext_resource type="PackedScene" uid="uid://ce5n8drxeloyf" path="res://Weapons (new)/husk/husk_alien_lmg.tscn" id="15_24sl6"]
 [ext_resource type="PackedScene" uid="uid://dg4kkobo7fb35" path="res://Weapons (new)/husk/husk_desert_eagle.tscn" id="20_6u05f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2tm68"]
@@ -219,3 +220,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82755, 4.38495, 52.5609)
 
 [node name="SpaceMan3" parent="." instance=ExtResource("14_3aqhu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09691, 4.38495, 52.5609)
+
+[node name="HuskAlienLmg" parent="." instance=ExtResource("15_24sl6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69881, 0.677852, 4.97786)

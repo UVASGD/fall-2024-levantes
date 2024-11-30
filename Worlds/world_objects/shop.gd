@@ -11,6 +11,7 @@ extends Node3D
 @onready var bh = preload("res://Weapons (new)/shop/bonus_health.tscn")
 @onready var fr = preload("res://Weapons (new)/shop/fast_regen.tscn")
 @onready var sb = preload("res://Weapons (new)/shop/speed_boost.tscn")
+@onready var lmg = preload("res://Weapons (new)/shop/shop_alien_lmg.tscn")
 
 var active_guns = []
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +31,7 @@ func _process(delta):
 	pass
 
 func add_guns():
-	var gun_list = [smg, burst, sniper, deagle, gl, vl, ap, bh, fr, sb, shotgun]
+	var gun_list = [smg, burst, sniper, deagle, gl, vl, ap, bh, fr, sb, shotgun, lmg]
 	var starter_list = [smg, burst]
 	for holder in $shop_model/gun_holders.get_children():
 		if holder.get_index() == 1:
