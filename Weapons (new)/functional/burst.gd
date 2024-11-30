@@ -60,4 +60,14 @@ func create_projectile():
 	var speed = 400
 	projectile_instance.velocity = direction * speed  
 
+func p_mag_out():
+	%mag_out.play()
+
+func p_mag_in():
+	%mag_in.play()
 	
+func p_bolt_back():
+	%bolt_back.play()
+	
+func p_bolt_forward():
+	%bolt_forward.play()

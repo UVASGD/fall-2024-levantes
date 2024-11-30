@@ -44,4 +44,8 @@ func create_projectile(flip:int):
 		var speed = 300
 		projectile_instance.velocity = direction * speed  
 
+func p_mag_in():
+	%mag_in.play()
 	
+func p_mag_out():
+	%mag_out.play()

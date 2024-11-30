@@ -1,6 +1,9 @@
-[gd_scene load_steps=37 format=4 uid="uid://bkepft1ayeuu7"]
+[gd_scene load_steps=40 format=4 uid="uid://bkepft1ayeuu7"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/sniper_rifle.gd" id="1_mhi17"]
+[ext_resource type="AudioStream" uid="uid://gow5fl6yq6wy" path="res://audio/sniper_rifle/sniper_rifle_reload.mp3" id="2_mjyaj"]
+[ext_resource type="AudioStream" uid="uid://c33nwaqw6t5f" path="res://audio/sniper_rifle/sniper_bolt_back.mp3" id="3_8hgk2"]
+[ext_resource type="AudioStream" uid="uid://bwwpejgp33b3y" path="res://audio/sniper_rifle/sniper_bolt_forward.mp3" id="4_bg802"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y24kx"]
 albedo_color = Color(0.027451, 0.0784314, 0.203922, 1)
@@ -399,6 +402,12 @@ material_override = SubResource("StandardMaterial3D_y24kx")
 mesh = SubResource("ArrayMesh_0npv0")
 skeleton = NodePath("")
 
+[node name="reload" type="AudioStreamPlayer3D" parent="sniper_rifle/Cylinder"]
+unique_name_in_owner = true
+transform = Transform3D(42.5456, 0, 0, 0, 42.5456, 0, 0, 0, 42.5456, 0, -26.569, 0)
+stream = ExtResource("2_mjyaj")
+volume_db = 40.0
+
 [node name="Cylinder_001" type="MeshInstance3D" parent="sniper_rifle"]
 transform = Transform3D(0.365083, 0, 0, 0, 0, -0.365083, 0, 0.365083, 0, 0, 1.01946, 4.77347)
 layers = 2
@@ -418,6 +427,18 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_etadj")
 mesh = SubResource("ArrayMesh_prylf")
 skeleton = NodePath("")
+
+[node name="bolt_back" type="AudioStreamPlayer3D" parent="sniper_rifle/Bolt"]
+unique_name_in_owner = true
+transform = Transform3D(152.623, 0, 0, 0, 152.623, 0, 0, 0, 152.623, -0.971098, -1.08444, 0)
+stream = ExtResource("3_8hgk2")
+pitch_scale = 0.8
+
+[node name="bolt_forward" type="AudioStreamPlayer3D" parent="sniper_rifle/Bolt"]
+unique_name_in_owner = true
+transform = Transform3D(152.623, 0, 0, 0, 152.623, 0, 0, 0, 152.623, -0.971098, -1.08444, 0)
+stream = ExtResource("4_bg802")
+pitch_scale = 0.8
 
 [node name="BarrelAttachment" type="MeshInstance3D" parent="sniper_rifle"]
 transform = Transform3D(0.217742, 0, 0, 0, 0, -0.217742, 0, 0.217742, 0, 0, 1.01946, 6.45194)

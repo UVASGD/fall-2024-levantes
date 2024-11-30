@@ -1,6 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://drrbjw4jfeol1"]
+[gd_scene load_steps=19 format=4 uid="uid://drrbjw4jfeol1"]
 
 [ext_resource type="Script" path="res://Weapons (new)/functional/smg.gd" id="1_hymp6"]
+[ext_resource type="AudioStream" uid="uid://dcmkv7wky3atd" path="res://audio/smg/mag_in_smg.mp3" id="2_itw5f"]
+[ext_resource type="AudioStream" uid="uid://tdv7cpiw6vbq" path="res://audio/smg/mag_out_smg.mp3" id="3_2vong"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl6cq"]
 
@@ -198,6 +200,18 @@ layers = 2
 mesh = SubResource("ArrayMesh_xx5yc")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hmel3")
+
+[node name="mag_in" type="AudioStreamPlayer3D" parent="smg_of_the_future/Mag"]
+unique_name_in_owner = true
+transform = Transform3D(34.3241, 0, 0, 0, 37.7565, 0, 0, 0, 37.7565, 0, 41.9869, 0)
+stream = ExtResource("2_itw5f")
+volume_db = 20.0
+
+[node name="mag_out" type="AudioStreamPlayer3D" parent="smg_of_the_future/Mag"]
+unique_name_in_owner = true
+transform = Transform3D(34.3241, 0, 0, 0, 37.7565, 0, 0, 0, 37.7565, 0, 41.9869, 0)
+stream = ExtResource("3_2vong")
+volume_db = 20.0
 
 [node name="Lower" type="MeshInstance3D" parent="smg_of_the_future"]
 transform = Transform3D(1.32, 0, 0, 0, 0, 1, 0, -1, 0, 0, 31.7938, 173.441)

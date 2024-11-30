@@ -57,3 +57,10 @@ func _raycast(dmg, headshot_multiplier, range):
 
 		# Optional: Reduce damage for each successive hit
 		# dmg *= 0.9  # Reduce damage to 90% per hit (optional)
+		
+func p_reload():
+	%reload.play()
+func p_bolt_back():
+	%bolt_back.play()
+func p_bolt_forward():
+	%bolt_forward.play()
