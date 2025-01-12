@@ -1,0 +1,241 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkw0386o8o6k5"]
+
+[ext_resource type="Script" path="res://summary.gd" id="1_0mu45"]
+[ext_resource type="AudioStream" uid="uid://d1gh0fhmsxmtv" path="res://audio/summary.mp3" id="2_rjgg3"]
+
+[sub_resource type="Gradient" id="Gradient_kiij1"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v6nnf"]
+gradient = SubResource("Gradient_kiij1")
+
+[sub_resource type="Animation" id="Animation_3sldf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 11)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 35)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nh2wq"]
+resource_name = "new_animation"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.933333, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, -36), Vector2(283, -37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 8.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, -10), Vector2(282, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10, 14.0333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, 11), Vector2(273, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15.0333, 19.0333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, 35), Vector2(321, 36)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 20.9667, 24.8667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(24.8333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_rjgg3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lutmt"]
+_data = {
+"RESET": SubResource("Animation_3sldf"),
+"new_animation": SubResource("Animation_nh2wq")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0mu45")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+scale = Vector2(22.855, 22.855)
+texture = SubResource("GradientTexture2D_v6nnf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D"]
+z_index = 1
+position = Vector2(-3, -36)
+scale = Vector2(5.1, 0.355001)
+texture = SubResource("GradientTexture2D_v6nnf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Camera2D"]
+z_index = 1
+position = Vector2(-3, -10)
+scale = Vector2(5.1, 0.355001)
+texture = SubResource("GradientTexture2D_v6nnf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Camera2D"]
+z_index = 1
+position = Vector2(-3, 11)
+scale = Vector2(5.1, 0.355001)
+texture = SubResource("GradientTexture2D_v6nnf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Camera2D"]
+z_index = 1
+position = Vector2(-3, 35)
+scale = Vector2(5.1, 0.355001)
+texture = SubResource("GradientTexture2D_v6nnf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
+custom_minimum_size = Vector2(488.085, 32.615)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.042
+offset_top = -46.0
+offset_right = 244.042
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "							  You don't know where you are. 
+							    You don't know who you are.
+									You must reach Levantes. 
+						   You must stop anything in your way. "
+fit_content = true
+shortcut_keys_enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_lutmt")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = 4
+offset_left = -163.0
+offset_top = -150.0
+offset_right = -123.0
+offset_bottom = -110.0
+scale = Vector2(7.835, 7.915)
+color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

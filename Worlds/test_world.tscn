@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://6rmh7rw6txhs" path="res://Weapons (new)/functional/burst-refactor.tscn" id="6_5i8wq"]
 [ext_resource type="PackedScene" uid="uid://drrbjw4jfeol1" path="res://Weapons (new)/functional/smg_refactor.tscn" id="7_c841b"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="8_25oti"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="9_3pkyx"]
-[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="10_jedjq"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="9_3pkyx"]
+[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Enemies/wallbreaker/wallbreaker.tscn" id="10_jedjq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_iy38w"]
 vertices = PackedVector3Array(-35.2753, 1, -32.5305, -35.2753, 1, 32.4695, 35.2247, 1, 32.4695, 35.2247, 1, -32.5305)

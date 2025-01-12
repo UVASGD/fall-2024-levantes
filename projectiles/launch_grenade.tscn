@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmhafnm3l5qr7"]
+
+[ext_resource type="Script" path="res://Grenade.gd" id="1_beiuo"]
+[ext_resource type="PackedScene" uid="uid://dvf4vyg7y0si" path="res://projectiles/grenade.glb" id="2_ys0ih"]
+[ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="3_u8y1t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e18p4"]
+bounce = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s6xuh"]
+
+[sub_resource type="Animation" id="Animation_mdamr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, -0.9, -1.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0g64w"]
+resource_name = "grenade_dequip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5, -0.9, -1.8), Vector3(1.5, -2.43274, -0.454129)]
+}
+
+[sub_resource type="Animation" id="Animation_hrwac"]
+resource_name = "grenade_equip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5, -2.47354, -0.467336), Vector3(1.5, -0.9, -1.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekeke"]
+_data = {
+"RESET": SubResource("Animation_mdamr"),
+"grenade_dequip": SubResource("Animation_0g64w"),
+"grenade_equip": SubResource("Animation_hrwac")
+}
+
+[node name="launch_grenade" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.9, -1.8)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_e18p4")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_beiuo")
+sound = ExtResource("3_u8y1t")
+force = 50
+upDirection = 5.0
+damage = 200
+cooldown = 0.1
+equip_ani = "grenade_equip"
+dequip_ani = "grenade_dequip"
+
+[node name="grenade_model" parent="RigidBody3D" instance=ExtResource("2_ys0ih")]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0, 0)
+shape = SubResource("SphereShape3D_s6xuh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D"]
+stream = ExtResource("3_u8y1t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_ekeke")
+}

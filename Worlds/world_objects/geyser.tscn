@@ -1,0 +1,199 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgi2kt00807f1"]
+
+[ext_resource type="Script" path="res://Worlds/world_objects/geyser/geyser.gd" id="1_lykja"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7xdpp"]
+height = 19.5023
+radius = 5.46424
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hflac"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mdqdv"]
+material = SubResource("StandardMaterial3D_hflac")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0tnx"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.67
+
+[sub_resource type="PrismMesh" id="PrismMesh_8tog7"]
+material = SubResource("StandardMaterial3D_p0tnx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u7aw"]
+transparency = 1
+blend_mode = 3
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.67
+
+[sub_resource type="BoxMesh" id="BoxMesh_lm3yy"]
+material = SubResource("StandardMaterial3D_8u7aw")
+
+[sub_resource type="Animation" id="Animation_3cmba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.423861, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.368584, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D:mesh:material:emission_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.35]
+}
+
+[sub_resource type="Animation" id="Animation_3anpj"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.423861, 0), Vector3(0, 0.627159, 0), Vector3(0, 0.423861, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.368584, 0), Vector3(0, -0.145292, 0), Vector3(0, -0.368584, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D/MeshInstance3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area3D/CollisionShape3D/MeshInstance3D:mesh:material:emission_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.35, 0.0, 3.35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fren"]
+_data = {
+"RESET": SubResource("Animation_3cmba"),
+"idle": SubResource("Animation_3anpj")
+}
+
+[node name="geyser" type="Node3D"]
+transform = Transform3D(0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, 0.120778, 200.735, 1.4396, -66.2533)
+script = ExtResource("1_lykja")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.60106, 0)
+shape = SubResource("CylinderShape3D_7xdpp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(11.0265, 0, 0, 0, 9.87846, 0, 0, 0, 10.4224, 0, 0, 0)
+mesh = SubResource("CylinderMesh_mdqdv")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(0.693632, 0, 0, 0, 0.586015, 0, 0, 0, 0.246082, 0, 0.423861, 0)
+mesh = SubResource("PrismMesh_8tog7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D/CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(0.268949, 0, 0, 0, 1, 0, 0, 0, 0.206349, 0, -0.368584, 0)
+mesh = SubResource("BoxMesh_lm3yy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7fren")
+}
+speed_scale = 0.515

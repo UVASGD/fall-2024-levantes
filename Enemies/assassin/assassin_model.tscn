@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn5mh01l81yep"]
+
+[ext_resource type="PackedScene" uid="uid://dy1sjakqml8mj" path="res://Enemies/assassin/assassin.glb" id="1_wpf4v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4gfv"]
+albedo_color = Color(0.137255, 0.0666667, 0.184314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0md0"]
+albedo_color = Color(0.0901961, 0.0823529, 0.121569, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd3ly"]
+emission_enabled = true
+emission = Color(0.807843, 0.00392157, 0.988235, 1)
+emission_energy_multiplier = 4.07
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ur1x"]
+albedo_color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k67n1"]
+albedo_color = Color(0.121569, 0.0588235, 0.164706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jb3h"]
+albedo_color = Color(0.0980392, 0.152941, 0.176471, 1)
+
+[node name="assassin" instance=ExtResource("1_wpf4v")]
+
+[node name="Torso" parent="." index="0"]
+transform = Transform3D(0.854432, 0.519564, 0, -0.519564, 0.854432, 0, 0, 0, 1, 1.28327, 13.6318, 0)
+material_override = SubResource("StandardMaterial3D_d4gfv")
+
+[node name="Poncho" parent="." index="1"]
+transform = Transform3D(1.69107, 0, 1.02831, -1.02831, 0, 1.69107, 0, -1.97918, 0, 2.19246, 15.127, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_r0md0")
+
+[node name="Cylinder_002" parent="." index="2"]
+transform = Transform3D(0.998158, -0.0606653, 0, 0.0606653, 0.998158, 0, 0, 0, 1, 3.96702, 17.5917, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_r0md0")
+
+[node name="Cone" parent="." index="3"]
+transform = Transform3D(0.753145, -0.045776, -4.57554e-05, 0.0457761, 0.753144, 0.000775627, -1.3845e-06, -0.000776974, 0.754534, 3.66771, 17.4105, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_vd3ly")
+
+[node name="left_thigh" parent="." index="4"]
+transform = Transform3D(0.165983, 0, -0.2499, -0.2499, 0, -0.165983, 0, 0.3, 0, -2.55662, 9.93141, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_0ur1x")
+
+[node name="left_shin" parent="." index="5"]
+transform = Transform3D(0.0883872, 0, -0.286684, -0.286684, 0, -0.0883872, 0, 0.3, 0, -7.11641, 8.38211, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_k67n1")
+
+[node name="right_hand" parent="." index="6"]
+transform = Transform3D(-0.301316, 0.519499, 0.799581, 0.192191, 0.854432, -0.48271, -0.933955, 0.00822443, -0.357297, -1.94877, 15.621, 8.48986)
+surface_material_override/0 = SubResource("StandardMaterial3D_vd3ly")
+
+[node name="left_hand" parent="." index="7"]
+transform = Transform3D(0.854432, 0.10394, 0.509061, -0.519564, 0.170931, 0.83716, 0, -0.979785, 0.200052, 3.51746, 17.3129, -0.155845)
+surface_material_override/0 = SubResource("StandardMaterial3D_vd3ly")
+
+[node name="right_thigh" parent="." index="8"]
+transform = Transform3D(0.253615, 0, 0.160248, 0.148391, 0.11325, -0.23485, -0.0604939, 0.277803, 0.09574, 1.82377, 8.6603, 1.15888)
+surface_material_override/0 = SubResource("StandardMaterial3D_0ur1x")
+
+[node name="right_shin" parent="." index="9"]
+transform = Transform3D(0.262373, 3.72529e-09, -0.145466, -0.134703, 0.11325, -0.24296, 0.0549135, 0.277803, 0.0990463, -0.23682, 4.57671, 2.82757)
+surface_material_override/0 = SubResource("StandardMaterial3D_k67n1")
+
+[node name="upper_right_arm" parent="." index="10"]
+transform = Transform3D(0.772202, 0.519564, 0.365728, -0.469562, 0.854432, -0.222392, -0.428036, 0, 0.903762, 0.435181, 14.1475, 0.0968544)
+surface_material_override/0 = SubResource("StandardMaterial3D_8jb3h")
+
+[node name="right_forearm" parent="." index="11"]
+transform = Transform3D(0.422065, 0.519564, 0.742909, -0.25665, 0.854432, -0.451749, -0.869478, 0, 0.493972, -1.661, 15.506, 2.2569)
+surface_material_override/0 = SubResource("StandardMaterial3D_d4gfv")
+
+[node name="upper_left_arm" parent="." index="12"]
+transform = Transform3D(0.854432, 0.10394, 0.509061, -0.519564, 0.170931, 0.83716, 0, -0.979785, 0.200052, 3.51746, 17.3129, -0.155845)
+surface_material_override/0 = SubResource("StandardMaterial3D_8jb3h")
+
+[node name="left_forearm" parent="." index="13"]
+transform = Transform3D(0.854432, 0.10394, 0.509061, -0.519564, 0.170931, 0.83716, 0, -0.979785, 0.200052, 3.51746, 17.3129, -0.155845)
+surface_material_override/0 = SubResource("StandardMaterial3D_d4gfv")

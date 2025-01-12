@@ -12,40 +12,47 @@ enum PostDeath{DestroyNode, RestartScene}
 @export var post_death_action: PostDeath
 
 @export var max_shield_hp: int = 100
-@export var max_health_hp: int = 50
+@export var max_health_hp: int = 100
 
 var shield_hp: int
 var health_hp: int
 
+var playing_shield_hurt = false
+var playing_health_hurt = false
+@export var camera_fov: int = 90
+@export var gun_cam_fov: int = 75
 
 @export var shield_regen_amount: float = 10
 @export var health_regen_amount: float = 5
 @export var look_sens: float = 0.006
-@export var jump_velocity := 6.0
+@export var jump_velocity := 9.0
 @export var bhop_on := true
-@export var walk_speed := 7.0
+@export var walk_speed := 9.0
 
 @export var HEADBOB_SWAY_AMOUNT = 0.05
 @export var HEADBOB_FREQ = 1
 var headbob_time = 0.0
 
-@export var air_cap := 0.85
-@export var air_accel := 880.0
-@export var air_move_speed := 550.0
+@export var air_cap := 5
+@export var air_accel := 20.0
+@export var air_move_speed := 300.0
 
-@export var dash_speed := 40.0  
-
+@export var dash_speed := 7000.0
 #@export var gun_bobbing_amplitude := 0.002
 #@export var gun_bobbing_frequency := 1
 
-#@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/WeaponRig/smgModel/smgModel
+#@onready var gun:Node3D = $Head/Camera3D/Weapons_Manager/
 @onready var mainCam = $Head/Camera3D
 @onready var gunCam = $Head/Camera3D/SubViewportContainer/SubViewport/GunCam
+
+@export var shield_regen_timer_length: int = 5
+@export var health_regen_timer_length: int = 8
+
 @onready var shield_regen_timer = $shield_regen_timer
 @onready var health_regen_timer = $health_regen_timer
 @onready var dash_length_timer := $Timers/DashLength
 @onready var dash_cooldown_timer := $Timers/DashCooldown
-
+@onready var shield_deplete_sound := $shield_deplete_sound
 @onready var hud = $Head/Camera3D/HUD
 
 # The direction which the player "wishes" to move (according to WASD keys)
@@ -64,7 +71,6 @@ func get_move_speed() -> float:
 	return walk_speed
 
 func _ready():
-	
 	shield_hp = max_shield_hp
 	health_hp = max_health_hp
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
@@ -73,10 +79,18 @@ func _ready():
 	
 	hud.hud_initialize_player(shield_hp, health_hp)
 	SignalBus.connect("player_hit", _on_player_hit)
+	
+	shield_regen_timer.wait_time = shield_regen_timer_length
+	health_regen_timer.wait_time = health_regen_timer_length
+	
 	shield_regen_timer.connect("timeout", _on_shield_regen_timer_timeout)
 	health_regen_timer.connect("timeout", _on_health_regen_timer_timeout)
 	dash_length_timer.connect("timeout", _on_dash_length_timeout)
 	dash_cooldown_timer.connect("timeout", _on_dash_cooldown_timeout)
+	
+	%Camera3D.fov = camera_fov
+	%GunCam.fov = gun_cam_fov
+	
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -106,12 +120,18 @@ func _process(delta):
 	pass
 
 func _handle_air_physics(delta) -> void:
-	self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	# Apply gravity
+	self.velocity.y -= PhysicsServer3D.area_get_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY) * delta
+	# self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	
+	# Normalize wish_dir to prevent faster diagonal movement
+
+	wish_dir = wish_dir.normalized()
+
 	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
-	
-	var max_speed = min((air_move_speed * wish_dir).length(), air_cap)
-	
+
+	var max_speed = min(air_move_speed, air_cap)
+
 	var add_speed_till_max = max_speed - cur_speed_in_wish_dir
 	if add_speed_till_max > 0:
 		var accel_speed = air_accel * air_move_speed * delta
@@ -142,11 +162,15 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-
+func get_current_weapon():
+	return $"Head/Camera3D/weapon manager".current_weapon
+func get_other_weapon():
+	return $"Head/Camera3D/weapon manager".other_weapon
 	
 func _on_player_hit(damage_amount):
 	#print("Damage Amount: " + str(damage_amount))
 	if not is_dashing:
+		
 		var shield_amount = int($Head/Camera3D/HUD/player_info/shield/shield_amount.text)
 		var health_amount = int($Head/Camera3D/HUD/player_info/health/health_amount.text)
 		
@@ -154,12 +178,18 @@ func _on_player_hit(damage_amount):
 		can_regen_health = false
 		shield_regen_timer.start()
 		if shield_hp <= 0:
+			%hurt.stop()
+			%hurt.play("health_hurt")
 			health_regen_timer.start()
-		take_damage(damage_amount)	
+		else:
+			%hurt.play("shield_hurt")
+		take_damage(damage_amount)
 		hud.update_shield_and_health(shield_hp, health_hp)
+
 	
 func game_over():
-	get_tree().reload_current_scene()
+	SignalBus.emit_signal("player_death")
+	get_tree().change_scene_to_file("res://menuscene.tscn")
 
 func take_damage(amount: int):
 	if shield_hp <= 0:
@@ -169,6 +199,8 @@ func take_damage(amount: int):
 	else:
 		shield_hp -= amount
 		shield_hp = max(shield_hp, 0)
+		if shield_hp == 0:
+			shield_deplete_sound.play()
 	if health_hp <= 0:
 		game_over()
 	pass
@@ -193,6 +225,7 @@ func regen_health(amount: int):
 
 func _handle_dash_logic():
 	if Input.is_action_just_pressed("Dash") and can_dash:
+		$dash.play()
 		_start_dash()
 	if is_dashing:
 		_apply_dash()
@@ -218,7 +251,7 @@ func _start_dash():
 func _apply_dash():
 	var dash_direction := wish_dir
 	if dash_direction.length() == 0: # if the player is not pressing any movement key (WASD), dash forward
-		dash_direction = -global_transform.basis.z  
+		dash_direction = -global_transform.basis.z
 	
 	self.velocity = dash_direction.normalized() * dash_speed
 
@@ -236,4 +269,4 @@ func _on_shield_regen_timer_timeout():
 
 func _on_health_regen_timer_timeout():
 	can_regen_health = true
-
+	

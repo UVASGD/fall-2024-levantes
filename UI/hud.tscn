@@ -1,8 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://dssfcs6qgya2v"]
+[gd_scene load_steps=11 format=3 uid="uid://dssfcs6qgya2v"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_kroww"]
 [ext_resource type="FontFile" uid="uid://dn1ewphq0hlak" path="res://UI/Fonts/TitilliumWeb-SemiBold.ttf" id="1_xg4as"]
 [ext_resource type="Script" path="res://UI/hud_scripts/hud_updates.gd" id="2_bm6h5"]
+[ext_resource type="Script" path="res://UI/fps.gd" id="4_d1tgc"]
+[ext_resource type="FontFile" uid="uid://du7d3o4hfsfho" path="res://UI/Fonts/TitilliumWeb-SemiBoldItalic.ttf" id="4_edv4u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_efe13"]
+font = ExtResource("4_edv4u")
+font_color = Color(0, 0.951755, 0.955994, 1)
+outline_size = 10
+outline_color = Color(0.107363, 0.265774, 0.277621, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgi28"]
+outline_size = 4
+outline_color = Color(0.594766, 0.974056, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_72hqf"]
+font_size = 30
+font_color = Color(0.980793, 0.673245, 0.271616, 1)
+outline_size = 20
+outline_color = Color(1, 1, 0.745098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqpg1"]
+font_size = 12
+font_color = Color(1, 0.0980392, 0.235294, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcemd"]
+font_size = 10
+font_color = Color(0.552941, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -49,7 +79,7 @@ offset_right = 105.0
 offset_bottom = 36.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "Weapon1:
+text = "
 "
 horizontal_alignment = 1
 
@@ -62,7 +92,8 @@ offset_right = 151.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "000"
+text = "
+"
 horizontal_alignment = 2
 
 [node name="Div" type="Label" parent="weapons_info/Wep1"]
@@ -86,7 +117,8 @@ offset_right = 204.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "000"
+text = "
+"
 horizontal_alignment = 2
 
 [node name="Wep2" type="Control" parent="weapons_info"]
@@ -114,7 +146,7 @@ offset_right = 105.0
 offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "Weapon2:
+text = "
 "
 horizontal_alignment = 1
 
@@ -127,7 +159,8 @@ offset_right = 151.0
 offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "000"
+text = "
+"
 horizontal_alignment = 2
 
 [node name="Div2" type="Label" parent="weapons_info/Wep2"]
@@ -151,7 +184,8 @@ offset_right = 204.0
 offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("1_xg4as")
 theme_override_font_sizes/font_size = 20
-text = "000"
+text = "
+"
 horizontal_alignment = 2
 
 [node name="player_info" type="ColorRect" parent="."]
@@ -260,3 +294,127 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_bm6h5")
+crosshair_color = Color(1, 1, 1, 1)
+
+[node name="shop_weapon_name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -10.0
+offset_right = 79.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_efe13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = 21.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_efe13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tip" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_efe13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 61.0
+offset_right = 92.0
+offset_bottom = 137.0
+color = Color(0.156863, 0.556863, 0.6, 1)
+script = ExtResource("4_d1tgc")
+
+[node name="fps_counter" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 76.0
+label_settings = SubResource("LabelSettings_wgi28")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 284.0
+offset_bottom = 61.0
+color = Color(0.156863, 0.556863, 0.6, 1)
+
+[node name="money_text" type="Label" parent="Money"]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 57.0
+text = "100"
+label_settings = SubResource("LabelSettings_72hqf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="debt" type="Control" parent="Money"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="debt_text" type="Label" parent="Money/debt"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 1.0
+offset_right = 284.0
+offset_bottom = 39.0
+text = "You are in debt
+"
+label_settings = SubResource("LabelSettings_qqpg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="debt_text2" type="Label" parent="Money/debt"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 1.0
+offset_right = 152.0
+offset_bottom = 58.0
+text = "
+
+Debuff: "
+label_settings = SubResource("LabelSettings_qqpg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="debuff" type="Label" parent="Money/debt"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 20.0
+offset_right = 285.0
+offset_bottom = 77.0
+text = "hi"
+label_settings = SubResource("LabelSettings_xcemd")
+horizontal_alignment = 1
+vertical_alignment = 1

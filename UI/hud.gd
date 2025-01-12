@@ -15,19 +15,19 @@ var hud_wep_list = [
 ]
 
 
-func hud_initialize(weapons: Array, weapon_list: Dictionary):
+func hud_initialize(weapons: Array):
 	for i in range(len(weapons)):
-		var wep_obj = weapon_list[weapons[i]]
-		var cur_weapon = $weapons_info.get_child(i)
-		
-		cur_weapon.get_child(1).text = wep_obj.Wep_Name
-		
-		cur_weapon.get_child(2).text = str(wep_obj.Curr_Mag_Ammo)
-		
-		if wep_obj.Reserve_Ammo != 0:
-			cur_weapon.get_child(4).text = str(wep_obj.Reserve_Ammo)
-		else:
-			cur_weapon.get_child(4).text = ""
+		if weapons[i] != null:
+			var cur_weapon = $weapons_info.get_child(i)
+			
+			cur_weapon.get_child(1).text = weapons[i].Display_Name
+			
+			cur_weapon.get_child(2).text = str(weapons[i].Curr_Mag_Ammo)
+			
+			if weapons[i].Reserve_Ammo != 0:
+				cur_weapon.get_child(4).text = str(weapons[i].Reserve_Ammo)
+			else:
+				cur_weapon.get_child(4).text = "0"
 			
 func hud_initialize_player(shield, health):
 	var shield_string = str(shield)
@@ -35,10 +35,9 @@ func hud_initialize_player(shield, health):
 	$player_info/shield/shield_amount.text = shield_string
 	$player_info/health/health_amount.text = health_string
 			
-func update_ammo(mag: int, reserve: int, weapon_indicator: int):
-	var cur_weapon = $weapons_info.get_child(weapon_indicator)
+func update_ammo(mag: int):
+	var cur_weapon = $weapons_info.get_child(0)
 	cur_weapon.get_child(2).text = str(mag)
-	cur_weapon.get_child(4).text = str(reserve)
 	
 		
 func update_weapon_indicator(weapon_indicator: int):
@@ -59,5 +58,25 @@ func update_shield_and_health(new_shield_amount: int, new_health_amount: int):
 	$player_info/shield/shield_amount.text = n_s_amount
 	$player_info/health/health_amount.text = n_h_amount
 	
+func update_shop_weapon_name(shop_wep_name: String, cost: int, tip: String):
+	$shop_weapon_name.text = shop_wep_name
+	$tip.text = tip
+	if cost != 0:
+		$cost.text = "Price: " + str(cost)
+	else:
+		$cost.text = ""
 	
-	
+func update_money(money:int, debt_effect: String):
+	if money >= 0:
+		$Money/money_text.text = str(money)
+		$Money/debt.hide()
+		
+	if money < 0:
+		$Money/money_text.text = str(money)
+		$Money/debt/debuff.text = debt_effect
+		$Money/debt.show()
+func _input(event):
+	if event.is_action_pressed("disable_hud"):
+		$".".visible = !$".".visible
+	if event.is_action_pressed("disable_music"):
+		SignalBus.emit_signal("disable_music")

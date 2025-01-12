@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d1d10pso3mj0p" path="res://Weapons (new)/husk/husk_smg.tscn" id="3_uktco"]
 [ext_resource type="PackedScene" uid="uid://b1dmbc5ccwkec" path="res://projectiles/husk_grenade.tscn" id="4_mc336"]
 [ext_resource type="PackedScene" uid="uid://dx3k3nehr35dh" path="res://Enemies/bishop_sniper/bishop_sniper.tscn" id="5_kl8cf"]
-[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt.tscn" id="6_djwbx"]
+[ext_resource type="PackedScene" uid="uid://d2ipjyem2oaxa" path="res://Enemies/state_machine_test/smt_OLD/smt.tscn" id="6_djwbx"]
 [ext_resource type="AudioStream" uid="uid://c6g86oghfcorm" path="res://audio/lightsout_drop.mp3" id="6_qxdc6"]
-[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Models/Enemies/wallbreaker/wallbreaker.tscn" id="7_qo603"]
+[ext_resource type="PackedScene" uid="uid://b4exv62ao5bai" path="res://Enemies/wallbreaker/wallbreaker.tscn" id="7_qo603"]
 [ext_resource type="AudioStream" uid="uid://c5jh2eeyhioep" path="res://audio/demo_loop.mp3" id="7_r8gvg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_f7tku"]
@@ -169,6 +169,12 @@ size = Vector3(50.3825, 4.68542, 1)
 script = ExtResource("1_xs2rq")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_raj47")]
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/SMG/smg_of_the_future" index="2"]
+transform = Transform3D(7.66685, 0, 0, 0, -2.52309e-05, 6.96987, 0, -6.96987, -2.52309e-05, 0, 27.8902, 173.441)
+
+[node name="Mag" parent="CharacterBody3D/Head/Camera3D/weapon manager/BURST/burstModel" index="1"]
+transform = Transform3D(-1, 2.76639e-06, 0, -2.53518e-06, -1.0912, 0, 0, 0, 1.09119, 8.8872, -9.15356, 31.2051)
 
 [node name="HuskBurstRifle" parent="." instance=ExtResource("2_huhnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71873, -5.67464)

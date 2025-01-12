@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://o8u5kpsri0xn"
 path.s3tc="res://.godot/imported/GoofyDoll_3DModel_LowPoly.jpg-13fa46c35ebb529497500ae312453303.s3tc.ctex"
+path.etc2="res://.godot/imported/GoofyDoll_3DModel_LowPoly.jpg-13fa46c35ebb529497500ae312453303.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Weapons (old)/goofy_aa/GoofyDoll_3DModel_LowPoly.jpg"
-dest_files=["res://.godot/imported/GoofyDoll_3DModel_LowPoly.jpg-13fa46c35ebb529497500ae312453303.s3tc.ctex"]
+dest_files=["res://.godot/imported/GoofyDoll_3DModel_LowPoly.jpg-13fa46c35ebb529497500ae312453303.s3tc.ctex", "res://.godot/imported/GoofyDoll_3DModel_LowPoly.jpg-13fa46c35ebb529497500ae312453303.etc2.ctex"]
 
 [params]
 

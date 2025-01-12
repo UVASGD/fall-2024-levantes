@@ -1,17 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://cupay32y8612k"]
 
-[ext_resource type="Script" path="res://Models/Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
-[ext_resource type="AudioStream" uid="uid://dbv5p1g5xxyht" path="res://audio/wallbreaker_explode.mp3" id="2_xc0mg"]
+[ext_resource type="Script" path="res://Enemies/wallbreaker/explosion.gd" id="1_dabnm"]
+[ext_resource type="Shader" uid="uid://dvvcm6asakra0" path="res://visual_shader_test.tres" id="2_uaaca"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0o7cn"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_q586k"]
+resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjm2p"]
-albedo_color = Color(0, 0.737255, 0.858824, 1)
-emission_enabled = true
-emission = Color(0.27451, 0.607843, 0.952941, 1)
-emission_energy_multiplier = 16.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1r6t"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_uaaca")
+shader_parameter/ColorParameter = Color(0.38, 0.796, 5, 1)
+shader_parameter/Strength = 5.0
+shader_parameter/LightColor = Color(0.94902, 1, 0.996078, 1)
+shader_parameter/FloatParameter = 1.0
 
 [sub_resource type="Animation" id="Animation_6lc70"]
 length = 0.001
@@ -39,11 +44,35 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion/MeshInstance3D:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("explosion/CollisionShape3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_41i38"]
 resource_name = "explode"
-length = 0.2
-step = 0.05
+length = 0.3
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,10 +92,34 @@ tracks/1/path = NodePath("explosion:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion/MeshInstance3D:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.8, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("explosion/CollisionShape3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwust"]
@@ -76,25 +129,23 @@ _data = {
 }
 
 [node name="explosion" type="Area3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.582662, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.582662, 0)
 script = ExtResource("1_dabnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.000999987, 0, 0, 0, 0.000999987, 0, 0, 0, 0.000999987, 0, 0, 0)
 shape = SubResource("SphereShape3D_0o7cn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transparency = 0.77
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_q586k")
-surface_material_override/0 = SubResource("StandardMaterial3D_qjm2p")
+surface_material_override/0 = SubResource("ShaderMaterial_p1r6t")
 
 [node name="explosion_animation_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_vwust")
 }
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_xc0mg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="explosion_animation_player" to="." method="_on_explosion_animation_player_animation_finished"]

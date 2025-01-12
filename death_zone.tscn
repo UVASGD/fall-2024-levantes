@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bel23wcn7oqje"]
+
+[ext_resource type="Script" path="res://death_zone.gd" id="1_14tc7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icx8p"]
+
+[node name="deathzone" type="Node3D"]
+script = ExtResource("1_14tc7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_icx8p")

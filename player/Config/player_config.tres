@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b5rawa4r2mns5"]
+[gd_resource type="Resource" script_class="player_config_resource" load_steps=2 format=3 uid="uid://b5rawa4r2mns5"]
 
 [ext_resource type="Script" path="res://player/Config/player_config_resource.gd" id="1_ltoi5"]
 
