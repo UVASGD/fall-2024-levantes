@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brgkgpb78kh22"]
+
+[ext_resource type="Texture2D" uid="uid://b16wpwjmj2hjh" path="res://Textures/betterloadingscreen.png" id="1_3jij2"]
+[ext_resource type="Script" path="res://Worlds/loadingscreen.gd" id="1_dykxp"]
+
+[node name="Loadingscreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dykxp")
+
+[node name="Betterloadingscreen" type="Sprite2D" parent="."]
+position = Vector2(963, 511)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3jij2")

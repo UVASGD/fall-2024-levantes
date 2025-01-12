@@ -27,6 +27,7 @@ PlayerManager="*res://player_manager.gd"
 SignalBus="*res://Autoload/SignalBus.gd"
 GameManager="*res://GameManager.gd"
 PersistentData="*res://PersistentData.gd"
+Loader="*res://Worlds/Loader.gd"
 
 [display]
 

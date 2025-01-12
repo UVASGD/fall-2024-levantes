@@ -32,7 +32,9 @@ func _on_playbutton_button_up() -> void:
 func transition():
 	await recurse_free(self)
 	get_tree().change_scene_to_file(get_nextWorld())
-	
+	Loader.change_level(get_nextWorld())
+	pass
+
 
 
 func recurse_free(node):

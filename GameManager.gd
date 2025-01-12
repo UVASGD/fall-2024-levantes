@@ -17,7 +17,9 @@ func _process(delta):
 
 func next(current, scene=null):
 	await recurse_free(scene, scene)
-	get_tree().change_scene_to_file(nextWorld(current))
+	var next = nextWorld(current)
+	#get_tree().change_scene_to_file(nextWorld(current))
+	Loader.change_level(nextWorld(current))
 	return
 
 func recurse_free(node, scene=null):
